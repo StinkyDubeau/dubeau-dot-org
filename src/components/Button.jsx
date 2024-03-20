@@ -1,8 +1,8 @@
 export default function Button(props) {
   return (
-    <button className="rounded-xl border-b-4 border-slate-800 bg-slate-500 p-2 h-12 w-32 transition-all hover:w-36 hover:bg-slate-400">
-      <p className="text-slate-200">{props.text}</p>
+    <button className="rounded-full overflow-hidden hover:border-b-4 hover:border-2 hover:border-slate-400 hover:border-b-slate-700 h-16 w-16 transition-all hover:bg-slate-500">
       {props.children}
+      <p className="text-slate-200 text-xs mt-1 font-header">{props.text}</p>
     </button>
   );
 }
