@@ -16,7 +16,7 @@ export default function Servers(props) {
                 </p>
             </Panel>
             <Panel>
-                <Link className="font-regular text-white" to="/">
+                <Link className="font-regular " to="/">
                     <Button>Back to home</Button>
                 </Link>
             </Panel>

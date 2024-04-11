@@ -1,10 +1,7 @@
 export default function Button(props) {
     return (
-        <button className="overflow-hidden rounded-xl transition-all">
+        <button className="bg-lighten-400 overflow-hidden rounded-xl px-2 transition-all hover:px-4">
             {props.children}
-            <p className="mt-1 font-header text-xs text-green-200">
-                {props.text}
-            </p>
         </button>
     );
 }
