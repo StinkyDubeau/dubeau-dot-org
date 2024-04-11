@@ -4,6 +4,7 @@ import Panel from "../components/Panel";
 import Servers from "./Servers";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import Navbar from "../components/Navbar";
 
 export default function Home(props) {
     const [serversVisible, setServersVisible] = useState(false);
@@ -19,6 +20,7 @@ export default function Home(props) {
     return (
         <>
             <Frame>
+                <Navbar></Navbar>
                 <Panel>
                     <h1 className="font-header text-7xl text-green-50">jake</h1>
                     <h1 className="-mt-2 font-header text-4xl text-green-50">
