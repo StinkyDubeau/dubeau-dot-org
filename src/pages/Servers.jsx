@@ -8,19 +8,11 @@ export default function Servers(props) {
     return (
         <Frame>
             <img src={ModdedBanner}></img>
-            <Panel>
-                <p className="font-regular text-white">
-                    Out of order, sorry /:
-                </p>
-
-                <p className="font-regular text-white">
-                    Join the{" "}
-                    <a href="https://discord.gg/n5dRq7c3Rv">
-                        <span className="underline">discord</span>
-                    </a>{" "}
-                    for updates.
-                </p>
-            </Panel>
+            <div className="grid">
+                <div class="animate-gradient-x via-purple-500to-orange-500 flex h-64 items-center justify-center bg-gradient-to-r from-blue-400">
+                    {" "}
+                </div>
+            </div>
         </Frame>
     );
 }
