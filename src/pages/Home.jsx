@@ -19,11 +19,12 @@ export default function Home(props) {
 
     return (
         <>
-            <Frame>
-                <Navbar></Navbar>
+            <Frame noNavbar>
                 <Panel>
-                    <h1 className="font-header text-7xl text-green-50">jake</h1>
-                    <h1 className="-mt-2 font-header text-4xl text-green-50">
+                    <h1 className="font-headerScript text-7xl text-green-50">
+                        jake
+                    </h1>
+                    <h1 className="font-headerScript -mt-2 text-4xl text-green-50">
                         dubeau
                     </h1>
                     <div className="flex justify-center gap-3">
