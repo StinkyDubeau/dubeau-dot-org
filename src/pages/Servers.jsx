@@ -1,4 +1,4 @@
-import Panel from "./Panel";
+import Panel from "../components/Panel";
 
 export default function Servers(props) {
   return (
