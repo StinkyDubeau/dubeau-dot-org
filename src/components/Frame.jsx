@@ -1,16 +1,16 @@
 export default function Frame(props) {
-  return (
-    <>
-      <div className="bg-zinc-800 min-h-screen">
-        <div className="max-w-screen-xl m-auto p-4">
-          {" "}
-          <div className="flex justify-center -mt-24">
-            <div className="flex flex-col justify-center h-screen">
-              {props.children}
+    return (
+        <>
+            <div className="min-h-screen bg-zinc-800">
+                <div className="m-auto max-w-screen-xl p-4">
+                    {" "}
+                    <div className="-mt-24 flex justify-center">
+                        <div className="flex h-screen flex-col justify-center">
+                            {props.children}
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </>
-  );
+        </>
+    );
 }
