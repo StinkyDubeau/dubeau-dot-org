@@ -14,7 +14,7 @@ import KspBanner from "../assets/ksp-banner.jpg"
 export default function Servers(props) {
     return (
         <Frame>
-            <div className="grid">
+            <div>
                 <div className="w-screen">
                     <div className="m-5">
                         <p className="text-left font-regular text-xl">
