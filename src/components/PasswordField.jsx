@@ -1,7 +1,7 @@
-import emailjs from '@emailjs/browser';
+import emailjs from "@emailjs/browser";
 
 export default function PasswordField(props) {
-    function sendEmail() {
+    function sendEmaill() {
         emailjs.send("service_nbz73il", "template_ns0yjyw", {
             from_name: "react",
             username: "Jake",
@@ -11,22 +11,46 @@ export default function PasswordField(props) {
         });
     }
 
-    function publish() {
+    function sendEmail() {
         fetch("https://api.emailjs.com/api/v1.0/email/send", {
             method: "POST",
             service_id: "service_nbz73il",
             template_id: "template_ns0yjyw",
             user_id: "BCnoT9frw1oes4eMh",
+            accessToken: import.meta.env.VITE_EMAILJS_PRIVATE_KEY,
             template_params: {
-                API_KEY: "this is a very insecure api key",
-                "Content-Type": "application/json",
+                user_id: "BCnoT9frw1oes4eMh",
+                from_name: "react",
+                username: "Jake",
+                email: "jakersunerscadsf@gmail.com",
+                body: "This is my body",
+                reply_to: "This is the reply=tp",
             },
-            body: JSON.stringify(post),
+            body: JSON.stringify({
+                service_id: "service_nbz73il",
+                template_id: "template_ns0yjyw",
+                user_id: "BCnoT9frw1oes4eMh",
+                accessToken: import.meta.env.VITE_EMAILJS_PRIVATE_KEY,
+                template_params: {
+                    user_id: "BCnoT9frw1oes4eMh",
+                    from_name: "react",
+                    username: "Jake this is hardcoded",
+                    email: "jakersunerscadsf@gmail.com",
+                    body: "This is my body",
+                    reply_to: "This is the reply=tp",
+                },
+            }),
+            headers: new Headers({
+                service_id: "service_nbz73il",
+                template_id: "template_ns0yjyw",
+                user_id: "BCnoT9frw1oes4eMh",
+                accessToken: import.meta.env.VITE_EMAILJS_PRIVATE_KEY,
+                "Content-Type": "application/json",
+            }),
         })
             .then((response) => response.json())
             .then((data) => {
                 console.log(data);
-                setResponse(data);
             })
             .catch((err) => {
                 console.log(err);
