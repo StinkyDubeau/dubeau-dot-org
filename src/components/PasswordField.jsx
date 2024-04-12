@@ -17,7 +17,7 @@ export default function PasswordField(props) {
                 />
             </label>
 
-            <label className="flex h-10 items-center gap-2 rounded-xl bg-darken-50 p-2 shadow-inner">
+            <label className="flex items-center gap-2 rounded-xl bg-darken-50 p-2 shadow-inner">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 16 16"
@@ -29,7 +29,7 @@ export default function PasswordField(props) {
                 </svg>
                 <input
                     type="text"
-                    className="grow bg-transparent p-2"
+                    className="grow bg-transparent"
                     placeholder="Email"
                 />
             </label>
