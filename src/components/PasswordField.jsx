@@ -1,50 +1,23 @@
 import emailjs from "@emailjs/browser";
 
 export default function PasswordField(props) {
-    function sendEmaill() {
-        emailjs.send("service_nbz73il", "template_ns0yjyw", {
-            from_name: "react",
-            username: "Jake",
-            email: "jakersunerscadsf@gmail.com",
-            body: "This is my body",
-            reply_to: "This is the reply=tp",
-        });
-    }
-
     function sendEmail() {
         fetch("https://api.emailjs.com/api/v1.0/email/send", {
             method: "POST",
-            service_id: "service_nbz73il",
-            template_id: "template_ns0yjyw",
-            user_id: "BCnoT9frw1oes4eMh",
-            accessToken: import.meta.env.VITE_EMAILJS_PRIVATE_KEY,
-            template_params: {
-                user_id: "BCnoT9frw1oes4eMh",
-                from_name: "react",
-                username: "Jake",
-                email: "jakersunerscadsf@gmail.com",
-                body: "This is my body",
-                reply_to: "This is the reply=tp",
-            },
             body: JSON.stringify({
                 service_id: "service_nbz73il",
                 template_id: "template_ns0yjyw",
                 user_id: "BCnoT9frw1oes4eMh",
                 accessToken: import.meta.env.VITE_EMAILJS_PRIVATE_KEY,
                 template_params: {
-                    user_id: "BCnoT9frw1oes4eMh",
                     from_name: "react",
-                    username: "Jake this is hardcoded",
+                    username: "Jake this is hardcoded with trimmed crap",
                     email: "jakersunerscadsf@gmail.com",
                     body: "This is my body",
                     reply_to: "This is the reply=tp",
                 },
             }),
             headers: new Headers({
-                service_id: "service_nbz73il",
-                template_id: "template_ns0yjyw",
-                user_id: "BCnoT9frw1oes4eMh",
-                accessToken: import.meta.env.VITE_EMAILJS_PRIVATE_KEY,
                 "Content-Type": "application/json",
             }),
         })
