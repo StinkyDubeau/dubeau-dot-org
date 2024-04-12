@@ -39,9 +39,9 @@ export default {
                 },
             },
             animation: {
-                "gradient-x": "gradient-x 15s ease infinite",
-                "gradient-y": "gradient-y 15s ease infinite",
-                "gradient-xy": "gradient-xy 15s ease infinite",
+                "gradient-x": "gradient-x 5s ease infinite",
+                "gradient-y": "gradient-y 5s ease infinite",
+                "gradient-xy": "gradient-xy 5s ease infinite",
             },
             keyframes: {
                 "gradient-y": {
