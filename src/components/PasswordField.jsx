@@ -5,10 +5,10 @@ export default function PasswordField(props) {
         fetch("https://api.emailjs.com/api/v1.0/email/send", {
             method: "POST",
             body: JSON.stringify({
-                service_id: "service_nbz73il",
-                template_id: "template_ns0yjyw",
-                user_id: "BCnoT9frw1oes4eMh",
-                accessToken: import.meta.env.VITE_EMAILJS_PRIVATE_KEY,
+                service_id: import.meta.env.VITE_EMAILJS_SERVICE_ID,
+                template_id: import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+                user_id: import.meta.env.VITE_EMAILJS_USER_ID,
+                accessToken: import.meta.env.VITE_EMAILJS_ACCESS_TOKEN,
                 template_params: {
                     from_name: "react",
                     username: "Jake this is hardcoded with trimmed crap",
