@@ -24,7 +24,7 @@ export default function Home(props) {
                     <h1 className="font-headerScript text-7xl text-lighten-800">
                         jake
                     </h1>
-                    <h1 className="font-headerScript -mt-2 text-4xl text-lighten-800">
+                    <h1 className="-mt-2 font-headerScript text-4xl text-lighten-800">
                         dubeau
                     </h1>
                     <div className="flex justify-center gap-3">
@@ -80,22 +80,22 @@ export default function Home(props) {
                             </BigButton>
                         </Link>
                         {/* <div className="my-2">
-                <Button text="Astros" to="">
-                <a className="flex justify-center gap-2 fill-lighten-800">
-                <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                className="bi bi-camera-fill fill-lighten-800"
-                      viewBox="0 0 16 16"
-                      >
-                      <path d="M10.5 8.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0" />
-                      <path d="M2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4zm.5 2a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1m9 2.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0" />
-                      </svg>
-                      </a>
-                      </Button>
-                    </div> */}
+                            <Button text="Astros" to="">
+                                <a className="flex justify-center gap-2 fill-lighten-800">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="16"
+                                        height="16"
+                                        fill="currentColor"
+                                        className="bi bi-camera-fill fill-lighten-800"
+                                        viewBox="0 0 16 16"
+                                    >
+                                        <path d="M10.5 8.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0" />
+                                        <path d="M2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4zm.5 2a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1m9 2.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0" />
+                                    </svg>
+                                </a>
+                            </Button>
+                        </div> */}
                     </div>
                 </Panel>
                 {serversVisible && createServers()}
