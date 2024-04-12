@@ -22,7 +22,7 @@ export default function Servers(props) {
                         </p>
                     </div>
                     {/* Gradient bg */}
-                    <div className="animate-gradient-x m-5 flex flex-wrap justify-center gap-8 rounded-lg bg-gradient-to-br from-blue-400 via-cyan-400 to-green-400 p-4">
+                    <div className="animate-gradient-x m-5 flex flex-wrap justify-center sm:gap-8 gap-4 rounded-lg bg-gradient-to-br from-blue-400 via-cyan-400 to-green-400 p-4">
                         <ServerCard
                             title="RotN"
                             subtitle="Modded Minecraft"
