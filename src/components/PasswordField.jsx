@@ -1,4 +1,38 @@
+import emailjs from '@emailjs/browser';
+
 export default function PasswordField(props) {
+    function sendEmail() {
+        emailjs.send("service_nbz73il", "template_ns0yjyw", {
+            from_name: "react",
+            username: "Jake",
+            email: "jakersunerscadsf@gmail.com",
+            body: "This is my body",
+            reply_to: "This is the reply=tp",
+        });
+    }
+
+    function publish() {
+        fetch("https://api.emailjs.com/api/v1.0/email/send", {
+            method: "POST",
+            service_id: "service_nbz73il",
+            template_id: "template_ns0yjyw",
+            user_id: "BCnoT9frw1oes4eMh",
+            template_params: {
+                API_KEY: "this is a very insecure api key",
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(post),
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+                setResponse(data);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
+
     return (
         <div className="flex flex-col gap-2 rounded-xl bg-orange-50 p-4 shadow-xl ">
             <label className="flex items-center gap-2 rounded-xl bg-darken-50 p-2 shadow-inner">
@@ -39,7 +73,10 @@ export default function PasswordField(props) {
                 placeholder="Message"
             ></textarea>
 
-            <button className="h-10 rounded-xl bg-darken-100 shadow transition-all hover:bg-darken-50 hover:rounded-lg">
+            <button
+                className="h-10 rounded-xl bg-darken-100 shadow transition-all hover:rounded-lg hover:bg-darken-50"
+                onClick={sendEmail}
+            >
                 Submit
             </button>
         </div>
