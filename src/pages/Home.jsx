@@ -18,20 +18,20 @@ export default function Home(props) {
     }
 
     return (
-        <>
-            <Frame noNavbar>
+        <div>
+            <Frame noNavbar vignette>
                 <Panel>
-                    <h1 className="font-headerScript text-7xl text-green-50">
+                    <h1 className="font-headerScript text-7xl text-lighten-800">
                         jake
                     </h1>
-                    <h1 className="font-headerScript -mt-2 text-4xl text-green-50">
+                    <h1 className="font-headerScript -mt-2 text-4xl text-lighten-800">
                         dubeau
                     </h1>
                     <div className="flex justify-center gap-3">
                         <div className="my-2">
                             <Link to="https://github.com/StinkyDubeau">
                                 <BigButton text="Github">
-                                    <div className="flex justify-center gap-2 fill-green-50">
+                                    <div className="flex justify-center gap-2 fill-lighten-800">
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
                                             width="16"
@@ -48,13 +48,13 @@ export default function Home(props) {
                         <div className="my-2">
                             <Link to="https://www.linkedin.com/in/dubeau-jake">
                                 <BigButton text="LinkedIn">
-                                    <div className="flex justify-center gap-2 fill-green-50">
+                                    <div className="flex justify-center gap-2 fill-lighten-800">
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
                                             width="16"
                                             height="16"
                                             fill="currentColor"
-                                            className="bi bi-linkedin fill-green-50"
+                                            className="bi bi-linkedin fill-lighten-800"
                                             viewBox="0 0 16 16"
                                         >
                                             <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z" />
@@ -65,13 +65,13 @@ export default function Home(props) {
                         </div>
                         <Link className="my-2" to="/servers">
                             <BigButton text="Servers">
-                                <div className="flex justify-center gap-2 fill-green-50">
+                                <div className="flex justify-center gap-2 fill-lighten-800">
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         width="16"
                                         height="16"
                                         fill="currentColor"
-                                        className="bi bi-dpad-fill fill-green-50"
+                                        className="bi bi-dpad-fill fill-lighten-800"
                                         viewBox="0 0 16 16"
                                     >
                                         <path d="M6.5 0A1.5 1.5 0 0 0 5 1.5v3a.5.5 0 0 1-.5.5h-3A1.5 1.5 0 0 0 0 6.5v3A1.5 1.5 0 0 0 1.5 11h3a.5.5 0 0 1 .5.5v3A1.5 1.5 0 0 0 6.5 16h3a1.5 1.5 0 0 0 1.5-1.5v-3a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 0 16 9.5v-3A1.5 1.5 0 0 0 14.5 5h-3a.5.5 0 0 1-.5-.5v-3A1.5 1.5 0 0 0 9.5 0zm1.288 2.34a.25.25 0 0 1 .424 0l.799 1.278A.25.25 0 0 1 8.799 4H7.201a.25.25 0 0 1-.212-.382zm0 11.32-.799-1.277A.25.25 0 0 1 7.201 12H8.8a.25.25 0 0 1 .212.383l-.799 1.278a.25.25 0 0 1-.424 0Zm-4.17-4.65-1.279-.798a.25.25 0 0 1 0-.424l1.279-.799A.25.25 0 0 1 4 7.201V8.8a.25.25 0 0 1-.382.212Zm10.043-.798-1.278.799A.25.25 0 0 1 12 8.799V7.2a.25.25 0 0 1 .383-.212l1.278.799a.25.25 0 0 1 0 .424Z" />
@@ -81,13 +81,13 @@ export default function Home(props) {
                         </Link>
                         {/* <div className="my-2">
                 <Button text="Astros" to="">
-                <a className="flex justify-center gap-2 fill-green-50">
+                <a className="flex justify-center gap-2 fill-lighten-800">
                 <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
                 height="16"
                 fill="currentColor"
-                className="bi bi-camera-fill fill-green-50"
+                className="bi bi-camera-fill fill-lighten-800"
                       viewBox="0 0 16 16"
                       >
                       <path d="M10.5 8.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0" />
@@ -100,6 +100,6 @@ export default function Home(props) {
                 </Panel>
                 {serversVisible && createServers()}
             </Frame>
-        </>
+        </div>
     );
 }
