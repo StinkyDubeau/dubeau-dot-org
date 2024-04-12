@@ -1,8 +1,10 @@
-import emailjs from "@emailjs/browser";
 import { useState } from "react";
 
 export default function PasswordField(props) {
-
+    const [from_name, setFrom_name] = useState("dubeau.org");
+    const [username, setUsername] = useState("Blank");
+    const [email, setEmail] = useState("Blank");
+    const [body, setBody] = useState("Blank");
 
     function sendEmail() {
         fetch("https://api.emailjs.com/api/v1.0/email/send", {
@@ -13,10 +15,10 @@ export default function PasswordField(props) {
                 user_id: import.meta.env.VITE_EMAILJS_USER_ID,
                 accessToken: import.meta.env.VITE_EMAILJS_ACCESS_TOKEN,
                 template_params: {
-                    from_name: "react",
-                    username: "Jake this is hardcoded with trimmed crap",
-                    email: "jakersunerscadsf@gmail.com",
-                    body: "This is my body",
+                    from_name: from_name,
+                    username: username,
+                    email: email,
+                    body: body,
                     reply_to: "This is the reply=tp",
                 },
             }),
@@ -48,6 +50,10 @@ export default function PasswordField(props) {
                     type="text"
                     className="grow bg-transparent"
                     placeholder="Name"
+                    value={username}
+                    onChange={(e) => {
+                        setUsername(e.target.value);
+                    }}
                 />
             </label>
 
@@ -65,12 +71,20 @@ export default function PasswordField(props) {
                     type="text"
                     className="grow bg-transparent"
                     placeholder="Email"
+                    value={email}
+                    onChange={(e) => {
+                        setEmail(e.target.value);
+                    }}
                 />
             </label>
 
             <textarea
                 className="rounded-xl bg-darken-50  p-2"
                 placeholder="Message"
+                value={body}
+                onChange={(e) => {
+                    setBody(e.target.value);
+                }}
             ></textarea>
 
             <button
