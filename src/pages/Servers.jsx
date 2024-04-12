@@ -7,10 +7,24 @@ import ModdedBanner from "../assets/modded-banner.png";
 export default function Servers(props) {
     return (
         <Frame>
-            <img src={ModdedBanner}></img>
             <div className="grid">
-                <div class="animate-gradient-x via-purple-500to-orange-500 flex h-64 items-center justify-center bg-gradient-to-r from-blue-400">
-                    {" "}
+                <div className="w-screen">
+                    {/* Gradient bg */}
+                    <div class="animate-gradient-x grid items-center justify-center gap-2 bg-gradient-to-br from-blue-400 via-cyan-400 to-green-400 p-2">
+                        <div className="card h-44 w-36 overflow-hidden rounded-xl bg-slate-50 shadow-lg transition-all hover:scale-105 hover:shadow-xl">
+                            <Link to="/modded">
+                                <img
+                                    className="h-full object-clip"
+                                    src={ModdedBanner}
+                                ></img>
+                                <div className="relative top-[-60%]">
+                                    <p className="font-headerScript text-3xl text-white">
+                                        Modded
+                                    </p>
+                                </div>
+                            </Link>
+                        </div>
+                    </div>
                 </div>
             </div>
         </Frame>
