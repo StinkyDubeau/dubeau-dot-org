@@ -1,4 +1,5 @@
 import Frame from "../components/Frame";
+import PasswordField from "../components/PasswordField";
 
 export default function (props) {
     return (
@@ -12,9 +13,7 @@ export default function (props) {
                     </div>
                     {/* Gradient bg */}
                     <div className="animate-gradient-x m-5 flex flex-wrap justify-center gap-4 rounded-lg bg-gradient-to-tr from-red-300 via-yellow-200 to-purple-200 p-4 sm:gap-8">
-                        <div>
-                            <input placeholder="Name"></input>
-                        </div>
+                        <PasswordField/>
                     </div>
                 </div>
             </Frame>
