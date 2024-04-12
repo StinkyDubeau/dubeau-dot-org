@@ -13,7 +13,7 @@ export default function (props) {
                     </div>
                     {/* Gradient bg */}
                     <div className="animate-gradient-x m-5 flex justify-center rounded-lg bg-gradient-to-tr from-red-300 via-yellow-200 to-purple-200 p-4 sm:gap-8">
-                        <div className="flex flex-wrap gap-6 justify-around">
+                        <div className="flex flex-wrap lg:gap-48 gap-6 justify-around">
                             <div>
                                 <p className="font-header max-w-48 text-left text-5xl text-zinc-800">
                                     Contact
