@@ -7,15 +7,6 @@ import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 
 export default function Home(props) {
-    const [serversVisible, setServersVisible] = useState(false);
-
-    function createServers() {
-        return <Servers />;
-    }
-
-    function handleClick() {
-        serversVisible ? setServersVisible(false) : serversVisible(true);
-    }
 
     return (
         <div>
@@ -98,7 +89,6 @@ export default function Home(props) {
                         </div> */}
                     </div>
                 </Panel>
-                {serversVisible && createServers()}
             </Frame>
         </div>
     );

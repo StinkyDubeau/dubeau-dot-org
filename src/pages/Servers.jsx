@@ -51,7 +51,7 @@ export default function Servers(props) {
                             title="DMP"
                             subtitle="Kerbal Space Program"
                             img={KspBanner}
-                            to="/factorio"
+                            to="/ksp"
                         />
                     </div>
                 </div>

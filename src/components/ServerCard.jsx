@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export default function ServerCard(props) {
     return (
         <>
-            <div className="card h-56 w-44 overflow-hidden rounded-xl bg-slate-50 shadow-lg transition-all hover:scale-105 hover:shadow-xl">
+            <div className="card h-56 w-44 overflow-hidden rounded-xl bg-slate-50 shadow-lg transition-all hover:scale-105 hover:shadow-xl sm:hover:w-56 xl:hover:w-96">
                 <Link to={props.to}>
                     <img className="h-full object-cover" src={props.img} />
                     {/* Container */}
