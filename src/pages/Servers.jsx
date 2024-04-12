@@ -9,7 +9,7 @@ import BetaBanner from "../assets/beta-banner.webp";
 import ModernBanner from "../assets/modern-banner.jpeg";
 import FactorioBanner from "../assets/factorio-banner.jpg";
 import RotnBanner from "../assets/rotn-banner.png";
-import KspBanner from "../assets/ksp-banner.jpg"
+import KspBanner from "../assets/ksp-banner.jpg";
 
 export default function Servers(props) {
     return (
@@ -17,12 +17,15 @@ export default function Servers(props) {
             <div>
                 <div className="w-screen">
                     <div className="m-5">
-                        <p className="text-left font-regular text-xl">
-                            I run some game servers
+                    <p className="text-left font-header text-5xl text-darken-800">
+                            Game Servers
                         </p>
+                        {/* <p className="text-left font-regular text-xl">
+                            Subtitle
+                        </p> */}
                     </div>
                     {/* Gradient bg */}
-                    <div className="animate-gradient-x m-5 flex flex-wrap justify-center sm:gap-8 gap-4 rounded-lg bg-gradient-to-br from-blue-400 via-cyan-400 to-green-400 p-4">
+                    <div className="animate-gradient-x m-5 flex flex-wrap justify-center gap-4 rounded-lg bg-gradient-to-br from-blue-400 via-cyan-400 to-green-400 p-4 sm:gap-8">
                         <ServerCard
                             title="RotN"
                             subtitle="Modded Minecraft"
