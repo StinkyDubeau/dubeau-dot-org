@@ -1,6 +1,6 @@
 export default function PasswordField(props) {
     return (
-        <div className="m-2 flex flex-col gap-2 rounded-xl bg-orange-50 p-4 shadow-xl ">
+        <div className="flex flex-col gap-2 rounded-xl bg-orange-50 p-4 shadow-xl ">
             <label className="flex items-center gap-2 rounded-xl bg-darken-50 p-2 shadow-inner">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -17,7 +17,7 @@ export default function PasswordField(props) {
                 />
             </label>
 
-            <label className="flex max-h-10 items-center gap-2 rounded-xl bg-darken-50 p-2 shadow-inner">
+            <label className="flex h-10 items-center gap-2 rounded-xl bg-darken-50 p-2 shadow-inner">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 16 16"
@@ -39,7 +39,9 @@ export default function PasswordField(props) {
                 placeholder="Message"
             ></textarea>
 
-            <button className="rounded-xl bg-darken-100 shadow">Submit</button>
+            <button className="h-10 rounded-xl bg-darken-100 shadow transition-all hover:bg-darken-50 hover:rounded-lg">
+                Submit
+            </button>
         </div>
     );
 }
