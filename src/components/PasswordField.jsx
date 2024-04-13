@@ -2,9 +2,9 @@ import { useState } from "react";
 
 export default function PasswordField(props) {
     const [from_name, setFrom_name] = useState("dubeau.org");
-    const [username, setUsername] = useState("Blank");
-    const [email, setEmail] = useState("Blank");
-    const [body, setBody] = useState("Blank");
+    const [username, setUsername] = useState();
+    const [email, setEmail] = useState();
+    const [body, setBody] = useState();
 
     function sendEmail() {
         fetch("https://api.emailjs.com/api/v1.0/email/send", {
