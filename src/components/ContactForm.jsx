@@ -3,6 +3,7 @@ import ReactLoading from "react-loading";
 
 export default function ContactForm(props) {
     const [from_name, setFrom_name] = useState("dubeau.org");
+    const [subject, setSubject] = useState("Dubeau.org contact form message")
     const [username, setUsername] = useState();
     const [email, setEmail] = useState();
     const [body, setBody] = useState();
@@ -20,6 +21,7 @@ export default function ContactForm(props) {
                 user_id: import.meta.env.VITE_EMAILJS_USER_ID,
                 accessToken: import.meta.env.VITE_EMAILJS_ACCESS_TOKEN,
                 template_params: {
+                    subject: subject,
                     from_name: from_name,
                     username: username,
                     email: email,
