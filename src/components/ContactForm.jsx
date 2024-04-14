@@ -39,6 +39,7 @@ export default function ContactForm(props) {
             })
             .catch((err) => {
                 setErrorMsg(err);
+                setLoading(false);
                 console.log(err);
             });
     }
