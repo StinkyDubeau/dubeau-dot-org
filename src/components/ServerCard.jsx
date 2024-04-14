@@ -7,7 +7,7 @@ export default function ServerCard(props) {
                 <Link to={props.to}>
                     <img className="h-full object-cover" src={props.img} />
                     {/* Container */}
-                    <div className="relative top-[-90%] m-2 h-40 rounded-lg border-white transition-all ">
+                    <div className="z-25 relative top-[-90%] m-2 h-40 rounded-lg border-white transition-all">
                         {/* Spacer */}
                         <div className="h-12" />
                         <p className="font-headerScript text-3xl text-white drop-shadow">
