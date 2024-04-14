@@ -7,6 +7,7 @@ export default function (props) {
         <>
             <Frame>
                 <div className="w-screen">
+                    
                     <div className="m-5">
                         <p className="text-left font-header text-5xl text-darken-800">
                             Get in touch
@@ -14,20 +15,6 @@ export default function (props) {
                         {/* <p className="text-left font-regular text-xl">
                             Subtitle
                         </p> */}
-                    </div>
-                    {/* Gradient bg */}
-                    <div className="animate-gradient-x m-5 flex justify-center rounded-lg bg-gradient-to-tr from-red-300 via-yellow-200 to-purple-200 p-4 sm:gap-8">
-                        <div className="flex flex-wrap justify-around gap-6 lg:gap-48">
-                            <div>
-                                <p className="max-w-48 text-left font-header text-5xl text-zinc-800">
-                                    Contact
-                                </p>
-                                <p className="font-header">
-                                    or report moderation issues
-                                </p>
-                            </div>
-                            <ContactForm />
-                        </div>
                     </div>
                     <div className="animate-gradient-x m-5 flex justify-center rounded-lg bg-gradient-to-tl from-green-600 via-cyan-600 to-yellow-500 p-4 sm:gap-8">
                         <div className="flex flex-wrap justify-around gap-6 lg:gap-48">
@@ -52,6 +39,21 @@ export default function (props) {
                             </div>
                         </div>
                     </div>
+                    {/* Gradient bg */}
+                    <div className="animate-gradient-x m-5 flex justify-center rounded-lg bg-gradient-to-tr from-red-300 via-yellow-200 to-purple-200 p-4 sm:gap-8">
+                        <div className="flex flex-wrap justify-around gap-6 lg:gap-48">
+                            <div>
+                                <p className="max-w-48 text-left font-header text-5xl text-zinc-800">
+                                    Contact
+                                </p>
+                                <p className="font-header">
+                                    or report moderation issues
+                                </p>
+                            </div>
+                            <ContactForm />
+                        </div>
+                    </div>
+                    
                 </div>
             </Frame>
         </>
