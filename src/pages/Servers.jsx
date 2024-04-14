@@ -17,15 +17,25 @@ export default function Servers(props) {
             <div>
                 <div className="w-screen">
                     <div className="m-5">
-                    <p className="text-left font-header text-5xl text-darken-800">
+                        <p className="text-left font-header text-5xl text-darken-800">
                             Game Servers
+                        </p>
+                        <p className="text-left text-lg">
+                            These servers are invite-only. Join our{" "}
+                            <Link
+                                to="/contact"
+                                className="font-header underline text-xl underline-offset-1"
+                            >
+                                discord
+                            </Link>{" "}
+                            to get access.
                         </p>
                         {/* <p className="text-left font-regular text-xl">
                             Subtitle
                         </p> */}
                     </div>
                     {/* Gradient bg */}
-                    <div className="animate-gradient-x m-5 flex flex-wrap justify-center gap-4 rounded-lg bg-gradient-to-br from-blue-400 via-cyan-400 to-green-400 p-4 sm:gap-8">
+                    <div className="m-5 flex animate-gradient-x flex-wrap justify-center gap-4 rounded-lg bg-gradient-to-br from-blue-400 via-cyan-400 to-green-400 p-4 sm:gap-8">
                         <ServerCard
                             title="RotN"
                             subtitle="Modded Minecraft"

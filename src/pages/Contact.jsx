@@ -1,5 +1,5 @@
 import Frame from "../components/Frame";
-import PasswordField from "../components/PasswordField";
+import ContactForm from "../components/ContactForm";
 import { Link } from "react-router-dom";
 
 export default function (props) {
@@ -8,37 +8,26 @@ export default function (props) {
             <Frame>
                 <div className="w-screen">
                     <div className="m-5">
-                        <p className="text-left font-header text-5xl text-darken-800">
-                            Get in touch
+                        <p className="sm:text-left font-header text-5xl text-darken-800">
+                            Connect
                         </p>
                         {/* <p className="text-left font-regular text-xl">
                             Subtitle
                         </p> */}
                     </div>
-                    {/* Gradient bg */}
-                    <div className="animate-gradient-x m-5 flex justify-center rounded-lg bg-gradient-to-tr from-red-300 via-yellow-200 to-purple-200 p-4 sm:gap-8">
+                    <div className="m-5 flex animate-gradient-x justify-center rounded-lg bg-gradient-to-tl from-green-600 via-cyan-600 to-yellow-500 p-4 sm:gap-8">
                         <div className="flex flex-wrap justify-around gap-6 lg:gap-48">
-                            <div>
-                                <p className="max-w-48 text-left font-header text-5xl text-zinc-800">
-                                    Contact
-                                </p>
-                                <p className="font-header">
-                                    or report moderation issues
-                                </p>
-                            </div>
-                            <PasswordField />
-                        </div>
-                    </div>
-                    <div className="animate-gradient-x m-5 flex justify-center rounded-lg bg-gradient-to-tl from-green-600 via-cyan-600 to-yellow-500 p-4 sm:gap-8">
-                        <div className="flex flex-wrap justify-around gap-6 lg:gap-48">
-                            <div>
-                                <p className="max-w-48 text-left font-header text-5xl text-zinc-800">
+                            <div className="flex w-72 flex-col">
+                                <p className="font-header text-5xl text-lighten-800">
                                     Join
                                 </p>
-                                <p className="font-header">social channels</p>
+                                <p className="font-header text-lighten-800">socials</p>
                             </div>
-                            <div className="my-auto h-12">
-                                <Link className="" to="https://discord.gg/53XsWtGFvB">
+                            <div className="my-auto flex w-72 flex-wrap justify-center">
+                                <Link
+                                    className="rounded-xl border border-x-darken-50 border-b-darken-100 border-t-lighten-100 bg-lighten-100 p-2 shadow-md transition-all hover:shadow-lg hover:scale-105"
+                                    to="https://discord.gg/53XsWtGFvB"
+                                >
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         width="48"
@@ -50,6 +39,20 @@ export default function (props) {
                                     </svg>
                                 </Link>
                             </div>
+                        </div>
+                    </div>
+                    {/* Gradient bg */}
+                    <div className="m-5 flex animate-gradient-x justify-center rounded-lg bg-gradient-to-tr from-red-300 via-yellow-200 to-purple-200 p-4 sm:gap-8">
+                        <div className="flex flex-wrap justify-around gap-6 lg:gap-48">
+                            <div className="flex w-72 flex-col">
+                                <p className="font-header text-5xl text-zinc-800">
+                                    Contact
+                                </p>
+                                <p className="font-header">
+                                    or report moderation issues
+                                </p>
+                            </div>
+                            <ContactForm />
                         </div>
                     </div>
                 </div>
