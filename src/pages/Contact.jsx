@@ -1,5 +1,5 @@
 import Frame from "../components/Frame";
-import PasswordField from "../components/PasswordField";
+import ContactForm from "../components/ContactForm";
 import { Link } from "react-router-dom";
 
 export default function (props) {
@@ -26,7 +26,7 @@ export default function (props) {
                                     or report moderation issues
                                 </p>
                             </div>
-                            <PasswordField />
+                            <ContactForm />
                         </div>
                     </div>
                     <div className="animate-gradient-x m-5 flex justify-center rounded-lg bg-gradient-to-tl from-green-600 via-cyan-600 to-yellow-500 p-4 sm:gap-8">

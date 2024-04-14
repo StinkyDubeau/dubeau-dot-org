@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function PasswordField(props) {
+export default function ContactForm(props) {
     const [from_name, setFrom_name] = useState("dubeau.org");
     const [username, setUsername] = useState();
     const [email, setEmail] = useState();
