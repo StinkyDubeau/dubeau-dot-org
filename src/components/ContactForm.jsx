@@ -142,7 +142,7 @@ export default function ContactForm(props) {
     }
 
     return (
-        <div className="rounded-xl bg-orange-50 p-4 shadow-xl">
+        <div className="rounded-xl bg-orange-50 p-4 w-72 shadow-xl">
             {!submitted ? createForm() : createResult()}
         </div>
     );
