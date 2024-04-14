@@ -8,7 +8,7 @@ export default function (props) {
             <Frame>
                 <div className="w-screen">
                     <div className="m-5">
-                        <p className="text-left font-header text-5xl text-darken-800">
+                        <p className="sm:text-left font-header text-5xl text-darken-800">
                             Connect
                         </p>
                         {/* <p className="text-left font-regular text-xl">
