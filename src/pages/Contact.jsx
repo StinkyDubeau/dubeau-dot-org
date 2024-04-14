@@ -18,14 +18,14 @@ export default function (props) {
                     <div className="m-5 flex animate-gradient-x justify-center rounded-lg bg-gradient-to-tl from-green-600 via-cyan-600 to-yellow-500 p-4 sm:gap-8">
                         <div className="flex flex-wrap justify-around gap-6 lg:gap-48">
                             <div className="flex w-72 flex-col">
-                                <p className="font-header text-5xl text-zinc-800">
+                                <p className="font-header text-5xl text-lighten-800">
                                     Join
                                 </p>
-                                <p className="font-header">socials</p>
+                                <p className="font-header text-lighten-800">socials</p>
                             </div>
-                            <div className="my-auto flex h-12 w-72 flex-wrap justify-center">
+                            <div className="my-auto flex w-72 flex-wrap justify-center">
                                 <Link
-                                    className="rounded-xl border border-x-darken-50 border-b-darken-100 border-t-lighten-100 bg-lighten-100 p-2 shadow-lg transition-all hover:scale-105"
+                                    className="rounded-xl border border-x-darken-50 border-b-darken-100 border-t-lighten-100 bg-lighten-100 p-2 shadow-md transition-all hover:shadow-lg hover:scale-105"
                                     to="https://discord.gg/53XsWtGFvB"
                                 >
                                     <svg
