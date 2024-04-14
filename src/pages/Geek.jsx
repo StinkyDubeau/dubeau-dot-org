@@ -12,11 +12,20 @@ export default function (props) {
     const [email, setEmail] = useState();
     const [body, setBody] = useState({});
 
-
-
     const stores = ["928", "940", "627"];
     const vans = ["22", "91", "137", "163", "427", "449"];
-    const questions = ["Mirrors are adequately adjusted", "Brake lights, headlights, and taillights are all working", "Tires are in good condition, with adequate tread and correct pressure", "Turn-signals are working", "Registration and insurance papers are in the glovebox: VIN numbers match", "Windshield wiper blades are in good, working condition", "You have a valid drivers license on your person", "Emergency brake is working", "Horn is working", "Windshield is not cracked"];
+    const questions = [
+        "Mirrors are adequately adjusted",
+        "Brake lights, headlights, and taillights are all working",
+        "Tires are in good condition, with adequate tread and correct pressure",
+        "Turn-signals are working",
+        "Registration and insurance papers are in the glovebox: VIN numbers match",
+        "Windshield wiper blades are in good, working condition",
+        "You have a valid drivers license on your person",
+        "Emergency brake is working",
+        "Horn is working",
+        "Windshield is not cracked",
+    ];
 
     const [store, setStore] = useState(stores[0]);
     const [van, setVan] = useState(vans[0]);
@@ -53,9 +62,9 @@ export default function (props) {
             });
     }
 
-    function createQuestions(question, callback) {
+    function createQuestions(question, index) {
         return (
-            <label className="label cursor-pointer">
+            <label key={index} className="label text-left cursor-pointer  {index % 2 === 0 && 'bg-slate-200`}">
                 <span className="label-text text-darken-800">{question}</span>
                 <input
                     type="checkbox"
@@ -78,8 +87,8 @@ export default function (props) {
             <Frame noNavbar vignette>
                 <div className="w-screen">
                     {/* Logo */}
-                    <div className="flex h-12 justify-center">
-                        <img src="https://merchandising-assets.bestbuy.ca/bltc8653f66842bff7f/bltc645e37ea0b1a348/6183051594e50d5a63800f45/gs-logo.png" />
+                    <div className="flex h-16 justify-center">
+                    <img src="https://merchandising-assets.bestbuy.ca/bltc8653f66842bff7f/bltc645e37ea0b1a348/6183051594e50d5a63800f45/gs-logo.png" />
                     </div>
                     <div className="m-5">
                         <p className="font-header text-5xl text-lighten-900 sm:text-left">
@@ -89,14 +98,14 @@ export default function (props) {
 
                     {/* Gradient bg */}
                     <div className="m-5 flex animate-gradient-x justify-center rounded-lg bg-gradient-to-tl from-orange-600 via-orange-500 to-yellow-500 p-4 sm:gap-8">
-                        <div className="flex flex-wrap justify-around gap-6 lg:gap-48">
+                        <div className="flex flex-wrap justify-around gap-4 lg:gap-48">
                             <div className="flex w-72 flex-col">
                                 <p className="font-header text-5xl text-zinc-800">
-                                    Contact
+                                    Checklist
                                 </p>
-                                <p className="font-header text-darken-800">
+                                {/* <p className="font-header text-darken-800">
                                     or report moderation issues
-                                </p>
+                                </p> */}
                             </div>
 
                             <div className="w-72 rounded-xl bg-orange-50 p-4 shadow-xl">
@@ -107,27 +116,33 @@ export default function (props) {
                 </div>
             </Frame>
             <div className="fixed bottom-0 left-0 z-50 m-0 h-16 w-screen min-w-36 bg-center sm:left-1.5 sm:top-1 sm:w-auto">
-                <div className="navbar bg-lighten-700 backdrop-blur-lg rounded-box">
+                <div className="navbar max-sm:rounded-t-xl sm:rounded-xl bg-lighten-700 backdrop-blur-lg">
                     <div className="flex-1 px-2 lg:flex-none">
-                        <a className="text-lg font-bold">daisyUI</a>
+                        <a className="text-lg font-bold">Inspection checklist</a>
                     </div>
                     <div className="flex flex-1 justify-end px-2">
                         <div className="flex items-stretch">
                             <a className="btn btn-ghost rounded-btn">Button</a>
                             <div className="dropdown dropdown-top dropdown-end">
                                 <div tabIndex={0} role="button" className="btn">
-                                    <p>Store: <span className="underline">{store}</span></p>
+                                    <p>
+                                        Store:{" "}
+                                        <span className="underline">
+                                            {store}
+                                        </span>
+                                    </p>
                                 </div>
                                 <ul
                                     tabIndex={0}
                                     className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow"
                                 >
-                                    <li>
-                                        <a>Item 1</a>
-                                    </li>
-                                    <li>
-                                        <a>Item 2</a>
-                                    </li>
+                                    {stores.map((store, index) => {
+                                        return (
+                                            <li key={index} onClick={() => setStore(store.toString())}>
+                                                <a>{store}</a>
+                                            </li>
+                                        );
+                                    })}
                                 </ul>
                             </div>
                         </div>
