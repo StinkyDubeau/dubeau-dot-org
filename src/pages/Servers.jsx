@@ -20,7 +20,7 @@ export default function Servers(props) {
                         <p className="text-left font-header text-5xl text-darken-800">
                             Game Servers
                         </p>
-                        <p className="text-left text-lg">
+                        <p className="text-left text-lg text-darken-800">
                             These servers are invite-only. Join our{" "}
                             <Link
                                 to="/contact"
