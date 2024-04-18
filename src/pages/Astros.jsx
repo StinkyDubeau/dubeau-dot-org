@@ -33,7 +33,7 @@ export default function Astros(props) {
                 onClick={() => {
                     setAstro(astros[index]);
                 }}
-                className="drop-shadow-lg sm:w-36"
+                className="drop-shadow-lg"
             >
                 <div className="my-1 flex justify-end">
                     <button
@@ -62,16 +62,14 @@ export default function Astros(props) {
                 }}
                 className="w-36 overflow-clip rounded-lg bg-lighten-800 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
             >
+                
                 <img
                     src={astro.image}
                     alt={astro.title}
                     className="h-full w-full object-cover"
                 />
-                {astro.title && (
-                    <div className="z-5 flex h-fit flex-col justify-center overflow-hidden">
-                        <p className="text-darken-800">{astro.title}</p>
-                    </div>
-                )}
+                <p className="z-50 text-3xl text-lighten-800">Text</p>
+
             </div>
         );
     }
@@ -92,7 +90,7 @@ export default function Astros(props) {
     }, []);
     return (
         <Frame>
-            <div className="sm:w-[720px] sm:bg-orange-300 lg:w-[1280px] lg:bg-blue-300">
+            <div className="">
                 <p className="my-5 text-left font-header text-5xl text-darken-800">
                     Astros
                 </p>
