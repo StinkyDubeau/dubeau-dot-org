@@ -53,21 +53,25 @@ export default function Astros(props) {
         );
     }
 
-    function createSighting(astro, index) {
+    function createCard(astro, index) {
         return (
             <div
                 key={astro.key}
                 onClick={() => {
                     setAstro(astros[index]);
                 }}
-                className="h-56 w-36 overflow-clip rounded-lg bg-lighten-800 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
+                className="w-36 overflow-clip rounded-lg bg-lighten-800 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
             >
                 <img
                     src={astro.image}
                     alt={astro.title}
-                    className=" h-40 w-full object-cover"
+                    className="h-full w-full object-cover"
                 />
-                <p className="text-darken-800">{astro.title}</p>
+                {astro.title && (
+                    <div className="z-5 flex h-fit flex-col justify-center overflow-hidden">
+                        <p className="text-darken-800">{astro.title}</p>
+                    </div>
+                )}
             </div>
         );
     }
@@ -88,7 +92,7 @@ export default function Astros(props) {
     }, []);
     return (
         <Frame>
-            <div className="lg:w-[1280px] sm:w-[720px] lg:bg-blue-300 sm:bg-orange-300">
+            <div className="sm:w-[720px] sm:bg-orange-300 lg:w-[1280px] lg:bg-blue-300">
                 <p className="my-5 text-left font-header text-5xl text-darken-800">
                     Astros
                 </p>
@@ -96,7 +100,7 @@ export default function Astros(props) {
                     createModal(astro)
                 ) : (
                     <div className="flex flex-wrap justify-around gap-3">
-                        {astros.map(createSighting)}
+                        {astros.map(createCard)}
                     </div>
                 )}
             </div>
