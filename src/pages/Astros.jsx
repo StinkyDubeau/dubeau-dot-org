@@ -22,23 +22,46 @@ const astros = [
     },
 ];
 
-
-
 export default function Astros(props) {
     const [astros, setAstros] = useState([]);
     const [astro, setAstro] = useState(null);
 
     function createModal(astro) {
-        return(
-            <div className="">
-    
+        return (
+            <div
+                key={astro.key}
+                onClick={() => {
+                    setAstro(astros[index]);
+                }}
+                className="drop-shadow-lg sm:w-36"
+            >
+                <div className="my-1 flex justify-end">
+                    <button
+                        className="h-6 w-6 rounded-full bg-lighten-600 text-darken-600 transition-all hover:bg-red-500 hover:text-lighten-800"
+                        onClick={() => setAstro(null)}
+                    >
+                        X
+                    </button>
+                </div>
+                <img
+                    src={astro.image}
+                    alt={astro.title}
+                    className="rounded-lg object-contain"
+                />
+                <p className="text-darken-800">{astro.title}</p>
             </div>
-        )
+        );
     }
-    
+
     function createSighting(astro, index) {
         return (
-            <div key={astro.key} onClick={() => {setAstro(astros[index])}} className="h-56 w-36 overflow-clip rounded-lg bg-lighten-800 shadow-lg transition-all hover:scale-105 hover:shadow-xl">
+            <div
+                key={astro.key}
+                onClick={() => {
+                    setAstro(astros[index]);
+                }}
+                className="h-56 w-36 overflow-clip rounded-lg bg-lighten-800 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
+            >
                 <img
                     src={astro.image}
                     alt={astro.title}
@@ -65,12 +88,17 @@ export default function Astros(props) {
     }, []);
     return (
         <Frame>
-            <p>{astro && <img src={astro.image}/>}</p>
-            <p className="my-5 text-left font-header text-5xl text-darken-800">
-                Astros
-            </p>
-            <div className="flex flex-wrap gap-3">
-                {astros.map(createSighting)}
+            <div className="lg:w-[1280px] sm:w-[720px] lg:bg-blue-300 sm:bg-orange-300">
+                <p className="my-5 text-left font-header text-5xl text-darken-800">
+                    Astros
+                </p>
+                {astro ? (
+                    createModal(astro)
+                ) : (
+                    <div className="flex flex-wrap justify-around gap-3">
+                        {astros.map(createSighting)}
+                    </div>
+                )}
             </div>
         </Frame>
     );
