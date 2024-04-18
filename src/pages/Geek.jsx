@@ -2,6 +2,7 @@ import Frame from "../components/Frame";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Input from "../components/Input";
+import Card from "../components/Card";
 
 export default function (props) {
     const [canSubmit, setCanSubmit] = useState(false);
@@ -64,7 +65,10 @@ export default function (props) {
 
     function createQuestions(question, index) {
         return (
-            <label key={index} className="label text-left cursor-pointer  {index % 2 === 0 && 'bg-slate-200`}">
+            <label
+                key={index}
+                className="{index % 2  === 0 && 'bg-slate-200`} label cursor-pointer text-left"
+            >
                 <span className="label-text text-darken-800">{question}</span>
                 <input
                     type="checkbox"
@@ -88,7 +92,7 @@ export default function (props) {
                 <div className="w-screen">
                     {/* Logo */}
                     <div className="flex h-16 justify-center">
-                    <img src="https://merchandising-assets.bestbuy.ca/bltc8653f66842bff7f/bltc645e37ea0b1a348/6183051594e50d5a63800f45/gs-logo.png" />
+                        <img src="https://merchandising-assets.bestbuy.ca/bltc8653f66842bff7f/bltc645e37ea0b1a348/6183051594e50d5a63800f45/gs-logo.png" />
                     </div>
                     <div className="m-5">
                         <p className="font-header text-5xl text-lighten-900 sm:text-left">
@@ -114,16 +118,29 @@ export default function (props) {
                         </div>
                     </div>
                 </div>
+                <Card
+                    title="Title 1"
+                    subtitle="Subtitle 1"
+                    image="https://example.com/image1.jpg"
+                />
+                <Card
+                    title="Title 2"
+                    subtitle="Subtitle 2"
+                    image="https://example.com/image2.jpg"
+                />
+                {/* Add more cards as needed */}
             </Frame>
             <div className="fixed bottom-0 left-0 z-50 m-0 h-16 w-screen min-w-36 bg-center sm:left-1.5 sm:top-1 sm:w-auto">
-                <div className="navbar max-sm:rounded-t-xl sm:rounded-xl bg-lighten-700 backdrop-blur-lg">
+                <div className="navbar bg-lighten-700 backdrop-blur-lg max-sm:rounded-t-xl sm:rounded-xl">
                     <div className="flex-1 px-2 lg:flex-none">
-                        <a className="text-lg font-bold">Inspection checklist</a>
+                        <a className="text-lg font-bold">
+                            Inspection checklist
+                        </a>
                     </div>
                     <div className="flex flex-1 justify-end px-2">
                         <div className="flex items-stretch">
                             <a className="btn btn-ghost rounded-btn">Button</a>
-                            <div className="dropdown dropdown-top dropdown-end">
+                            <div className="dropdown dropdown-end dropdown-top">
                                 <div tabIndex={0} role="button" className="btn">
                                     <p>
                                         Store:{" "}
@@ -134,11 +151,16 @@ export default function (props) {
                                 </div>
                                 <ul
                                     tabIndex={0}
-                                    className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow"
+                                    className="menu dropdown-content z-[1] w-52 rounded-box bg-base-100 p-2 shadow"
                                 >
                                     {stores.map((store, index) => {
                                         return (
-                                            <li key={index} onClick={() => setStore(store.toString())}>
+                                            <li
+                                                key={index}
+                                                onClick={() =>
+                                                    setStore(store.toString())
+                                                }
+                                            >
                                                 <a>{store}</a>
                                             </li>
                                         );

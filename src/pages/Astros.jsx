@@ -1,4 +1,5 @@
 import Frame from "../components/Frame";
+import { useState, useEffect } from "react";
 
 const astros = [
     {
@@ -23,7 +24,7 @@ const astros = [
 
 function createSighting(astro) {
     return (
-        <div className="h-56 w-36 overflow-clip rounded-lg shadow-lg bg-lighten-800">
+        <div className="h-56 w-36 overflow-clip rounded-lg bg-lighten-800 shadow-lg">
             <img
                 src={astro.image}
                 alt={astro.title}
@@ -35,6 +36,22 @@ function createSighting(astro) {
 }
 
 export default function Astros(props) {
+    const [astros, setAstros] = useState([]);
+
+    useEffect(() => {
+      fetch("http://localhost:3000/astros", {
+        method: "GET",
+        headers: {
+          "Access-Control-Allow-Origin": "*"
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          setAstros(data);
+          console.log(data);
+        })
+        .catch((error) => console.log(error));
+    }, []);
     return (
         <Frame>
             <p>Astros</p>
