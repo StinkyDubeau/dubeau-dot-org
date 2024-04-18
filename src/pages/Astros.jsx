@@ -22,21 +22,32 @@ const astros = [
     },
 ];
 
-function createSighting(astro) {
-    return (
-        <div className="h-56 w-36 overflow-clip rounded-lg bg-lighten-800 shadow-lg transition-all hover:scale-105 hover:shadow-xl">
-            <img
-                src={astro.image}
-                alt={astro.title}
-                className=" h-40 w-full object-cover"
-            />
-            <p className="text-darken-800">{astro.title}</p>
-        </div>
-    );
-}
+
 
 export default function Astros(props) {
     const [astros, setAstros] = useState([]);
+    const [astro, setAstro] = useState(null);
+
+    function createModal(astro) {
+        return(
+            <div className="">
+    
+            </div>
+        )
+    }
+    
+    function createSighting(astro, index) {
+        return (
+            <div key={astro.key} onClick={() => {setAstro(astros[index])}} className="h-56 w-36 overflow-clip rounded-lg bg-lighten-800 shadow-lg transition-all hover:scale-105 hover:shadow-xl">
+                <img
+                    src={astro.image}
+                    alt={astro.title}
+                    className=" h-40 w-full object-cover"
+                />
+                <p className="text-darken-800">{astro.title}</p>
+            </div>
+        );
+    }
 
     useEffect(() => {
         fetch("http://localhost:3000/astros", {
@@ -54,6 +65,7 @@ export default function Astros(props) {
     }, []);
     return (
         <Frame>
+            <p>{astro && <img src={astro.image}/>}</p>
             <p className="my-5 text-left font-header text-5xl text-darken-800">
                 Astros
             </p>
