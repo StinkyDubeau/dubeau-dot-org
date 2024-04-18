@@ -24,7 +24,7 @@ const astros = [
 
 function createSighting(astro) {
     return (
-        <div className="h-56 w-36 overflow-clip rounded-lg bg-lighten-800 shadow-lg">
+        <div className="h-56 w-36 overflow-clip rounded-lg bg-lighten-800 shadow-lg transition-all hover:scale-105 hover:shadow-xl">
             <img
                 src={astro.image}
                 alt={astro.title}
@@ -39,22 +39,24 @@ export default function Astros(props) {
     const [astros, setAstros] = useState([]);
 
     useEffect(() => {
-      fetch("http://localhost:3000/astros", {
-        method: "GET",
-        headers: {
-          "Access-Control-Allow-Origin": "*"
-        },
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          setAstros(data);
-          console.log(data);
+        fetch("http://localhost:3000/astros", {
+            method: "GET",
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+            },
         })
-        .catch((error) => console.log(error));
+            .then((response) => response.json())
+            .then((data) => {
+                setAstros(data);
+                console.log(data);
+            })
+            .catch((error) => console.log(error));
     }, []);
     return (
         <Frame>
-            <p>Astros</p>
+            <p className="my-5 text-left font-header text-5xl text-darken-800">
+                Astros
+            </p>
             <div className="flex flex-wrap gap-3">
                 {astros.map(createSighting)}
             </div>
