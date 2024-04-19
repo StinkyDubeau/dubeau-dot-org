@@ -10,6 +10,8 @@ export default function Astros(props) {
     const [description, setDescription] = useState(null);
 
     function createModal(astro) {
+        // Reset the description so the AI will generate a new one.
+
         return (
             <div className="drop-shadow-lg">
                 <img
@@ -27,6 +29,16 @@ export default function Astros(props) {
                     <span className="underline">{astro.photographer}</span> on{" "}
                     {new Date(astro.timestamp).toDateString()}
                 </p>
+                {description ? (
+                    <p className="text-sm italic text-darken-800">
+                        "{description}"
+                    </p>
+                ) : (
+                    <div>
+                        <p>Loading description...</p>
+                        <span className="loading loading-spinner loading-lg"></span>
+                    </div>
+                )}
             </div>
         );
     }
@@ -88,8 +100,6 @@ export default function Astros(props) {
                 .then((response) => response.json())
                 .then((data) => {
                     setDescription(data.message.content);
-                    console.log(`Raw received: ${data}`);
-                    console.log(`Filtered: ${description}`);
                 })
                 .catch((error) => console.log(error));
         }
@@ -101,14 +111,20 @@ export default function Astros(props) {
                 <div className="flex justify-between">
                     <p
                         className="mb-3 font-header text-5xl text-darken-800 sm:text-left"
-                        onClick={() => setAstro(null)}
+                        onClick={() => {
+                            setDescription(null);
+                            setAstro(null);
+                        }}
                     >
                         Astros
                     </p>
                     {astro && (
                         <button
                             className="my-1 rounded-xl bg-lighten-600 p-2 font-header text-2xl text-darken-600 transition-all hover:bg-red-500 hover:text-lighten-800"
-                            onClick={() => setAstro(null)}
+                            onClick={() => {
+                                setDescription(null);
+                                setAstro(null);
+                            }}
                         >
                             Back to Gallery
                         </button>
