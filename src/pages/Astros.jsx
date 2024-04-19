@@ -52,6 +52,7 @@ export default function Astros(props) {
             <div
                 key={astro.key}
                 onClick={() => {
+                    console.log(astros[index]);
                     setAstro(astros[index]);
                 }}
                 className="w-36 overflow-clip rounded-lg bg-lighten-800 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
@@ -123,9 +124,24 @@ export default function Astros(props) {
                         Astros
                     </p>
                     {astro && (
-                        <div>
+                        <div className="flex gap-1">
                             <button
                                 className="my-1 rounded-xl bg-lighten-600 p-2 font-header text-2xl text-darken-800 transition-all hover:bg-red-500 hover:text-lighten-800"
+                                onClick={() => {
+                                    setDescription(null);
+                                    setAstro(
+                                        astros[
+                                            Math.floor(
+                                                Math.random() * astros.length,
+                                            )
+                                        ],
+                                    );
+                                }}
+                            >
+                                Random
+                            </button>
+                            <button
+                                className="my-1 ml-4 rounded-xl bg-lighten-600 p-2 font-header text-2xl text-darken-800 transition-all hover:bg-red-500 hover:text-lighten-800"
                                 onClick={() => {
                                     setDescription(null);
                                     setAstro(null);
