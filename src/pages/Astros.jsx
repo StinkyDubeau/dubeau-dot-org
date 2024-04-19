@@ -2,7 +2,7 @@ import Frame from "../components/Frame";
 import { useState, useEffect } from "react";
 
 const astros = [];
-const apiUrl = import.meta.env.VITE_ASTRO_API;
+const url = import.meta.env.VITE_ASTRO_API;
 
 export default function Astros(props) {
     const [astros, setAstros] = useState([]);
@@ -11,21 +11,7 @@ export default function Astros(props) {
 
     function createModal(astro) {
         return (
-            <div
-                key={astro.key}
-                onClick={() => {
-                    setAstro(astros[index]);
-                }}
-                className="drop-shadow-lg"
-            >
-                <div className="my-1 flex justify-end">
-                    <button
-                        className="h-6 w-6 rounded-full bg-lighten-600 text-darken-600 transition-all hover:bg-red-500 hover:text-lighten-800"
-                        onClick={() => setAstro(null)}
-                    >
-                        X
-                    </button>
-                </div>
+            <div className="drop-shadow-lg">
                 <img
                     src={astro.image}
                     alt={astro.title}
@@ -101,8 +87,9 @@ export default function Astros(props) {
             })
                 .then((response) => response.json())
                 .then((data) => {
-                    setAstros(data);
-                    console.log(data);
+                    setDescription(data.message.content);
+                    console.log(`Raw received: ${data}`);
+                    console.log(`Filtered: ${description}`);
                 })
                 .catch((error) => console.log(error));
         }
@@ -111,9 +98,22 @@ export default function Astros(props) {
     return (
         <Frame>
             <div className="">
-                <p className="mb-3 font-header text-5xl text-darken-800 sm:text-left">
-                    Astros
-                </p>
+                <div className="flex justify-between">
+                    <p
+                        className="mb-3 font-header text-5xl text-darken-800 sm:text-left"
+                        onClick={() => setAstro(null)}
+                    >
+                        Astros
+                    </p>
+                    {astro && (
+                        <button
+                            className="my-1 rounded-xl bg-lighten-600 p-2 font-header text-2xl text-darken-600 transition-all hover:bg-red-500 hover:text-lighten-800"
+                            onClick={() => setAstro(null)}
+                        >
+                            Back to Gallery
+                        </button>
+                    )}
+                </div>
                 {astro ? (
                     createModal(astro)
                 ) : (
