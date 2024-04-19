@@ -2,6 +2,7 @@ import Frame from "../components/Frame";
 import { useState, useEffect } from "react";
 
 const astros = [];
+const apiUrl = import.meta.env.VITE_ASTRO_API;
 
 export default function Astros(props) {
     const [astros, setAstros] = useState([]);
@@ -73,7 +74,7 @@ export default function Astros(props) {
 
     // Discord scraper
     useEffect(() => {
-        fetch("http://localhost:3000/astros", {
+        fetch(`${url}/astros`, {
             method: "GET",
             headers: {
                 "Access-Control-Allow-Origin": "*",
@@ -90,7 +91,7 @@ export default function Astros(props) {
     // Astro describer
     useEffect(() => {
         if (astro) {
-            fetch("http://localhost:3000/ask", {
+            fetch(`${url}/ask`, {
                 method: "POST",
                 headers: {
                     "Access-Control-Allow-Origin": "*",
