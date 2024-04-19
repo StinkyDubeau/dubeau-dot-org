@@ -13,32 +13,36 @@ export default function Astros(props) {
         // Reset the description so the AI will generate a new one.
 
         return (
-            <div className="drop-shadow-lg">
-                <img
-                    src={astro.image}
-                    alt={astro.title}
-                    className="rounded-lg object-contain"
-                />
-                {astro.title && (
-                    <p className="text-3xl italic text-darken-800">
-                        "{astro.title}"
+            <div className="flex max-h-[720px] gap-4 overflow-hidden rounded-xl bg-lighten-800 p-4 shadow-lg transition-all">
+                <div className="min-w-[50%]">
+                    <img
+                        src={astro.image}
+                        alt={astro.title}
+                        className="h-[680px] w-full rounded-lg object-cover"
+                    />
+                </div>
+                <div className="flex-grow-0 bg-blue-500">
+                    {astro.title && (
+                        <p className="text-3xl italic text-darken-800">
+                            "{astro.title}"
+                        </p>
+                    )}
+                    <p className="text-darken-800">
+                        Captured by @
+                        <span className="underline">{astro.photographer}</span>{" "}
+                        on {new Date(astro.timestamp).toDateString()}
                     </p>
-                )}
-                <p className="text-darken-800">
-                    Captured by @
-                    <span className="underline">{astro.photographer}</span> on{" "}
-                    {new Date(astro.timestamp).toDateString()}
-                </p>
-                {description ? (
-                    <p className="text-sm italic text-darken-800">
-                        "{description}"
-                    </p>
-                ) : (
-                    <div>
-                        <p>Loading description...</p>
-                        <span className="loading loading-spinner loading-lg"></span>
-                    </div>
-                )}
+                    {description ? (
+                        <p className="text-lg italic text-darken-800">
+                            {description}
+                        </p>
+                    ) : (
+                        <div>
+                            <p>Loading description...</p>
+                            <span className="loading loading-spinner loading-lg"></span>
+                        </div>
+                    )}
+                </div>
             </div>
         );
     }
@@ -119,15 +123,17 @@ export default function Astros(props) {
                         Astros
                     </p>
                     {astro && (
-                        <button
-                            className="my-1 rounded-xl bg-lighten-600 p-2 font-header text-2xl text-darken-600 transition-all hover:bg-red-500 hover:text-lighten-800"
-                            onClick={() => {
-                                setDescription(null);
-                                setAstro(null);
-                            }}
-                        >
-                            Back to Gallery
-                        </button>
+                        <div>
+                            <button
+                                className="my-1 rounded-xl bg-lighten-600 p-2 font-header text-2xl text-darken-800 transition-all hover:bg-red-500 hover:text-lighten-800"
+                                onClick={() => {
+                                    setDescription(null);
+                                    setAstro(null);
+                                }}
+                            >
+                                Back to Gallery
+                            </button>
+                        </div>
                     )}
                 </div>
                 {astro ? (
