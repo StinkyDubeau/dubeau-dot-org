@@ -6,6 +6,7 @@ const astros = [];
 export default function Astros(props) {
     const [astros, setAstros] = useState([]);
     const [astro, setAstro] = useState(null);
+    const [description, setDescription] = useState(null);
 
     function createModal(astro) {
         return (
@@ -70,6 +71,7 @@ export default function Astros(props) {
         );
     }
 
+    // Discord scraper
     useEffect(() => {
         fetch("http://localhost:3000/astros", {
             method: "GET",
@@ -85,13 +87,16 @@ export default function Astros(props) {
             .catch((error) => console.log(error));
     }, []);
 
+    // Astro describer
     useEffect(() => {
         if (astro) {
             fetch("http://localhost:3000/ask", {
                 method: "POST",
                 headers: {
                     "Access-Control-Allow-Origin": "*",
+                    "Content-Type": "application/json",
                 },
+                body: JSON.stringify(astro),
             })
                 .then((response) => response.json())
                 .then((data) => {
