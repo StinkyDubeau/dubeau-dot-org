@@ -13,7 +13,7 @@ export default function Astros(props) {
         // Reset the description so the AI will generate a new one.
 
         return (
-            <div className="flex max-h-[720px] gap-4 overflow-hidden rounded-xl bg-lighten-800 p-4 shadow-lg transition-all">
+            <div className="flex max-h-[720px] gap-4 overflow-hidden rounded-xl bg-lighten-800 p-4 shadow-lg transition-all z-20">
                 <div className="min-w-[50%]">
                     <img
                         src={astro.image}
@@ -21,7 +21,7 @@ export default function Astros(props) {
                         className="h-[680px] w-full rounded-lg object-cover"
                     />
                 </div>
-                <div className="flex-grow-0 bg-blue-500">
+                <div className="">
                     {astro.title && (
                         <p className="text-3xl italic text-darken-800">
                             "{astro.title}"
@@ -113,7 +113,7 @@ export default function Astros(props) {
     return (
         <Frame>
             <div className="">
-                <div className="flex justify-between">
+                <div className="flex justify-between my-4">
                     <p
                         className="mb-3 font-header text-5xl text-darken-800 sm:text-left"
                         onClick={() => {
@@ -124,7 +124,7 @@ export default function Astros(props) {
                         Astros
                     </p>
                     {astro && (
-                        <div className="flex gap-1">
+                        <div className="flex gap-1 drop-shadow-xl z-10">
                             <button
                                 className="my-1 rounded-xl bg-lighten-600 p-2 font-header text-2xl text-darken-800 transition-all hover:bg-red-500 hover:text-lighten-800"
                                 onClick={() => {
