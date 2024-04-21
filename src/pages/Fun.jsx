@@ -11,17 +11,17 @@ import FactorioBanner from "../assets/factorio-banner.jpg";
 import RotnBanner from "../assets/rotn-banner.png";
 import KspBanner from "../assets/ksp-banner.jpg";
 
-export default function Servers(props) {
+export default function fun(props) {
     return (
         <Frame>
             <div>
                 <div className="w-screen">
                     <div className="m-5">
                         <p className="text-left font-header text-5xl text-darken-800">
-                            Game Servers
+                            fun
                         </p>
                         <p className="text-left text-lg text-darken-800">
-                            These servers are invite-only. Join our{" "}
+                            These fun are invite-only. Join our{" "}
                             <Link
                                 to="/contact"
                                 className="font-header underline text-xl underline-offset-1"

@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import Servers from "./pages/Servers";
+import Fun from "./pages/Fun";
 import Contact from "./pages/Contact";
 import Geek from "./pages/Geek";
 import Astros from "./pages/Astros";
@@ -10,7 +10,7 @@ function App() {
         <>
             <Routes>
                 <Route path="/" element={<Home />} />.
-                <Route path="/servers" element={<Servers />} />
+                <Route path="/fun" element={<Fun />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/geek" element={<Geek />} />
                 <Route path="/astros" element={<Astros />} />
