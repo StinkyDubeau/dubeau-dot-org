@@ -48,7 +48,7 @@ export default function (props) {
                                 <p className="font-header text-5xl text-zinc-800">
                                     Contact
                                 </p>
-                                <p className="font-header">
+                                <p className="font-header text-darken-700">
                                     or report moderation issues
                                 </p>
                             </div>
