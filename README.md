@@ -1,6 +1,6 @@
 # dubeau (dot) org
 
-My portfolio and gameserver homepage.
+My portfolio and gameserver homepage
 
 ### Local Setup
 
