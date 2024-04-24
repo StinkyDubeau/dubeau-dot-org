@@ -1,11 +1,12 @@
-import Frame from "../components/Frame";
+import Frame from "../../components/Frame";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import Input from "../components/Input";
-import Card from "../components/Card";
+import Input from "../../components/Input";
+import Card from "../../components/Card";
 
 export default function (props) {
     const [canSubmit, setCanSubmit] = useState(false);
+    const [isLeader, setIsLeader] = useState(false);
 
     const [from_name, setFrom_name] = useState("dubeau.org");
     const [subject, setSubject] = useState("Dubeau.org contact form message");
@@ -14,7 +15,7 @@ export default function (props) {
     const [body, setBody] = useState({});
 
     const stores = ["928", "940", "627"];
-    const vans = ["22", "91", "137", "163", "427", "449"];
+    const vans = ["22", "91", "125", "137", "163", "427", "449"];
     const questions = [
         "Mirrors are adequately adjusted",
         "Brake lights, headlights, and taillights are all working",
@@ -118,17 +119,6 @@ export default function (props) {
                         </div>
                     </div>
                 </div>
-                <Card
-                    title="Title 1"
-                    subtitle="Subtitle 1"
-                    image="https://example.com/image1.jpg"
-                />
-                <Card
-                    title="Title 2"
-                    subtitle="Subtitle 2"
-                    image="https://example.com/image2.jpg"
-                />
-                {/* Add more cards as needed */}
             </Frame>
             <div className="fixed bottom-0 left-0 z-50 m-0 h-16 w-screen min-w-36 bg-center sm:left-1.5 sm:top-1 sm:w-auto">
                 <div className="navbar bg-lighten-700 backdrop-blur-lg max-sm:rounded-t-xl sm:rounded-xl">
