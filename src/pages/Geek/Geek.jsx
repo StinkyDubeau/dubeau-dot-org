@@ -68,7 +68,7 @@ export default function (props) {
                     </div>
 
                     {/* Gradient bg */}
-                    <div className="m-5 flex animate-gradient-x justify-center rounded-lg bg-gradient-to-tl from-orange-600 via-orange-500 to-yellow-500 p-4 sm:gap-8">
+                    <div className="m-5 flex animate-gradient-x justify-center rounded-3xl bg-gradient-to-tl from-orange-600 via-orange-500 to-yellow-500 p-4 sm:gap-8">
                         <div className="flex flex-wrap justify-around gap-4 lg:gap-48">
                             <div className="flex w-72 flex-col">
                                 <p className="font-header text-5xl text-zinc-800">
@@ -79,8 +79,14 @@ export default function (props) {
                                 </p> */}
                             </div>
 
-                            <div className="w-72 rounded-xl bg-orange-50 p-4 shadow-xl">
-                                {questions.map(createQuestions)}
+                            <div className="flex-col flex gap-2">
+                                <div className="w-72 rounded-2xl bg-orange-50 p-4 shadow-xl">
+                                    {questions.map(createQuestions)}
+                                </div>
+
+                                <button className="w-72 rounded-2xl bg-orange-50 p-4 font-header shadow-xl hover:scale-105">
+                                    Submit
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -113,7 +119,7 @@ export default function (props) {
                                     </div>
                                     <ul
                                         tabIndex={0}
-                                        className="menu dropdown-content z-[1] w-52 rounded-box bg-base-100 p-2 shadow"
+                                        className="menu dropdown-content z-[1] w-52 rounded-box bg-white p-2 shadow"
                                     >
                                         {Object.values(stores[store].vans).map(
                                             (van, index) => {
@@ -136,7 +142,7 @@ export default function (props) {
                             )}
 
                             {/* Stores */}
-                            <div className="dropdown dropdown-end max-sm:dropdown-top">
+                            <div className="dropdown dropdown-end rounded-lg bg-white max-sm:dropdown-top">
                                 <div tabIndex={0} role="button" className="btn">
                                     <p>
                                         Store:{" "}
@@ -147,7 +153,7 @@ export default function (props) {
                                 </div>
                                 <ul
                                     tabIndex={0}
-                                    className="menu dropdown-content z-[1] w-52 rounded-box bg-base-100 p-2 shadow"
+                                    className="menu dropdown-content z-[1] w-52 rounded-box bg-white p-2 shadow"
                                 >
                                     {Object.keys(stores).map((store, index) => {
                                         return (
