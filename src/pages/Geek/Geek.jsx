@@ -8,9 +8,11 @@ export default function (props) {
     const [canSubmit, setCanSubmit] = useState(false);
     const [isLeader, setIsLeader] = useState(false);
 
-    const stores = {"928": ["22", "91", "125", "137", "163", "427", "449"], "940": [], "639": []};
-
-    const vans = stores["928"];
+    const stores = {
+        928: { vans: ["22", "91", "125", "137", "163", "427", "449"] },
+        940: [],
+        639: [],
+    };
 
     const questions = [
         "Mirrors are adequately adjusted",
@@ -25,8 +27,8 @@ export default function (props) {
         "Windshield is not cracked",
     ];
 
-    const [store, setStore] = useState(Object.keys(stores)[1]);
-    const [van, setVan] = useState(vans[0]);
+    const [store, setStore] = useState(stores[0]);
+    const [van, setVan] = useState(stores[0]);
 
     function createQuestions(question, index) {
         return (
@@ -92,8 +94,48 @@ export default function (props) {
                         </a>
                     </div>
                     <div className="flex flex-1 justify-end px-2">
-                        <div className="flex items-stretch">
-                            <a className="btn btn-ghost rounded-btn">Button</a>
+                        <div className="flex items-stretch gap-2">
+                            {/* Vans */}
+                            {/* Only render if a store is selected */}
+                            {store && (
+                                <div className="dropdown dropdown-end max-sm:dropdown-top">
+                                    <div
+                                        tabIndex={0}
+                                        role="button"
+                                        className="btn"
+                                    >
+                                        <p>
+                                            Van:{" "}
+                                            <span className="underline">
+                                                {van}
+                                            </span>
+                                        </p>
+                                    </div>
+                                    <ul
+                                        tabIndex={0}
+                                        className="menu dropdown-content z-[1] w-52 rounded-box bg-base-100 p-2 shadow"
+                                    >
+                                        {Object.values(stores[store].vans).map(
+                                            (van, index) => {
+                                                return (
+                                                    <li
+                                                        key={index}
+                                                        onClick={() =>
+                                                            setVan(
+                                                                van.toString(),
+                                                            )
+                                                        }
+                                                    >
+                                                        <a>{van}</a>
+                                                    </li>
+                                                );
+                                            },
+                                        )}
+                                    </ul>
+                                </div>
+                            )}
+
+                            {/* Stores */}
                             <div className="dropdown dropdown-end max-sm:dropdown-top">
                                 <div tabIndex={0} role="button" className="btn">
                                     <p>
