@@ -35,7 +35,7 @@ export default function fun(props) {
                         </p> */}
                     </div>
                     {/* Gradient bg */}
-                    <div className="m-5 flex animate-gradient-x flex-wrap justify-center gap-4 rounded-lg bg-gradient-to-br from-blue-400 via-cyan-400 to-orange-300 p-4 sm:gap-8">
+                    <div className="m-5 flex animate-gradient-x flex-wrap justify-center gap-4 rounded-2xl bg-gradient-to-br from-blue-400 via-cyan-400 to-orange-300 p-4 sm:gap-8">
                         <ServerCard
                             title="RotN"
                             subtitle="Modded Minecraft"
@@ -88,7 +88,7 @@ export default function fun(props) {
                         </p> */}
                     </div>
                     {/* Gradient bg */}
-                    <div className="m-5 flex animate-gradient-x flex-wrap justify-center gap-4 rounded-lg bg-gradient-to-tl from-yellow-400 via-orange-400 to-zinc-200 p-4 sm:gap-8">
+                    <div className="m-5 flex animate-gradient-x flex-wrap justify-center gap-4 rounded-2xl bg-gradient-to-tl from-yellow-400 via-orange-400 to-zinc-200 p-4 sm:gap-8">
                         <p className="text-left text-xl text-lighten-500 font-header">
                             Coming soon.
                         </p>

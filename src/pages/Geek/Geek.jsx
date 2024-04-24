@@ -84,7 +84,7 @@ export default function (props) {
                                     {questions.map(createQuestions)}
                                 </div>
 
-                                <button className="w-72 rounded-2xl bg-orange-50 p-4 font-header shadow-xl hover:scale-105">
+                                <button className="w-72 rounded-2xl bg-orange-50 p-4 font-header shadow-xl hover:scale-105 transition-all">
                                     Submit
                                 </button>
                             </div>
