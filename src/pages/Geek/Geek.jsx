@@ -61,7 +61,7 @@ export default function (props) {
                     </div>
                     <div className="m-5">
                         <p className="font-header text-5xl text-lighten-900 sm:text-left">
-                            Vehicle Checkout
+                            Ottawa Fleet
                         </p>
                     </div>
 
@@ -94,7 +94,7 @@ export default function (props) {
                     <div className="flex flex-1 justify-end px-2">
                         <div className="flex items-stretch">
                             <a className="btn btn-ghost rounded-btn">Button</a>
-                            <div className="dropdown dropdown-end dropdown-top">
+                            <div className="dropdown dropdown-end max-sm:dropdown-top">
                                 <div tabIndex={0} role="button" className="btn">
                                     <p>
                                         Store:{" "}
