@@ -8,9 +8,9 @@ export default function (props) {
     const [canSubmit, setCanSubmit] = useState(false);
     const [isLeader, setIsLeader] = useState(false);
 
-    const stores = ["928", "940", "627"];
+    const stores = {"928": ["22", "91", "125", "137", "163", "427", "449"], "940": [], "639": []};
 
-    const vans = ["22", "91", "125", "137", "163", "427", "449"];
+    const vans = stores["928"];
 
     const questions = [
         "Mirrors are adequately adjusted",
@@ -25,7 +25,7 @@ export default function (props) {
         "Windshield is not cracked",
     ];
 
-    const [store, setStore] = useState(stores[0]);
+    const [store, setStore] = useState(Object.keys(stores)[1]);
     const [van, setVan] = useState(vans[0]);
 
     function createQuestions(question, index) {
@@ -107,7 +107,7 @@ export default function (props) {
                                     tabIndex={0}
                                     className="menu dropdown-content z-[1] w-52 rounded-box bg-base-100 p-2 shadow"
                                 >
-                                    {stores.map((store, index) => {
+                                    {Object.keys(stores).map((store, index) => {
                                         return (
                                             <li
                                                 key={index}
