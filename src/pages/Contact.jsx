@@ -7,14 +7,14 @@ export default function (props) {
         <>
             <Frame>
                 <div className="w-screen">
-                    <div className="m-5">
+                    {/* <div className="m-5">
                         <p className="font-header text-5xl text-darken-800 sm:text-left">
                             Connect
                         </p>
-                        {/* <p className="text-left font-regular text-xl">
+                        <p className="text-left font-regular text-xl">
                             Subtitle
-                        </p> */}
-                    </div>
+                        </p>
+                    </div> */}
                     <div className="m-5 flex animate-gradient-x justify-center rounded-lg bg-gradient-to-tl from-green-600 via-cyan-600 to-yellow-500 p-4 sm:gap-8">
                         <div className="flex flex-wrap justify-around gap-6 lg:gap-48">
                             <div className="flex w-72 flex-col">
