@@ -101,7 +101,7 @@ export default function (props) {
                                 {/* LINKEDIN */}
                                 <Link
                                     className="rounded-xl border border-x-darken-50 border-b-darken-100 border-t-lighten-100 bg-lighten-100 p-2 shadow-md transition-all hover:scale-105 hover:shadow-lg"
-                                    to="mailto:https://www.linkedin.com/in/dubeau-jake"
+                                    to="https://www.linkedin.com/in/dubeau-jake"
                                 >
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
