@@ -4,6 +4,7 @@ import Fun from "./pages/Fun";
 import Contact from "./pages/Contact";
 import Geek from "./pages/Geek";
 import Astros from "./pages/Astros";
+import Trackers from "./pages/Trackers";
 
 function App() {
     return (
@@ -14,6 +15,7 @@ function App() {
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/geek" element={<Geek />} />
                 <Route path="/astros" element={<Astros />} />
+                <Route path="/trackers" element={<Trackers />} />
             </Routes>
         </>
     );
