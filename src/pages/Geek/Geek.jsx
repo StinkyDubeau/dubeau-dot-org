@@ -9,9 +9,9 @@ export default function (props) {
     const [isLeader, setIsLeader] = useState(false);
 
     const stores = {
-        928: { vans: ["22", "91", "125", "137", "163", "427", "449"] },
-        940: [],
-        639: [],
+        928: { vans: ["022", "091", "125", "137", "163", "427", "449"] },
+        940: { vans: ["124", "160", "185"] },
+        639: { vans: ["017", "140", "446"] },
     };
 
     const questions = [
