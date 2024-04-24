@@ -8,14 +8,8 @@ export default function (props) {
     const [canSubmit, setCanSubmit] = useState(false);
     const [isLeader, setIsLeader] = useState(false);
 
-    const [from_name, setFrom_name] = useState("dubeau.org");
-    const [subject, setSubject] = useState("Dubeau.org contact form message");
-    const [username, setUsername] = useState();
-    const [email, setEmail] = useState();
-    const [body, setBody] = useState({});
-
     const stores = ["928", "940", "627"];
-    
+
     const vans = ["22", "91", "125", "137", "163", "427", "449"];
 
     const questions = [
@@ -33,38 +27,6 @@ export default function (props) {
 
     const [store, setStore] = useState(stores[0]);
     const [van, setVan] = useState(vans[0]);
-
-    function sendEmail() {
-        fetch("https://api.emailjs.com/api/v1.0/email/send", {
-            method: "POST",
-            body: JSON.stringify({
-                service_id: import.meta.env.VITE_EMAILJS_SERVICE_ID,
-                template_id: import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-                user_id: import.meta.env.VITE_EMAILJS_USER_ID,
-                accessToken: import.meta.env.VITE_EMAILJS_ACCESS_TOKEN,
-                template_params: {
-                    subject: subject,
-                    from_name: from_name,
-                    username: username,
-                    email: email,
-                    body: body,
-                    reply_to: "This is the reply=tp",
-                },
-            }),
-            headers: new Headers({
-                "Content-Type": "application/json",
-            }),
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                console.log(data);
-            })
-            .catch((err) => {
-                setErrorMsg(err);
-                setLoading(false);
-                console.log(err);
-            });
-    }
 
     function createQuestions(question, index) {
         return (
