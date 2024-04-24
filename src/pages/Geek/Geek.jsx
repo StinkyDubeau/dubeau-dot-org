@@ -15,7 +15,9 @@ export default function (props) {
     const [body, setBody] = useState({});
 
     const stores = ["928", "940", "627"];
+    
     const vans = ["22", "91", "125", "137", "163", "427", "449"];
+
     const questions = [
         "Mirrors are adequately adjusted",
         "Brake lights, headlights, and taillights are all working",
