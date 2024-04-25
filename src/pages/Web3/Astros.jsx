@@ -85,34 +85,33 @@ export default function Astros(props) {
     }
 
     function createPeer(peer) {
-        return(
+        return (
             <div>
                 <p>{Object.values(peer)}</p>
             </div>
-        )
+        );
     }
 
     function createPeers(props) {
-        return(
-            <div>
-                {Object.values(peers).map(createPeer)}
-            </div>
-        )
+        return <div>{Object.values(peers).map(createPeer)}</div>;
     }
 
     return (
         <Frame data={props.data}>
             <div className="max-w-screen mt-12 flex w-full flex-col justify-center gap-2">
                 <div className="flex flex-col gap-2 rounded-3xl bg-lighten-800 p-4 text-darken-800 shadow-lg">
+                    <p className="text-darken-800">This is an experimental, decentralized chat. All messages are ifemeral, and will be lost as soon as all peers are disconnected.</p>
+                </div>
+                <div className="flex flex-col gap-2 rounded-3xl bg-lighten-800 p-4 text-darken-800 shadow-lg">
                     {createChat()}
                     {createPeers()}
                 </div>
                 <div className="flex flex-col gap-2 rounded-3xl bg-lighten-800 p-4 text-darken-800 shadow-lg">
-                    <p>Astro sightings is going web3, baby.</p>
                     <div className="flex gap-2">
                         <input
                             className="w-full rounded-full bg-darken-50 p-2 shadow-inner"
                             value={myMessage}
+                            placeholder="Message"
                             onChange={(e) => setMyMessage(e.target.value)}
                         />
                         <div className="flex h-12 w-12 justify-center overflow-clip rounded-full">
