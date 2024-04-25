@@ -33,13 +33,24 @@ export default function ContactForm(props) {
                 "Content-Type": "application/json",
             }),
         })
-            .then((response) => response.json())
+            .then((response) => {
+                // Success case
+                setLoading(false);
+                props.setData({
+                    ...props.data,
+                    loading: false,
+                });
+            })
             .then((data) => {
                 console.log(data);
             })
             .catch((err) => {
                 setErrorMsg(err);
                 setLoading(false);
+                props.setData({
+                    ...props.data,
+                    loading: false,
+                });
                 console.log(err);
             });
     }
@@ -48,6 +59,10 @@ export default function ContactForm(props) {
         sendEmail();
         setSubmitted(true);
         setLoading(true);
+        props.setData({
+            ...props.data,
+            loading: { text: "Sending..." },
+        });
     }
 
     function createResult() {
@@ -72,12 +87,17 @@ export default function ContactForm(props) {
         } else if (loading) {
             return (
                 <div>
-                    <ReactLoading color="darkgray" />
                     <p>Loading...</p>
                 </div>
             );
         } else {
-            return <p>Success!</p>;
+            return (
+                <div className="flex flex-col justify-center h-full">
+                    <p className="font-header text-xl text-darken-700">
+                        Your message was sent.
+                    </p>
+                </div>
+            );
         }
     }
 

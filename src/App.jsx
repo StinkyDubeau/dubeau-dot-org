@@ -43,11 +43,11 @@ function App() {
                 />
                 <Route
                     path="/trackers"
-                    element={<Trackers setData={setData} data={data} />}
+                    element={<Trackers data={data} setData={setData} />}
                 />
                 <Route
                     path="/servers/*"
-                    element={<Trackers setData={setData} data={data} />}
+                    element={<Trackers data={data} setData={setData} />}
                 />
             </Routes>
         </>
