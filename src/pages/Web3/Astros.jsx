@@ -1,4 +1,4 @@
-import { joinRoom } from "trystero";
+import { joinRoom } from "trystero/nostr";
 import Frame from "../../components/Frame";
 import { useState } from "react";
 
@@ -79,16 +79,16 @@ export default function Astros(props) {
         return (
             <div
                 key={index + message}
-                className="justify-left flex gap-2 rounded-3xl bg-darken-50 px-4 py-2 overflow-x-scroll overflow-y-auto"
+                className="justify-left flex gap-2 overflow-y-auto overflow-x-scroll rounded-3xl bg-darken-50 px-4 py-2"
             >
-                <p className="my-auto mt-1.5 text-sm text-darken-500">
-                    {message.time.toLocaleString()}
-                </p>
-                <p className="my-auto text-lg text-darken-800">
+                <div className="flex h-full flex-col justify-center">
+                    <p className="text-sm text-darken-500">
+                        {message.time.toLocaleString()}
+                    </p>
+                    <p className="text-sm text-darken-500">{message.from}</p>
+                </div>
+                <p className="my-auto text-left text-lg text-darken-800">
                     {message.text}
-                </p>
-                <p className="my-auto mt-1.5 text-sm text-darken-500">
-                    {message.from}
                 </p>
             </div>
         );
@@ -143,7 +143,7 @@ export default function Astros(props) {
                 <div className="flex justify-between gap-2">
                     {/* CHAT */}
                     <div className="flex flex-1 flex-col gap-2 overflow-hidden rounded-3xl bg-lighten-800 p-1.5 text-darken-800 shadow-lg">
-                        <div className="z-10 max-h-[420px] overflow-scroll p-3  shadow-inner-xl shadow-lighten-800">
+                        <div className="z-10 max-h-[420px] overflow-scroll p-3">
                             {createChat()}
                         </div>
                     </div>
