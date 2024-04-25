@@ -27,15 +27,26 @@ export default function Trackers(props) {
             <p className="mt-12">This is the trackers page</p>
             <div>
                 <ul>
-                    <li>{data && Object.values(data).map(createPrimitive)}</li>
+                    <li>{data && Object.values(data)}</li>
                 </ul>
-                <button
-                    onClick={() => {
-                        setData({ ...data, One: data.One + 1 });
-                    }}
-                >
-                    Add
-                </button>
+                <div className="flex justify-center gap-2">
+                    <button
+                        className="w-36 rounded-xl border border-darken-200 bg-lighten-800 p-2 shadow-md transition-all hover:scale-105 hover:bg-lighten-900 hover:shadow-lg"
+                        onClick={() => {
+                            setData({ ...data, One: data.One + 1 });
+                        }}
+                    >
+                        Add local scope
+                    </button>
+                    <button
+                        className="w-36 rounded-xl border border-darken-200 bg-lighten-800 p-2 shadow-md transition-all hover:scale-105 hover:bg-lighten-900 hover:shadow-lg"
+                        onClick={() => {
+                            props.setData({ ...props.data, One: props.data.One + 1 });
+                        }}
+                    >
+                        Add global scope
+                    </button>
+                </div>
                 {/* {console} */}
             </div>
         </Frame>

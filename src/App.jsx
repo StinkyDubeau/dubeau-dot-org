@@ -26,7 +26,7 @@ function App() {
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/geek" element={<Geek />} />
                 <Route path="/astros" element={<Astros />} />
-                <Route path="/trackers" element={<Trackers data={data} />} />
+                <Route path="/trackers" element={<Trackers setData={setData} data={data} />} />
             </Routes>
         </>
     );
