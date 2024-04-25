@@ -1,17 +1,29 @@
+import { joinRoom } from "trystero/ipfs";
 import Frame from "../../components/Frame";
-import { joinRoom } from "trystero";
 import { useState } from "react";
 
 export default function Astros(props) {
     // Handle user's input field
     const [myMessage, setMyMessage] = useState("");
     const [myColour, setMyColor] = useState("");
+    const [peers, setPeers] = useState({});
 
     // Use config {} to join room "global"
-    const room = joinRoom({ appId: "astro_sightings" }, "global");
+    const room = joinRoom(
+        { appId: "this_is_the_app_identifier_1342njl0789asdf" },
+        "this_is_the_room_id",
+    );
 
-    room.onPeerJoin((peerID) => console.log(`${peerID} joined the room.`));
-    room.onPeerLeave((peerID) => console.log(`${peerID} left the room.`));
+    room.onPeerJoin((peerID) => {
+        console.log(`${peerID} joined the room.`);
+        setPeers({ ...peers, peerID });
+        sendMessage({ text: `${peerID} joined the room.`, time: new Date() });
+    });
+
+    room.onPeerLeave((peerID) => {
+        console.log(`${peerID} left the room.`);
+        setPeers({ ...peers, peerID: null });
+    });
 
     // Function to send message to peers
     const [sendMessage, getMessage] = room.makeAction("message");
@@ -40,7 +52,7 @@ export default function Astros(props) {
         setMyColor(colour);
     }
 
-    console.log(`Peers: ${Object.keys(room.getPeers())}`);
+    console.log(`Peers: ${Object.values(room.getPeers())}`);
 
     function createMessage(message, index) {
         return (
@@ -51,7 +63,7 @@ export default function Astros(props) {
                 <p className="my-auto text-sm text-darken-500">
                     {message.time.toLocaleString()}
                 </p>
-                <p className="my-auto text-lg text-darken-800">
+                <p className="my-auto overflow-scroll text-lg text-darken-800">
                     {message.text}
                 </p>
             </div>
@@ -61,16 +73,39 @@ export default function Astros(props) {
     function createChat(props) {
         return (
             <div className="flex flex-col gap-2">
-                {messages.map(createMessage)}
+                {messages[0] ? (
+                    messages.map(createMessage)
+                ) : (
+                    <p className="italic text-darken-600">
+                        Messages will apear here
+                    </p>
+                )}
             </div>
         );
     }
 
+    function createPeer(peer) {
+        return(
+            <div>
+                <p>{Object.values(peer)}</p>
+            </div>
+        )
+    }
+
+    function createPeers(props) {
+        return(
+            <div>
+                {Object.values(peers).map(createPeer)}
+            </div>
+        )
+    }
+
     return (
         <Frame data={props.data}>
-            <div className="mt-12 flex w-[1280px] flex-col justify-center gap-2">
+            <div className="max-w-screen mt-12 flex w-full flex-col justify-center gap-2">
                 <div className="flex flex-col gap-2 rounded-3xl bg-lighten-800 p-4 text-darken-800 shadow-lg">
                     {createChat()}
+                    {createPeers()}
                 </div>
                 <div className="flex flex-col gap-2 rounded-3xl bg-lighten-800 p-4 text-darken-800 shadow-lg">
                     <p>Astro sightings is going web3, baby.</p>
@@ -90,7 +125,6 @@ export default function Astros(props) {
                         </div>
                         <button
                             className="w-24 rounded-full bg-darken-50"
-                            p-2
                             onClick={() => sendMyMessage(myMessage)}
                         >
                             Send
