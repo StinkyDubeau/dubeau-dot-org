@@ -139,8 +139,10 @@ export default function Astros(props) {
                 {/* BODY */}
                 <div className="flex justify-between gap-2">
                     {/* CHAT */}
-                    <div className="flex flex-1 flex-col gap-2 rounded-3xl bg-lighten-800 p-4 text-darken-800 shadow-lg">
-                        {createChat()}
+                    <div className="flex flex-1 flex-col gap-2 rounded-3xl overflow-hidden bg-lighten-800 p-1.5 text-darken-800 shadow-lg">
+                        <div className="max-h-[420px] overflow-scroll shadow-inner-xl shadow-lighten-800  z-10 p-3">
+                            {createChat()}
+                        </div>
                     </div>
                     {/* USERS */}
                     <div className="flex flex-col gap-2 rounded-3xl bg-lighten-800 p-4 text-darken-800 shadow-lg">
