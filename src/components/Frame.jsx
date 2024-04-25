@@ -3,7 +3,7 @@ import Navbar from "./Navbar";
 export default function Frame(props) {
     return (
         <>
-            {!props.noNavbar && <Navbar />}
+            {!props.noNavbar && <Navbar data={props.data} />}
 
             <div className={`min-h-[130vh] h-max ${props.vignette === !null ? "shadow-inner-4xl bg-zinc-800" : "bg-zinc-200"}`}>
                 <div className="m-auto max-w-screen-xl p-4">

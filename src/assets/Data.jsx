@@ -1,5 +1,5 @@
 const Data = {
-    One: "1",
+    One: 1,
     Two: "Two",
     Three: ["T", "h", "r", "e", "e"],
 };
