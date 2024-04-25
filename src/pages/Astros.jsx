@@ -111,7 +111,7 @@ export default function Astros(props) {
     }, [astro]);
 
     return (
-        <Frame>
+        <Frame data={props.data}>
             <div className="">
                 <div className="my-4 flex justify-between">
                     <p

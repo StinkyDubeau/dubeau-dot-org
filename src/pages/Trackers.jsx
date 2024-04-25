@@ -15,7 +15,7 @@ export default function Trackers(props) {
         });
 
     return (
-        <Frame data={props.data} vignette>
+        <Frame  data={props.data} vignette>
             <div className="mt-12 flex max-w-lg flex-col gap-2 rounded-3xl bg-lighten-800 p-4 text-darken-800 shadow-lg">
                 <p>This is the trackers page</p>
 

@@ -89,7 +89,7 @@ export default function fun(props) {
                     </div>
                     {/* Gradient bg */}
                     <div className="m-5 flex animate-gradient-x flex-wrap justify-center gap-4 rounded-2xl bg-gradient-to-tl from-yellow-400 via-orange-400 to-zinc-200 p-4 sm:gap-8">
-                        <p className="text-left text-xl text-lighten-500 font-header">
+                        <p className="text-left font-header text-xl text-lighten-500">
                             Coming soon.
                         </p>
                     </div>

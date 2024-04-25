@@ -55,7 +55,7 @@ export default function (props) {
 
     return (
         <>
-            <Frame noNavbar vignette>
+            <Frame data={props.data} >noNavbar vignette>
                 <div className="w-screen">
                     {/* Logo */}
                     <div className="flex h-16 justify-center">

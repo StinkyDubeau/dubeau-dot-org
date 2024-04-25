@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export default function (props) {
     return (
         <>
-            <Frame>
+            <Frame data={props.data}>
                 <div className="w-screen">
                     {/* <div className="m-5">
                         <p className="font-header text-5xl text-darken-800 sm:text-left">
