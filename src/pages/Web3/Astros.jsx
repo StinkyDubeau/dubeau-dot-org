@@ -3,6 +3,9 @@ import Frame from "../../components/Frame";
 import { useState } from "react";
 
 export default function Astros(props) {
+    // Enable to sync old messages when a new user joins. This causes a bug where the entire chatlog will be duped... alot.
+    const catchUpMode = false;
+
     // Handle user's input field
     const [myMessage, setMyMessage] = useState("");
     const [myColour, setMyColor] = useState("");
@@ -24,18 +27,20 @@ export default function Astros(props) {
 
     room.onPeerJoin((peerID) => {
         if (!myId) {
-            console.log("No peers detected. This must be my ID." + peerID);
+            console.log("No peers detected. This must be my ID: " + peerID);
             setMyId(peerID);
         } else {
             setPeers({ ...peers, peerID });
 
-            // Send previous messages to the new user
-            messages[0] !== undefined &&
-                messages.forEach(async (message) => {
-                    console.log("sending one");
-                    console.log(messages);
-                    await sendMessage(message, peerID);
-                });
+            // Send previous messages to the new user if catchUpMode is enabled
+            if (catchUpMode) {
+                messages[0] !== undefined &&
+                    messages.forEach(async (message) => {
+                        console.log("sending one");
+                        console.log(messages);
+                        await sendMessage(message, peerID);
+                    });
+            }
         }
     });
 
@@ -74,15 +79,15 @@ export default function Astros(props) {
         return (
             <div
                 key={index + message}
-                className="justify-left flex gap-2 rounded-full bg-darken-50 px-4 py-2"
+                className="justify-left flex gap-2 rounded-3xl bg-darken-50 px-4 py-2 overflow-x-scroll overflow-y-auto"
             >
                 <p className="my-auto mt-1.5 text-sm text-darken-500">
                     {message.time.toLocaleString()}
                 </p>
-                <p className="my-auto overflow-scroll text-lg text-darken-800">
+                <p className="my-auto text-lg text-darken-800">
                     {message.text}
                 </p>
-                <p className="my-auto mt-1.5 overflow-scroll text-sm text-darken-500">
+                <p className="my-auto mt-1.5 text-sm text-darken-500">
                     {message.from}
                 </p>
             </div>
@@ -118,8 +123,6 @@ export default function Astros(props) {
         return <div>{Object.values(peers).map(createPeer)}</div>;
     }
 
-    function catchUp() {}
-
     return (
         <Frame data={props.data}>
             <div className="sm:hidden">
@@ -139,8 +142,8 @@ export default function Astros(props) {
                 {/* BODY */}
                 <div className="flex justify-between gap-2">
                     {/* CHAT */}
-                    <div className="flex flex-1 flex-col gap-2 rounded-3xl overflow-hidden bg-lighten-800 p-1.5 text-darken-800 shadow-lg">
-                        <div className="max-h-[420px] overflow-scroll shadow-inner-xl shadow-lighten-800  z-10 p-3">
+                    <div className="flex flex-1 flex-col gap-2 overflow-hidden rounded-3xl bg-lighten-800 p-1.5 text-darken-800 shadow-lg">
+                        <div className="z-10 max-h-[420px] overflow-scroll p-3  shadow-inner-xl shadow-lighten-800">
                             {createChat()}
                         </div>
                     </div>
