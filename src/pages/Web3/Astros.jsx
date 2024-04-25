@@ -6,18 +6,36 @@ export default function Astros(props) {
     // Handle user's input field
     const [myMessage, setMyMessage] = useState("");
     const [myColour, setMyColor] = useState("");
+    const [myId, setMyId] = useState(null);
     const [peers, setPeers] = useState({});
 
+    // Initialize room
     // Use config {} to join room "global"
     const room = joinRoom(
         { appId: "this_is_the_app_identifier_1342njl0789asdf" },
         "this_is_the_room_id",
     );
 
+    // State to store all messages in context
+    const [messages, setMessages] = useState([]);
+
+    // Function to send message to peers
+    const [sendMessage, getMessage] = room.makeAction("message");
+
     room.onPeerJoin((peerID) => {
-        console.log(`${peerID} joined the room.`);
-        setPeers({ ...peers, peerID });
-        // sendMessage({ text: `${peerID} joined the room.`, time: new Date() });
+        if (!peers) {
+            setMyId(peerID);
+        } else {
+            setPeers({ ...peers, peerID });
+
+            // Send previous messages to the new user
+            messages[0] !== undefined &&
+                messages.forEach(async (message) => {
+                    console.log("sending one");
+                    console.log(messages);
+                    await sendMessage(message, peerID);
+                });
+        }
     });
 
     room.onPeerLeave((peerID) => {
@@ -25,22 +43,19 @@ export default function Astros(props) {
         setPeers({ ...peers, peerID: null });
     });
 
-    // Function to send message to peers
-    const [sendMessage, getMessage] = room.makeAction("message");
-    // State to store all messages in context
-    const [messages, setMessages] = useState([]);
-
     // Listen for messages
     getMessage((message, peerID) => {
-        console.log(`${peerID} said ${message}`);
+        console.log(`Got message from${peerID}: ${message.text}`);
+        console.log(message);
         // Add message to our state
-        setMessages([...messages, message]);
+        setMessages((messages) => [...messages, message]);
+        // setPeerColors((peerColors) => ({ ...peerColors, [peer]: color })),
     });
 
     // Broadcast a message
     function sendMyMessage(text) {
         setMyMessage("");
-        const message = { text: text, time: new Date() };
+        const message = { text: text, time: new Date(), from: myId };
 
         // Add message to our own client
         setMessages([...messages, message]);
@@ -57,7 +72,7 @@ export default function Astros(props) {
     function createMessage(message, index) {
         return (
             <div
-                key={index}
+                key={index + message}
                 className="justify-left flex gap-2 rounded-full bg-darken-50 px-4 py-2"
             >
                 <p className="my-auto text-sm text-darken-500">
@@ -65,6 +80,9 @@ export default function Astros(props) {
                 </p>
                 <p className="my-auto overflow-scroll text-lg text-darken-800">
                     {message.text}
+                </p>
+                <p className="my-auto overflow-scroll text-lg text-darken-800">
+                    {message.from}
                 </p>
             </div>
         );
@@ -84,12 +102,12 @@ export default function Astros(props) {
         );
     }
 
-    function createPeer(peer) {
+    function createPeer(peer, index) {
         if (!peer) {
             return;
         }
         return (
-            <div>
+            <div key={index}>
                 <p>{Object.values(peer)}</p>
             </div>
         );
@@ -98,6 +116,8 @@ export default function Astros(props) {
     function createPeers(props) {
         return <div>{Object.values(peers).map(createPeer)}</div>;
     }
+
+    function catchUp() {}
 
     return (
         <Frame data={props.data}>
@@ -112,7 +132,7 @@ export default function Astros(props) {
                         messages are ephemeral, and will be lost as soon as all
                         peers are disconnected.
                     </p>
-
+                    <p>My ID: {myId}</p>
                 </div>
 
                 {/* BODY */}
@@ -154,7 +174,7 @@ export default function Astros(props) {
                                 />
                             </div>
                             <button
-                                className="w-24 rounded-full bg-darken-50"
+                                className="w-24 rounded-full bg-darken-50 transition-all hover:bg-darken-100"
                                 type="submit"
                             >
                                 Send
