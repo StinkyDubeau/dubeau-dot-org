@@ -11,7 +11,6 @@ export default function Home(props) {
     return (
         <div>
             <Frame data={props.data}>
-                noNavbar>
                 <Panel className="m-4">
                     <div className="flex p-12">
                         <h1 className="font-headerScript text-6xl text-darken-700">
