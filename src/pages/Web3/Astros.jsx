@@ -7,7 +7,7 @@ export default function Astros(props) {
     const [myMessage, setMyMessage] = useState("");
     const [myColour, setMyColor] = useState("");
     const [myId, setMyId] = useState(null);
-    const [peers, setPeers] = useState({});
+    const [peers, setPeers] = useState([]);
 
     // Initialize room
     // Use config {} to join room "global"
@@ -23,7 +23,8 @@ export default function Astros(props) {
     const [sendMessage, getMessage] = room.makeAction("message");
 
     room.onPeerJoin((peerID) => {
-        if (!peers) {
+        if (!myId) {
+            console.log("No peers detected. This must be my ID." + peerID);
             setMyId(peerID);
         } else {
             setPeers({ ...peers, peerID });
@@ -75,13 +76,13 @@ export default function Astros(props) {
                 key={index + message}
                 className="justify-left flex gap-2 rounded-full bg-darken-50 px-4 py-2"
             >
-                <p className="my-auto text-sm text-darken-500">
+                <p className="my-auto mt-1.5 text-sm text-darken-500">
                     {message.time.toLocaleString()}
                 </p>
                 <p className="my-auto overflow-scroll text-lg text-darken-800">
                     {message.text}
                 </p>
-                <p className="my-auto overflow-scroll text-lg text-darken-800">
+                <p className="my-auto mt-1.5 overflow-scroll text-sm text-darken-500">
                     {message.from}
                 </p>
             </div>
