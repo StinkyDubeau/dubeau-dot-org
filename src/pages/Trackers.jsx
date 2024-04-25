@@ -6,16 +6,14 @@ export default function Trackers(props) {
     // Function to output to JSON
     //  Save JSON to DB
 
-
-    const data = {
-        2024: {
-            
-        }
-    }
+    console.log(props.data)
 
     return (
         <Frame>
             <p>This is the trackers page</p>
+            <div>
+                {/* {console} */}
+            </div>
         </Frame>
     );
 }
