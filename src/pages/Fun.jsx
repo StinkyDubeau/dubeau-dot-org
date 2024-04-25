@@ -13,7 +13,7 @@ import KspBanner from "../assets/ksp-banner.jpg";
 
 export default function fun(props) {
     return (
-        <Frame>
+        <Frame data={props.data}>
             <div>
                 <div className="w-screen">
                     <div className="m-5">

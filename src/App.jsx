@@ -21,12 +21,30 @@ function App() {
     return (
         <>
             <Routes>
-                <Route path="/" element={<Home />} />.
-                <Route path="/fun" element={<Fun />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/geek" element={<Geek />} />
-                <Route path="/astros" element={<Astros />} />
-                <Route path="/trackers" element={<Trackers setData={setData} data={data} />} />
+                <Route
+                    path="/"
+                    element={<Home data={data} setData={setData} />}
+                />
+                <Route
+                    path="/fun"
+                    element={<Fun data={data} setData={setData} />}
+                />
+                <Route
+                    path="/contact"
+                    element={<Contact data={data} setData={setData} />}
+                />
+                <Route
+                    path="/geek"
+                    element={<Geek data={data} setData={setData} />}
+                />
+                <Route
+                    path="/astros"
+                    element={<Astros data={data} setData={setData} />}
+                />
+                <Route
+                    path="/trackers"
+                    element={<Trackers setData={setData} data={data} />}
+                />
             </Routes>
         </>
     );

@@ -24,14 +24,15 @@ export default function Trackers(props) {
 
     return (
         <Frame data={props.data}>
-            <p className="mt-12">This is the trackers page</p>
-            <div>
+            <div className="mt-12 flex max-w-lg flex-col gap-2 rounded-3xl bg-white p-4 text-darken-800 shadow-lg">
+                <p>This is the trackers page</p>
+
                 <ul>
                     <li>{data && Object.values(data)}</li>
                 </ul>
-                <div className="flex justify-center gap-2">
+                <div className="flex justify-center gap-2 text-darken-800">
                     <button
-                        className="w-36 rounded-xl border border-darken-200 bg-lighten-800 p-2 shadow-md transition-all hover:scale-105 hover:bg-lighten-900 hover:shadow-lg"
+                        className="w-36 rounded-xl border border-darken-200 bg-lighten-800 p-2 text-darken-800 shadow-md transition-all hover:scale-105 hover:bg-lighten-900 hover:shadow-lg"
                         onClick={() => {
                             setData({ ...data, One: data.One + 1 });
                         }}
@@ -39,15 +40,41 @@ export default function Trackers(props) {
                         Add local scope
                     </button>
                     <button
-                        className="w-36 rounded-xl border border-darken-200 bg-lighten-800 p-2 shadow-md transition-all hover:scale-105 hover:bg-lighten-900 hover:shadow-lg"
+                        className="w-36 rounded-xl border border-darken-200 bg-lighten-800 p-2 text-darken-800 shadow-md transition-all hover:scale-105 hover:bg-lighten-900 hover:shadow-lg"
                         onClick={() => {
-                            props.setData({ ...props.data, One: props.data.One + 1 });
+                            props.setData({
+                                ...props.data,
+                                One: props.data.One + 1,
+                            });
                         }}
                     >
                         Add global scope
                     </button>
                 </div>
-                {/* {console} */}
+                <div className="flex justify-center gap-2 text-darken-800">
+                    <button
+                        className="w-36 rounded-xl border border-darken-200 bg-lighten-800 p-2 text-darken-800 shadow-md transition-all hover:scale-105 hover:bg-lighten-900 hover:shadow-lg"
+                        onClick={() => {
+                            props.setData({
+                                ...props.data,
+                                loading: true,
+                            });
+                        }}
+                    >
+                        Start 'loading'...
+                    </button>
+                    <button
+                        className="w-36 rounded-xl border border-darken-200 bg-lighten-800 p-2 text-darken-800 shadow-md transition-all hover:scale-105 hover:bg-lighten-900 hover:shadow-lg"
+                        onClick={() => {
+                            props.setData({
+                                ...props.data,
+                                loading: false,
+                            });
+                        }}
+                    >
+                        Stop 'loading'...
+                    </button>
+                </div>
             </div>
         </Frame>
     );
