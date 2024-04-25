@@ -101,6 +101,9 @@ export default function Astros(props) {
 
     return (
         <Frame data={props.data}>
+            <div className="sm:hidden">
+                <p>Your display is too small!</p>
+            </div>
             <div className="max-w-screen mt-12 flex w-full flex-col justify-center gap-2">
                 {/* HEADER */}
                 <div className="flex flex-col gap-2 rounded-3xl bg-lighten-800 p-4 text-darken-800 shadow-lg">
