@@ -102,6 +102,7 @@ export default function Astros(props) {
     return (
         <Frame data={props.data}>
             <div className="max-w-screen mt-12 flex w-full flex-col justify-center gap-2">
+                {/* HEADER */}
                 <div className="flex flex-col gap-2 rounded-3xl bg-lighten-800 p-4 text-darken-800 shadow-lg">
                     <p className="text-darken-800">
                         This is an experimental, decentralized chat. All
@@ -109,10 +110,21 @@ export default function Astros(props) {
                         peers are disconnected.
                     </p>
                 </div>
-                <div className="flex flex-col gap-2 rounded-3xl bg-lighten-800 p-4 text-darken-800 shadow-lg">
-                    {createChat()}
-                    {createPeers()}
+
+                {/* BODY */}
+                <div className="flex justify-between gap-2">
+                    {/* CHAT */}
+                    <div className="flex flex-1 flex-col gap-2 rounded-3xl bg-lighten-800 p-4 text-darken-800 shadow-lg">
+                        {createChat()}
+                    </div>
+                    {/* USERS */}
+                    <div className="flex flex-col gap-2 rounded-3xl bg-lighten-800 p-4 text-darken-800 shadow-lg">
+                        <p className="text-lg text-darken-800">Users</p>
+                        {createPeers()}
+                    </div>
                 </div>
+
+                {/* MESSAGE ENTRY */}
                 <div className="flex flex-col gap-2 rounded-3xl bg-lighten-800 p-4 text-darken-800 shadow-lg">
                     <form
                         onSubmit={(e) => {
