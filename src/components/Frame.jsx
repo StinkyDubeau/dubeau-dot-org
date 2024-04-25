@@ -6,7 +6,7 @@ export default function Frame(props) {
             <div>
                 {/* Experimental flag */}
                 {props.data.experimental && (
-                    <div className="bg-green-500">
+                    <div className="fixed z-50 mx-auto flex w-full justify-between bg-green-500 ">
                         <p className="font-header text-lighten-800">
                             Experimental features are active
                         </p>

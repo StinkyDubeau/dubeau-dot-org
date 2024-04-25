@@ -1,6 +1,6 @@
 import Frame from "../components/Frame";
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 export default function Trackers(props) {
     // Function to input from JSON
@@ -26,7 +26,7 @@ export default function Trackers(props) {
                 </ul>
                 <div className="flex justify-center gap-2 text-darken-800">
                     <button
-                    className="w-36 rounded-xl  bg-lighten-800 p-2 text-darken-800 shadow-md transition-all hover:scale-105 hover:bg-lighten-900 hover:shadow-lg"
+                        className="w-36 rounded-xl  bg-lighten-800 p-2 text-darken-800 shadow-md transition-all hover:scale-105 hover:bg-lighten-900 hover:shadow-lg"
                         onClick={() => {
                             setData({ ...data, One: data.One + 1 });
                         }}
@@ -106,6 +106,12 @@ export default function Trackers(props) {
                         Disable Experimental
                     </button>
                 </div>
+                <Link
+                    className="w-74 rounded-xl bg-lighten-800 p-2 text-darken-800 shadow-md transition-all hover:scale-105 hover:bg-lighten-900 hover:shadow-lg"
+                    to="/astros"
+                >
+                    Go to /astros
+                </Link>
             </div>
         </Frame>
     );

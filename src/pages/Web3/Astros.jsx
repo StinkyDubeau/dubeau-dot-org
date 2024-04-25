@@ -4,12 +4,11 @@ import { useState } from "react";
 
 export default function Astros(props) {
     // Handle user's input field
-    const [input, setInput] = useState("");
+    const [myMessage, setMyMessage] = useState("");
+    const [myColour, setMyColor] = useState("");
 
-    // App ID is unique to astro sightings
-    const config = { appId: "astro_sightings" };
-    // Join the "global" room
-    const room = joinRoom(config, "global");
+    // Use config {} to join room "global"
+    const room = joinRoom({ appId: "astro_sightings" }, "global");
 
     room.onPeerJoin((peerID) => console.log(`${peerID} joined the room.`));
     room.onPeerLeave((peerID) => console.log(`${peerID} left the room.`));
@@ -20,41 +19,85 @@ export default function Astros(props) {
     const [messages, setMessages] = useState([]);
 
     // Listen for messages
-    getMessage((data, peerID) => {
-        console.log(`${peerID} said ${data}`);
+    getMessage((message, peerID) => {
+        console.log(`${peerID} said ${message}`);
         // Add message to our state
-        setMessages([...messages, data]);
+        setMessages([...messages, message]);
     });
 
     // Broadcast a message
-    function sendMyMessage(message) {
-        console.log(`Broadcasting: ${message}`);
-        sendMessage({ text: message });
+    function sendMyMessage(text) {
+        const message = { text: text, time: new Date() };
+        console.log(`Broadcasting: ${Object.values(message)}`);
+        // Add message to our own client
+        setMessages([...messages, message]);
+        // Broadcast to other clients
+        sendMessage(message);
     }
 
-    console.log(room.getPeers());
+    function sendMyColour(colour) {
+        console.log(`Changed my colour to ${Object.values(colour)}`);
+        setMyColor(colour);
+    }
+
+    console.log(`Peers: ${Object.keys(room.getPeers())}`);
 
     function createMessage(message, index) {
         return (
-            <div key={index}>
-                <p>{message}</p>
+            <div
+                key={index}
+                className="justify-left flex gap-2 rounded-full bg-lighten-800 px-4 py-2 shadow"
+            >
+                <p className="my-auto text-sm text-darken-500">
+                    {message.time.toLocaleString()}
+                </p>
+                <p className="my-auto text-lg text-darken-800">
+                    {message.text}
+                </p>
             </div>
         );
     }
 
     function createChat(props) {
         return (
-            <ul>
-                <li>{messages.map(createMessage)}</li>
-            </ul>
+            <div className="flex flex-col gap-2">
+                {messages.map(createMessage)}
+            </div>
         );
     }
 
     return (
-        <Frame>
-            <p>Astro sightings is going web3, baby.</p>
-            <input value={input} onChange={(e) => setInput(e.target.value)} />
-            <button onClick={() => sendMyMessage(input)}>Send message</button>
+        <Frame data={props.data}>
+            <div className="mt-12 flex w-[1280px] flex-col justify-center gap-2">
+                <div className="flex flex-col gap-2 rounded-3xl bg-lighten-800 p-4 text-darken-800 shadow-lg">
+                    {createChat()}
+                </div>
+                <div className="flex flex-col gap-2 rounded-3xl bg-lighten-800 p-4 text-darken-800 shadow-lg">
+                    <p>Astro sightings is going web3, baby.</p>
+                    <div className="flex gap-2">
+                        <input
+                            className="w-full rounded-full bg-darken-50 p-2 shadow-inner"
+                            value={myMessage}
+                            onChange={(e) => setMyMessage(e.target.value)}
+                        />
+                        <div className="flex h-12 w-12 justify-center overflow-clip rounded-full">
+                            <input
+                                type="color"
+                                className="my-auto -mt-2 h-[200%] min-w-24"
+                                value={myColour}
+                                onChange={(e) => sendMyColour(e.target.value)}
+                            />
+                        </div>
+                        <button
+                            className="w-24 rounded-full bg-darken-50"
+                            p-2
+                            onClick={() => sendMyMessage(myMessage)}
+                        >
+                            Send
+                        </button>
+                    </div>
+                </div>
+            </div>
         </Frame>
     );
 }
