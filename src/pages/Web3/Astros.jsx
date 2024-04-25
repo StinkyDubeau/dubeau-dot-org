@@ -1,4 +1,4 @@
-import { joinRoom } from "trystero/ipfs";
+import { joinRoom } from "trystero";
 import Frame from "../../components/Frame";
 import { useState } from "react";
 
