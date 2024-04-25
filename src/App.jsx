@@ -45,6 +45,10 @@ function App() {
                     path="/trackers"
                     element={<Trackers setData={setData} data={data} />}
                 />
+                <Route
+                    path="/servers/*"
+                    element={<Trackers setData={setData} data={data} />}
+                />
             </Routes>
         </>
     );
