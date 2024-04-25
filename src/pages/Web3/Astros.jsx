@@ -104,9 +104,9 @@ export default function Astros(props) {
             <div className="max-w-screen mt-12 flex w-full flex-col justify-center gap-2">
                 {/* HEADER */}
                 <div className="flex flex-col gap-2 rounded-3xl bg-lighten-800 p-4 text-darken-800 shadow-lg">
-                    <p className="text-darken-800">
+                    <p className="text-red-500">
                         This is an experimental, decentralized chat. All
-                        messages are ifemeral, and will be lost as soon as all
+                        messages are ephemeral, and will be lost as soon as all
                         peers are disconnected.
                     </p>
                 </div>
