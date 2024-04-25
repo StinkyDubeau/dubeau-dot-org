@@ -17,7 +17,7 @@ export default function Astros(props) {
     room.onPeerJoin((peerID) => {
         console.log(`${peerID} joined the room.`);
         setPeers({ ...peers, peerID });
-        sendMessage({ text: `${peerID} joined the room.`, time: new Date() });
+        // sendMessage({ text: `${peerID} joined the room.`, time: new Date() });
     });
 
     room.onPeerLeave((peerID) => {
@@ -39,10 +39,12 @@ export default function Astros(props) {
 
     // Broadcast a message
     function sendMyMessage(text) {
+        setMyMessage("");
         const message = { text: text, time: new Date() };
-        console.log(`Broadcasting: ${Object.values(message)}`);
+
         // Add message to our own client
         setMessages([...messages, message]);
+
         // Broadcast to other clients
         sendMessage(message);
     }
@@ -51,8 +53,6 @@ export default function Astros(props) {
         console.log(`Changed my colour to ${Object.values(colour)}`);
         setMyColor(colour);
     }
-
-    console.log(`Peers: ${Object.values(room.getPeers())}`);
 
     function createMessage(message, index) {
         return (
@@ -85,6 +85,9 @@ export default function Astros(props) {
     }
 
     function createPeer(peer) {
+        if (!peer) {
+            return;
+        }
         return (
             <div>
                 <p>{Object.values(peer)}</p>
@@ -100,35 +103,48 @@ export default function Astros(props) {
         <Frame data={props.data}>
             <div className="max-w-screen mt-12 flex w-full flex-col justify-center gap-2">
                 <div className="flex flex-col gap-2 rounded-3xl bg-lighten-800 p-4 text-darken-800 shadow-lg">
-                    <p className="text-darken-800">This is an experimental, decentralized chat. All messages are ifemeral, and will be lost as soon as all peers are disconnected.</p>
+                    <p className="text-darken-800">
+                        This is an experimental, decentralized chat. All
+                        messages are ifemeral, and will be lost as soon as all
+                        peers are disconnected.
+                    </p>
                 </div>
                 <div className="flex flex-col gap-2 rounded-3xl bg-lighten-800 p-4 text-darken-800 shadow-lg">
                     {createChat()}
                     {createPeers()}
                 </div>
                 <div className="flex flex-col gap-2 rounded-3xl bg-lighten-800 p-4 text-darken-800 shadow-lg">
-                    <div className="flex gap-2">
-                        <input
-                            className="w-full rounded-full bg-darken-50 p-2 shadow-inner"
-                            value={myMessage}
-                            placeholder="Message"
-                            onChange={(e) => setMyMessage(e.target.value)}
-                        />
-                        <div className="flex h-12 w-12 justify-center overflow-clip rounded-full">
+                    <form
+                        onSubmit={(e) => {
+                            e.preventDefault();
+                            sendMyMessage(myMessage);
+                        }}
+                    >
+                        <div className="flex gap-2">
                             <input
-                                type="color"
-                                className="my-auto -mt-2 h-[200%] min-w-24"
-                                value={myColour}
-                                onChange={(e) => sendMyColour(e.target.value)}
+                                className="w-full rounded-full bg-darken-50 p-2 shadow-inner"
+                                value={myMessage}
+                                placeholder="Message"
+                                onChange={(e) => setMyMessage(e.target.value)}
                             />
+                            <div className="flex h-12 w-12 justify-center overflow-clip rounded-full">
+                                <input
+                                    type="color"
+                                    className="my-auto -mt-2 h-[200%] min-w-24"
+                                    value={myColour}
+                                    onChange={(e) =>
+                                        sendMyColour(e.target.value)
+                                    }
+                                />
+                            </div>
+                            <button
+                                className="w-24 rounded-full bg-darken-50"
+                                type="submit"
+                            >
+                                Send
+                            </button>
                         </div>
-                        <button
-                            className="w-24 rounded-full bg-darken-50"
-                            onClick={() => sendMyMessage(myMessage)}
-                        >
-                            Send
-                        </button>
-                    </div>
+                    </form>
                 </div>
             </div>
         </Frame>
