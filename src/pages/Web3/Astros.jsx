@@ -58,7 +58,7 @@ export default function Astros(props) {
         return (
             <div
                 key={index}
-                className="justify-left flex gap-2 rounded-full bg-lighten-800 px-4 py-2 shadow"
+                className="justify-left flex gap-2 rounded-full bg-darken-50 px-4 py-2"
             >
                 <p className="my-auto text-sm text-darken-500">
                     {message.time.toLocaleString()}
@@ -112,6 +112,7 @@ export default function Astros(props) {
                         messages are ephemeral, and will be lost as soon as all
                         peers are disconnected.
                     </p>
+
                 </div>
 
                 {/* BODY */}
