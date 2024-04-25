@@ -20,7 +20,7 @@ export default function Trackers(props) {
                 <p>This is the trackers page</p>
 
                 <ul>
-                    <li>{data && Object.values(data)}</li>
+                    <li>{data && Object.values(data).toString()}</li>
                 </ul>
                 <div className="flex justify-center gap-2 text-darken-800">
                     <button
