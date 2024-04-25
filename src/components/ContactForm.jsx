@@ -3,7 +3,7 @@ import ReactLoading from "react-loading";
 
 export default function ContactForm(props) {
     const [from_name, setFrom_name] = useState("dubeau.org");
-    const [subject, setSubject] = useState("Dubeau.org contact form message")
+    const [subject, setSubject] = useState("Dubeau.org contact form message");
     const [username, setUsername] = useState();
     const [email, setEmail] = useState();
     const [body, setBody] = useState();
@@ -55,16 +55,18 @@ export default function ContactForm(props) {
             return (
                 <div className="flex flex-col gap-2">
                     <p className="font-header text-xl">Error</p>
-                    <p className="font-sansui bg-red-300 rounded-lg p-1 shadow-inner max-w-xs">{errorMsg.message}</p>
+                    <p className="font-sansui max-w-xs rounded-lg bg-red-300 p-1 shadow-inner">
+                        {errorMsg.message}
+                    </p>
                     <button
-                    className="h-10 rounded-lg bg-darken-100 shadow transition-all hover:rounded-lg hover:bg-darken-50"
-                    onClick={() => {
-                        setSubmitted(false);
-                        setErrorMsg(null);
-                    }}
-                >
-                    Try again
-                </button>
+                        className="h-10 rounded-lg bg-darken-100 shadow transition-all hover:rounded-lg hover:bg-darken-50"
+                        onClick={() => {
+                            setSubmitted(false);
+                            setErrorMsg(null);
+                        }}
+                    >
+                        Try again
+                    </button>
                 </div>
             );
         } else if (loading) {
@@ -143,7 +145,7 @@ export default function ContactForm(props) {
     }
 
     return (
-        <div className="rounded-xl bg-orange-50 p-4 w-72 shadow-xl">
+        <div className="w-72 rounded-xl bg-orange-50 p-4 shadow-xl">
             {!submitted ? createForm() : createResult()}
         </div>
     );

@@ -55,7 +55,7 @@ export default function (props) {
 
     return (
         <>
-            <Frame noNavbar vignette>
+            <Frame data={props.data} noNavbar vignette>
                 <div className="w-screen">
                     {/* Logo */}
                     <div className="flex h-16 justify-center">
@@ -79,12 +79,12 @@ export default function (props) {
                                 </p> */}
                             </div>
 
-                            <div className="flex-col flex gap-2">
+                            <div className="flex flex-col gap-2">
                                 <div className="w-72 rounded-2xl bg-orange-50 p-4 shadow-xl">
                                     {questions.map(createQuestions)}
                                 </div>
 
-                                <button className="w-72 rounded-2xl bg-orange-50 p-4 font-header shadow-xl hover:scale-105 transition-all">
+                                <button className="w-72 rounded-2xl bg-orange-50 p-4 font-header shadow-xl transition-all hover:scale-105">
                                     Submit
                                 </button>
                             </div>
