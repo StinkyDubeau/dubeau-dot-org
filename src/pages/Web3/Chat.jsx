@@ -145,7 +145,7 @@ export default function Chat(props) {
                     {/* BODY */}
                     <div className="flex-0 flex h-full max-h-[80%] basis-auto justify-between gap-2">
                         {/* CHAT */}
-                        <div className="flex flex-1 flex-col gap-2 overflow-hidden rounded-3xl bg-lighten-800 p-1.5 text-darken-800 shadow-lg">
+                        <div className="flex h-full flex-1 flex-col gap-2 overflow-hidden rounded-3xl bg-lighten-800 p-1.5 text-darken-800 shadow-lg">
                             <div className="z-10 overflow-scroll p-3">
                                 {createChat()}
                             </div>
