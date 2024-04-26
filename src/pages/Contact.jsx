@@ -54,7 +54,7 @@ export default function (props) {
                                     or report moderation issues
                                 </p>
                             </div>
-                            <ContactForm />
+                            <ContactForm data={props.data} setData={props.setData}/>
                         </div>
                     </div>
                     <div className="m-5 flex animate-gradient-x justify-center rounded-2xl bg-gradient-to-tl from-pink-600 via-purple-500 to-blue-400 p-4 sm:gap-8">
