@@ -1,6 +1,6 @@
 import { joinRoom } from "trystero/nostr";
 import Frame from "../../components/Frame";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Chat(props) {
     // Enable to sync old messages when a new user joins. This causes a bug where the entire chatlog will be duped... alot.
@@ -11,6 +11,7 @@ export default function Chat(props) {
     const [myColour, setMyColor] = useState("");
     const [myId, setMyId] = useState(null);
     const [peers, setPeers] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     // Initialize room
     // Use config {} to join room "global"
@@ -19,6 +20,8 @@ export default function Chat(props) {
         "this_is_the_room_id",
     );
 
+    console.log(`Room: ${room}`);
+
     // State to store all messages in context
     const [messages, setMessages] = useState([]);
 
@@ -26,11 +29,18 @@ export default function Chat(props) {
     const [sendMessage, getMessage] = room.makeAction("message");
 
     room.onPeerJoin((peerID) => {
+        setLoading(false);
         if (!myId) {
             console.log("No peers detected. This must be my ID: " + peerID);
             setMyId(peerID);
         } else {
             setPeers({ ...peers, peerID });
+
+            // Interface with global loading icon
+            props.setData({
+                ...props.data,
+                loading: false,
+            });
 
             // Send previous messages to the new user if catchUpMode is enabled
             if (catchUpMode) {
@@ -122,6 +132,16 @@ export default function Chat(props) {
     function createPeers(props) {
         return <div>{Object.values(peers).map(createPeer)}</div>;
     }
+
+    // For global loading state
+    useEffect(
+        () =>
+            props.setData({
+                ...props.data,
+                loading: loading ? { text: "Connecting..." } : false,
+            }),
+        [loading],
+    );
 
     return (
         <Frame data={props.data}>
