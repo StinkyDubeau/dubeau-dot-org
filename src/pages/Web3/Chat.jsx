@@ -126,67 +126,72 @@ export default function Chat(props) {
     return (
         <Frame data={props.data}>
             <div className="sm:hidden">
-                <p>Your display is too small!</p>
+                <p className="z-50 font-header text-xl text-darken-800">
+                    Your display is too small!
+                </p>
             </div>
-            <div className="max-w-screen mt-12 flex w-full flex-col justify-center gap-2">
-                {/* HEADER */}
-                <div className="flex flex-col gap-2 rounded-3xl bg-lighten-800 p-4 text-darken-800 shadow-lg">
-                    <p className="text-red-500">
-                        This is an experimental, decentralized chat. All
-                        messages are ephemeral, and will be lost as soon as all
-                        peers are disconnected.
-                    </p>
-                    <p>My ID: {myId}</p>
-                </div>
 
-                {/* BODY */}
-                <div className="flex justify-between gap-2">
-                    {/* CHAT */}
-                    <div className="flex flex-1 flex-col gap-2 overflow-hidden rounded-3xl bg-lighten-800 p-1.5 text-darken-800 shadow-lg">
-                        <div className="z-10 max-h-[420px] overflow-scroll p-3">
-                            {createChat()}
+            <div className="fixed bottom-0 left-0  z-20 mx-auto flex h-full w-full justify-between p-2 pt-16 shadow-lg backdrop-blur-3xl transition-all">
+                <div className="flex w-full flex-col justify-between gap-2">
+                    {/* HEADER */}
+                    <div className="flex flex-col gap-2 rounded-3xl bg-lighten-800 p-4 text-darken-800 shadow-lg">
+                        <p className="text-red-500">
+                            This is an experimental, decentralized chat. All
+                            messages are ephemeral, and will be lost as soon as
+                            all peers are disconnected.
+                        </p>
+                        <p>My ID: {myId}</p>
+                    </div>
+                    {/* BODY */}
+                    <div className="flex-0 flex h-full max-h-[80%] basis-auto justify-between gap-2">
+                        {/* CHAT */}
+                        <div className="flex flex-1 flex-col gap-2 overflow-hidden rounded-3xl bg-lighten-800 p-1.5 text-darken-800 shadow-lg">
+                            <div className="z-10 overflow-scroll p-3">
+                                {createChat()}
+                            </div>
+                        </div>
+                        {/* USERS */}
+                        <div className="flex flex-col gap-2 rounded-3xl bg-lighten-800 p-4 text-darken-800 shadow-lg">
+                            <p className="text-lg text-darken-800">Users</p>
+                            {createPeers()}
                         </div>
                     </div>
-                    {/* USERS */}
+                    {/* MESSAGE ENTRY */}
                     <div className="flex flex-col gap-2 rounded-3xl bg-lighten-800 p-4 text-darken-800 shadow-lg">
-                        <p className="text-lg text-darken-800">Users</p>
-                        {createPeers()}
-                    </div>
-                </div>
-
-                {/* MESSAGE ENTRY */}
-                <div className="flex flex-col gap-2 rounded-3xl bg-lighten-800 p-4 text-darken-800 shadow-lg">
-                    <form
-                        onSubmit={(e) => {
-                            e.preventDefault();
-                            sendMyMessage(myMessage);
-                        }}
-                    >
-                        <div className="flex gap-2">
-                            <input
-                                className="w-full rounded-full bg-darken-50 p-2 shadow-inner"
-                                value={myMessage}
-                                placeholder="Message"
-                                onChange={(e) => setMyMessage(e.target.value)}
-                            />
-                            <div className="flex h-12 w-12 justify-center overflow-clip rounded-full">
+                        <form
+                            onSubmit={(e) => {
+                                e.preventDefault();
+                                sendMyMessage(myMessage);
+                            }}
+                        >
+                            <div className="flex gap-2">
                                 <input
-                                    type="color"
-                                    className="my-auto -mt-2 h-[200%] min-w-24"
-                                    value={myColour}
+                                    className="w-full rounded-full bg-darken-50 p-2 shadow-inner"
+                                    value={myMessage}
+                                    placeholder="Message"
                                     onChange={(e) =>
-                                        sendMyColour(e.target.value)
+                                        setMyMessage(e.target.value)
                                     }
                                 />
+                                <div className="flex h-12 w-12 justify-center overflow-clip rounded-full">
+                                    <input
+                                        type="color"
+                                        className="my-auto -mt-2 h-[200%] min-w-24"
+                                        value={myColour}
+                                        onChange={(e) =>
+                                            sendMyColour(e.target.value)
+                                        }
+                                    />
+                                </div>
+                                <button
+                                    className="w-24 rounded-full bg-darken-50 transition-all hover:bg-darken-100"
+                                    type="submit"
+                                >
+                                    Send
+                                </button>
                             </div>
-                            <button
-                                className="w-24 rounded-full bg-darken-50 transition-all hover:bg-darken-100"
-                                type="submit"
-                            >
-                                Send
-                            </button>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </Frame>
