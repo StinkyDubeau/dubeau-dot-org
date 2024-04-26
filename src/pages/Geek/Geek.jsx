@@ -29,35 +29,44 @@ export default function (props) {
     const [canSubmit, setCanSubmit] = useState(false);
     const [isLeader, setIsLeader] = useState(false);
     const [usernameCookie, setUsernameCookie] = useState(null);
-    const [username, setUsername] = useState(null);
+    const [username, setUsername] = useState(undefined);
     const [loggedIn, setLoggedIn] = useState(false);
 
     // Used to check if first render
     const didMount = useRef(false);
 
     // Check for cookies on page load
-    useEffect(() => {
-        try {
-            const n = 
-            console.log("Trying to log in from cookies.");
-            setUsernameCookie(getCookie("username"));
-            console.log(`Username Cookie: ${usernameCookie}`);
-            username !== null && setLoggedIn(true);
-        } catch {
-            console.log("User does not have a username cookie saved.");
-        }
-    }, []);
+    useEffect(() => {}, []);
 
     // Login if user has a username cookie
     useEffect(() => {
-        // Return early, if this is the first render:
+        // Run only on first render:
         if (!didMount.current) {
+            const n = console.log("Trying to log in from cookies.");
+            getCookie("username")
+                .then((result) => {
+                    console.log("Got cookie!");
+                    console.log(result);
+                    setUsernameCookie(result);
+                    return result;
+                })
+                .catch((error) => {
+                    console.log(error);
+                    return null;
+                });
+
             console.log("did mount abort");
             didMount.current = true;
             return;
         }
-        if (typeof usernameCookie !== String) {
+
+        // Abort
+        if (typeof usernameCookie !== "string") {
+            const a = typeof usernameCookie;
+            const b = typeof String;
+            console.log(a, b);
             console.log("not string abort");
+            console.log(typeof usernameCookie);
             return;
         }
         console.log("Username cookie effect");
