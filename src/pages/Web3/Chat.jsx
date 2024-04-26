@@ -2,7 +2,7 @@ import { joinRoom } from "trystero/nostr";
 import Frame from "../../components/Frame";
 import { useState } from "react";
 
-export default function Astros(props) {
+export default function Chat(props) {
     // Enable to sync old messages when a new user joins. This causes a bug where the entire chatlog will be duped... alot.
     const catchUpMode = false;
 

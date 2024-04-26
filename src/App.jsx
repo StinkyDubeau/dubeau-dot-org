@@ -9,7 +9,7 @@ import Home from "./pages/Home";
 import Fun from "./pages/Fun";
 import Contact from "./pages/Contact";
 import Geek from "./pages/Geek/Geek";
-import Astros from "./pages/Web3/Astros";
+import Chat from "./pages/Web3/Chat";
 import Trackers from "./pages/Trackers";
 
 // Assets
@@ -38,8 +38,8 @@ function App() {
                     element={<Geek data={data} setData={setData} />}
                 />
                 <Route
-                    path="/astros"
-                    element={<Astros data={data} setData={setData} />}
+                    path="/chat"
+                    element={<Chat data={data} setData={setData} />}
                 />
                 <Route
                     path="/trackers"
