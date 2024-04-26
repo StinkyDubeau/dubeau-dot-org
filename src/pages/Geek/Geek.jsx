@@ -1,8 +1,9 @@
 import Frame from "../../components/Frame";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Input from "../../components/Input";
 import Card from "../../components/Card";
+import { useCookir } from "./useCookie";
 
 export default function (props) {
     const stores = {
@@ -32,22 +33,36 @@ export default function (props) {
     const [username, setUsername] = useState(null);
     const [loggedIn, setLoggedIn] = useState(false);
 
-    useEffect(() => {
-        console.log("Page loaded.");
-        // Check if user has a logged in cookie
+    // Used to check if first render
+    const didMount = useRef(false);
 
-        // Example: Get the value of the 'username' cookie
+    // Check for cookies on page load
+    useEffect(() => {
         try {
+            const n = 
             console.log("Trying to log in from cookies.");
             setUsernameCookie(getCookie("username"));
-            console.log(`Username: ${username}`);
+            console.log(`Username Cookie: ${usernameCookie}`);
             username !== null && setLoggedIn(true);
         } catch {
             console.log("User does not have a username cookie saved.");
         }
     }, []);
 
+    // Login if user has a username cookie
     useEffect(() => {
+        // Return early, if this is the first render:
+        if (!didMount.current) {
+            console.log("did mount abort");
+            didMount.current = true;
+            return;
+        }
+        if (typeof usernameCookie !== String) {
+            console.log("not string abort");
+            return;
+        }
+        console.log("Username cookie effect");
+        console.log(`Username cookie: ${usernameCookie}`);
         updateUsername(usernameCookie);
     }, [usernameCookie]);
 
