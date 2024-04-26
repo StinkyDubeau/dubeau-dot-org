@@ -206,6 +206,10 @@ export default function (props) {
                             Login
                         </button>
                     </div>
+                    <p className="font-header text-darken-600 m-2">
+                        Tip: Click on your{" "}
+                        <span className="underline">username</span> to log out.
+                    </p>
                 </form>
             </div>
         );
@@ -215,7 +219,8 @@ export default function (props) {
         return (
             <button
                 onClick={logOut}
-                className="rounded-lg bg-white h-26 p-2 shadow"
+                // Hide button if there's no username
+                className={`h-full p-2 ${!username && "hidden"}`}
             >
                 {username && username.toString()}
             </button>
@@ -231,13 +236,11 @@ export default function (props) {
             </Frame>
             <div className="fixed bottom-0 left-0 z-50 m-0 h-16 w-screen min-w-36 bg-center sm:left-1.5 sm:top-1 sm:w-auto">
                 <div className="navbar bg-lighten-700 backdrop-blur-lg max-sm:rounded-t-xl sm:rounded-xl">
-                    <div className="flex-1 px-2 lg:flex-none">
-                        <div className="flex gap-2 text-lg font-bold">
-                            {createLoginButton()}
-                        </div>
-                    </div>
                     <div className="flex flex-1 justify-end px-2">
                         <div className="flex items-stretch gap-2">
+                            <div className="flex gap-2 text-lg font-bold underline">
+                                {createLoginButton()}
+                            </div>
                             {/* Vans */}
                             {/* Only render if a store is selected */}
                             {store && (
