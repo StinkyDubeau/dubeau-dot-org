@@ -183,9 +183,6 @@ export default function (props) {
     function createLogin() {
         return (
             <div className="m-5 flex animate-gradient-x justify-center rounded-3xl bg-gradient-to-tl from-orange-600 via-orange-500 to-yellow-500 p-4 sm:gap-8">
-                <p className="font-header text-xl text-lighten-800">
-                    Please log in.
-                </p>
                 <form
                     onSubmit={(e) => {
                         e.preventDefault();
@@ -193,8 +190,11 @@ export default function (props) {
                     }}
                 >
                     <div className="flex gap-2">
+                        <p className="my-auto font-header text-xl text-darken-800">
+                            Please log in:
+                        </p>
                         <input
-                            className="w-full rounded-full bg-darken-50 p-2 shadow-inner"
+                            className="rounded-full bg-darken-50 p-2 text-darken-800 shadow-inner"
                             value={username}
                             placeholder="Your NT login (i.e. 'jadubeau')"
                             onChange={(e) => setUsername(e.target.value)}
@@ -211,6 +211,17 @@ export default function (props) {
         );
     }
 
+    function createLoginButton() {
+        return (
+            <button
+                onClick={logOut}
+                className="rounded-lg bg-white h-26 p-2 shadow"
+            >
+                {username && username.toString()}
+            </button>
+        );
+    }
+
     return (
         <>
             <Frame data={props.data} noNavbar vignette>
@@ -221,14 +232,8 @@ export default function (props) {
             <div className="fixed bottom-0 left-0 z-50 m-0 h-16 w-screen min-w-36 bg-center sm:left-1.5 sm:top-1 sm:w-auto">
                 <div className="navbar bg-lighten-700 backdrop-blur-lg max-sm:rounded-t-xl sm:rounded-xl">
                     <div className="flex-1 px-2 lg:flex-none">
-                        <div className="text-lg font-bold">
-                            <button
-                                onClick={logOut}
-                                className="bg-lighten-800 hover:bg-lighten-600"
-                            >
-                                Log out
-                            </button>
-                            {username && username.toString()}
+                        <div className="flex gap-2 text-lg font-bold">
+                            {createLoginButton()}
                         </div>
                     </div>
                     <div className="flex flex-1 justify-end px-2">
