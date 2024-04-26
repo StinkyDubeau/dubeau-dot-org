@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 import Input from "../../components/Input";
 import Card from "../../components/Card";
-import { useCookir } from "./useCookie";
 
 export default function (props) {
     const stores = {
