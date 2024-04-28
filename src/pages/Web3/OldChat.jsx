@@ -10,9 +10,8 @@ export default function Chat(props) {
     const [myMessage, setMyMessage] = useState("");
     const [myColour, setMyColor] = useState("");
     const [myId, setMyId] = useState(null);
+    const [peers, setPeers] = useState([]);
     const [loading, setLoading] = useState(true);
-
-
 
     // Initialize room
     // Use config {} to join room "global"
@@ -21,11 +20,10 @@ export default function Chat(props) {
         "this_is_the_room_id",
     );
 
-    console.log(room);
+    console.log(`Room: ${room}`);
 
-    // Action context
+    // State to store all messages in context
     const [messages, setMessages] = useState([]);
-    const [peers, setPeers] = useState([]);
 
     // Actions
     const [setNewMessage, getNewMessage] = room.makeAction("newMessage");
@@ -159,7 +157,7 @@ export default function Chat(props) {
                     {/* HEADER */}
                     <div className="flex flex-col gap-2 rounded-3xl bg-lighten-800 p-4 text-darken-800 shadow-lg">
                         <p className="text-red-500">
-                            This is an experimental, peer-to-peer chat. All
+                            This is an experimental, decentralized chat. All
                             messages are ephemeral, and will be lost as soon as
                             all peers are disconnected.
                         </p>
