@@ -90,17 +90,26 @@ export default function Chat(props) {
         <Frame data={props.data}>
             <p className="font-header text-xl text-darken-800">p2p chat</p>
             <UserProfile user={myUser} />
-            {/* USERS LIST */}
-            <UsersList users={users} />
-            {/* MESSAGE FEED */}
-            <MessageFeed messages={messages} />
-            {/* MESSAGE ENTRY */}
-            <div className="flex flex-col gap-2 rounded-3xl bg-lighten-800 p-4 text-darken-800 shadow-lg">
-                <MessageEntry
-                    myMessage={myMessage}
-                    setMyMessage={setMyMessage}
-                    sendMyMessage={sendMyMessage}
-                />
+            <div className="fixed left-0 top-0 flex h-screen w-screen justify-evenly flex-col gap-2 bg-blue-400 pt-16 p-2">
+                {/* USERS LIST */}
+                <div className="flex flex-col gap-2 rounded-3xl bg-lighten-800 p-3 text-darken-800 shadow-lg">
+                    <UsersList users={users} />
+                </div>
+                {/* MESSAGE FEED */}
+
+                <div className="h-full w-full overflow-scroll rounded-3xl">
+                    <div className="flex flex-col gap-2 rounded-3xl bg-lighten-800 p-3 text-darken-800 shadow-lg">
+                        <MessageFeed messages={messages} />
+                    </div>
+                </div>
+                {/* MESSAGE ENTRY */}
+                <div className="relative bottom-0 flex flex-col gap-2 rounded-3xl bg-lighten-800 p-3 text-darken-800 shadow-lg">
+                    <MessageEntry
+                        myMessage={myMessage}
+                        setMyMessage={setMyMessage}
+                        sendMyMessage={sendMyMessage}
+                    />
+                </div>
             </div>
         </Frame>
     );

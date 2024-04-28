@@ -14,7 +14,7 @@ export default function MessageFeed(props) {
                     </p>
                     <p className="text-sm text-darken-500">{message.from.id}</p>
                 </div>
-                <p className="my-auto text-left text-lg text-darken-800">
+                <p className="my-auto text-left text-lg text-darken-800 max-sm:text-sm">
                     {message.content}
                 </p>
             </div>
