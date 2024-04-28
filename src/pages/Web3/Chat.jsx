@@ -2,6 +2,9 @@ import { joinRoom } from "trystero/nostr";
 import Frame from "../../components/Frame";
 import { useState, useEffect } from "react";
 
+const roomID = "this_is_the_room_id";
+const appID = "this_is_the_app_identifier_1342njl0789asdf";
+
 export default function Chat(props) {
     // Enable to sync old messages when a new user joins. This causes a bug where the entire chatlog will be duped... alot.
     const catchUpMode = false;
@@ -12,16 +15,9 @@ export default function Chat(props) {
     const [myId, setMyId] = useState(null);
     const [loading, setLoading] = useState(true);
 
-
-
     // Initialize room
     // Use config {} to join room "global"
-    const room = joinRoom(
-        { appId: "this_is_the_app_identifier_1342njl0789asdf" },
-        "this_is_the_room_id",
-    );
-
-    console.log(room);
+    const room = joinRoom({ appId: appID }, roomID);
 
     // Action context
     const [messages, setMessages] = useState([]);
