@@ -8,14 +8,13 @@ A room object from trystero
 
 ```js
 
-// All users
-// Peers is a stateful array of user objects.
-peers: [
-    id: {...myUser}
+// Users should be stateful array of connected user objects.
+users: [
+    aUser, anotherUser, ...
 ]
 
 // A user:
-peerID: {
+myUser: {
     id: "eaklfjajkweb",
     nick: "nickname",
     dob: Date(),
