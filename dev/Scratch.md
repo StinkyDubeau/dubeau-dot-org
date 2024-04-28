@@ -8,6 +8,12 @@ A room object from trystero
 
 ```js
 
+// All users
+// Peers is a stateful array of user objects.
+peers: [
+    id: {...myUser}
+]
+
 // A user:
 peerID: {
     id: "eaklfjajkweb",

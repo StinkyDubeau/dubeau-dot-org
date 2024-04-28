@@ -44,7 +44,7 @@ export default function Chat(props) {
             // I have joined
             console.log("No peers detected. This must be my ID: " + peerID);
             setMyUser({ ...myUser, id: peerID, dob: new Date() });
-            peers.push(`Me: ${peerID}`);
+            peers.push(myUser);
         } else {
             // Someone else joined, send my ID to them
             setNewUser(myUser);
@@ -67,7 +67,7 @@ export default function Chat(props) {
     getNewUser((newUser, peerID) => {
         console.log("New user: ", newUser);
 
-        if (peerID === myUser.id) {
+        if (newUser.id === myUser.id) {
             console.log("Abort @ getNewUser(): That's my ID.", peerID);
             return;
         }
