@@ -19,8 +19,11 @@ export default function Chat(props) {
     room.onPeerJoin(async (idOfJoiningPeer) => {
         console.log(`${idOfJoiningPeer} is connecting...`);
 
-        // Bounce id back to joining peer
-        await sendUser({ id: idOfJoiningPeer }, idOfJoiningPeer).then(() => {
+        // Bounce ID back to joining peer
+        await sendUser(
+            { id: idOfJoiningPeer, dob: new Date() },
+            idOfJoiningPeer,
+        ).then(() => {
             console.log(`${idOfJoiningPeer} connected.`);
             // Send my id to joining peer once they've connected.
             if (myUser) {
@@ -32,6 +35,7 @@ export default function Chat(props) {
 
     room.onPeerLeave((idOfLeavingPeer) => {
         console.log(`${idOfLeavingPeer} disconnected.`);
+        setUsers(users.filter((user) => user.id !== idOfLeavingPeer));
     });
 
     getUser((user, idOfSendingPeer, metadata) => {
@@ -39,12 +43,17 @@ export default function Chat(props) {
             `Info | getUser(): User: ${user.id}, idOfSendingPeer: ${idOfSendingPeer}`,
         );
 
-        if (myUser && myUser.id !== user.id) {
+        if (idOfSendingPeer === user.id) {
             console.log(`Adding ${user.id} to the list of users.`);
             setUsers([...users, user]);
         } else if (user.id !== idOfSendingPeer) {
             console.log("Just got my own ID.");
-            setMyUser(user);
+            !myUser
+                ? setMyUser(user)
+                : setMyUser({
+                      ...myUser,
+                      karma: myUser.karma ? myUser.karma + 1 : 1,
+                  });
         }
     });
 
@@ -64,7 +73,7 @@ export default function Chat(props) {
                 <ul>
                     {users[0]
                         ? users.map((user, index) => {
-                              return <li>{user.id}</li>;
+                              return <li key={index}>{user.id}</li>;
                           })
                         : "There are no users."}
                 </ul>
