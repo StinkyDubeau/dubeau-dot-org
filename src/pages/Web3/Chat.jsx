@@ -44,7 +44,7 @@ export default function Chat(props) {
             // I have joined
             console.log("No peers detected. This must be my ID: " + peerID);
             setMyUser({ ...myUser, id: peerID, dob: new Date() });
-            peers.push(myUser);
+            // peers.push(myUser);
         } else {
             // Someone else joined, send my ID to them
             setNewUser(myUser);
@@ -77,7 +77,9 @@ export default function Chat(props) {
 
     // Listen for user updates
     getUpdateUser((updatedUser, peerID) => {
-        console.log(`Info | getUpdateUser(): ${updatedUser.id} updated their user.`);
+        console.log(
+            `Info | getUpdateUser(): ${updatedUser.id} updated their user.`,
+        );
         setPeers({ ...peers, peerID: updatedUser });
     });
 
@@ -148,7 +150,11 @@ export default function Chat(props) {
         }
         return (
             <div key={index}>
-                <p>{Object.values(peer)}</p>
+                <p style={{background: peer.colour}}>{peer.id}</p>
+
+                <p>{Object.keys(peer).map((key) => `${key} `)}</p>
+                <p>{Object.values(peer).map((key) => `${key} `)}</p>
+
             </div>
         );
     }
