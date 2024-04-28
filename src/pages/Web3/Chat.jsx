@@ -12,8 +12,12 @@ export default function Chat(props) {
     // Handle user's input field
     const [myMessage, setMyMessage] = useState("");
     const [myColour, setMyColor] = useState("");
-    const [myId, setMyId] = useState(null);
+
+    const [myUser, setMyUser] = useState({});
     const [loading, setLoading] = useState(true);
+
+    // Age of your instance
+    const [dob, setDob] = useState(new Date());
 
     // Initialize room
     // Use config {} to join room "global"
@@ -35,14 +39,14 @@ export default function Chat(props) {
             loading: "Waiting for users",
         });
 
-        if (!myId) {
+        if (!myUser.id) {
             // I have joined
             console.log("No peers detected. This must be my ID: " + peerID);
-            setMyId(peerID);
+            setMyUser({ ...myUser, id: peerID, dob: new Date() });
             peers.push(`Me: ${peerID}`);
         } else {
             // Someone else joined, send my ID to them
-            setNewUser(myId);
+            setNewUser(myUser);
             // setPeers({ ...peers, peerID });
 
             // Interface with global loading icon
@@ -59,10 +63,16 @@ export default function Chat(props) {
     });
 
     // Listen for new users
-    getNewUser((theirID, peerID) => {
-        console.log(theirID);
-        console.log(peerID);
-        setPeers({ ...peers, theirID });
+    getNewUser((newUser, peerID) => {
+        console.log("New user: ", newUser);
+        console.log("Their ID: ", peerID);
+
+        if (peerID === myUser.id) {
+            console.log("Abort @ getNewUser(): That's my ID.");
+            return;
+        }
+
+        setPeers({ ...peers, peerID: newUser });
     });
 
     // Listen for new messages
@@ -77,7 +87,8 @@ export default function Chat(props) {
     // Broadcast a message
     function sendMyMessage(text) {
         setMyMessage("");
-        const message = { text: text, time: new Date(), from: myId };
+
+        const message = { text: text, time: new Date(), from: myUser };
 
         // Add message to our own client
         setMessages([...messages, message]);
@@ -94,7 +105,7 @@ export default function Chat(props) {
     function createMessage(message, index) {
         return (
             <div
-                key={index + message}
+                key={index + message.from.id}
                 className="justify-left flex gap-2 overflow-y-auto overflow-x-scroll rounded-3xl bg-darken-50 px-4 py-2"
             >
                 {/* User ID and Time are hidden on small displays */}
@@ -102,7 +113,7 @@ export default function Chat(props) {
                     <p className="text-sm text-darken-500">
                         {message.time.toLocaleString()}
                     </p>
-                    <p className="text-sm text-darken-500">{message.from}</p>
+                    <p className="text-sm text-darken-500">{message.from.id}</p>
                 </div>
                 <p className="my-auto text-left text-lg text-darken-800">
                     {message.text}
@@ -161,7 +172,7 @@ export default function Chat(props) {
                             messages are ephemeral, and will be lost as soon as
                             all peers are disconnected.
                         </p>
-                        <p>My ID: {myId}</p>
+                        <p>My ID: {myUser.id}</p>
                         {/* {room && <p>Room: {room.ping.toString()}</p>} */}
                     </div>
                     {/* BODY */}

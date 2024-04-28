@@ -7,7 +7,17 @@
 A room object from trystero
 
 ```js
-room = {
+
+// A user:
+peerID: {
+    id: "eaklfjajkweb",
+    nick: "nickname",
+    dob: Date(),
+    peerID: "askjehawejkfawef" (Just incase I need this down the road. Not sure if I will.)
+}
+
+// A room:
+room: {
         makeAction: makeAction(type),
         ping: async ping(id),
         leave: leave(),
