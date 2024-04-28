@@ -1,3 +1,8 @@
+## Site-wide
+
+[ ] dark mode 👀
+    can probably just swap lighten-xxx for darken-xxx sitewide and get something good enough.
+
 ## Trackers Page
 
 -   Graph Component

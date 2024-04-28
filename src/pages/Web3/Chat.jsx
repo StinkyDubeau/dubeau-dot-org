@@ -1,6 +1,9 @@
-import { joinRoom } from "trystero/nostr";
+import { joinRoom } from "trystero";
 import Frame from "../../components/Frame";
 import { useState, useEffect } from "react";
+
+const roomID = "this_is_the_room_id";
+const appID = "this_is_the_app_identifier_1342njl0789asdf";
 
 export default function Chat(props) {
     // Enable to sync old messages when a new user joins. This causes a bug where the entire chatlog will be duped... alot.
@@ -9,48 +12,49 @@ export default function Chat(props) {
     // Handle user's input field
     const [myMessage, setMyMessage] = useState("");
     const [myColour, setMyColor] = useState("");
-    const [myId, setMyId] = useState(null);
-    const [peers, setPeers] = useState([]);
+
+    const [myUser, setMyUser] = useState({});
     const [loading, setLoading] = useState(true);
+
+    // Age of your instance
+    const [dob, setDob] = useState(new Date());
 
     // Initialize room
     // Use config {} to join room "global"
-    const room = joinRoom(
-        { appId: "this_is_the_app_identifier_1342njl0789asdf" },
-        "this_is_the_room_id",
-    );
+    const room = joinRoom({ appId: appID }, roomID);
 
-    console.log(`Room: ${room}`);
-
-    // State to store all messages in context
+    // Action context
     const [messages, setMessages] = useState([]);
+    const [peers, setPeers] = useState([]);
 
-    // Function to send message to peers
-    const [sendMessage, getMessage] = room.makeAction("message");
+    // Actions
+    const [setNewMessage, getNewMessage] = room.makeAction("newMessage");
+    const [setNewUser, getNewUser] = room.makeAction("newUser");
+    const [setUpdateUser, getUpdateUser] = room.makeAction("updateUser");
 
     room.onPeerJoin((peerID) => {
         setLoading(false);
-        if (!myId) {
+
+        props.setData({
+            ...props.data,
+            loading: "Waiting for users",
+        });
+
+        if (!myUser.id) {
+            // I have joined
             console.log("No peers detected. This must be my ID: " + peerID);
-            setMyId(peerID);
+            setMyUser({ ...myUser, id: peerID, dob: new Date() });
+            // peers.push(myUser);
         } else {
-            setPeers({ ...peers, peerID });
+            // Someone else joined, send my ID to them
+            setNewUser(myUser);
+            // setPeers({ ...peers, peerID });
 
             // Interface with global loading icon
             props.setData({
                 ...props.data,
                 loading: false,
             });
-
-            // Send previous messages to the new user if catchUpMode is enabled
-            if (catchUpMode) {
-                messages[0] !== undefined &&
-                    messages.forEach(async (message) => {
-                        console.log("sending one");
-                        console.log(messages);
-                        await sendMessage(message, peerID);
-                    });
-            }
         }
     });
 
@@ -59,8 +63,28 @@ export default function Chat(props) {
         setPeers({ ...peers, peerID: null });
     });
 
-    // Listen for messages
-    getMessage((message, peerID) => {
+    // Listen for new users
+    getNewUser((newUser, peerID) => {
+        console.log("New user: ", newUser);
+
+        if (newUser.id === myUser.id) {
+            console.log("Abort @ getNewUser(): That's my ID.", peerID);
+            return;
+        }
+
+        setPeers({ ...peers, peerID: newUser });
+    });
+
+    // Listen for user updates
+    getUpdateUser((updatedUser, peerID) => {
+        console.log(
+            `Info | getUpdateUser(): ${updatedUser.id} updated their user.`,
+        );
+        setPeers({ ...peers, peerID: updatedUser });
+    });
+
+    // Listen for new messages
+    getNewMessage((message, peerID) => {
         console.log(`Got message from${peerID}: ${message.text}`);
         console.log(message);
         // Add message to our state
@@ -71,13 +95,14 @@ export default function Chat(props) {
     // Broadcast a message
     function sendMyMessage(text) {
         setMyMessage("");
-        const message = { text: text, time: new Date(), from: myId };
+
+        const message = { text: text, time: new Date(), from: myUser };
 
         // Add message to our own client
         setMessages([...messages, message]);
 
         // Broadcast to other clients
-        sendMessage(message);
+        setNewMessage(message);
     }
 
     function sendMyColour(colour) {
@@ -88,14 +113,15 @@ export default function Chat(props) {
     function createMessage(message, index) {
         return (
             <div
-                key={index + message}
+                key={index + message.from.id}
                 className="justify-left flex gap-2 overflow-y-auto overflow-x-scroll rounded-3xl bg-darken-50 px-4 py-2"
             >
-                <div className="flex h-full flex-col justify-center">
+                {/* User ID and Time are hidden on small displays */}
+                <div className="flex h-full flex-col justify-center max-sm:hidden">
                     <p className="text-sm text-darken-500">
                         {message.time.toLocaleString()}
                     </p>
-                    <p className="text-sm text-darken-500">{message.from}</p>
+                    <p className="text-sm text-darken-500">{message.from.id}</p>
                 </div>
                 <p className="my-auto text-left text-lg text-darken-800">
                     {message.text}
@@ -124,7 +150,11 @@ export default function Chat(props) {
         }
         return (
             <div key={index}>
-                <p>{Object.values(peer)}</p>
+                <p className="rounded" style={{color: peer.colour}}>{peer.id}</p>
+
+                {/* <p>{Object.keys(peer).map((key) => `${key} `)}</p> */}
+                {/* <p>{Object.values(peer).map((key) => `${key} `)}</p> */}
+
             </div>
         );
     }
@@ -143,24 +173,29 @@ export default function Chat(props) {
         [loading],
     );
 
+    // For broadcasting updates to your user
+    useEffect(() => {
+        setUpdateUser(myUser);
+    }, [myUser]);
+
+    useEffect(() => {
+        console.log(`Info | useEffect(): Updating your colour to: ${myColour}`);
+        setMyUser({ ...myUser, colour: myColour });
+    }, [myColour]);
+
     return (
         <Frame data={props.data}>
-            <div className="sm:hidden">
-                <p className="z-50 font-header text-xl text-darken-800">
-                    Your display is too small!
-                </p>
-            </div>
-
             <div className="fixed bottom-0 left-0  z-20 mx-auto flex h-full w-full justify-between p-2 pt-16 shadow-lg backdrop-blur-3xl transition-all">
                 <div className="flex w-full flex-col justify-between gap-2">
                     {/* HEADER */}
                     <div className="flex flex-col gap-2 rounded-3xl bg-lighten-800 p-4 text-darken-800 shadow-lg">
                         <p className="text-red-500">
-                            This is an experimental, decentralized chat. All
+                            This is an experimental, peer-to-peer chat. All
                             messages are ephemeral, and will be lost as soon as
                             all peers are disconnected.
                         </p>
-                        <p>My ID: {myId}</p>
+                        <p>My ID: {myUser.id}</p>
+                        {/* {room && <p>Room: {room.ping.toString()}</p>} */}
                     </div>
                     {/* BODY */}
                     <div className="flex-0 flex h-full max-h-[80%] basis-auto justify-between gap-2">
@@ -199,7 +234,7 @@ export default function Chat(props) {
                                         className="my-auto -mt-2 h-[200%] min-w-24"
                                         value={myColour}
                                         onChange={(e) =>
-                                            sendMyColour(e.target.value)
+                                            setMyColor(e.target.value)
                                         }
                                     />
                                 </div>

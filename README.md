@@ -17,3 +17,5 @@ VITE_EMAILJS_SERVICE_ID=xxxxxxxxxxxxx
 ```
 
 5. npm run dev
+
+If you're using VSCode, install extensions for tailwind, prettier, and draw.io
