@@ -13,6 +13,14 @@ users: [
     aUser, anotherUser, ...
 ]
 
+messages: [
+    aMessage, anotherMessage, ...
+]
+
+message: {
+    text: 
+}
+
 // A user:
 myUser: {
     id: "eaklfjajkweb",

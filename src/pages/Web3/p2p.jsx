@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Frame from "../../components/Frame";
 import MessageFeed from "./MessageFeed";
 import UserProfile from "./UserProfile";
+import MessageEntry from "./MessageEntry";
 
 export default function Chat(props) {
     const roomID = "a1";
@@ -72,16 +73,13 @@ export default function Chat(props) {
         );
 
         setMessages([...messages, message]);
-
-        console.log(messages);
     });
 
     async function sendMyMessage(text) {
         const message = { content: text, timestamp: new Date(), from: myUser };
-        await sendMessage(message).then(() => {
-            console.log("Sent.");
-            setMessages([...messages, message]);
-        });
+        await sendMessage(message).then(() =>
+            setMessages([...messages, message]),
+        );
 
         //Clear the text field after sending
         setMyMessage("");
@@ -106,27 +104,11 @@ export default function Chat(props) {
 
             {/* MESSAGE ENTRY */}
             <div className="flex flex-col gap-2 rounded-3xl bg-lighten-800 p-4 text-darken-800 shadow-lg">
-                <form
-                    onSubmit={(e) => {
-                        e.preventDefault();
-                        sendMyMessage(myMessage);
-                    }}
-                >
-                    <div className="flex gap-2">
-                        <input
-                            className="w-full rounded-full bg-darken-50 p-2 shadow-inner"
-                            value={myMessage}
-                            placeholder="Message"
-                            onChange={(e) => setMyMessage(e.target.value)}
-                        />
-                        <button
-                            className="w-24 rounded-full bg-darken-50 transition-all hover:bg-darken-100"
-                            type="submit"
-                        >
-                            Send
-                        </button>
-                    </div>
-                </form>
+                <MessageEntry
+                    myMessage={myMessage}
+                    setMyMessage={setMyMessage}
+                    sendMyMessage={sendMyMessage}
+                />
             </div>
         </Frame>
     );
