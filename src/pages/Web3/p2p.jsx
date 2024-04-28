@@ -1,6 +1,7 @@
 import { joinRoom } from "trystero";
 import Frame from "../../components/Frame";
 import { useState, useEffect } from "react";
+import MessageFeed from "./MessageFeed";
 
 export default function Chat(props) {
     const roomID = "a1";
@@ -10,6 +11,8 @@ export default function Chat(props) {
 
     const [myMessage, setMyMessage] = useState("");
     const [myUser, setMyUser] = useState(null);
+
+    const [messages, setMessages] = useState([]);
     const [users, setUsers] = useState([]);
 
     // Actions
@@ -43,11 +46,14 @@ export default function Chat(props) {
             `Info | getUser(): User: ${user.id}, idOfSendingPeer: ${idOfSendingPeer}`,
         );
 
+        // Check if this is a peer self-identifying. Add to list of users if so
         if (idOfSendingPeer === user.id) {
             console.log(`Adding ${user.id} to the list of users.`);
             setUsers([...users, user]);
+            // Check if this is a peer telling us our ID
         } else if (user.id !== idOfSendingPeer) {
             console.log("Just got my own ID.");
+            // Reply to other users informing that we are online.
             await sendUser(user, idOfSendingPeer).then(
                 !myUser
                     ? setMyUser(user)
@@ -63,7 +69,19 @@ export default function Chat(props) {
         console.log(
             `Info | getMessage(): Message: ${message}, idOfSendingPeer: ${idOfSendingPeer}`,
         );
+
+        setMessages([...messages, message]);
+
+        console.log(messages);
     });
+
+    async function sendMyMessage(text) {
+        const message = { content: text, timestamp: new Date(), from: myUser };
+        await sendMessage(message).then(console.log("Sent."));
+
+        //Clear the text field after sending
+        setMyMessage("");
+    }
 
     return (
         <Frame data={props.data}>
@@ -80,6 +98,9 @@ export default function Chat(props) {
                         : "There are no users."}
                 </ul>
             </div>
+            {/* MESSAGE FEED */}
+            <MessageFeed messages={messages} />
+
             {/* MESSAGE ENTRY */}
             <div className="flex flex-col gap-2 rounded-3xl bg-lighten-800 p-4 text-darken-800 shadow-lg">
                 <form
