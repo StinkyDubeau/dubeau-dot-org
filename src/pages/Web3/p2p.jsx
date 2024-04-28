@@ -90,23 +90,23 @@ export default function Chat(props) {
         <Frame data={props.data}>
             <div className="fixed left-0 top-0 h-screen w-screen border border-blue-500 p-2 pt-16">
                 <div className="h-full w-full border border-yellow-500">
-                    <div className="flex h-full flex-col justify-between gap-2 border border-cyan-300">
-                        <div className="flex-0 h-12 border border-green-400 sm:hidden">
+                    <div className="flex h-full flex-col justify-between gap-2 border  border-cyan-300 drop-shadow-lg">
+                        <div className="flex-0 h-12 rounded-3xl overflow-auto border border-green-400 bg-lighten-800 sm:hidden">
                             {/* USERS */}
                             <UsersList users={users} />
                         </div>
                         <div className="flex flex-1 justify-center overflow-auto border-2 border-red-400">
                             {/* MESSAGES */}
-                            <div className="flex gap-2">
-                                <div className="flex-0 max-sm:hidden">
+                            <div className="flex gap-2 overflow-auto">
+                                <div className="flex-0 max-w-52 overflow-auto rounded-3xl bg-lighten-800 p-2 max-sm:hidden">
                                     <UsersList users={users} />
                                 </div>
-                                <div className="flex-1 bg-lighten-800 overflow-scroll rounded-3xl p-2">
+                                <div className="flex-1 overflow-scroll rounded-3xl bg-lighten-800 p-2">
                                     <MessageFeed messages={messages} />
                                 </div>
                             </div>
                         </div>
-                        <div className="flex-0 h-12 border border-green-400">
+                        <div className="flex-0 rounded-3xl border border-green-400 bg-lighten-800 p-2">
                             {/* INPUT FIELD */}
                             <MessageEntry
                                 myMessage={myMessage}
