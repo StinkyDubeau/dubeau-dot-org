@@ -26,7 +26,7 @@ export default function Chat(props) {
     const [messages, setMessages] = useState([]);
 
     // Function to send message to peers
-    const [sendMessage, getMessage] = room.makeAction("message");
+    const [sendNewMessage, getNewMessage] = room.makeAction("newMessage");
 
     room.onPeerJoin((peerID) => {
         setLoading(false);
@@ -48,7 +48,7 @@ export default function Chat(props) {
                     messages.forEach(async (message) => {
                         console.log("sending one");
                         console.log(messages);
-                        await sendMessage(message, peerID);
+                        await sendNewMessage(message, peerID);
                     });
             }
         }
@@ -60,7 +60,7 @@ export default function Chat(props) {
     });
 
     // Listen for messages
-    getMessage((message, peerID) => {
+    getNewMessage((message, peerID) => {
         console.log(`Got message from${peerID}: ${message.text}`);
         console.log(message);
         // Add message to our state
@@ -77,7 +77,7 @@ export default function Chat(props) {
         setMessages([...messages, message]);
 
         // Broadcast to other clients
-        sendMessage(message);
+        sendNewMessage(message);
     }
 
     function sendMyColour(colour) {
