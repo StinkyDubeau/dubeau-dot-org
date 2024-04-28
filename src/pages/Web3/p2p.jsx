@@ -4,6 +4,7 @@ import Frame from "../../components/Frame";
 import MessageFeed from "./MessageFeed";
 import UserProfile from "./UserProfile";
 import MessageEntry from "./MessageEntry";
+import UsersList from "./UsersList";
 
 export default function Chat(props) {
     const roomID = "a1";
@@ -89,19 +90,10 @@ export default function Chat(props) {
         <Frame data={props.data}>
             <p className="font-header text-xl text-darken-800">p2p chat</p>
             <UserProfile user={myUser} />
-            <div>
-                <p>Users: </p>
-                <ul>
-                    {users[0]
-                        ? users.map((user, index) => {
-                              return <li key={index}>{user.id}</li>;
-                          })
-                        : "There are no users."}
-                </ul>
-            </div>
+            {/* USERS LIST */}
+            <UsersList users={users} />
             {/* MESSAGE FEED */}
             <MessageFeed messages={messages} />
-
             {/* MESSAGE ENTRY */}
             <div className="flex flex-col gap-2 rounded-3xl bg-lighten-800 p-4 text-darken-800 shadow-lg">
                 <MessageEntry
