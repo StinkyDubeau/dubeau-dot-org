@@ -25,7 +25,7 @@ export default function Chat(props) {
     // State to store all messages in context
     const [messages, setMessages] = useState([]);
 
-    // Function to send message to peers
+    // Actions
     const [setNewMessage, getNewMessage] = room.makeAction("newMessage");
     const [setNewUser, getNewUser] = room.makeAction("newUser");
 
