@@ -1,4 +1,4 @@
-import { joinRoom } from "trystero/nostr";
+import { joinRoom } from "trystero";
 import Frame from "../../components/Frame";
 import { useState, useEffect } from "react";
 
@@ -29,27 +29,27 @@ export default function Chat(props) {
 
     room.onPeerJoin((peerID) => {
         setLoading(false);
+
+        props.setData({
+            ...props.data,
+            loading: "Waiting for users",
+        });
+
         if (!myId) {
+            // I have joined
             console.log("No peers detected. This must be my ID: " + peerID);
             setMyId(peerID);
+            peers.push(`Me: ${peerID}`);
         } else {
-            setPeers({ ...peers, peerID });
+            // Someone else joined, send my ID to them
+            setNewUser(myId);
+            // setPeers({ ...peers, peerID });
 
             // Interface with global loading icon
             props.setData({
                 ...props.data,
                 loading: false,
             });
-
-            // Send previous messages to the new user if catchUpMode is enabled
-            if (catchUpMode) {
-                messages[0] !== undefined &&
-                    messages.forEach(async (message) => {
-                        console.log("sending one");
-                        console.log(messages);
-                        await setNewMessage(message, peerID);
-                    });
-            }
         }
     });
 
@@ -58,7 +58,14 @@ export default function Chat(props) {
         setPeers({ ...peers, peerID: null });
     });
 
-    // Listen for messages
+    // Listen for new users
+    getNewUser((theirID, peerID) => {
+        console.log(theirID);
+        console.log(peerID);
+        setPeers({ ...peers, theirID });
+    });
+
+    // Listen for new messages
     getNewMessage((message, peerID) => {
         console.log(`Got message from${peerID}: ${message.text}`);
         console.log(message);
@@ -90,7 +97,8 @@ export default function Chat(props) {
                 key={index + message}
                 className="justify-left flex gap-2 overflow-y-auto overflow-x-scroll rounded-3xl bg-darken-50 px-4 py-2"
             >
-                <div className="flex h-full flex-col justify-center">
+                {/* User ID and Time are hidden on small displays */}
+                <div className="flex h-full flex-col justify-center max-sm:hidden">
                     <p className="text-sm text-darken-500">
                         {message.time.toLocaleString()}
                     </p>
@@ -144,12 +152,6 @@ export default function Chat(props) {
 
     return (
         <Frame data={props.data}>
-            <div className="sm:hidden">
-                <p className="z-50 font-header text-xl text-darken-800">
-                    Your display is too small!
-                </p>
-            </div>
-
             <div className="fixed bottom-0 left-0  z-20 mx-auto flex h-full w-full justify-between p-2 pt-16 shadow-lg backdrop-blur-3xl transition-all">
                 <div className="flex w-full flex-col justify-between gap-2">
                     {/* HEADER */}
@@ -160,6 +162,7 @@ export default function Chat(props) {
                             all peers are disconnected.
                         </p>
                         <p>My ID: {myId}</p>
+                        {/* {room && <p>Room: {room.ping.toString()}</p>} */}
                     </div>
                     {/* BODY */}
                     <div className="flex-0 flex h-full max-h-[80%] basis-auto justify-between gap-2">

@@ -9,7 +9,7 @@ A room object from trystero
 ```js
 room = {
         makeAction: makeAction(type),
-        ping: async () => ping(id),
+        ping: async ping(id),
         leave: leave(),
         getPeers: getPeers(),
         addStream: addStream(stream, targets, meta),
