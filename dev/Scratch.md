@@ -13,7 +13,8 @@ peerID: {
     id: "eaklfjajkweb",
     nick: "nickname",
     dob: Date(),
-    peerID: "askjehawejkfawef" (Just incase I need this down the road. Not sure if I will.)
+    colour: "#0f8f3f",
+    peerID: "askjehawejkfawef" (Just incase I need this down the road. Not sure if I will.),
 }
 
 // A room:

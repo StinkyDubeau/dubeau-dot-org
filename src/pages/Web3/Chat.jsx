@@ -30,6 +30,7 @@ export default function Chat(props) {
     // Actions
     const [setNewMessage, getNewMessage] = room.makeAction("newMessage");
     const [setNewUser, getNewUser] = room.makeAction("newUser");
+    const [setUpdateUser, getUpdateUser] = room.makeAction("updateUser");
 
     room.onPeerJoin((peerID) => {
         setLoading(false);
@@ -65,14 +66,19 @@ export default function Chat(props) {
     // Listen for new users
     getNewUser((newUser, peerID) => {
         console.log("New user: ", newUser);
-        console.log("Their ID: ", peerID);
 
         if (peerID === myUser.id) {
-            console.log("Abort @ getNewUser(): That's my ID.");
+            console.log("Abort @ getNewUser(): That's my ID.", peerID);
             return;
         }
 
         setPeers({ ...peers, peerID: newUser });
+    });
+
+    // Listen for user updates
+    getUpdateUser((updatedUser, peerID) => {
+        console.log("updating a user.")
+        setPeers({ ...peers, peerID: updatedUser });
     });
 
     // Listen for new messages
@@ -160,6 +166,11 @@ export default function Chat(props) {
             }),
         [loading],
     );
+
+    // For broadcasting updates to your user
+    useEffect(() => {
+        setUpdateUser(myUser);
+    }, [myUser]);
 
     return (
         <Frame data={props.data}>
