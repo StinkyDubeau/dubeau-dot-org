@@ -77,7 +77,10 @@ export default function Chat(props) {
 
     async function sendMyMessage(text) {
         const message = { content: text, timestamp: new Date(), from: myUser };
-        await sendMessage(message).then(console.log("Sent."));
+        await sendMessage(message).then(() => {
+            console.log("Sent.");
+            setMessages([...messages, message]);
+        });
 
         //Clear the text field after sending
         setMyMessage("");
