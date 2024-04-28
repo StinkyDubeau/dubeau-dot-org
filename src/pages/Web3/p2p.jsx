@@ -1,7 +1,8 @@
 import { joinRoom } from "trystero";
-import Frame from "../../components/Frame";
 import { useState, useEffect } from "react";
+import Frame from "../../components/Frame";
 import MessageFeed from "./MessageFeed";
+import UserProfile from "./UserProfile";
 
 export default function Chat(props) {
     const roomID = "a1";
@@ -89,8 +90,7 @@ export default function Chat(props) {
     return (
         <Frame data={props.data}>
             <p className="font-header text-xl text-darken-800">p2p chat</p>
-            <p>My ID: {myUser ? myUser.id : "You have no identity."}</p>
-            <p>My Karma: {myUser ? myUser.karma : "You have no karma."}</p>
+            <UserProfile user={myUser} />
             <div>
                 <p>Users: </p>
                 <ul>
