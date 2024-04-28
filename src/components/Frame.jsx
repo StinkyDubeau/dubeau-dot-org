@@ -25,11 +25,11 @@ export default function Frame(props) {
             {!props.noNavbar && <Navbar data={props.data} />}
 
             <div
-                className={`h-max min-h-[130vh] ${props.vignette === !null ? "bg-zinc-800 shadow-inner-4xl" : "bg-zinc-200"}`}
+                className={`h-max min-h-screen ${props.vignette === !null ? "bg-zinc-800 shadow-inner-4xl" : "bg-zinc-200"}`}
             >
                 <div className="m-auto max-w-screen-xl p-4">
                     <div className="mt-12 flex justify-center">
-                        <div className="flex h-screen flex-col">
+                        <div className="flex flex-col">
                             {props.children}
                         </div>
                     </div>
