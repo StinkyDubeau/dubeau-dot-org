@@ -77,7 +77,7 @@ export default function Chat(props) {
 
     // Listen for user updates
     getUpdateUser((updatedUser, peerID) => {
-        console.log("updating a user.")
+        console.log(`Info | getUpdateUser(): ${updatedUser.id} updated their user.`);
         setPeers({ ...peers, peerID: updatedUser });
     });
 
@@ -172,6 +172,11 @@ export default function Chat(props) {
         setUpdateUser(myUser);
     }, [myUser]);
 
+    useEffect(() => {
+        console.log(`Info | useEffect(): Updating your colour to: ${myColour}`);
+        setMyUser({ ...myUser, colour: myColour });
+    }, [myColour]);
+
     return (
         <Frame data={props.data}>
             <div className="fixed bottom-0 left-0  z-20 mx-auto flex h-full w-full justify-between p-2 pt-16 shadow-lg backdrop-blur-3xl transition-all">
@@ -223,7 +228,7 @@ export default function Chat(props) {
                                         className="my-auto -mt-2 h-[200%] min-w-24"
                                         value={myColour}
                                         onChange={(e) =>
-                                            sendMyColour(e.target.value)
+                                            setMyColor(e.target.value)
                                         }
                                     />
                                 </div>
