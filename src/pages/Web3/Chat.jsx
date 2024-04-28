@@ -150,10 +150,10 @@ export default function Chat(props) {
         }
         return (
             <div key={index}>
-                <p style={{background: peer.colour}}>{peer.id}</p>
+                <p className="rounded" style={{color: peer.colour}}>{peer.id}</p>
 
-                <p>{Object.keys(peer).map((key) => `${key} `)}</p>
-                <p>{Object.values(peer).map((key) => `${key} `)}</p>
+                {/* <p>{Object.keys(peer).map((key) => `${key} `)}</p> */}
+                {/* <p>{Object.values(peer).map((key) => `${key} `)}</p> */}
 
             </div>
         );
