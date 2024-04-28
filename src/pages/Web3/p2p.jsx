@@ -25,11 +25,11 @@ export default function Chat(props) {
             idOfJoiningPeer,
         ).then(() => {
             console.log(`${idOfJoiningPeer} connected.`);
-            // Send my id to joining peer once they've connected.
-            if (myUser) {
-                console.log("sending my user elsewhere.");
-                sendUser(myUser);
-            }
+            // // Send my id to joining peer once they've connected.
+            // if (myUser) {
+            //     console.log("PEERJOIN sending my user elsewhere.");
+            //     sendUser(myUser, idOfJoiningPeer);
+            // }
         });
     });
 
@@ -38,7 +38,7 @@ export default function Chat(props) {
         setUsers(users.filter((user) => user.id !== idOfLeavingPeer));
     });
 
-    getUser((user, idOfSendingPeer, metadata) => {
+    getUser(async (user, idOfSendingPeer, metadata) => {
         console.log(
             `Info | getUser(): User: ${user.id}, idOfSendingPeer: ${idOfSendingPeer}`,
         );
@@ -48,12 +48,14 @@ export default function Chat(props) {
             setUsers([...users, user]);
         } else if (user.id !== idOfSendingPeer) {
             console.log("Just got my own ID.");
-            !myUser
-                ? setMyUser(user)
-                : setMyUser({
-                      ...myUser,
-                      karma: myUser.karma ? myUser.karma + 1 : 1,
-                  });
+            await sendUser(user, idOfSendingPeer).then(
+                !myUser
+                    ? setMyUser(user)
+                    : setMyUser({
+                          ...myUser,
+                          karma: myUser.karma ? myUser.karma + 1 : 1,
+                      }),
+            );
         }
     });
 
