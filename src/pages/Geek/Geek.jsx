@@ -1,28 +1,35 @@
 import Frame from "../../components/Frame";
 import { Link } from "react-router-dom";
-import { useState, useEffect, useRef } from "react";
-import Input from "../../components/Input";
-import Card from "../../components/Card";
+import React, { useState, useContext, useEffect, useRef } from "react";
+import * as RealmWeb from "realm-web";
+
+const RealmAppContext = React.createContext(null);
 
 export default function (props) {
+    const uri = import.meta.env.VITE_CONNECTION_STRING;
+
     const stores = {
         928: { vans: ["022", "091", "125", "137", "163", "427", "449"] },
         940: { vans: ["124", "160", "185"] },
         639: { vans: ["017", "140", "446"] },
     };
 
-    const questions = [
-        "Mirrors are adequately adjusted",
-        "Brake lights, headlights, and taillights are all working",
-        "Tires are in good condition, with adequate tread and correct pressure",
-        "Turn-signals are working",
-        "Registration and insurance papers are in the glovebox: VIN numbers match",
-        "Windshield wiper blades are in good, working condition",
-        "You have a valid drivers license on your person",
-        "Emergency brake is working",
-        "Horn is working",
-        "Windshield is not cracked",
-    ];
+    const [questions, setQuestions] = useState([
+        { "Mirrors are adequately adjusted": false },
+        { "Brake lights, headlights, and taillights are all working": false },
+        {
+            "Tires are in good condition, with adequate tread and correct pressure": false,
+        },
+        { "Turn-signals are working": false },
+        {
+            "Registration and insurance papers are in the glovebox: VIN numbers match": false,
+        },
+        { "Windshield wiper blades are in good, working condition": false },
+        { "You have a valid drivers license on your person": false },
+        { "Emergency brake is working": false },
+        { "Horn is working": false },
+        { "Windshield is not cracked": false },
+    ]);
 
     const [store, setStore] = useState();
     const [van, setVan] = useState();
@@ -34,9 +41,6 @@ export default function (props) {
 
     // Used to check if first render
     const didMount = useRef(false);
-
-    // Check for cookies on page load
-    useEffect(() => {}, []);
 
     // Login if user has a username cookie
     useEffect(() => {
@@ -117,23 +121,48 @@ export default function (props) {
         setLoggedIn(true);
     }
 
-    function createQuestions(question, index) {
+    function createQuestion(question, index) {
         return (
             <label
                 key={index}
-                className="{index % 2  === 0 && 'bg-slate-200`} label cursor-pointer text-left"
+                className="label h-16 cursor-pointer border-b border-darken-50 text-left"
             >
-                <span className="label-text text-darken-800">{question}</span>
+                {/* {console.log(questions.length)}
+                {console.log(questions)}
+                {console.log(question)} */}
+
+                <span className="label-text text-darken-800">
+                    {Object.keys(question)}
+                </span>
                 <input
                     type="checkbox"
-                    // checked={showOld && "checked"}
-                    // onChange={(e) =>
-                    //     showOld
-                    //         ? setShowOld(
-                    //               !e.target.value,
-                    //           )
-                    //         : setShowOld(e.target.value)
-                    // }
+                    checked={
+                        question[Object.keys(question).toString()] && "checked"
+                    }
+                    onChange={(e) => {
+                        const key = Object.keys(question);
+                        question[key]
+                            ? setQuestions([
+                                  ...questions.filter(
+                                      (question) =>
+                                          key.toString() !==
+                                              Object.keys(
+                                                  question,
+                                              ).toString() && question,
+                                  ),
+                                  { [key]: !e.target.value },
+                              ])
+                            : setQuestions([
+                                  ...questions.filter(
+                                      (question) =>
+                                          key.toString() !==
+                                              Object.keys(
+                                                  question,
+                                              ).toString() && question,
+                                  ),
+                                  { [key]: e.target.value },
+                              ]);
+                    }}
                     className="checkbox"
                 />
             </label>
@@ -143,34 +172,32 @@ export default function (props) {
     function createChecklist() {
         return (
             <div>
-                {/* Logo */}
-                <div className="flex h-16 justify-center">
-                    <img src="https://merchandising-assets.bestbuy.ca/bltc8653f66842bff7f/bltc645e37ea0b1a348/6183051594e50d5a63800f45/gs-logo.png" />
-                </div>
-                <div className="m-5">
-                    <p className="font-header text-5xl text-lighten-900 sm:text-left">
-                        Inspection Checklist
-                    </p>
-                </div>
-
                 {/* Gradient bg */}
                 <div className="m-5 flex animate-gradient-x justify-center rounded-3xl bg-gradient-to-tl from-orange-600 via-orange-500 to-yellow-500 p-4 sm:gap-8">
-                    <div className="flex flex-wrap justify-around gap-4 lg:gap-48">
-                        <div className="flex w-72 flex-col">
-                            <p className="font-header text-5xl text-zinc-800">
+                    <div className="flex flex-wrap justify-around gap-2 lg:gap-48">
+                        <div className="flex w-72 flex-col gap-4">
+                            <p className="text-5xl font-bold text-zinc-800">
                                 Checklist
                             </p>
-                            {/* <p className="font-header text-darken-800">
+                            <div className="flex justify-center gap-2">
+                                <button className="h-16 w-full rounded-2xl bg-lighten-900 text-lg text-darken-800 shadow-lg transition-all hover:bg-lighten-900">
+                                    Choose Store
+                                </button>
+                                <button className="h-16 w-full rounded-2xl bg-lighten-900 text-lg text-darken-800 shadow-lg transition-all hover:bg-lighten-900">
+                                    Choose Van
+                                </button>
+                            </div>
+                            {/* <p className="font-bold text-darken-800">
                                     or report moderation issues
                                 </p> */}
                         </div>
 
                         <div className="flex flex-col gap-2">
-                            <div className="w-72 rounded-2xl bg-orange-50 p-4 shadow-xl">
-                                {questions.map(createQuestions)}
+                            <div className="w-72 rounded-2xl bg-lighten-900 p-4 shadow-xl">
+                                {questions.map(createQuestion)}
                             </div>
 
-                            <button className="w-72 rounded-2xl bg-orange-50 p-4 font-header shadow-xl transition-all hover:scale-105">
+                            <button className="w-72 rounded-2xl bg-lighten-900 p-4 font-bold text-darken-700 shadow-xl transition-all hover:scale-105">
                                 Submit
                             </button>
                         </div>
@@ -182,35 +209,45 @@ export default function (props) {
 
     function createLogin() {
         return (
-            <div className="m-5 flex animate-gradient-x justify-center rounded-3xl bg-gradient-to-tl from-orange-600 via-orange-500 to-yellow-500 p-4 sm:gap-8">
-                <form
-                    onSubmit={(e) => {
-                        e.preventDefault();
-                        updateUsername(username);
-                    }}
-                >
-                    <div className="flex gap-2">
-                        <p className="my-auto font-header text-xl text-darken-800">
-                            Please log in:
+            <div>
+                <div className="m-5 flex animate-gradient-x justify-center rounded-3xl bg-gradient-to-tl from-orange-600 via-orange-500 to-yellow-500 p-4 sm:gap-8">
+                    <form
+                        onSubmit={(e) => {
+                            e.preventDefault();
+                            updateUsername(username);
+                        }}
+                    >
+                        <div className="mx-auto flex w-72 flex-col gap-2 rounded-2xl bg-lighten-800 p-4 shadow-xl">
+                            <input
+                                className="h-12 rounded-full bg-darken-50 p-2 text-darken-800 shadow-inner"
+                                value={username}
+                                placeholder="NT login (i.e. 'jadubeau')"
+                                onChange={(e) => setUsername(e.target.value)}
+                            />
+                            <button
+                                className="h-12 rounded-full bg-darken-50 font-bold text-darken-700 transition-all hover:bg-darken-100"
+                                type="submit"
+                            >
+                                Login
+                            </button>
+                        </div>
+                        <p className="m-2 w-72 font-bold text-darken-600">
+                            Your account will stay logged in for 60 days. Click
+                            on your <span className="underline">username</span>{" "}
+                            to log out.
                         </p>
-                        <input
-                            className="rounded-full bg-darken-50 p-2 text-darken-800 shadow-inner"
-                            value={username}
-                            placeholder="Your NT login (i.e. 'jadubeau')"
-                            onChange={(e) => setUsername(e.target.value)}
-                        />
+                    </form>
+                </div>
+                <div className="m-5 flex animate-gradient-x justify-center rounded-3xl bg-gradient-to-tl from-orange-600 via-orange-500 to-yellow-500 p-4 sm:gap-8">
+                    <div className="mx-auto flex w-72 flex-col gap-2 rounded-2xl bg-lighten-800 p-4 shadow-xl">
                         <button
-                            className="w-24 rounded-full bg-darken-50 transition-all hover:bg-darken-100"
+                            className="h-12 rounded-full bg-darken-50 font-bold text-darken-700 transition-all hover:bg-darken-100"
                             type="submit"
                         >
-                            Login
+                            Leader Access
                         </button>
                     </div>
-                    <p className="font-header text-darken-600 m-2">
-                        Tip: Click on your{" "}
-                        <span className="underline">username</span> to log out.
-                    </p>
-                </form>
+                </div>
             </div>
         );
     }
@@ -227,15 +264,10 @@ export default function (props) {
         );
     }
 
-    return (
-        <>
-            <Frame data={props.data} noNavbar vignette>
-                <div className="w-screen">
-                    {loggedIn ? createChecklist() : createLogin()}
-                </div>
-            </Frame>
+    function createNavigation() {
+        return (
             <div className="fixed bottom-0 left-0 z-50 m-0 h-16 w-screen min-w-36 bg-center sm:left-1.5 sm:top-1 sm:w-auto">
-                <div className="navbar bg-lighten-700 backdrop-blur-lg max-sm:rounded-t-xl sm:rounded-xl">
+                <div className="navbar bg-darken-400 backdrop-blur-xl max-sm:rounded-t-xl sm:rounded-xl">
                     <div className="flex flex-1 justify-end px-2">
                         <div className="flex items-stretch gap-2">
                             <div className="flex gap-2 text-lg font-bold underline">
@@ -313,6 +345,29 @@ export default function (props) {
                     </div>
                 </div>
             </div>
+        );
+    }
+
+    return (
+        <>
+            <Frame data={props.data} noNavbar vignette>
+                <div className="min-h-[150vh] w-screen">
+                    {/* Logo */}
+                    <div className="flex h-16 justify-center sm:h-32">
+                        <img
+                            src="https://merchandising-assets.bestbuy.ca/bltc8653f66842bff7f/bltc645e37ea0b1a348/6183051594e50d5a63800f45/gs-logo.png"
+                            alt="Geek Squad Logo"
+                        />
+                    </div>
+                    <div className="m-5">
+                        <p className="text-3xl font-bold text-lighten-800 sm:text-left">
+                            Inspection Checklist
+                        </p>
+                    </div>
+                    {loggedIn ? createChecklist() : createLogin()}
+                </div>
+            </Frame>
+            {loggedIn && createNavigation()}
         </>
     );
 }
