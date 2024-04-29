@@ -127,6 +127,10 @@ export default function (props) {
                 key={index}
                 className="{index % 2  === 0 && 'bg-slate-200`} label cursor-pointer text-left"
             >
+                {/* {console.log(questions.length)}
+                {console.log(questions)}
+                {console.log(question)} */}
+
                 <span className="label-text text-darken-800">
                     {Object.keys(question)}
                 </span>
@@ -136,13 +140,28 @@ export default function (props) {
                         question[Object.keys(question).toString()] && "checked"
                     }
                     onChange={(e) => {
-                        const key = Object.keys(question).toString();
+                        const key = Object.keys(question);
                         question[key]
                             ? setQuestions([
-                                  ...questions,
-                                  { [key]: e.target.value },
+                                  ...questions.filter(
+                                      (question) =>
+                                          key.toString() !==
+                                              Object.keys(
+                                                  question,
+                                              ).toString() && question,
+                                  ),
+                                  { [key]: !e.target.value },
                               ])
-                            : setQuestions([...questions, !e.target.value]);
+                            : setQuestions([
+                                ...questions.filter(
+                                    (question) =>
+                                        key.toString() !==
+                                            Object.keys(
+                                                question,
+                                            ).toString() && question,
+                                  ),
+                                  { [key]: e.target.value },
+                              ]);
                     }}
                     className="checkbox"
                 />
