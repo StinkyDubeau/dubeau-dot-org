@@ -174,22 +174,30 @@ export default function (props) {
             <div>
                 {/* Gradient bg */}
                 <div className="m-5 flex animate-gradient-x justify-center rounded-3xl bg-gradient-to-tl from-orange-600 via-orange-500 to-yellow-500 p-4 sm:gap-8">
-                    <div className="flex flex-wrap justify-around gap-4 lg:gap-48">
-                        <div className="flex w-72 flex-col">
-                            <p className="font-header text-5xl text-zinc-800">
+                    <div className="flex flex-wrap justify-around gap-2 lg:gap-48">
+                        <div className="flex w-72 flex-col gap-4">
+                            <p className="text-5xl font-bold text-zinc-800">
                                 Checklist
                             </p>
-                            {/* <p className="font-header text-darken-800">
+                            <div className="flex justify-center gap-2">
+                                <button className="h-16 w-full rounded-2xl bg-lighten-900 text-lg text-darken-800 shadow-lg transition-all hover:bg-lighten-900">
+                                    Choose Store
+                                </button>
+                                <button className="h-16 w-full rounded-2xl bg-lighten-900 text-lg text-darken-800 shadow-lg transition-all hover:bg-lighten-900">
+                                    Choose Van
+                                </button>
+                            </div>
+                            {/* <p className="font-bold text-darken-800">
                                     or report moderation issues
                                 </p> */}
                         </div>
 
                         <div className="flex flex-col gap-2">
-                            <div className="w-72 rounded-3xl bg-orange-50 p-4 shadow-xl">
+                            <div className="w-72 rounded-2xl bg-lighten-900 p-4 shadow-xl">
                                 {questions.map(createQuestion)}
                             </div>
 
-                            <button className="w-72 rounded-3xl bg-orange-50 p-4 font-header text-darken-700 shadow-xl transition-all hover:scale-105">
+                            <button className="w-72 rounded-2xl bg-lighten-900 p-4 font-bold text-darken-700 shadow-xl transition-all hover:scale-105">
                                 Submit
                             </button>
                         </div>
@@ -209,7 +217,7 @@ export default function (props) {
                             updateUsername(username);
                         }}
                     >
-                        <div className="mx-auto flex w-72 flex-col gap-2 rounded-3xl bg-lighten-800 p-4 shadow-xl">
+                        <div className="mx-auto flex w-72 flex-col gap-2 rounded-2xl bg-lighten-800 p-4 shadow-xl">
                             <input
                                 className="h-12 rounded-full bg-darken-50 p-2 text-darken-800 shadow-inner"
                                 value={username}
@@ -217,13 +225,13 @@ export default function (props) {
                                 onChange={(e) => setUsername(e.target.value)}
                             />
                             <button
-                                className="h-12 rounded-full bg-darken-50 font-header text-darken-700 transition-all hover:bg-darken-100"
+                                className="h-12 rounded-full bg-darken-50 font-bold text-darken-700 transition-all hover:bg-darken-100"
                                 type="submit"
                             >
                                 Login
                             </button>
                         </div>
-                        <p className="m-2 w-72 font-header text-darken-600">
+                        <p className="m-2 w-72 font-bold text-darken-600">
                             Your account will stay logged in for 60 days. Click
                             on your <span className="underline">username</span>{" "}
                             to log out.
@@ -231,9 +239,9 @@ export default function (props) {
                     </form>
                 </div>
                 <div className="m-5 flex animate-gradient-x justify-center rounded-3xl bg-gradient-to-tl from-orange-600 via-orange-500 to-yellow-500 p-4 sm:gap-8">
-                    <div className="mx-auto flex w-72 flex-col gap-2 rounded-3xl bg-lighten-800 p-4 shadow-xl">
+                    <div className="mx-auto flex w-72 flex-col gap-2 rounded-2xl bg-lighten-800 p-4 shadow-xl">
                         <button
-                            className="h-12 rounded-full bg-darken-50 font-header text-darken-700 transition-all hover:bg-darken-100"
+                            className="h-12 rounded-full bg-darken-50 font-bold text-darken-700 transition-all hover:bg-darken-100"
                             type="submit"
                         >
                             Leader Access
@@ -345,11 +353,14 @@ export default function (props) {
             <Frame data={props.data} noNavbar vignette>
                 <div className="min-h-[150vh] w-screen">
                     {/* Logo */}
-                    <div className="flex h-16 justify-center">
-                        <img src="https://merchandising-assets.bestbuy.ca/bltc8653f66842bff7f/bltc645e37ea0b1a348/6183051594e50d5a63800f45/gs-logo.png" />
+                    <div className="flex h-16 justify-center sm:h-32">
+                        <img
+                            src="https://merchandising-assets.bestbuy.ca/bltc8653f66842bff7f/bltc645e37ea0b1a348/6183051594e50d5a63800f45/gs-logo.png"
+                            alt="Geek Squad Logo"
+                        />
                     </div>
                     <div className="m-5">
-                        <p className="font-header text-3xl text-lighten-800 sm:text-left">
+                        <p className="text-3xl font-bold text-lighten-800 sm:text-left">
                             Inspection Checklist
                         </p>
                     </div>
