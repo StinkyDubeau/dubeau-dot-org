@@ -1,24 +1,12 @@
 import Frame from "../../components/Frame";
 import { Link } from "react-router-dom";
-import { useState, useEffect, useRef } from "react";
-import { mongoose } from "mongoose";
+import React, { useState, useContext, useEffect, useRef } from "react";
+import * as RealmWeb from "realm-web";
+
+const RealmAppContext = React.createContext(null);
 
 export default function (props) {
     const uri = import.meta.env.VITE_CONNECTION_STRING;
-    const clientOptions = { serverApi: { version: '1', strict: true, deprecationErrors: true } };
-    async function run() {
-      try {
-        // Create a Mongoose client with a MongoClientOptions object to set the Stable API version
-        await mongoose.connect(uri, clientOptions);
-        await mongoose.connection.db.admin().command({ ping: 1 });
-        console.log("Pinged your deployment. You successfully connected to MongoDB!");
-      } finally {
-        // Ensures that the client will close when you finish/error
-        await mongoose.disconnect();
-      }
-    }
-    run().catch(console.dir);
-
 
     const stores = {
         928: { vans: ["022", "091", "125", "137", "163", "427", "449"] },
@@ -26,18 +14,22 @@ export default function (props) {
         639: { vans: ["017", "140", "446"] },
     };
 
-    const questions = [
-        "Mirrors are adequately adjusted",
-        "Brake lights, headlights, and taillights are all working",
-        "Tires are in good condition, with adequate tread and correct pressure",
-        "Turn-signals are working",
-        "Registration and insurance papers are in the glovebox: VIN numbers match",
-        "Windshield wiper blades are in good, working condition",
-        "You have a valid drivers license on your person",
-        "Emergency brake is working",
-        "Horn is working",
-        "Windshield is not cracked",
-    ];
+    const [questions, setQuestions] = useState([
+        { "Mirrors are adequately adjusted": false },
+        { "Brake lights, headlights, and taillights are all working": false },
+        {
+            "Tires are in good condition, with adequate tread and correct pressure": false,
+        },
+        { "Turn-signals are working": false },
+        {
+            "Registration and insurance papers are in the glovebox: VIN numbers match": false,
+        },
+        { "Windshield wiper blades are in good, working condition": false },
+        { "You have a valid drivers license on your person": false },
+        { "Emergency brake is working": false },
+        { "Horn is working": false },
+        { "Windshield is not cracked": false },
+    ]);
 
     const [store, setStore] = useState();
     const [van, setVan] = useState();
@@ -50,8 +42,6 @@ export default function (props) {
     // Used to check if first render
     const didMount = useRef(false);
 
-    // Check for cookies on page load
-    useEffect(() => {}, []);
 
     // Login if user has a username cookie
     useEffect(() => {
