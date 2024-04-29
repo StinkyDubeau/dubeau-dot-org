@@ -18,7 +18,7 @@ export default function (props) {
         { "Mirrors are adequately adjusted": false },
         { "Brake lights, headlights, and taillights are all working": false },
         {
-            "Tires are in good condition, with adequate tread and correct pressure": true,
+            "Tires are in good condition, with adequate tread and correct pressure": false,
         },
         { "Turn-signals are working": false },
         {
@@ -125,7 +125,7 @@ export default function (props) {
         return (
             <label
                 key={index}
-                className="{index % 2  === 0 && 'bg-slate-200`} label cursor-pointer text-left"
+                className="label h-16 cursor-pointer border-b border-darken-50 text-left"
             >
                 {/* {console.log(questions.length)}
                 {console.log(questions)}
@@ -153,12 +153,12 @@ export default function (props) {
                                   { [key]: !e.target.value },
                               ])
                             : setQuestions([
-                                ...questions.filter(
-                                    (question) =>
-                                        key.toString() !==
-                                            Object.keys(
-                                                question,
-                                            ).toString() && question,
+                                  ...questions.filter(
+                                      (question) =>
+                                          key.toString() !==
+                                              Object.keys(
+                                                  question,
+                                              ).toString() && question,
                                   ),
                                   { [key]: e.target.value },
                               ]);
@@ -189,7 +189,7 @@ export default function (props) {
                                 {questions.map(createQuestion)}
                             </div>
 
-                            <button className="w-72 rounded-3xl bg-orange-50 p-4 font-header shadow-xl transition-all hover:scale-105">
+                            <button className="w-72 rounded-3xl bg-orange-50 p-4 font-header text-darken-700 shadow-xl transition-all hover:scale-105">
                                 Submit
                             </button>
                         </div>
@@ -259,7 +259,7 @@ export default function (props) {
     function createNavigation() {
         return (
             <div className="fixed bottom-0 left-0 z-50 m-0 h-16 w-screen min-w-36 bg-center sm:left-1.5 sm:top-1 sm:w-auto">
-                <div className="navbar bg-lighten-700 backdrop-blur-lg max-sm:rounded-t-xl sm:rounded-xl">
+                <div className="navbar bg-darken-400 backdrop-blur-xl max-sm:rounded-t-xl sm:rounded-xl">
                     <div className="flex flex-1 justify-end px-2">
                         <div className="flex items-stretch gap-2">
                             <div className="flex gap-2 text-lg font-bold underline">
@@ -343,7 +343,7 @@ export default function (props) {
     return (
         <>
             <Frame data={props.data} noNavbar vignette>
-                <div className="w-screen">
+                <div className="min-h-[150vh] w-screen">
                     {/* Logo */}
                     <div className="flex h-16 justify-center">
                         <img src="https://merchandising-assets.bestbuy.ca/bltc8653f66842bff7f/bltc645e37ea0b1a348/6183051594e50d5a63800f45/gs-logo.png" />
