@@ -18,7 +18,7 @@ export default function (props) {
         { "Mirrors are adequately adjusted": false },
         { "Brake lights, headlights, and taillights are all working": false },
         {
-            "Tires are in good condition, with adequate tread and correct pressure": false,
+            "Tires are in good condition, with adequate tread and correct pressure": true,
         },
         { "Turn-signals are working": false },
         {
@@ -41,7 +41,6 @@ export default function (props) {
 
     // Used to check if first render
     const didMount = useRef(false);
-
 
     // Login if user has a username cookie
     useEffect(() => {
@@ -122,23 +121,29 @@ export default function (props) {
         setLoggedIn(true);
     }
 
-    function createQuestions(question, index) {
+    function createQuestion(question, index) {
         return (
             <label
                 key={index}
                 className="{index % 2  === 0 && 'bg-slate-200`} label cursor-pointer text-left"
             >
-                <span className="label-text text-darken-800">{question}</span>
+                <span className="label-text text-darken-800">
+                    {Object.keys(question)}
+                </span>
                 <input
                     type="checkbox"
-                    // checked={showOld && "checked"}
-                    // onChange={(e) =>
-                    //     showOld
-                    //         ? setShowOld(
-                    //               !e.target.value,
-                    //           )
-                    //         : setShowOld(e.target.value)
-                    // }
+                    checked={
+                        question[Object.keys(question).toString()] && "checked"
+                    }
+                    onChange={(e) => {
+                        const key = Object.keys(question).toString();
+                        question[key]
+                            ? setQuestions([
+                                  ...questions,
+                                  { [key]: e.target.value },
+                              ])
+                            : setQuestions([...questions, !e.target.value]);
+                    }}
                     className="checkbox"
                 />
             </label>
@@ -162,7 +167,7 @@ export default function (props) {
 
                         <div className="flex flex-col gap-2">
                             <div className="w-72 rounded-3xl bg-orange-50 p-4 shadow-xl">
-                                {questions.map(createQuestions)}
+                                {questions.map(createQuestion)}
                             </div>
 
                             <button className="w-72 rounded-3xl bg-orange-50 p-4 font-header shadow-xl transition-all hover:scale-105">
