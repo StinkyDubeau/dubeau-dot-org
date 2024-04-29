@@ -1,10 +1,25 @@
 import Frame from "../../components/Frame";
 import { Link } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
-import Input from "../../components/Input";
-import Card from "../../components/Card";
+import { mongoose } from "mongoose";
 
 export default function (props) {
+    const uri = import.meta.env.VITE_CONNECTION_STRING;
+    const clientOptions = { serverApi: { version: '1', strict: true, deprecationErrors: true } };
+    async function run() {
+      try {
+        // Create a Mongoose client with a MongoClientOptions object to set the Stable API version
+        await mongoose.connect(uri, clientOptions);
+        await mongoose.connection.db.admin().command({ ping: 1 });
+        console.log("Pinged your deployment. You successfully connected to MongoDB!");
+      } finally {
+        // Ensures that the client will close when you finish/error
+        await mongoose.disconnect();
+      }
+    }
+    run().catch(console.dir);
+
+
     const stores = {
         928: { vans: ["022", "091", "125", "137", "163", "427", "449"] },
         940: { vans: ["124", "160", "185"] },
@@ -143,16 +158,6 @@ export default function (props) {
     function createChecklist() {
         return (
             <div>
-                {/* Logo */}
-                <div className="flex h-16 justify-center">
-                    <img src="https://merchandising-assets.bestbuy.ca/bltc8653f66842bff7f/bltc645e37ea0b1a348/6183051594e50d5a63800f45/gs-logo.png" />
-                </div>
-                <div className="m-5">
-                    <p className="font-header text-5xl text-lighten-900 sm:text-left">
-                        Inspection Checklist
-                    </p>
-                </div>
-
                 {/* Gradient bg */}
                 <div className="m-5 flex animate-gradient-x justify-center rounded-3xl bg-gradient-to-tl from-orange-600 via-orange-500 to-yellow-500 p-4 sm:gap-8">
                     <div className="flex flex-wrap justify-around gap-4 lg:gap-48">
@@ -166,11 +171,11 @@ export default function (props) {
                         </div>
 
                         <div className="flex flex-col gap-2">
-                            <div className="w-72 rounded-2xl bg-orange-50 p-4 shadow-xl">
+                            <div className="w-72 rounded-3xl bg-orange-50 p-4 shadow-xl">
                                 {questions.map(createQuestions)}
                             </div>
 
-                            <button className="w-72 rounded-2xl bg-orange-50 p-4 font-header shadow-xl transition-all hover:scale-105">
+                            <button className="w-72 rounded-3xl bg-orange-50 p-4 font-header shadow-xl transition-all hover:scale-105">
                                 Submit
                             </button>
                         </div>
@@ -182,35 +187,45 @@ export default function (props) {
 
     function createLogin() {
         return (
-            <div className="m-5 flex animate-gradient-x justify-center rounded-3xl bg-gradient-to-tl from-orange-600 via-orange-500 to-yellow-500 p-4 sm:gap-8">
-                <form
-                    onSubmit={(e) => {
-                        e.preventDefault();
-                        updateUsername(username);
-                    }}
-                >
-                    <div className="flex gap-2">
-                        <p className="my-auto font-header text-xl text-darken-800">
-                            Please log in:
+            <div>
+                <div className="m-5 flex animate-gradient-x justify-center rounded-3xl bg-gradient-to-tl from-orange-600 via-orange-500 to-yellow-500 p-4 sm:gap-8">
+                    <form
+                        onSubmit={(e) => {
+                            e.preventDefault();
+                            updateUsername(username);
+                        }}
+                    >
+                        <div className="mx-auto flex w-72 flex-col gap-2 rounded-3xl bg-lighten-800 p-4 shadow-xl">
+                            <input
+                                className="h-12 rounded-full bg-darken-50 p-2 text-darken-800 shadow-inner"
+                                value={username}
+                                placeholder="NT login (i.e. 'jadubeau')"
+                                onChange={(e) => setUsername(e.target.value)}
+                            />
+                            <button
+                                className="h-12 rounded-full bg-darken-50 font-header text-darken-700 transition-all hover:bg-darken-100"
+                                type="submit"
+                            >
+                                Login
+                            </button>
+                        </div>
+                        <p className="m-2 w-72 font-header text-darken-600">
+                            Your account will stay logged in for 60 days. Click
+                            on your <span className="underline">username</span>{" "}
+                            to log out.
                         </p>
-                        <input
-                            className="rounded-full bg-darken-50 p-2 text-darken-800 shadow-inner"
-                            value={username}
-                            placeholder="Your NT login (i.e. 'jadubeau')"
-                            onChange={(e) => setUsername(e.target.value)}
-                        />
+                    </form>
+                </div>
+                <div className="m-5 flex animate-gradient-x justify-center rounded-3xl bg-gradient-to-tl from-orange-600 via-orange-500 to-yellow-500 p-4 sm:gap-8">
+                    <div className="mx-auto flex w-72 flex-col gap-2 rounded-3xl bg-lighten-800 p-4 shadow-xl">
                         <button
-                            className="w-24 rounded-full bg-darken-50 transition-all hover:bg-darken-100"
+                            className="h-12 rounded-full bg-darken-50 font-header text-darken-700 transition-all hover:bg-darken-100"
                             type="submit"
                         >
-                            Login
+                            Leader Access
                         </button>
                     </div>
-                    <p className="font-header text-darken-600 m-2">
-                        Tip: Click on your{" "}
-                        <span className="underline">username</span> to log out.
-                    </p>
-                </form>
+                </div>
             </div>
         );
     }
@@ -227,13 +242,8 @@ export default function (props) {
         );
     }
 
-    return (
-        <>
-            <Frame data={props.data} noNavbar vignette>
-                <div className="w-screen">
-                    {loggedIn ? createChecklist() : createLogin()}
-                </div>
-            </Frame>
+    function createNavigation() {
+        return (
             <div className="fixed bottom-0 left-0 z-50 m-0 h-16 w-screen min-w-36 bg-center sm:left-1.5 sm:top-1 sm:w-auto">
                 <div className="navbar bg-lighten-700 backdrop-blur-lg max-sm:rounded-t-xl sm:rounded-xl">
                     <div className="flex flex-1 justify-end px-2">
@@ -313,6 +323,26 @@ export default function (props) {
                     </div>
                 </div>
             </div>
+        );
+    }
+
+    return (
+        <>
+            <Frame data={props.data} noNavbar vignette>
+                <div className="w-screen">
+                    {/* Logo */}
+                    <div className="flex h-16 justify-center">
+                        <img src="https://merchandising-assets.bestbuy.ca/bltc8653f66842bff7f/bltc645e37ea0b1a348/6183051594e50d5a63800f45/gs-logo.png" />
+                    </div>
+                    <div className="m-5">
+                        <p className="font-header text-3xl text-lighten-800 sm:text-left">
+                            Inspection Checklist
+                        </p>
+                    </div>
+                    {loggedIn ? createChecklist() : createLogin()}
+                </div>
+            </Frame>
+            {loggedIn && createNavigation()}
         </>
     );
 }

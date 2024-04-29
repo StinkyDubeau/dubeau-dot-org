@@ -4,6 +4,10 @@
 
 ### Brainstorming below:
 
+Geek Submission Object:
+
+
+
 A room object from trystero
 
 ```js
