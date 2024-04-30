@@ -162,6 +162,7 @@ export default function (props) {
                                   ),
                                   { [key]: e.target.value },
                               ]);
+                        // ^ Holy crap what is this atrocity ^
                     }}
                     className="checkbox"
                 />
