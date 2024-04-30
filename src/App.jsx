@@ -8,7 +8,7 @@ import { useState } from "react";
 import Home from "./pages/Home";
 import Fun from "./pages/Fun";
 import Contact from "./pages/Contact";
-import Geek from "./pages/Geek/Geek";
+import Geek from "./pages/Geek/Lunches";
 import Chat from "./pages/Web3/p2p";
 import Trackers from "./pages/Trackers";
 
