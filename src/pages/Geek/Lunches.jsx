@@ -10,6 +10,19 @@ export default function Lunches(props) {
     const [username, setUsername] = useState(undefined);
     const [loggedIn, setLoggedIn] = useState(false);
 
+    const [submission, setSubmission] = useState({
+        date: new Date(),
+        days: [
+            { sunday: { in: "", out: "", note: "" } },
+            { monday: { in: "", out: "", note: "" } },
+            { tuesday: { in: "", out: "", note: "" } },
+            { wednesday: { in: "", out: "", note: "" } },
+            { thursday: { in: "", out: "", note: "" } },
+            { friday: { in: "", out: "", note: "" } },
+            { saturday: { in: "", out: "", note: "" } },
+        ],
+    });
+
     // Used to check if first render
     const didMount = useRef(false);
 
@@ -92,7 +105,10 @@ export default function Lunches(props) {
         setLoggedIn(true);
     }
 
-
+    function createDayEntry(day) {
+        const dayName = Object.keys(day).toString();
+        return <div>{dayName}</div>;
+    }
 
     function createEntryPage() {
         return (
@@ -101,25 +117,23 @@ export default function Lunches(props) {
                 <div className="m-5 flex animate-gradient-x justify-center rounded-3xl bg-gradient-to-tl from-orange-600 via-orange-500 to-yellow-500 p-4 sm:gap-8">
                     <div className="flex flex-wrap justify-around gap-2 lg:gap-48">
                         <div className="flex w-72 flex-col gap-4">
-                            <p className="text-5xl font-bold text-zinc-800">
-                                Checklist
+                            <p className="text-3xl font-bold text-zinc-800">
+                                {submission.date.toDateString()}
                             </p>
-                            <div className="flex justify-center gap-2">
+                            {/* <div className="flex justify-center gap-2">
                                 <button className="h-16 w-full rounded-2xl bg-lighten-900 text-lg text-darken-800 shadow-lg transition-all hover:bg-lighten-900">
                                     Choose Store
                                 </button>
                                 <button className="h-16 w-full rounded-2xl bg-lighten-900 text-lg text-darken-800 shadow-lg transition-all hover:bg-lighten-900">
                                     Choose Van
                                 </button>
-                            </div>
-                            {/* <p className="font-bold text-darken-800">
-                                    or report moderation issues
-                                </p> */}
+                            </div> */}
                         </div>
 
                         <div className="flex flex-col gap-2">
                             <div className="w-72 rounded-2xl bg-lighten-900 p-4 shadow-xl">
                                 <p>Placeholder</p>
+                                {submission.days.map(createDayEntry)}
                             </div>
 
                             <button className="w-72 rounded-2xl bg-lighten-900 p-4 font-bold text-darken-700 shadow-xl transition-all hover:scale-105">
