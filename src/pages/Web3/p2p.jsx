@@ -58,7 +58,7 @@ export default function Chat(props) {
         } else if (user.id !== idOfSendingPeer) {
             console.log("Just got my own ID.");
             // Reply to other users informing that we are online.
-            await sendUser(user, idOfSendingPeer).then(
+            await sendUser(myUser ? myUser : user, idOfSendingPeer).then(
                 !myUser
                     ? setMyUser(user)
                     : setMyUser({
@@ -86,7 +86,10 @@ export default function Chat(props) {
         // setUsers();
 
         // Add updated user
-        setUsers([...users.filter((user) => user.id !== idOfSendingPeer), user]);
+        setUsers([
+            ...users.filter((user) => user.id !== idOfSendingPeer),
+            user,
+        ]);
     });
 
     async function sendMyUserUpdate(user) {

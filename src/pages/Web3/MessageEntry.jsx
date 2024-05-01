@@ -44,7 +44,7 @@ export default function MessageEntry(props) {
                         onChange={(e) => setMyMessage(e.target.value)}
                     />
                     <button
-                        className="w-24 rounded-full bg-darken-50 text-darken-800 transition-all hover:bg-darken-100"
+                        className="w-24 rounded-full bg-darken-50 text-darken-800 transition-all hover:bg-darken-100 max-sm:hidden"
                         type="submit"
                     >
                         Send
