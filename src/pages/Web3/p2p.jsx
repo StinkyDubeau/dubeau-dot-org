@@ -77,7 +77,27 @@ export default function Chat(props) {
     });
 
     async function sendMyMessage(text) {
+        // Show an error in the feed if there are no peers to send to
+        if (users.length < 1) {
+            setMessages([
+                ...messages,
+                {
+                    content: "There is nobody to send your message to.",
+                    timestamp: new Date(),
+                    from: {
+                        id: "Server",
+                        nick: "Server",
+                        dob: new Date(),
+                        colour: "#0f8f3f",
+                        peerID: "Server",
+                    },
+                },
+            ]);
+            return;
+        }
+
         const message = { content: text, timestamp: new Date(), from: myUser };
+
         await sendMessage(message).then(() =>
             setMessages([...messages, message]),
         );
@@ -95,9 +115,9 @@ export default function Chat(props) {
                             {/* USERS */}
                             <UsersList myUser={myUser} users={users} />
                         </div>
-                        <div className="flex flex-1 justify-center overflow-auto">
+                        <div className="flex flex-1 justify-center overflow-auto max-sm:mb-2">
                             {/* MESSAGES */}
-                            <div className="flex gap-2 overflow-auto">
+                            <div className="flex w-full gap-2 overflow-auto">
                                 <div className="flex-0 overflow-auto rounded-3xl bg-lighten-800 p-2 max-sm:hidden">
                                     <UsersList myUser={myUser} users={users} />
                                 </div>
@@ -106,7 +126,7 @@ export default function Chat(props) {
                                 </div>
                             </div>
                         </div>
-                        <div className="flex-0 rounded-3xl bg-lighten-800 p-2">
+                        <div className="flex-0 sm:rounded-3xl bg-lighten-800 p-2 max-sm:-m-2">
                             {/* INPUT FIELD */}
                             <MessageEntry
                                 myMessage={myMessage}
