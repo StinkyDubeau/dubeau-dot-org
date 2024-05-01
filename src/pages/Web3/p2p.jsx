@@ -21,6 +21,7 @@ export default function Chat(props) {
     // Actions
     const [sendMessage, getMessage] = room.makeAction("message");
     const [sendUser, getUser] = room.makeAction("user");
+    const [sendUserUpdate, getUserUpdate] = room.makeAction("userUpdate");
 
     room.onPeerJoin(async (idOfJoiningPeer) => {
         console.log(`${idOfJoiningPeer} is connecting...`);
@@ -76,8 +77,46 @@ export default function Chat(props) {
         setMessages([...messages, message]);
     });
 
+    getUserUpdate((user, idOfSendingPeer, metadata) => {
+        console.log(
+            `Info | getUserUpdate(): Updated user: ${user}, idOfSendingPeer: ${idOfSendingPeer}`,
+        );
+
+        // Remove old user
+        // setUsers();
+
+        // Add updated user
+        setUsers([...users.filter((user) => user.id !== idOfSendingPeer), user]);
+    });
+
+    async function sendMyUserUpdate(user) {
+        console.log("Updating my user");
+
+        await sendUserUpdate(user).then(() => setMyUser(user));
+    }
+
     async function sendMyMessage(text) {
+        // Show an error in the feed if there are no peers to send to
+        if (users.length < 1) {
+            setMessages([
+                ...messages,
+                {
+                    content: "There is nobody to send your message to.",
+                    timestamp: new Date(),
+                    from: {
+                        id: "Server",
+                        nick: "Server",
+                        dob: new Date(),
+                        colour: "#0f8f3f",
+                        peerID: "Server",
+                    },
+                },
+            ]);
+            return;
+        }
+
         const message = { content: text, timestamp: new Date(), from: myUser };
+
         await sendMessage(message).then(() =>
             setMessages([...messages, message]),
         );
@@ -95,23 +134,27 @@ export default function Chat(props) {
                             {/* USERS */}
                             <UsersList myUser={myUser} users={users} />
                         </div>
-                        <div className="flex flex-1 justify-center overflow-auto">
+                        <div className="flex flex-1 justify-center overflow-auto max-sm:mb-2">
                             {/* MESSAGES */}
-                            <div className="flex gap-2 overflow-auto">
+                            <div className="flex w-full gap-2 overflow-auto">
                                 <div className="flex-0 overflow-auto rounded-3xl bg-lighten-800 p-2 max-sm:hidden">
                                     <UsersList myUser={myUser} users={users} />
                                 </div>
-                                <div className="flex-1 overflow-scroll rounded-3xl bg-lighten-800 p-2">
+                                <div className="scrollbar-hide flex-1 overflow-scroll rounded-3xl bg-lighten-800 p-2">
                                     <MessageFeed messages={messages} />
                                 </div>
                             </div>
                         </div>
-                        <div className="flex-0 rounded-3xl bg-lighten-800 p-2">
+                        <div className="flex-0 bg-lighten-800 p-2 max-sm:-m-2 sm:rounded-3xl">
                             {/* INPUT FIELD */}
                             <MessageEntry
+                                // Is there some structuring magic I can do to make this less-awful?
                                 myMessage={myMessage}
                                 setMyMessage={setMyMessage}
                                 sendMyMessage={sendMyMessage}
+                                sendMyUserUpdate={sendMyUserUpdate}
+                                myUser={myUser}
+                                setMyUser={setMyUser}
                             />
                         </div>
                     </div>

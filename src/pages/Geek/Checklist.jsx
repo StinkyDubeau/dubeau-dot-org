@@ -5,7 +5,7 @@ import * as RealmWeb from "realm-web";
 
 const RealmAppContext = React.createContext(null);
 
-export default function (props) {
+export default function Checlist (props) {
     const uri = import.meta.env.VITE_CONNECTION_STRING;
 
     const stores = {
@@ -162,6 +162,7 @@ export default function (props) {
                                   ),
                                   { [key]: e.target.value },
                               ]);
+                        // ^ Holy crap what is this atrocity ^
                     }}
                     className="checkbox"
                 />

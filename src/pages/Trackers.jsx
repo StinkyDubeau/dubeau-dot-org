@@ -17,19 +17,7 @@ export default function Trackers(props) {
 
     return (
         <Frame data={props.data} vignette>
-            <div className="fixed left-0 top-0 h-screen w-screen border border-blue-500 p-2 pt-16">
-                <div className="h-full w-full border border-yellow-500 p-2">
-                    <div className="flex h-full flex-col justify-between gap-2 border border-cyan-300 p-2">
-                        <div className="flex-1 overflow-scroll border-2 border-red-400">
-                            {/* MESSAGES */}
-                        </div>
-                        <div className="flex-0 h-12 border border-green-400">
-                            {/* INPUT FIELD */}
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {/* <div className="mt-12 flex max-w-lg flex-col gap-2 rounded-3xl bg-lighten-800 p-4 text-darken-800 shadow-lg">
+            <div className="mt-12 flex max-w-lg flex-col gap-2 rounded-3xl bg-lighten-800 p-4 text-darken-800 shadow-lg">
                 <p>This is the trackers page</p>
                 <p>Splat: {useParams()[1]}</p>
 
@@ -124,7 +112,7 @@ export default function Trackers(props) {
                 >
                     Go to /astros
                 </Link>
-            </div> */}
+            </div>
         </Frame>
     );
 }

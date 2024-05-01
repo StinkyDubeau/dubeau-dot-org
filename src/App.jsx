@@ -8,8 +8,9 @@ import { useState } from "react";
 import Home from "./pages/Home";
 import Fun from "./pages/Fun";
 import Contact from "./pages/Contact";
-import Geek from "./pages/Geek/Geek";
+import Geek from "./pages/Geek/Lunches";
 import Chat from "./pages/Web3/p2p";
+import Astros from "./pages/Astros";
 import Trackers from "./pages/Trackers";
 
 // Assets
@@ -44,6 +45,10 @@ function App() {
                 <Route
                     path="/trackers"
                     element={<Trackers data={data} setData={setData} />}
+                />
+                <Route
+                    path="/astros"
+                    element={<Astros data={data} setData={setData} />}
                 />
                 <Route
                     path="/servers/*"
