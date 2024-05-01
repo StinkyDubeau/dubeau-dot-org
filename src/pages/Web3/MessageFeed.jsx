@@ -1,5 +1,13 @@
+import { useRef, useEffect } from "react";
+
 export default function MessageFeed(props) {
     const messages = props.messages;
+
+    function AlwaysScrollToBottom() {
+        const elementRef = useRef();
+        useEffect(() => elementRef.current.scrollIntoView(), [messages]);
+        return <div ref={elementRef} />;
+    }
 
     function createMessage(message, index) {
         return (
@@ -14,7 +22,7 @@ export default function MessageFeed(props) {
                     </p>
                     <p className="text-sm text-darken-500">{message.from.id}</p>
                 </div>
-                <p className="my-auto text-left text-lg max-h-96 overflow-scroll text-darken-800 max-sm:text-sm">
+                <p className="my-auto max-h-96 overflow-scroll text-left text-lg text-darken-800 max-sm:text-sm">
                     {message.content}
                 </p>
             </div>
@@ -30,6 +38,7 @@ export default function MessageFeed(props) {
                     Messages will apear here
                 </p>
             )}
+            <AlwaysScrollToBottom />
         </div>
     );
 }
