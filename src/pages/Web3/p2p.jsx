@@ -9,6 +9,7 @@ import UsersList from "./UsersList";
 export default function Chat(props) {
     const roomID = "a1";
     const appID = "app_identifier_jkl234-9.;2/asd90f83jkl";
+    const nick = props.nick
 
     const room = joinRoom({ appId: appID }, roomID);
 
@@ -130,7 +131,7 @@ export default function Chat(props) {
 
     return (
         <Frame data={props.data}>
-            <div className="fixed left-0 top-0 h-screen w-screen p-2 pt-16">
+            <div className="fixed left-0 top-0 h-scree h-lvh w-screen p-2 pt-16">
                 <div className="h-full w-full">
                     <div className="flex h-full flex-col justify-between gap-2 drop-shadow-lg">
                         <div className="flex-0 h-12 overflow-auto rounded-3xl bg-lighten-800 sm:hidden">
