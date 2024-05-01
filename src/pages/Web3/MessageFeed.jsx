@@ -10,7 +10,7 @@ export default function MessageFeed(props) {
                 {/* User ID and Time are hidden on small displays */}
                 <div className="flex h-full flex-col justify-center max-sm:hidden">
                     <p className="text-sm text-darken-500">
-                        {message.timestamp.toString()}
+                        {message.timestamp.toLocaleString()}
                     </p>
                     <p className="text-sm text-darken-500">{message.from.id}</p>
                 </div>
