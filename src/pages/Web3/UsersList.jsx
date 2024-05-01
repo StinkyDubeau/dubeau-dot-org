@@ -9,7 +9,7 @@ export default function UsersList(props) {
                 <ul className="scrollbar-hide flex max-w-52 gap-1 overflow-auto sm:flex-wrap">
                     {myUser && (
                         <li className="w-52 rounded-3xl bg-darken-50 px-2 py-1 text-darken-700 max-sm:text-xs">
-                            ⭐️{myUser.id}
+                            ⭐️ {myUser.nick ? myUser.nick : myUser.id}
                         </li>
                     )}
                     {users[0]
@@ -19,7 +19,9 @@ export default function UsersList(props) {
                                       className="w-52 rounded-3xl bg-darken-50 px-2 py-1 text-darken-700 max-sm:text-xs"
                                       key={index}
                                   >
-                                      {user.id}
+                                      <p className="">
+                                          {user.nick ? user.nick : user.id}
+                                      </p>
                                   </li>
                               );
                           })
