@@ -13,7 +13,7 @@ export default function MessageFeed(props) {
         return (
             <div
                 key={index + message.from.id}
-                className="justify-left flex gap-2 overflow-y-auto overflow-x-scroll rounded-3xl bg-darken-50 px-4 py-2"
+                className="justify-left flex gap-2 overflow-y-auto overflow-x-scroll scrollbar-hide rounded-3xl bg-darken-50 px-4 py-2"
             >
                 {/* User ID and Time are hidden on small displays */}
                 <div className="flex h-full flex-col justify-center max-sm:hidden">
@@ -22,7 +22,7 @@ export default function MessageFeed(props) {
                     </p>
                     <p className="text-sm text-darken-500">{message.from.id}</p>
                 </div>
-                <p className="my-auto max-h-96 overflow-scroll text-left text-lg text-darken-800 max-sm:text-sm">
+                <p className="my-auto max-h-96 overflow-scroll scrollbar-hide text-left text-lg text-darken-800 max-sm:text-sm">
                     {message.content}
                 </p>
             </div>

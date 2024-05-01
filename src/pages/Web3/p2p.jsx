@@ -121,7 +121,7 @@ export default function Chat(props) {
                                 <div className="flex-0 overflow-auto rounded-3xl bg-lighten-800 p-2 max-sm:hidden">
                                     <UsersList myUser={myUser} users={users} />
                                 </div>
-                                <div className="flex-1 overflow-scroll rounded-3xl bg-lighten-800 p-2">
+                                <div className="flex-1 overflow-scroll scrollbar-hide rounded-3xl bg-lighten-800 p-2">
                                     <MessageFeed messages={messages} />
                                 </div>
                             </div>

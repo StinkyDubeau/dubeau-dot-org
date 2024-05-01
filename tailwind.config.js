@@ -82,5 +82,9 @@ export default {
             headerScript: ["Belanosima", "sans-serif"],
         },
     },
-    plugins: ["prettier-plugin-tailwindcss", require("daisyui")],
+    plugins: [
+        "prettier-plugin-tailwindcss",
+        require("daisyui"),
+        require("tailwind-scrollbar-hide"),
+    ],
 };
