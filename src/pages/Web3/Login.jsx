@@ -1,7 +1,7 @@
 import Chat from "./Chat";
 import { useEffect, useState } from "react";
 import Frame from "../../components/Frame";
-import { RandomAvatar } from "react-random-avatars";
+import Avvvatars from "avvvatars-react";
 
 export default function Login(props) {
     const [loggedIn, setLoggedIn] = useState(false);
@@ -19,9 +19,16 @@ export default function Login(props) {
                 )}
 
                 <div className="flex gap-2 rounded-3xl bg-lighten-800 p-2">
-                    {useEffect(<RandomAvatar name={nick} />, [nick])}
+                    <div className="flex h-10 w-12 flex-col justify-center overflow-hidden rounded-full">
+                        <Avvvatars
+                            value={nick}
+                            size={40}
+                            style="shape"
+                            radius={1}
+                        />
+                    </div>
                     <input
-                        className="w-full rounded-full bg-darken-50 p-2 text-darken-800 shadow-inner"
+                        className="w-full rounded-full bg-darken-50 pl-3 p-2 text-darken-800 shadow-inner"
                         // value={nick}
                         placeholder="Message"
                         onChange={(e) => setNick(e.target.value)}
