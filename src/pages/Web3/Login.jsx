@@ -12,7 +12,7 @@ export default function Login(props) {
         return (
             <div className="flex flex-col gap-2">
                 {/* Choose lobby */}
-                <div className="m-auto flex w-max animate-gradient-y flex-col justify-center gap-2 rounded-3xl bg-gradient-to-bl from-gray-700 via-cyan-600 to-blue-500 p-5">
+                <div className="m-auto flex w-full animate-gradient-y flex-col justify-center gap-2 rounded-3xl bg-gradient-to-bl from-gray-700 via-cyan-600 to-blue-500 p-5">
                     <p className="m-auto font-header text-5xl font-extralight text-lighten-900">
                         p2p chat
                     </p>
@@ -37,7 +37,7 @@ export default function Login(props) {
                         />
                     </div>
                     {/* Create custom room */}
-                    <div className="m-auto flex max-w-sm flex-col gap-2 rounded-3xl bg-lighten-800 p-2">
+                    <div className="max-w- m-auto flex flex-col gap-2 rounded-3xl bg-lighten-800 p-2">
                         <div className="flex gap-2">
                             <input
                                 className="w-full rounded-full bg-darken-50 p-2 pl-3 text-darken-800 shadow-inner"
@@ -54,7 +54,7 @@ export default function Login(props) {
                     </div>
                 </div>
 
-                <p className="m-auto max-w-sm text-sm text-darken-600">
+                <p className="m-auto max-w-xs text-sm text-darken-600">
                     Messages are end-to-end encrypted and{" "}
                     <span className="text-red-500">completely ephemeral</span>.
                     Your messages are sent peer-to-peer using a bittorrent
