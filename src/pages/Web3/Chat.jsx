@@ -62,14 +62,21 @@ export default function Chat(props) {
             console.log("Just got my own ID.");
 
             // Reply to other users informing that we are online.
-            await sendUser(myUser ? myUser : user, idOfSendingPeer).then(
+            await sendUser(
+                myUser ? myUser : { ...user, nick: nick },
+                idOfSendingPeer,
+            ).then(() => {
+                // Apply our nickname if we joined the server with one
+                if (nick) {
+                    user = { ...user, nick: nick };
+                }
                 !myUser
-                    ? setMyUser({ ...user, nick: nick && nick })
+                    ? setMyUser(user)
                     : setMyUser({
                           ...myUser,
                           karma: myUser.karma ? myUser.karma + 1 : 1,
-                      }),
-            );
+                      });
+            });
         }
     });
 
