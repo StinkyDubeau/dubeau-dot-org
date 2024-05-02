@@ -7,9 +7,9 @@ import MessageEntry from "./MessageEntry";
 import UsersList from "./UsersList";
 
 export default function Chat(props) {
-    const roomID = "a1";
-    const appID = "app_identifier_jkl234-9.;2/asd90f83jkl";
-    const nick = props.nick
+    const nick = props.nick;
+    const roomID = props.roomID || "global";
+    const appID = "dubeau-dot-org";
 
     const room = joinRoom({ appId: appID }, roomID);
 
@@ -46,6 +46,8 @@ export default function Chat(props) {
         setUsers(users.filter((user) => user.id !== idOfLeavingPeer));
     });
 
+    function initializeUser() {}
+
     getUser(async (user, idOfSendingPeer, metadata) => {
         console.log(
             `Info | getUser(): User: ${user.id}, idOfSendingPeer: ${idOfSendingPeer}`,
@@ -58,10 +60,11 @@ export default function Chat(props) {
             // Check if this is a peer telling us our ID
         } else if (user.id !== idOfSendingPeer) {
             console.log("Just got my own ID.");
+
             // Reply to other users informing that we are online.
             await sendUser(myUser ? myUser : user, idOfSendingPeer).then(
                 !myUser
-                    ? setMyUser(user)
+                    ? setMyUser({ ...user, nick: nick && nick })
                     : setMyUser({
                           ...myUser,
                           karma: myUser.karma ? myUser.karma + 1 : 1,
@@ -130,40 +133,38 @@ export default function Chat(props) {
     }
 
     return (
-        <Frame data={props.data}>
-            <div className="fixed left-0 top-0 h-scree h-lvh w-screen p-2 pt-16">
-                <div className="h-full w-full">
-                    <div className="flex h-full flex-col justify-between gap-2 drop-shadow-lg">
-                        <div className="flex-0 h-12 overflow-auto rounded-3xl bg-lighten-800 sm:hidden">
-                            {/* USERS */}
-                            <UsersList myUser={myUser} users={users} />
-                        </div>
-                        <div className="flex flex-1 justify-center overflow-auto max-sm:mb-2">
-                            {/* MESSAGES */}
-                            <div className="flex w-full gap-2 overflow-auto">
-                                <div className="flex-0 overflow-auto rounded-3xl bg-lighten-800 p-2 max-sm:hidden">
-                                    <UsersList myUser={myUser} users={users} />
-                                </div>
-                                <div className="scrollbar-hide flex-1 overflow-scroll rounded-3xl bg-lighten-800 p-2">
-                                    <MessageFeed messages={messages} />
-                                </div>
+        <div className="h-scree fixed left-0 top-0 h-lvh w-screen p-2 pt-16">
+            <div className="h-full w-full">
+                <div className="flex h-full flex-col justify-between gap-2 drop-shadow-lg">
+                    <div className="flex-0 h-12 overflow-auto rounded-3xl bg-lighten-800 sm:hidden">
+                        {/* USERS */}
+                        <UsersList myUser={myUser} users={users} />
+                    </div>
+                    <div className="flex flex-1 justify-center overflow-auto max-sm:mb-2">
+                        {/* MESSAGES */}
+                        <div className="flex w-full gap-2 overflow-auto">
+                            <div className="flex-0 overflow-auto rounded-3xl bg-lighten-800 p-2 max-sm:hidden">
+                                <UsersList myUser={myUser} users={users} />
+                            </div>
+                            <div className="flex-1 overflow-scroll rounded-3xl bg-lighten-800 p-2 scrollbar-hide">
+                                <MessageFeed messages={messages} />
                             </div>
                         </div>
-                        <div className="flex-0 bg-lighten-800 p-2 max-sm:-m-2 sm:rounded-3xl">
-                            {/* INPUT FIELD */}
-                            <MessageEntry
-                                // Is there some structuring magic I can do to make this less-awful?
-                                myMessage={myMessage}
-                                setMyMessage={setMyMessage}
-                                sendMyMessage={sendMyMessage}
-                                sendMyUserUpdate={sendMyUserUpdate}
-                                myUser={myUser}
-                                setMyUser={setMyUser}
-                            />
-                        </div>
+                    </div>
+                    <div className="flex-0 bg-lighten-800 p-2 max-sm:-m-2 sm:rounded-3xl">
+                        {/* INPUT FIELD */}
+                        <MessageEntry
+                            // Is there some structuring magic I can do to make this less-awful?
+                            myMessage={myMessage}
+                            setMyMessage={setMyMessage}
+                            sendMyMessage={sendMyMessage}
+                            sendMyUserUpdate={sendMyUserUpdate}
+                            myUser={myUser}
+                            setMyUser={setMyUser}
+                        />
                     </div>
                 </div>
             </div>
-        </Frame>
+        </div>
     );
 }

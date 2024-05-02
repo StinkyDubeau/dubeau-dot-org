@@ -9,7 +9,7 @@ import Home from "./pages/Home";
 import Fun from "./pages/Fun";
 import Contact from "./pages/Contact";
 import Geek from "./pages/Geek/Lunches";
-import Chat from "./pages/Web3/p2p";
+import Chat from "./pages/Web3/Login";
 import Astros from "./pages/Astros";
 import Trackers from "./pages/Trackers";
 

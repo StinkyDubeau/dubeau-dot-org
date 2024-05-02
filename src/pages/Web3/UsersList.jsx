@@ -25,7 +25,7 @@ export default function UsersList(props) {
                                   </li>
                               );
                           })
-                        : "There are no users."}
+                        : <p className="text-darken-600 italic mx-auto">You are the only one here</p>}
                 </ul>
             </div>
         </div>
