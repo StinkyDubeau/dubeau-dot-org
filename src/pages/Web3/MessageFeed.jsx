@@ -17,7 +17,7 @@ export default function MessageFeed(props) {
                 className="justify-left flex-0 flex justify-between gap-2 overflow-y-auto overflow-x-scroll rounded-3xl bg-darken-50 px-4 py-2 scrollbar-hide"
             >
                 {message.from.nick && (
-                    <div className="flex max-h-8">
+                    <div className="my-auto flex max-h-8">
                         <div className="flex flex-col justify-center overflow-hidden">
                             <Avatar nick={message.from.nick} />
                         </div>

@@ -109,23 +109,27 @@ export default function Chat(props) {
         await sendUserUpdate(user).then(() => setMyUser(user));
     }
 
+    function serverSay(message) {
+        setMessages([
+            ...messages,
+            {
+                content: message,
+                timestamp: new Date(),
+                from: {
+                    id: "Server",
+                    nick: "Server",
+                    dob: new Date(),
+                    colour: "#0f8f3f",
+                    peerID: "Server",
+                },
+            },
+        ]);
+    }
+
     async function sendMyMessage(text) {
         // Show an error in the feed if there are no peers to send to
         if (users.length < 1) {
-            setMessages([
-                ...messages,
-                {
-                    content: "There is nobody to send your message to.",
-                    timestamp: new Date(),
-                    from: {
-                        id: "Server",
-                        nick: "Server",
-                        dob: new Date(),
-                        colour: "#0f8f3f",
-                        peerID: "Server",
-                    },
-                },
-            ]);
+            serverSay("There is nobody to send your message to.");
             return;
         }
 
@@ -145,13 +149,21 @@ export default function Chat(props) {
                 <div className="flex h-full flex-col justify-between gap-2 drop-shadow-lg">
                     <div className="flex-0 h-12 overflow-auto rounded-3xl bg-lighten-800 sm:hidden">
                         {/* USERS */}
-                        <UsersList myUser={myUser} users={users} />
+                        <UsersList
+                            myUser={myUser}
+                            users={users}
+                            roomID={roomID}
+                        />
                     </div>
                     <div className="flex flex-1 justify-center overflow-auto max-sm:mb-2">
                         {/* MESSAGES */}
                         <div className="flex w-full gap-2 overflow-auto">
                             <div className="flex-0 overflow-auto rounded-3xl bg-lighten-800 p-2 max-sm:hidden">
-                                <UsersList myUser={myUser} users={users} />
+                                <UsersList
+                                    myUser={myUser}
+                                    users={users}
+                                    roomID={roomID}
+                                />
                             </div>
                             <div className="flex-1 overflow-scroll rounded-3xl bg-lighten-800 p-2 scrollbar-hide">
                                 <MessageFeed messages={messages} />
