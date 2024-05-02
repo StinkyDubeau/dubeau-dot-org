@@ -17,7 +17,7 @@ export default function MessageEntry(props) {
                     }}
                 >
                     <input
-                        className="rounded-full w-12 h-full text-center focus:w-36 focus:text-base text-[5pt] transition-all bg-darken-50 p-2 text-darken-800 shadow-inner"
+                        className="h-full w-12 rounded-full bg-darken-50 p-2 text-center text-[5pt] text-darken-800 shadow-inner transition-all focus:w-36 focus:text-base"
                         value={myUser.nick}
                         placeholder="Nickname"
                         onChange={(e) =>
