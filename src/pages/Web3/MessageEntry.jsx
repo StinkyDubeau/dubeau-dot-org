@@ -1,3 +1,5 @@
+import Markdown from "react-markdown";
+
 export default function MessageEntry(props) {
     const myMessage = props.myMessage;
     const setMyMessage = props.setMyMessage;

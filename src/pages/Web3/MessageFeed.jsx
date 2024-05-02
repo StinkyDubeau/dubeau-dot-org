@@ -1,5 +1,6 @@
 import { useRef, useEffect } from "react";
 import Avatar from "./Avatar";
+import Markdown from "react-markdown";
 
 export default function MessageFeed(props) {
     const messages = props.messages;
@@ -27,9 +28,9 @@ export default function MessageFeed(props) {
                         </p>
                     </div>
                 )}
-                <p className="my-auto max-h-96 flex-1 overflow-scroll text-left text-lg text-darken-800 scrollbar-hide max-sm:text-sm">
-                    {message.content}
-                </p>
+                <div className="my-auto max-h-96 flex-1 overflow-scroll text-left text-lg text-darken-800 scrollbar-hide max-sm:text-sm">
+                    <Markdown>{message.content}</Markdown>
+                </div>
                 {/* User ID and Time are hidden on small displays */}
                 <div className="flex-0 flex h-full flex-col justify-center max-sm:hidden">
                     <p className="text-sm text-darken-500">
