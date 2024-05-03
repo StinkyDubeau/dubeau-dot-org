@@ -1,6 +1,7 @@
 import Frame from "../../components/Frame";
 import { Link } from "react-router-dom";
 import React, { useState, useContext, useEffect, useRef } from "react";
+import geekData from "./GeekData";
 
 const RealmAppContext = React.createContext(null);
 
@@ -9,6 +10,8 @@ export default function Lunches(props) {
     const [usernameCookie, setUsernameCookie] = useState(null);
     const [username, setUsername] = useState(undefined);
     const [loggedIn, setLoggedIn] = useState(false);
+    const data = geekData();
+    console.log(data);
 
     const [submission, setSubmission] = useState({
         date: new Date(),
@@ -22,6 +25,39 @@ export default function Lunches(props) {
             { saturday: { in: "", out: "", note: "" } },
         ],
     });
+
+    async function getChildByKey(str, obj) {
+        // Given an object, check for a child with key str
+        // Search recursively if not found at top level
+        console.log(`Searching ${obj} for ${str}`);
+
+        for (var key in obj) {
+            // Base case
+            if (key === str) {
+                console.log("FOUND");
+                console.log(obj);
+                return obj;
+            }
+
+            // Search child if it's an object
+            else if (typeof obj[key] === "object") {
+                await getChildByKey(str, obj[key]);
+            }
+
+            // Cannot find
+            else {
+                console.log("NO RESULT");
+                return null;
+            }
+        }
+    }
+
+    async function autoFill() {
+        setSubmission({
+            ...submission,
+            days: await getChildByKey(username, data).days,
+        });
+    }
 
     // Used to check if first render
     const didMount = useRef(false);
@@ -140,7 +176,7 @@ export default function Lunches(props) {
                         <input
                             className="w-full min-w-24 flex-1 rounded bg-lighten-800"
                             onChange={(e) => {
-                                console.log(e.target.value);
+                                console.log(typeof e.target.value);
                             }}
                             type="time"
                         />
@@ -163,14 +199,12 @@ export default function Lunches(props) {
                             <p className="text-3xl font-bold text-zinc-800">
                                 {submission.date.toDateString()}
                             </p>
-                            {/* <div className="flex justify-center gap-2">
-                                <button className="h-16 w-full rounded-2xl bg-lighten-900 text-lg text-darken-800 shadow-lg transition-all hover:bg-lighten-900">
-                                    Choose Store
-                                </button>
-                                <button className="h-16 w-full rounded-2xl bg-lighten-900 text-lg text-darken-800 shadow-lg transition-all hover:bg-lighten-900">
-                                    Choose Van
-                                </button>
-                            </div> */}
+                            <button
+                                onClick={autoFill}
+                                className="w-72 rounded-2xl bg-lighten-900 p-4 font-bold text-darken-700 shadow-xl transition-all hover:scale-105"
+                            >
+                                {">"}Autofill
+                            </button>
                         </div>
 
                         <div className="flex flex-col gap-2">
