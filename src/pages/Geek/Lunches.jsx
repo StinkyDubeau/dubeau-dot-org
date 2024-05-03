@@ -107,7 +107,50 @@ export default function Lunches(props) {
 
     function createDayEntry(day) {
         const dayName = Object.keys(day).toString();
-        return <div>{dayName}</div>;
+        const isToday = day === submission.days[new Date().getDay()];
+        return (
+            <div className="flex gap-2">
+                {isToday && (
+                    <p className="my-auto font-header text-xl">{">"}</p>
+                )}
+                <div
+                    className={`flex h-20 flex-col justify-center gap-2 rounded-lg p-2 ${isToday && "bg-darken-50 shadow"}`}
+                >
+                    <div className="flex w-full gap-2">
+                        <p className="flex-0 w-full text-left text-darken-800">
+                            {dayName}
+                        </p>
+                        <input
+                            className="w-full rounded text-darken-800"
+                            placeholder="Notes"
+                        />
+                    </div>
+                    <div className="flex gap-2">
+                        {/* Punch out */}
+                        <p className="my-auto text-xs text-darken-800">out</p>
+                        <input
+                            className="w-full flex-1 rounded bg-lighten-800"
+                            onChange={(e) => {
+                                console.log(e.target.value);
+                            }}
+                            type="time"
+                        />{" "}
+                        {/* Punch in */}
+                        <p className="my-auto text-xs text-darken-800">in</p>
+                        <input
+                            className="w-full min-w-24 flex-1 rounded bg-lighten-800"
+                            onChange={(e) => {
+                                console.log(e.target.value);
+                            }}
+                            type="time"
+                        />
+                    </div>
+                </div>
+                {isToday && (
+                    <p className="my-auto font-header text-xl">{"<"}</p>
+                )}
+            </div>
+        );
     }
 
     function createEntryPage() {
@@ -116,7 +159,7 @@ export default function Lunches(props) {
                 {/* Gradient bg */}
                 <div className="m-5 flex animate-gradient-x justify-center rounded-3xl bg-gradient-to-tl from-orange-600 via-orange-500 to-yellow-500 p-4 sm:gap-8">
                     <div className="flex flex-wrap justify-around gap-2 lg:gap-48">
-                        <div className="flex w-72 flex-col gap-4">
+                        <div className="flex flex-col gap-4">
                             <p className="text-3xl font-bold text-zinc-800">
                                 {submission.date.toDateString()}
                             </p>
@@ -132,7 +175,6 @@ export default function Lunches(props) {
 
                         <div className="flex flex-col gap-2">
                             <div className="w-72 rounded-2xl bg-lighten-900 p-4 shadow-xl">
-                                <p>Placeholder</p>
                                 {submission.days.map(createDayEntry)}
                             </div>
 
@@ -215,7 +257,11 @@ export default function Lunches(props) {
 
     return (
         <>
-            <Frame data={props.data} noNavbar vignette>
+            <Frame
+                data={props.data}
+                noNavbar
+                vignette
+            >
                 <div className="min-h-[150vh] w-screen">
                     {/* Logo */}
                     <div className="flex h-16 justify-center sm:h-32">

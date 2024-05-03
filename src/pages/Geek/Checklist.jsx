@@ -5,13 +5,28 @@ import * as RealmWeb from "realm-web";
 
 const RealmAppContext = React.createContext(null);
 
-export default function Checlist (props) {
+export default function Checlist(props) {
     const uri = import.meta.env.VITE_CONNECTION_STRING;
 
     const stores = {
-        928: { vans: ["022", "091", "125", "137", "163", "427", "449"] },
-        940: { vans: ["124", "160", "185"] },
-        639: { vans: ["017", "140", "446"] },
+        928: {
+            vans: ["022", "091", "125", "137", "163", "427", "449"],
+            agents: {
+                jadubeau: {
+                    days: [
+                        { sunday: { in: "", out: "", note: "OFF" } },
+                        { monday: { in: "", out: "", note: "" } },
+                        { tuesday: { in: "", out: "", note: "" } },
+                        { wednesday: { in: "", out: "", note: "OFF" } },
+                        { thursday: { in: "", out: "", note: "OFF" } },
+                        { friday: { in: "", out: "", note: "" } },
+                        { saturday: { in: "", out: "", note: "" } },
+                    ],
+                },
+            },
+        },
+        940: { vans: ["124", "160", "185"], agents: ["nial", "test940"] },
+        639: { vans: ["017", "140", "446"], agents: ["sean", "test639"] },
     };
 
     const [questions, setQuestions] = useState([
@@ -316,7 +331,11 @@ export default function Checlist (props) {
 
                             {/* Stores */}
                             <div className="dropdown dropdown-end rounded-lg bg-white max-sm:dropdown-top">
-                                <div tabIndex={0} role="button" className="btn">
+                                <div
+                                    tabIndex={0}
+                                    role="button"
+                                    className="btn"
+                                >
                                     <p>
                                         Store:{" "}
                                         <span className="underline">
@@ -351,7 +370,11 @@ export default function Checlist (props) {
 
     return (
         <>
-            <Frame data={props.data} noNavbar vignette>
+            <Frame
+                data={props.data}
+                noNavbar
+                vignette
+            >
                 <div className="min-h-[150vh] w-screen">
                     {/* Logo */}
                     <div className="flex h-16 justify-center sm:h-32">
