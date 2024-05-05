@@ -35,7 +35,7 @@ export default function MessageEntry(props) {
                 className="flex-1"
                 onSubmit={(e) => {
                     e.preventDefault();
-                    sendMyMessage(myMessage);
+                    myMessage && sendMyMessage(myMessage);
                 }}
             >
                 <div className="flex gap-2">
