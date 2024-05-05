@@ -18,7 +18,7 @@ export default function Navbar(props) {
     }
 
     return (
-        <div className="fixed z-50 mx-auto flex w-full justify-between bg-lighten-600 shadow-lg backdrop-blur-3xl transition-all">
+        <div className="fixed z-50 mx-auto flex w-full justify-between bg-lighten-600 backdrop-blur-3xl transition-all">
             <NavButtons />
             {props.data && createDataDependants()}
         </div>

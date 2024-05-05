@@ -29,9 +29,7 @@ export default function Frame(props) {
             >
                 <div className="m-auto max-w-screen-xl p-4">
                     <div className="mt-12 flex justify-center">
-                        <div className="flex flex-col">
-                            {props.children}
-                        </div>
+                        <div className="flex flex-col">{props.children}</div>
                     </div>
                 </div>
             </div>

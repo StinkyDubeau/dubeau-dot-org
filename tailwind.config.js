@@ -78,8 +78,9 @@ export default {
         },
         fontFamily: {
             regular: ["Roboto", "sans-serif"],
-            header: ["Belanosima", "sans-serif"],
-            headerScript: ["Belanosima", "sans-serif"],
+            header: ["Roboto", "sans-serif"],
+            headerScript: ["Tenor Sans", "serif"],
+            pixel: ["Silkscreen", "monospace"],
         },
     },
     plugins: [
