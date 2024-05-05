@@ -11,7 +11,7 @@ export default function UsersList(props) {
             <div className="flex justify-center">
                 <ul className="flex gap-1 overflow-auto scrollbar-hide max-sm:px-3 sm:max-w-52 sm:flex-wrap">
                     {myUser && (
-                        <li className="max-w-52 flex-1 whitespace-nowrap text-nowrap rounded-3xl bg-darken-50 px-2 py-1 text-darken-700 max-sm:max-h-6 max-sm:text-xs sm:w-52">
+                        <li className="min-w-12 max-w-52 flex-1 overflow-scroll text-ellipsis whitespace-nowrap text-nowrap rounded-3xl bg-darken-50 px-2 py-1 text-darken-700 scrollbar-hide max-sm:max-h-6 max-sm:text-xs sm:w-52">
                             ⭐️ {myUser.nick ? myUser.nick : myUser.id}
                         </li>
                     )}
