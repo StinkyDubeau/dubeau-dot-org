@@ -16,7 +16,7 @@ export default function Login(props) {
                     <p className="m-auto font-header text-5xl font-extralight text-lighten-900">
                         p2p chat
                     </p>
-                    <p className="text-xl font-bold text-lighten-700">
+                    <p className="text-xl font-header font-medium text-lighten-700">
                         Choose a lobby
                     </p>
                     <div className="flex justify-center gap-2">
