@@ -26,36 +26,15 @@ export default function Lunches(props) {
         ],
     });
 
-    async function getChildByKey(str, obj) {
-        // Given an object, check for a child with key str
-        // Search recursively if not found at top level
-        console.log(`Searching ${obj} for ${str}`);
-
-        for (var key in obj) {
-            // Base case
-            if (key === str) {
-                console.log("FOUND");
-                console.log(obj);
-                return obj;
-            }
-
-            // Search child if it's an object
-            else if (typeof obj[key] === "object") {
-                await getChildByKey(str, obj[key]);
-            }
-
-            // Cannot find
-            else {
-                console.log("NO RESULT");
-                return null;
-            }
-        }
-    }
-
     async function autoFill() {
-        setSubmission({
-            ...submission,
-            days: await getChildByKey(username, data).days,
+        data.forEach((store) => {
+            store.agents.forEach((agent) => {
+                console.log(agent.name);
+                if (agent.username === username) {
+                    console.log("Found match!");
+                    setSubmission({ ...submission, days: agent.days });
+                }
+            });
         });
     }
 
@@ -79,7 +58,6 @@ export default function Lunches(props) {
                     return null;
                 });
 
-            console.log("did mount abort");
             didMount.current = true;
             return;
         }
@@ -93,8 +71,6 @@ export default function Lunches(props) {
             return;
         }
 
-        console.log("Username cookie effect");
-        console.log(`Username cookie: ${usernameCookie}`);
         updateUsername(usernameCookie);
     }, [usernameCookie]);
 
@@ -212,7 +188,10 @@ export default function Lunches(props) {
                                 {submission.days.map(createDayEntry)}
                             </div>
 
-                            <button className="w-72 rounded-2xl bg-lighten-900 p-4 font-bold text-darken-700 shadow-xl transition-all hover:scale-105">
+                            <button
+                                className="w-72 rounded-2xl bg-lighten-900 p-4 font-bold text-darken-700 shadow-xl transition-all hover:scale-105"
+                                onClick={handleSubmit}
+                            >
                                 Submit
                             </button>
                         </div>
@@ -220,6 +199,11 @@ export default function Lunches(props) {
                 </div>
             </div>
         );
+    }
+
+    function handleSubmit() {
+        console.log("Handle submit");
+        console.log(submission);
     }
 
     function createLoginPage() {

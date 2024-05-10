@@ -16,7 +16,7 @@ export default function Home(props) {
             >
                 <Panel className="m-4">
                     <div className="flex justify-center py-8 sm:p-12">
-                        <h1 className="font-header text-5xl font-light text-darken-700 max-sm:text-5xl">
+                        <h1 className="font-header text-5xl font-light tracking-tighter text-darken-700 max-sm:text-5xl">
                             dubeau.org
                         </h1>
                         {/* <div className="flex flex-col justify-center text-2xl italic text-darken-500 max-sm:text-2xl">
