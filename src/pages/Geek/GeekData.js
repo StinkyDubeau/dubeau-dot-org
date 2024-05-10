@@ -7,6 +7,7 @@ export default function geekData() {
                 {
                     username: "jadubeau",
                     name: "Jacob Dubeau",
+                    van: "427",
                     days: [
                         { sunday: { in: "", out: "", note: "OFF" } },
                         { monday: { in: "12:30", out: "1:00", note: "" } },

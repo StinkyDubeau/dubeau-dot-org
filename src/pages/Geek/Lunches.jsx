@@ -8,6 +8,7 @@ const RealmAppContext = React.createContext(null);
 export default function Lunches(props) {
     const [canSubmit, setCanSubmit] = useState(false);
     const [usernameCookie, setUsernameCookie] = useState(null);
+    const [agent, setAgent] = useState(null);
     const [username, setUsername] = useState(undefined);
     const [loggedIn, setLoggedIn] = useState(false);
     const data = geekData();
@@ -32,6 +33,7 @@ export default function Lunches(props) {
                 console.log(agent.name);
                 if (agent.username === username) {
                     console.log("Found match!");
+                    setAgent(agent);
                     setSubmission({ ...submission, days: agent.days });
                 }
             });
@@ -117,11 +119,14 @@ export default function Lunches(props) {
         setLoggedIn(true);
     }
 
-    function createDayEntry(day) {
+    function createDayEntry(day, index) {
         const dayName = Object.keys(day).toString();
         const isToday = day === submission.days[new Date().getDay()];
         return (
-            <div className="flex gap-2">
+            <div
+                className="flex gap-2"
+                key={`${index}${dayName}`}
+            >
                 {isToday && (
                     <p className="my-auto font-header text-xl">{">"}</p>
                 )}
@@ -135,6 +140,7 @@ export default function Lunches(props) {
                         <input
                             className="w-full rounded text-darken-800"
                             placeholder="Notes"
+                            value={day.notes}
                         />
                     </div>
                     <div className="flex gap-2">
@@ -204,6 +210,7 @@ export default function Lunches(props) {
     function handleSubmit() {
         console.log("Handle submit");
         console.log(submission);
+        console.log(submission);
     }
 
     function createLoginPage() {
@@ -268,6 +275,7 @@ export default function Lunches(props) {
             <div className="fixed bottom-0 left-0 z-50 h-16 w-screen min-w-36 bg-center sm:left-1.5 sm:top-1 sm:w-auto">
                 <div className="bg-lighten-400 backdrop-blur-xl max-sm:rounded-t-xl sm:rounded-xl">
                     {createLoginButton()}
+                    {agent && <p className="text-darken-800">{agent.name}</p>}
                 </div>
             </div>
         );
