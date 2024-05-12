@@ -122,6 +122,7 @@ export default function Lunches(props) {
     function createDayEntry(day, index) {
         const dayName = Object.keys(day).toString();
         const isToday = day === submission.days[new Date().getDay()];
+        const submissionDay = submission.days[index][dayName];
         return (
             <div
                 className="flex gap-2"
@@ -140,7 +141,7 @@ export default function Lunches(props) {
                         <input
                             className="w-full rounded text-darken-800"
                             placeholder="Notes"
-                            value={day.notes}
+                            value={submissionDay.note}
                         />
                     </div>
                     <div className="flex gap-2">
@@ -151,7 +152,8 @@ export default function Lunches(props) {
                             onChange={(e) => {
                                 console.log(e.target.value);
                             }}
-                            type="time"
+                            // type="time"
+                            value={submissionDay.out}
                         />{" "}
                         {/* Punch in */}
                         <p className="my-auto text-xs text-darken-800">in</p>
@@ -160,7 +162,8 @@ export default function Lunches(props) {
                             onChange={(e) => {
                                 console.log(typeof e.target.value);
                             }}
-                            type="time"
+                            // type="time"
+                            value={submissionDay.in}
                         />
                     </div>
                 </div>
@@ -209,7 +212,6 @@ export default function Lunches(props) {
 
     function handleSubmit() {
         console.log("Handle submit");
-        console.log(submission);
         console.log(submission);
     }
 
