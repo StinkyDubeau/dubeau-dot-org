@@ -1,14 +1,18 @@
 import Frame from "../../components/Frame";
 import { Link } from "react-router-dom";
 import React, { useState, useContext, useEffect, useRef } from "react";
+import geekData from "./GeekData";
 
 const RealmAppContext = React.createContext(null);
 
 export default function Lunches(props) {
     const [canSubmit, setCanSubmit] = useState(false);
     const [usernameCookie, setUsernameCookie] = useState(null);
+    const [agent, setAgent] = useState(null);
     const [username, setUsername] = useState(undefined);
     const [loggedIn, setLoggedIn] = useState(false);
+    const data = geekData();
+    console.log(data);
 
     const [submission, setSubmission] = useState({
         date: new Date(),
@@ -22,6 +26,19 @@ export default function Lunches(props) {
             { saturday: { in: "", out: "", note: "" } },
         ],
     });
+
+    async function autoFill() {
+        data.forEach((store) => {
+            store.agents.forEach((agent) => {
+                console.log(agent.name);
+                if (agent.username === username) {
+                    console.log("Found match!");
+                    setAgent(agent);
+                    setSubmission({ ...submission, days: agent.days });
+                }
+            });
+        });
+    }
 
     // Used to check if first render
     const didMount = useRef(false);
@@ -43,7 +60,6 @@ export default function Lunches(props) {
                     return null;
                 });
 
-            console.log("did mount abort");
             didMount.current = true;
             return;
         }
@@ -57,8 +73,6 @@ export default function Lunches(props) {
             return;
         }
 
-        console.log("Username cookie effect");
-        console.log(`Username cookie: ${usernameCookie}`);
         updateUsername(usernameCookie);
     }, [usernameCookie]);
 
@@ -105,9 +119,59 @@ export default function Lunches(props) {
         setLoggedIn(true);
     }
 
-    function createDayEntry(day) {
+    function createDayEntry(day, index) {
         const dayName = Object.keys(day).toString();
-        return <div>{dayName}</div>;
+        const isToday = day === submission.days[new Date().getDay()];
+        const submissionDay = submission.days[index][dayName];
+        return (
+            <div
+                className="flex gap-2"
+                key={`${index}${dayName}`}
+            >
+                {isToday && (
+                    <p className="my-auto font-header text-xl">{">"}</p>
+                )}
+                <div
+                    className={`flex h-20 flex-col justify-center gap-2 rounded-lg p-2 ${isToday && "bg-darken-50 shadow"}`}
+                >
+                    <div className="flex w-full gap-2">
+                        <p className="flex-0 w-full text-left text-darken-800">
+                            {dayName}
+                        </p>
+                        <input
+                            className="w-full rounded text-darken-800"
+                            placeholder="Notes"
+                            value={submissionDay.note}
+                        />
+                    </div>
+                    <div className="flex gap-2">
+                        {/* Punch out */}
+                        <p className="my-auto text-xs text-darken-800">out</p>
+                        <input
+                            className="w-full flex-1 rounded bg-lighten-800"
+                            onChange={(e) => {
+                                console.log(e.target.value);
+                            }}
+                            // type="time"
+                            value={submissionDay.out}
+                        />{" "}
+                        {/* Punch in */}
+                        <p className="my-auto text-xs text-darken-800">in</p>
+                        <input
+                            className="w-full min-w-24 flex-1 rounded bg-lighten-800"
+                            onChange={(e) => {
+                                console.log(typeof e.target.value);
+                            }}
+                            // type="time"
+                            value={submissionDay.in}
+                        />
+                    </div>
+                </div>
+                {isToday && (
+                    <p className="my-auto font-header text-xl">{"<"}</p>
+                )}
+            </div>
+        );
     }
 
     function createEntryPage() {
@@ -116,27 +180,27 @@ export default function Lunches(props) {
                 {/* Gradient bg */}
                 <div className="m-5 flex animate-gradient-x justify-center rounded-3xl bg-gradient-to-tl from-orange-600 via-orange-500 to-yellow-500 p-4 sm:gap-8">
                     <div className="flex flex-wrap justify-around gap-2 lg:gap-48">
-                        <div className="flex w-72 flex-col gap-4">
+                        <div className="flex flex-col gap-4">
                             <p className="text-3xl font-bold text-zinc-800">
                                 {submission.date.toDateString()}
                             </p>
-                            {/* <div className="flex justify-center gap-2">
-                                <button className="h-16 w-full rounded-2xl bg-lighten-900 text-lg text-darken-800 shadow-lg transition-all hover:bg-lighten-900">
-                                    Choose Store
-                                </button>
-                                <button className="h-16 w-full rounded-2xl bg-lighten-900 text-lg text-darken-800 shadow-lg transition-all hover:bg-lighten-900">
-                                    Choose Van
-                                </button>
-                            </div> */}
+                            <button
+                                onClick={autoFill}
+                                className="w-72 rounded-2xl bg-lighten-900 p-4 font-bold text-darken-700 shadow-xl transition-all hover:scale-105"
+                            >
+                                {">"}Autofill
+                            </button>
                         </div>
 
                         <div className="flex flex-col gap-2">
                             <div className="w-72 rounded-2xl bg-lighten-900 p-4 shadow-xl">
-                                <p>Placeholder</p>
                                 {submission.days.map(createDayEntry)}
                             </div>
 
-                            <button className="w-72 rounded-2xl bg-lighten-900 p-4 font-bold text-darken-700 shadow-xl transition-all hover:scale-105">
+                            <button
+                                className="w-72 rounded-2xl bg-lighten-900 p-4 font-bold text-darken-700 shadow-xl transition-all hover:scale-105"
+                                onClick={handleSubmit}
+                            >
                                 Submit
                             </button>
                         </div>
@@ -144,6 +208,11 @@ export default function Lunches(props) {
                 </div>
             </div>
         );
+    }
+
+    function handleSubmit() {
+        console.log("Handle submit");
+        console.log(submission);
     }
 
     function createLoginPage() {
@@ -208,6 +277,7 @@ export default function Lunches(props) {
             <div className="fixed bottom-0 left-0 z-50 h-16 w-screen min-w-36 bg-center sm:left-1.5 sm:top-1 sm:w-auto">
                 <div className="bg-lighten-400 backdrop-blur-xl max-sm:rounded-t-xl sm:rounded-xl">
                     {createLoginButton()}
+                    {agent && <p className="text-darken-800">{agent.name}</p>}
                 </div>
             </div>
         );
@@ -215,7 +285,11 @@ export default function Lunches(props) {
 
     return (
         <>
-            <Frame data={props.data} noNavbar vignette>
+            <Frame
+                data={props.data}
+                noNavbar
+                vignette
+            >
                 <div className="min-h-[150vh] w-screen">
                     {/* Logo */}
                     <div className="flex h-16 justify-center sm:h-32">

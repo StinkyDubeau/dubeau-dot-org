@@ -113,7 +113,7 @@ export default function Astros(props) {
     return (
         <Frame data={props.data}>
             <div className="">
-                <div className="my-4 flex justify-between">
+                <div className="my-4 flex flex-col justify-between gap-2">
                     <p
                         className="mb-3 font-header text-5xl text-darken-800 sm:text-left"
                         onClick={() => {
@@ -123,7 +123,7 @@ export default function Astros(props) {
                     >
                         Astros
                     </p>
-                    {astro && (
+                    {astro ? (
                         <div className="z-10 flex gap-4 drop-shadow-xl">
                             <button
                                 className="my-1 rounded-xl bg-lighten-600 p-2 font-header text-2xl text-darken-800 transition-all hover:bg-red-500 hover:text-lighten-800"
@@ -149,6 +149,13 @@ export default function Astros(props) {
                             >
                                 Random
                             </button>
+                        </div>
+                    ) : (
+                        <div className="flex flex-col gap-6">
+                            <p className="text-darken-800">
+                                Loading sightings...
+                            </p>
+                            <span className="loading loading-spinner loading-lg mx-auto text-darken-800"></span>
                         </div>
                     )}
                 </div>
