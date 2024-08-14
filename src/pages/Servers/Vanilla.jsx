@@ -8,7 +8,7 @@ export default function fun(props) {
     return (
         <Frame data={props.data}>
             <div>
-            <div className="w-screen">
+            <div className="w-xl">
                     <div className="m-5">
                         <p className="text-left font-header text-5xl text-darken-800">
                             Vanilla
@@ -24,7 +24,7 @@ export default function fun(props) {
                             How to join
                         </p>
                         <p className="text-left text-lg text-darken-800">
-                            An invite-only 1.21 minecraft server community
+                            Simple method
                         </p>
                     </div>
                 </div>
