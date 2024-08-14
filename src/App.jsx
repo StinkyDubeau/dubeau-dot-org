@@ -13,6 +13,8 @@ import Chat from "./pages/Web3/Login";
 import Astros from "./pages/Astros";
 import Trackers from "./pages/Trackers";
 
+import Vanilla from "./pages/Servers/Vanilla";
+
 // Assets
 import Data from "./assets/Data";
 
@@ -54,6 +56,12 @@ function App() {
                     path="/servers/*"
                     element={<Trackers data={data} setData={setData} />}
                 />
+                <>
+                <Route
+                    path="/servers/vanilla"
+                    element={<Vanilla data={data} setData={setData} />}
+                />
+                </>
             </Routes>
         </>
     );

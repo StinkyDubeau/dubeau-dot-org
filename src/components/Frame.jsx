@@ -1,4 +1,5 @@
 import Navbar from "./Navbar";
+import Footer from "./Footer";
 
 export default function Frame(props) {
     function createDataDependants() {
@@ -22,8 +23,10 @@ export default function Frame(props) {
         <>
             {props.data && createDataDependants()}
 
+            {/* Navbar */}
             {!props.noNavbar && <Navbar data={props.data} />}
 
+            {/* Content */}
             <div
                 className={`h-max min-h-screen ${props.vignette === !null ? "bg-zinc-800 shadow-inner-4xl" : "bg-zinc-200"}`}
             >
@@ -33,6 +36,10 @@ export default function Frame(props) {
                     </div>
                 </div>
             </div>
+
+            {/* Footer */}
+            {!props.noNavbar && <Footer data={props.data} />}
+
         </>
     );
 }

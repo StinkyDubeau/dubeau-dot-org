@@ -65,7 +65,7 @@ export default function fun(props) {
                             subtitle="Minecraft 1.21"
                             img={ModdedBanner}
                             // to="/vanilla"
-                            to="/fun"
+                            to="/servers/vanilla"
                         />
                         <ServerCard
                             title="Better Than Wolves"
@@ -79,7 +79,7 @@ export default function fun(props) {
                             subtitle="Modded 1.1.0"
                             img={FactorioBanner}
                             // to="/factorio"
-                            to="/fun"
+                            to="/contact"
                         />
                         <ServerCard
                             title="DMP"
