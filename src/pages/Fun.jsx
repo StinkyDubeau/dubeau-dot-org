@@ -15,7 +15,7 @@ export default function fun(props) {
     return (
         <Frame data={props.data}>
             <div>
-                <div className="w-screen">
+                <div className="">
                     <div className="m-5">
                         <p className="text-left font-header text-5xl text-darken-800">
                             Decentralized chat
@@ -39,7 +39,7 @@ export default function fun(props) {
                         </Link>
                     </div>
                 </div>
-                <div className="w-screen">
+                <div className="">
                     <div className="m-5">
                         <p className="text-left font-header text-5xl text-darken-800">
                             Game servers
@@ -90,7 +90,7 @@ export default function fun(props) {
                         />
                     </div>
                 </div>
-                <div className="w-screen">
+                <div className="">
                     <div className="m-5">
                         <p className="text-left font-header text-5xl text-darken-800">
                             Astro sightings

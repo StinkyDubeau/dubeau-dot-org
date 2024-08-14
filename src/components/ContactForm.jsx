@@ -147,11 +147,11 @@ export default function ContactForm(props) {
 
                 <textarea
                     className="rounded-xl bg-darken-50  p-2 text-darken-800"
-                    placeholder="Message (Drag bottom-right corner for more space)"
+                    placeholder="Body"
                     value={body}
                     onChange={(e) => {
                         setBody(e.target.value);
-                    }}
+                    }}  
                 ></textarea>
 
                 <button

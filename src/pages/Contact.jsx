@@ -6,7 +6,7 @@ export default function (props) {
     return (
         <>
             <Frame data={props.data}>
-                <div className="w-screen">
+                <div className="">
                     <div className="m-5 flex animate-gradient-x justify-center rounded-2xl bg-gradient-to-tl from-green-600 via-cyan-600 to-yellow-500 p-4 sm:gap-8">
                         <div className="flex flex-wrap justify-around gap-6 lg:gap-48">
                             <div className="flex w-72 flex-col">

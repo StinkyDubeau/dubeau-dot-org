@@ -30,8 +30,8 @@ export default function Frame(props) {
             <div
                 className={`h-max min-h-screen ${props.vignette === !null ? "bg-zinc-800 shadow-inner-4xl" : "bg-zinc-200"}`}
             >
-                <div className="m-auto max-w-screen-xl p-4">
-                    <div className="mt-12 flex justify-center">
+                <div className="m-auto p-4">
+                    <div className="mt-12 max-w-screen-xl mx-auto flex justify-center">
                         <div className="flex flex-col">{props.children}</div>
                     </div>
                 </div>
