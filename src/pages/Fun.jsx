@@ -61,29 +61,22 @@ export default function fun(props) {
                     {/* Gradient bg */}
                     <div className="m-5 flex animate-gradient-x flex-wrap justify-center gap-4 rounded-2xl bg-gradient-to-br from-blue-400 via-cyan-400 to-orange-300 p-4 sm:gap-8">
                         <ServerCard
-                            title="RotN"
-                            subtitle="Modded Minecraft"
-                            img={RotnBanner}
-                            // to="/modded"
-                            to="/fun"
-                        />
-                        <ServerCard
                             title="Vanilla"
-                            subtitle="Minecraft, 1.20.4"
+                            subtitle="Minecraft 1.21"
                             img={ModdedBanner}
                             // to="/vanilla"
                             to="/fun"
                         />
                         <ServerCard
-                            title="Beta"
-                            subtitle="Minecraft, 1.7.3"
+                            title="Better Than Wolves"
+                            subtitle="Modded 1.5.2"
                             img={BetaBanner}
                             // to="/beta"
                             to="/fun"
                         />
                         <ServerCard
                             title="Factorio"
-                            subtitle="Modded, 1.1.0"
+                            subtitle="Modded 1.1.0"
                             img={FactorioBanner}
                             // to="/factorio"
                             to="/fun"
