@@ -12,7 +12,7 @@ export default function Login(props) {
         return (
             <div className="flex flex-col gap-2">
                 {/* Choose lobby */}
-                <div className="m-auto flex w-full animate-gradient-y flex-col justify-center gap-2 rounded-3xl bg-gradient-to-bl from-gray-700 via-cyan-600 to-blue-500 p-5">
+                <div className="m-auto mt-3 flex w-full animate-gradient-y flex-col justify-center gap-2 rounded-3xl bg-gradient-to-bl from-gray-700 via-cyan-600 to-blue-500 p-5">
                     <p className="m-auto font-header text-5xl font-extralight text-lighten-900">
                         p2p chat
                     </p>

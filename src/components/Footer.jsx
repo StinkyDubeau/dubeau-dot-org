@@ -19,7 +19,7 @@ export default function Navbar(props) {
 
     return (
         <div className="z-40 mx-auto p-2 flex w-full justify-center bg-slate-100 backdrop-blur-3xl transition-all">
-            <p className="font-header text-darken-600">🇨🇦 Jake Dubeau 2024</p>
+            <p className="font-header text-darken-600">Jake Dubeau  🇨🇦  2024</p>
         </div>
     );
 }
