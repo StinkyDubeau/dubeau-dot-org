@@ -91,7 +91,7 @@ export default function Login(props) {
     }
 
     return (
-        <Frame data={props.data}>
+        <Frame noNavbar data={props.data}>
             {loggedIn ? (
                 <Chat
                     nick={nick}
