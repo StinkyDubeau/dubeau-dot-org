@@ -147,15 +147,15 @@ export default function ContactForm(props) {
 
                 <textarea
                     className="rounded-xl bg-darken-50  p-2 text-darken-800"
-                    placeholder="Message (Drag bottom-right corner for more space)"
+                    placeholder="Body"
                     value={body}
                     onChange={(e) => {
                         setBody(e.target.value);
-                    }}
+                    }}  
                 ></textarea>
 
                 <button
-                    className="h-10 rounded-xl bg-darken-100 font-header text-darken-600 shadow transition-all hover:rounded-lg hover:bg-darken-50"
+                    className="h-10 rounded-xl bg-darken-50 font-semibold text-darken-600 transition-all hover:rounded-lg hover:bg-darken-50"
                     onClick={handleSubmit}
                 >
                     Submit
