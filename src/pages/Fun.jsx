@@ -14,6 +14,19 @@ import KspBanner from "../assets/ksp-banner.jpg";
 export default function fun(props) {
     return (
         <Frame data={props.data}>
+
+            {/* 
+            Social
+            - P2P Chat
+            - Game Servers
+            - Astro Sightings
+
+            Personal
+            - Blog
+            - Guitar Tabs
+            - Reading List
+            */}
+            
             <div>
                 <div className="">
                     <div className="m-5">
