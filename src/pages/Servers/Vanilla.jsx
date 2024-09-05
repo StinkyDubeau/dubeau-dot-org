@@ -11,7 +11,7 @@ export default function fun(props) {
 
     function createUser(user) {
         return (
-            <div className="scale-100 text-white transition-all hover:scale-110 hover:text-darken-300">
+            <div className="text-darken-10 scale-100 transition-all hover:scale-110 hover:text-darken-800">
                 <p className="font-header text-lg text-darken-800">
                     {user.name}
                 </p>
@@ -23,7 +23,7 @@ export default function fun(props) {
     return (
         <Frame data={props.data}>
             <div>
-                <div className="w-xl flex justify-center flex-col gap-6">
+                <div className="w-xl flex flex-col justify-center gap-6">
                     <div className="mt-5 flex justify-center gap-12 overflow-clip rounded-3xl p-2 align-middle max-sm:flex-col">
                         <div className="flex-0 flex max-w-full justify-center p-2">
                             <div className="flex flex-col justify-center gap-12 align-middle">
@@ -56,24 +56,18 @@ export default function fun(props) {
                             </div>
                         </div>
                         <img
-                            className="max-w-96 max-sm:max-w-full flex-1 rounded-3xl object-cover"
+                            className="max-w-96 flex-1 rounded-3xl object-cover max-sm:max-w-full"
                             src={PackImg}
                         />
                     </div>
-                    {/* Gradient bg */}
-                    <p className="rounded-full bg-red-500 p-2 font-header text-lighten-800">
-                        Please note that you must visit our{" "}
-                        <Link
-                            className="font-regular text-lighten-600 underline"
-                            to="/contact"
-                        >
-                            discord
-                        </Link>{" "}
-                        to join with either method.
-                    </p>
+
                     <div className="rounded-3xl bg-lighten-800 p-4">
                         <p className="text-left font-header text-3xl text-darken-800">
-                            Vanilla
+                            Join with a vanilla client
+                        </p>
+                        <p className="text-left font-header font-light text-darken-800">
+                            A vanilla client is the easiest way to get started,
+                            and is reccomended for most users.
                         </p>
 
                         <p className="text-left font-header text-xl text-darken-800">
@@ -86,7 +80,7 @@ export default function fun(props) {
                                     discord
                                 </Link>{" "}
                             </span>
-                            to be whitelisted.
+                            to be whitelisted
                         </p>
 
                         <p className="text-left font-header text-xl text-darken-800">
@@ -107,14 +101,56 @@ export default function fun(props) {
                     </div>
                     <div className="rounded-3xl bg-lighten-800 p-4">
                         <p className="text-left font-header text-3xl text-darken-800">
-                            Modded Client
+                            Join with a modded client
                         </p>
-
+                        <p className="text-left font-header font-light text-darken-800">
+                            A modded client provides the best experience for
+                            advanced users who desire larger render distances
+                            and other amenities.
+                        </p>
                         <p className="text-left font-header text-xl text-darken-800">
-                            1. Download our official{" "}
-                            <span className="font-light text-red-500">
-                                MultiMC instance
+                            0. Connect with us on{" "}
+                            <span className=" scale-100 transition-all hover:scale-125">
+                                <Link
+                                    className="font-bold text-darken-800"
+                                    to="/contact"
+                                >
+                                    discord
+                                </Link>{" "}
                             </span>
+                            to be whitelisted
+                        </p>
+                        <p className="text-left font-header text-xl text-darken-800">
+                            1. Download the MultiMC launcher for your system:
+                        </p>
+                        <div className="flex  justify-center gap-4 text-darken-800">
+                            <Link
+                                className=" scale-100 transition-all hover:scale-110"
+                                to="https://files.multimc.org/downloads/mmc-develop-win32.zip"
+                            >
+                                Windows
+                            </Link>
+                            <Link
+                                className=" scale-100 transition-all hover:scale-110"
+                                to="https://files.multimc.org/downloads/multimc_1.6-1.deb"
+                            >
+                                Debian/Ubuntu
+                            </Link>
+                            <Link
+                                className=" scale-100 transition-all hover:scale-110"
+                                to="https://github.com/MultiMC/multimc-pkgbuild"
+                            >
+                                Arch
+                            </Link>
+                            <Link
+                                className=" scale-100 transition-all hover:scale-110"
+                                to="https://files.multimc.org/downloads/mmc-develop-osx64.tar.gz"
+                            >
+                                MacOS
+                            </Link>
+                        </div>
+                        <p className="text-left font-header text-xl text-darken-800">
+                            2. Download our official MultiMC instance
                         </p>
                     </div>
                 </div>
