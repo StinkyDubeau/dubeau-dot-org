@@ -15,6 +15,9 @@ import Astros from "./pages/Astros";
 import Trackers from "./pages/Trackers";
 
 import Vanilla from "./pages/Servers/Vanilla";
+import BetterThanWolves from "./pages/Servers/BetterThanWolves";
+import Factorio from "./pages/Servers/Factorio";
+import KSP from "./pages/Servers/KSP";
 
 // Assets
 import Data from "./assets/Data";
@@ -111,6 +114,33 @@ function App() {
                         path="/servers/vanilla"
                         element={
                             <Vanilla
+                                data={data}
+                                setData={setData}
+                            />
+                        }
+                    />
+                    <Route
+                        path="/servers/btw"
+                        element={
+                            <BetterThanWolves
+                                data={data}
+                                setData={setData}
+                            />
+                        }
+                    />
+                    <Route
+                        path="/servers/factorio"
+                        element={
+                            <Factorio
+                                data={data}
+                                setData={setData}
+                            />
+                        }
+                    />
+                    <Route
+                        path="/servers/ksp"
+                        element={
+                            <KSP
                                 data={data}
                                 setData={setData}
                             />
