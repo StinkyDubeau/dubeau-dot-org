@@ -26,14 +26,7 @@ export default function fun(props) {
                             1. You must be whitelisted to play!
                         </p>
                         <div className="flex w-full gap-2">
-                            {/* Easy Method */}
-                            <div className="flex-1 rounded-xl bg-lighten-800">
-                                <p>nutse</p>
-                            </div>
-                            {/* Reccomended Method */}
-                            <div className="flex-1 rounded-xl bg-lighten-800">
-                                <p>balls</p>
-                            </div>
+
                         </div>
                         <p className="text-left font-header text-xl text-darken-800">
                             > The easy way
