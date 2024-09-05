@@ -4,17 +4,19 @@ import Button from "../../components/Button";
 import PackImg from "../../assets/dubeau-banner.png";
 import { Link } from "react-router-dom";
 import wl from "../../assets/whitelist.json";
+import Marquee from "react-fast-marquee";
 
 export default function fun(props) {
     const whitelist = wl;
 
-
     function createUser(user) {
         return (
-            <>
-                <p className="text-darken-800 font-header">{user.name}</p>
-                <p className="text-darken-300 font-header font-light">{user.uuid}</p>
-            </>
+            <div className="text-white hover:text-darken-300">
+                <p className="font-header text-lg text-darken-800">
+                    {user.name}
+                </p>
+                <p className="font-header text-xs font-light">{user.uuid}</p>
+            </div>
         );
     }
 
@@ -22,31 +24,42 @@ export default function fun(props) {
         <Frame data={props.data}>
             <div>
                 <div className="w-xl flex flex-col gap-6">
-                    <div className="mt-5">
-                        <div className="flex justify-between gap-8 overflow-clip bg-blue-300">
-                            <div  className="h-full bg-green-200">
-                                <p className="text-left font-header text-5xl text-darken-800">
-                                    Vanilla
-                                </p>
+                    <div className="mt-5 flex bg-white rounded-3xl p-2 gap-12 overflow-clip">
+                        <div className="flex-0 flex max-w-96 justify-center p-2">
+                            <div className="flex flex-col justify-center align-middle gap-12">
+                                <div className="flex flex-col gap-2">
+                                    <p className="text-center font-header text-5xl text-darken-800">
+                                        Vanilla
+                                    </p>
 
-                                <p className="text-left text-xl font-light text-darken-800">
-                                    An <underline>invite-only</underline> 1.21
-                                    minecraft community
-                                </p>
-                                <p className="text-left text-xl font-light text-darken-800">   
-                                    There are currently <span className="drop-shadow">{whitelist.length}</span> players whitelisted.                                
-                                </p>
-                                <div className="rounded-2xl bg-red-300 max-h-fit">
-                                    {whitelist.map(createUser)}
+
+                                    <p className="text-center text-xl font-light text-darken-800">
+                                        An invite-only 1.21 minecraft community,
+                                    </p>
+                                    <p className="text-center text-xl font-light text-darken-800">
+                                        there are currently{" "}
+                                        <span className="drop-shadow">
+                                            {whitelist.length}
+                                        </span>{" "}
+                                        players whitelisted.
+                                    </p>
+                                    <div className="flex w-full justify-center">
+                                        <div className="flex max-w-96 justify-center">
+                                            <Marquee
+                                                speed="150"
+                                                className="mt-6 w-full"
+                                            >
+                                                {whitelist.map(createUser)}
+                                            </Marquee>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div className="w-48 flex-1 overflow-clip">
-                                <img
-                                    className="w-full"
-                                    src={PackImg}
-                                />
-                            </div>
                         </div>
+                        <img
+                            className="w-52 flex-1 rounded-3xl"
+                            src={PackImg}
+                        />
                     </div>
                     {/* Gradient bg */}
                     <p className="rounded-full bg-red-500 p-2 font-header text-lighten-800">
