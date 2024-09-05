@@ -23,9 +23,9 @@ export default function fun(props) {
     return (
         <Frame data={props.data}>
             <div>
-                <div className="w-xl flex flex-col gap-6">
-                    <div className="mt-5 flex gap-12 overflow-clip rounded-3xl bg-white p-2">
-                        <div className="flex-0 flex max-w-96 justify-center p-2">
+                <div className="w-xl flex justify-center flex-col gap-6">
+                    <div className="mt-5 flex justify-center gap-12 overflow-clip rounded-3xl p-2 align-middle max-sm:flex-col">
+                        <div className="flex-0 flex max-w-full justify-center p-2">
                             <div className="flex flex-col justify-center gap-12 align-middle">
                                 <div className="flex flex-col gap-2">
                                     <p className="text-center font-header text-5xl text-darken-800">
@@ -56,7 +56,7 @@ export default function fun(props) {
                             </div>
                         </div>
                         <img
-                            className="w-52 flex-1 rounded-3xl"
+                            className="max-w-96 max-sm:max-w-full flex-1 rounded-3xl object-cover"
                             src={PackImg}
                         />
                     </div>
