@@ -28,13 +28,30 @@ export default function fun(props) {
                         <div className="flex-0 flex max-w-full justify-center ">
                             <div className="flex flex-col justify-center gap-12 align-middle">
                                 <div className="flex flex-col gap-2">
-                                    <p className="text-left max-md:text-center font-header text-5xl text-darken-800">
+                                    <p className="text-center font-header text-5xl text-darken-800">
                                         Vanilla
                                     </p>
 
-                                    <p className="text-left max-md:text-center text-xl font-light text-darken-800">
-                                        An invite-only 1.21 minecraft community
+                                    <p className="text-center text-xl font-light text-darken-800">
+                                        An invite-only 1.21 minecraft community,
                                     </p>
+                                    <p className="text-center text-xl font-light text-darken-800">
+                                        there are currently{" "}
+                                        <span className="drop-shadow">
+                                            {whitelist.length}
+                                        </span>{" "}
+                                        players whitelisted.
+                                    </p>
+                                    <div className="flex w-full justify-center">
+                                        <div className="flex max-w-96 justify-center">
+                                            <Marquee
+                                                speed="150"
+                                                className="mt-6 w-full overflow-clip"
+                                            >
+                                                {whitelist.map(createUser)}
+                                            </Marquee>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -81,14 +98,13 @@ export default function fun(props) {
                             general rules
                         </p>
                     </div>
-
                     <div className="flex flex-col gap-2 rounded-3xl bg-lighten-800 p-4">
                         <p className="text-left font-header text-3xl text-darken-800">
                             Join with a modded client
                         </p>
                         <p className="text-left font-header font-light text-darken-800">
                             A modded client provides the best experience for
-                            advanced users who desire longer render distances
+                            advanced users who desire larger render distances
                             and other amenities.
                         </p>
                         <p className="text-left font-header text-xl text-darken-800">
@@ -159,57 +175,6 @@ export default function fun(props) {
                         <p className="text-left font-header text-xl text-darken-800">
                             6. Have fun and be cool! Follow posted signs for
                             general rules
-                        </p>
-                    </div>
-
-                    <div className="flex flex-col gap-2 rounded-3xl bg-lighten-800 p-4">
-                        <p className="text-left font-header text-3xl text-darken-800">
-                            Extra information
-                        </p>
-
-                        <p className="text-left font-header text-xl text-darken-800">
-                            There are currently{" "}
-                            <span className="font-light text-red-500">
-                                {whitelist.length}
-                            </span>{" "}
-                            players whitelisted.
-                        </p>
-                        <p className="text-left font-header text-xl text-darken-800">
-                            World Seed{" "}
-                            <span className="font-light text-red-500">
-                                -3185478975619901032
-                            </span>
-                        </p>
-                        <p className="text-left font-header text-xl text-darken-800">
-                            Spawn Generation{" "}
-                            <span className="font-light text-red-500">
-                                Vanilla 1.20.4
-                            </span>
-                        </p>
-                        <p className="text-left font-header text-xl text-darken-800">
-                            Render distance{" "}
-                            <span className="font-light text-red-500">
-                                32 chunks
-                            </span>
-                        </p>
-                        <p className="text-left font-header text-xl text-darken-800">
-                            Simulation distance{" "}
-                            <span className="font-light text-red-500">
-                                16 chunks
-                            </span>
-                        </p>
-                        <p className="text-left font-header text-xl text-darken-800">
-                            Whitelisted players, hover to see their UUIDs
-                            <div className="flex w-full justify-center">
-                                <div className="flex max-md:max-w-96 max-w-prose justify-center text-center">
-                                    <Marquee
-                                        speed="150"
-                                        className="mt-6 w-full overflow-clip"
-                                    >
-                                        {whitelist.map(createUser)}
-                                    </Marquee>
-                                </div>
-                            </div>
                         </p>
                     </div>
                 </div>

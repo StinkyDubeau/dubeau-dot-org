@@ -85,21 +85,21 @@ export default function fun(props) {
                             subtitle="Modded 1.5.2"
                             img={BetaBanner}
                             // to="/beta"
-                            to="/fun"
+                            to="/servers/btw"
                         />
                         <ServerCard
                             title="Factorio"
                             subtitle="Modded 1.1.0"
                             img={FactorioBanner}
                             // to="/factorio"
-                            to="/contact"
+                            to="/servers/factorio"
                         />
                         <ServerCard
                             title="DMP"
                             subtitle="Kerbal Space Program"
                             img={KspBanner}
                             // to="/ksp"
-                            to="/fun"
+                            to="/servers/ksp"
                         />
                     </div>
                 </div>
