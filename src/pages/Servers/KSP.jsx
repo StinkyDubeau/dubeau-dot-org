@@ -1,25 +1,11 @@
 import Panel from "../../components/Panel";
 import Frame from "../../components/Frame";
 import Button from "../../components/Button";
-import PackImg from "../../assets/dubeau-banner.png";
+import PackImg from "../../assets/ksp-banner.jpg";
 import { Link } from "react-router-dom";
-import wl from "../../assets/whitelist.json";
 import Marquee from "react-fast-marquee";
 
 export default function fun(props) {
-    const whitelist = wl;
-
-    function createUser(user) {
-        return (
-            <div className="text-darken-10 scale-100 transition-all hover:scale-110 hover:text-darken-800">
-                <p className="font-header text-lg text-darken-800">
-                    {user.name}
-                </p>
-                <p className="font-header text-xs font-light">{user.uuid}</p>
-            </div>
-        );
-    }
-
     return (
         <Frame data={props.data}>
             <div>
@@ -28,30 +14,13 @@ export default function fun(props) {
                         <div className="flex-0 flex max-w-full justify-center ">
                             <div className="flex flex-col justify-center gap-12 align-middle">
                                 <div className="flex flex-col gap-2">
-                                    <p className="text-center font-header text-5xl text-darken-800">
-                                        Vanilla
+                                    <p className="text-left font-header text-5xl text-darken-800 max-md:text-center">
+                                        Kerbal Space Program
                                     </p>
 
-                                    <p className="text-center text-xl font-light text-darken-800">
-                                        An invite-only 1.21 minecraft community,
+                                    <p className="text-left text-xl font-light text-darken-800 max-md:text-center">
+                                        A public Dark Mulitplayer server for Kerbal Space program.
                                     </p>
-                                    <p className="text-center text-xl font-light text-darken-800">
-                                        there are currently{" "}
-                                        <span className="drop-shadow">
-                                            {whitelist.length}
-                                        </span>{" "}
-                                        players whitelisted.
-                                    </p>
-                                    <div className="flex w-full justify-center">
-                                        <div className="flex max-w-96 justify-center">
-                                            <Marquee
-                                                speed="150"
-                                                className="mt-6 w-full overflow-clip"
-                                            >
-                                                {whitelist.map(createUser)}
-                                            </Marquee>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -63,11 +32,11 @@ export default function fun(props) {
 
                     <div className="flex flex-col gap-2 rounded-3xl bg-lighten-800 p-4">
                         <p className="text-left font-header text-3xl text-darken-800">
-                            Join with a vanilla client
+                            Join with steam
                         </p>
                         <p className="text-left font-header font-light text-darken-800">
-                            A vanilla client is the easiest way to get started,
-                            and is reccomended for most users.
+                            This section of the site is under construction. Join
+                            the discord to learn how to join this server.
                         </p>
 
                         <p className="text-left font-header text-xl text-darken-800">
@@ -81,32 +50,17 @@ export default function fun(props) {
                                 Join the discord server
                             </Link>
                         </div>
-
-                        <p className="text-left font-header text-xl text-darken-800">
-                            1. Launch the latest version of Minecraft Java
-                            Edition
-                        </p>
-                        <p className="text-left font-header text-xl text-darken-800">
-                            2. Connect to{" "}
-                            <span className="font-light text-red-500">
-                                dubeau.ddns.net
-                            </span>
-                        </p>
-
-                        <p className="text-left font-header text-xl text-darken-800">
-                            3. Have fun and be cool! Follow posted signs for
-                            general rules
-                        </p>
                     </div>
+
                     <div className="flex flex-col gap-2 rounded-3xl bg-lighten-800 p-4">
                         <p className="text-left font-header text-3xl text-darken-800">
-                            Join with a modded client
+                            Join with server IP
                         </p>
                         <p className="text-left font-header font-light text-darken-800">
-                            A modded client provides the best experience for
-                            advanced users who desire larger render distances
-                            and other amenities.
+                            This section of the site is under construction. Join
+                            the discord to learn how to join this server.
                         </p>
+
                         <p className="text-left font-header text-xl text-darken-800">
                             0. Connect with us on discord to be whitelisted
                         </p>
@@ -118,64 +72,6 @@ export default function fun(props) {
                                 Join the discord server
                             </Link>
                         </div>
-                        <p className="text-left font-header text-xl text-darken-800">
-                            1. Download the MultiMC launcher for your system:
-                        </p>
-                        <div className="flex justify-center gap-4 font-header text-darken-800 underline">
-                            <Link
-                                className=" scale-100 transition-all hover:scale-110"
-                                to="https://files.multimc.org/downloads/mmc-develop-win32.zip"
-                            >
-                                Windows
-                            </Link>
-                            <Link
-                                className=" scale-100 transition-all hover:scale-110"
-                                to="https://files.multimc.org/downloads/multimc_1.6-1.deb"
-                            >
-                                Debian/Ubuntu
-                            </Link>
-                            <Link
-                                className=" scale-100 transition-all hover:scale-110"
-                                to="https://github.com/MultiMC/multimc-pkgbuild"
-                            >
-                                Arch
-                            </Link>
-                            <Link
-                                className=" scale-100 transition-all hover:scale-110"
-                                to="https://files.multimc.org/downloads/mmc-develop-osx64.tar.gz"
-                            >
-                                MacOS
-                            </Link>
-                        </div>
-                        <p className="text-left font-header text-xl text-darken-800">
-                            2. Download our official MultiMC instance
-                        </p>
-                        <div className="flex justify-center gap-4 font-header text-darken-800 underline">
-                            <Link
-                                className=" scale-100 transition-all hover:scale-110"
-                                to="https://files.multimc.org/downloads/mmc-develop-win32.zip"
-                            >
-                                dubeau.org MultiMC Instance Fall 2024
-                            </Link>
-                        </div>
-                        <p className="text-left font-header text-xl text-darken-800">
-                            3. Connect your Microsoft account by clicking
-                            "Manage Accounts" in the top-right corner of MultiMC
-                        </p>
-                        <p className="text-left font-header text-xl text-darken-800">
-                            4. Click "Add instance", and then import the ZIP
-                            folder you downloaded in step 2
-                        </p>
-                        <p className="text-left font-header text-xl text-darken-800">
-                            5. Launch the new instance and connect to{" "}
-                            <span className="font-light text-red-500">
-                                dubeau.ddns.net
-                            </span>
-                        </p>{" "}
-                        <p className="text-left font-header text-xl text-darken-800">
-                            6. Have fun and be cool! Follow posted signs for
-                            general rules
-                        </p>
                     </div>
                 </div>
             </div>

@@ -35,8 +35,8 @@ export default function fun(props) {
                             Join with steam
                         </p>
                         <p className="text-left font-header font-light text-darken-800">
-                            A vanilla client is the easiest way to get started,
-                            and is reccomended for most users.
+                            This section of the site is under construction. Join
+                            the discord to learn how to join this server.
                         </p>
 
                         <p className="text-left font-header text-xl text-darken-800">
@@ -50,22 +50,6 @@ export default function fun(props) {
                                 Join the discord server
                             </Link>
                         </div>
-
-                        <p className="text-left font-header text-xl text-darken-800">
-                            1. Launch the latest version of Minecraft Java
-                            Edition
-                        </p>
-                        <p className="text-left font-header text-xl text-darken-800">
-                            2. Connect to{" "}
-                            <span className="font-light text-red-500">
-                                dubeau.ddns.net
-                            </span>
-                        </p>
-
-                        <p className="text-left font-header text-xl text-darken-800">
-                            3. Have fun and be cool! Follow posted signs for
-                            general rules
-                        </p>
                     </div>
 
                     <div className="flex flex-col gap-2 rounded-3xl bg-lighten-800 p-4">
@@ -73,8 +57,8 @@ export default function fun(props) {
                             Join with server IP
                         </p>
                         <p className="text-left font-header font-light text-darken-800">
-                            A vanilla client is the easiest way to get started,
-                            and is reccomended for most users.
+                            This section of the site is under construction. Join
+                            the discord to learn how to join this server.
                         </p>
 
                         <p className="text-left font-header text-xl text-darken-800">
@@ -88,22 +72,6 @@ export default function fun(props) {
                                 Join the discord server
                             </Link>
                         </div>
-
-                        <p className="text-left font-header text-xl text-darken-800">
-                            1. Launch the latest version of Minecraft Java
-                            Edition
-                        </p>
-                        <p className="text-left font-header text-xl text-darken-800">
-                            2. Connect to{" "}
-                            <span className="font-light text-red-500">
-                                dubeau.ddns.net
-                            </span>
-                        </p>
-
-                        <p className="text-left font-header text-xl text-darken-800">
-                            3. Have fun and be cool! Follow posted signs for
-                            general rules
-                        </p>
                     </div>
                 </div>
             </div>
