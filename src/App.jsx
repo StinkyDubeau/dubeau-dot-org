@@ -14,13 +14,18 @@ import Chat from "./pages/Web3/Login";
 import Astros from "./pages/Astros";
 import Trackers from "./pages/Trackers";
 
+// Pages: Game Servers
 import Vanilla from "./pages/Servers/Vanilla";
 import BetterThanWolves from "./pages/Servers/BetterThanWolves";
 import Factorio from "./pages/Servers/Factorio";
 import KSP from "./pages/Servers/KSP";
 
+// Pages: Fun
+import Counter from "./pages/Toys/Counter";
+
 // Assets
 import Data from "./assets/Data";
+
 
 function App() {
     const [data, setData] = useState(Data);
@@ -141,6 +146,15 @@ function App() {
                         path="/servers/ksp"
                         element={
                             <KSP
+                                data={data}
+                                setData={setData}
+                            />
+                        }
+                    />
+                    <Route
+                        path="/fun/counter"
+                        element={
+                            <Counter
                                 data={data}
                                 setData={setData}
                             />
