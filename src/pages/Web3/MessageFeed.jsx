@@ -1,6 +1,5 @@
 import { useRef, useEffect } from "react";
-import Avatar from "./Avatar";
-import Markdown from "react-markdown";
+
 import createMessage from "./Message";
 
 export default function MessageFeed(props) {
@@ -11,8 +10,6 @@ export default function MessageFeed(props) {
         useEffect(() => elementRef.current.scrollIntoView(), [messages]);
         return <div ref={elementRef} />;
     }
-
-    
 
     return (
         <div className="flex flex-col gap-2">
