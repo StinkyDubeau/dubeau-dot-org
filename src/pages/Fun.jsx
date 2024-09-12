@@ -102,9 +102,9 @@ export default function fun(props) {
                         <p className="text-left font-header text-5xl text-darken-800">
                             Toys
                         </p>
-                        <p className="text-left text-lg text-darken-800">
+                        {/* <p className="text-left text-lg text-darken-800">
                             Subtitle
-                        </p>
+                        </p> */}
                     </div>
                     {/* Gradient bg */}
                     <div className="m-5 flex animate-gradient-x flex-wrap justify-center gap-4 rounded-2xl bg-gradient-to-bl from-green-700 via-green-400 to-zinc-200 p-4 sm:gap-8">
