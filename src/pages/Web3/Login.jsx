@@ -67,6 +67,20 @@ export default function Login(props) {
                     </a>
                     .
                 </p>
+
+                <p className="m-auto max-w-xs text-sm text-darken-600">
+                    Messages are end-to-end encrypted and{" "}
+                    <span className="text-red-500">completely ephemeral</span>.
+                    Your messages are sent peer-to-peer using a bittorrent
+                    WebRTC protocol, which you can learn more about{" "}
+                    <a
+                        className="font-semibold underline"
+                        href="https://oxism.com/trystero/"
+                    >
+                        here
+                    </a>
+                    .
+                </p>
             </div>
         );
     }

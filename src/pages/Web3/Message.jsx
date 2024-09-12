@@ -1,9 +1,12 @@
-export default function createMessage(message, index) {
-    // This was re factored today. It used to be inside of the MessageFeed.jsx component.
-    // If something is broken, this should be your first point of investigation
-    // Sincerely,
-    // Jake 2024
+import Avatar from "./Avatar";
+import Markdown from "react-markdown";
 
+// This was re factored today. It used to be inside of the MessageFeed.jsx component.
+// If something is broken, this should be your first point of investigation
+// Sincerely,
+// Jake 2024
+
+export default function createMessage(message, index) {
     return (
         <div
             key={index + message.from.id}
