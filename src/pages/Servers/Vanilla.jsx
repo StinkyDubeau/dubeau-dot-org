@@ -23,7 +23,7 @@ export default function fun(props) {
     return (
         <Frame data={props.data}>
             <div>
-                <div className="w-xl flex flex-col justify-center gap-6">
+                <div className="max-sm:w-72 max-w-xl flex flex-col justify-center gap-6 overflow-hidden">
                     <div className="mt-5 flex justify-between gap-12 overflow-clip rounded-3xl align-middle max-sm:flex-col">
                         <div className="flex-0 flex max-w-full justify-center ">
                             <div className="flex flex-col justify-center gap-12 align-middle">
