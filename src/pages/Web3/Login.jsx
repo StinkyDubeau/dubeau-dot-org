@@ -12,10 +12,10 @@ export default function Login(props) {
     const message =
     {
         from: {
-            nick: "big screen",
+            nick: "Bob Loblaw",
             id: "rXKIunbHtTsbGTgsU62C",
         },
-        content: "Hello world!",
+        content: "Try setting a nickname above to preview unique user icons.",
         timestamp: "9/12/2024, 12:08:16 AM",
 
     }
@@ -24,7 +24,7 @@ export default function Login(props) {
 
         return (
             <div className="flex flex-col gap-8 justify-center h-screen">
-                <div className="flex flex-col gap-8 mb-12">
+                <div className="flex flex-col gap-8 mb-12 max-w-screen-sm">
                     {/* Choose lobby */}
                     <div className="transition-all m-auto max-sm:max-w-xs mt-3 flex w-full animate-gradient-y flex-col justify-center gap-2 rounded-3xl bg-gradient-to-bl from-gray-700 via-cyan-600 to-blue-500 p-5">
                         <p className="m-auto font-header text-5xl font-extralight text-lighten-900">
@@ -40,7 +40,7 @@ export default function Login(props) {
                             {createRoomButton("D")}
                         </div>
                     </div>
-                    <div className="transition-all flex flex-wrap gap-2 max-sm:max-w-xs w-fit -mt-6">
+                    <div className="transition-all flex flex-wrap gap-2 w-full -mt-6">
                         {/* Set nickname */}
                         <div className="m-auto flex max-w-sm gap-2 rounded-3xl bg-lighten-800 p-2">
                             <Avatar nick={nick} />
@@ -67,6 +67,38 @@ export default function Login(props) {
                             </div>
                         </div>
                     </div>
+                    {/* FAKE MESSAGE */}
+                    <div
+                        key={message.from.id}
+                        className="opacity-0 sm:opacity-100 transition-all ease-out justify-left flex-0 flex justify-between gap-2 overflow-y-auto overflow-x-scroll rounded-3xl bg-darken-50 px-4 py-2 scrollbar-hide"
+                    >
+                        {message.from.nick && (
+                            <div className="flex max-h-8">
+                                <div className="my-auto flex flex-col justify-center overflow-hidden">
+                                    <div className="pt-2" >
+                                        <Avatar nick={message.from.nick} />
+                                    </div>
+                                </div>
+
+                                <p className="max-w-36 text-ellipsis whitespace-nowrap text-nowrap text-left text-lg font-semibold text-darken-800 scrollbar-hide max-sm:text-sm">
+                                <div className="pt-3" >
+
+                                    {message.from.nick}
+                                    </div>
+                                </p>
+                            </div>
+                        )}
+                        <div className="my-auto max-h-96 flex-1 overflow-scroll text-left text-lg text-darken-800 scrollbar-hide max-sm:text-sm">
+                            <Markdown>{message.content}</Markdown>
+                        </div>
+                        {/* User ID and Time are hidden on small displays */}
+                        <div className="flex-0 flex h-full flex-col justify-center max-sm:hidden">
+                            <p className="text-sm text-darken-500">
+                                {message.timestamp.toLocaleString()}
+                            </p>
+                            <p className="text-xs text-darken-500">{message.from.id}</p>
+                        </div>
+                    </div>
 
                     {/* ABOUT SECTION */}
                     <p className="m-auto max-w-xs text-sm text-darken-600">
@@ -83,33 +115,6 @@ export default function Login(props) {
                         .
                     </p>
 
-                    {/* FAKE MESSAGE */}
-                    <div
-                        key={message.from.id}
-                        className="opacity-0 sm:opacity-100 transition-all ease-out justify-left flex-0 flex justify-between gap-2 overflow-y-auto overflow-x-scroll rounded-3xl bg-darken-50 px-4 py-2 scrollbar-hide"
-                    >
-                        {message.from.nick && (
-                            <div className="my-auto flex max-h-8">
-                                <div className="flex flex-col justify-center overflow-hidden">
-                                    <Avatar nick={message.from.nick} />
-                                </div>
-
-                                <p className="my-auto max-w-36 overflow-scroll text-ellipsis whitespace-nowrap text-nowrap text-left text-lg font-semibold text-darken-800 scrollbar-hide max-sm:text-sm">
-                                    {message.from.nick}:
-                                </p>
-                            </div>
-                        )}
-                        <div className="my-auto max-h-96 flex-1 overflow-scroll text-left text-lg text-darken-800 scrollbar-hide max-sm:text-sm">
-                            <Markdown>{message.content}</Markdown>
-                        </div>
-                        {/* User ID and Time are hidden on small displays */}
-                        <div className="flex-0 flex h-full flex-col justify-center max-sm:hidden">
-                            <p className="text-sm text-darken-500">
-                                {message.timestamp.toLocaleString()}
-                            </p>
-                            <p className="text-xs text-darken-500">{message.from.id}</p>
-                        </div>
-                    </div>
                 </div>
             </div>
         );

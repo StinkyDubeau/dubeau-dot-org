@@ -19,7 +19,7 @@ export default function createMessage(message, index) {
                     </div>
 
                     <p className="my-auto max-w-36 overflow-scroll text-ellipsis whitespace-nowrap text-nowrap text-left text-lg font-semibold text-darken-800 scrollbar-hide max-sm:text-sm">
-                        {message.from.nick}:
+                        {message.from.nick}
                     </p>
                 </div>
             )}
