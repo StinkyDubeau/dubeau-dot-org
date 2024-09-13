@@ -14,7 +14,6 @@ import KspBanner from "../assets/ksp-banner.jpg";
 export default function fun(props) {
     return (
         <Frame data={props.data}>
-
             {/* 
             Social
             - P2P Chat
@@ -26,7 +25,7 @@ export default function fun(props) {
             - Guitar Tabs
             - Reading List
             */}
-            
+
             <div>
                 <div className="">
                     <div className="m-5">
@@ -36,9 +35,6 @@ export default function fun(props) {
                         <p className="text-left text-lg text-darken-800">
                             Peer-to-peer & end-to-end encryted.
                         </p>
-                        {/* <p className="text-left font-regular text-xl">
-                            Subtitle
-                        </p> */}
                     </div>
                     {/* Gradient bg */}
                     <div className="m-5 flex animate-gradient-x flex-wrap justify-center gap-4 rounded-2xl bg-gradient-to-bl from-slate-300 via-zinc-600 to-slate-400 p-4 sm:gap-8">
@@ -67,9 +63,6 @@ export default function fun(props) {
                             </Link>{" "}
                             to get access.
                         </p>
-                        {/* <p className="text-left font-regular text-xl">
-                            Subtitle
-                        </p> */}
                     </div>
                     {/* Gradient bg */}
                     <div className="m-5 flex animate-gradient-x flex-wrap justify-center gap-4 rounded-2xl bg-gradient-to-br from-blue-400 via-cyan-400 to-orange-300 p-4 sm:gap-8">
@@ -103,6 +96,29 @@ export default function fun(props) {
                         />
                     </div>
                 </div>
+
+                <div className="">
+                    <div className="m-5">
+                        <p className="text-left font-header text-5xl text-darken-800">
+                            Toys
+                        </p>
+                        {/* <p className="text-left text-lg text-darken-800">
+                            Subtitle
+                        </p> */}
+                    </div>
+                    {/* Gradient bg */}
+                    <div className="m-5 flex animate-gradient-x flex-wrap justify-center gap-4 rounded-2xl bg-gradient-to-bl from-green-700 via-green-400 to-zinc-200 p-4 sm:gap-8">
+                        <Link
+                            className="flex aspect-square flex-col justify-center rounded-xl border border-x-darken-50 border-b-darken-100 border-t-lighten-100 bg-darken-200 p-2  shadow-md backdrop-blur-md transition-all hover:scale-105 hover:shadow-lg"
+                            to="/fun/counter"
+                        >
+                            <p className="mb-1 font-header text-2xl text-lighten-800">
+                                Counter
+                            </p>
+                        </Link>
+                    </div>
+                </div>
+
                 <div className="">
                     <div className="m-5">
                         <p className="text-left font-header text-5xl text-darken-800">
@@ -118,9 +134,6 @@ export default function fun(props) {
                             </Link>
                             .
                         </p>
-                        {/* <p className="text-left font-regular text-xl">
-                            Subtitle
-                        </p> */}
                     </div>
                     {/* Gradient bg */}
                     <div className="m-5 flex animate-gradient-x flex-wrap justify-center gap-4 rounded-2xl bg-gradient-to-tl from-yellow-400 via-orange-400 to-zinc-200 p-4 sm:gap-8">

@@ -3,6 +3,7 @@ export default {
     content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
     theme: {
         extend: {
+            
             boxShadow: {
                 vignette: "inset 0px 0px 150px 75px rgb(0 0 0 / 0.5)",
                 glow: "inset 0px 0px 150px 75px rgb(1 1 1 / 0.5)",
@@ -44,6 +45,7 @@ export default {
                 "gradient-x": "gradient-x 5s ease infinite",
                 "gradient-y": "gradient-y 5s ease infinite",
                 "gradient-xy": "gradient-xy 5s ease infinite",
+                'message-pop-in': "bounce 1s ease infinite",
             },
             keyframes: {
                 "gradient-y": {
