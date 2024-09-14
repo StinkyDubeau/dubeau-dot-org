@@ -27,7 +27,7 @@ export default function fun(props) {
             */}
 
             <div className="flex flex-wrap justify-center max-w-screen-md">
-                <div className="rounded-2xl w-full m-4 animate-gradient-x bg-gradient-to-bl from-slate-400 via-zinc-500 to-slate-400 ">
+                <div className="rounded-2xl w-full m-4 animate-gradient-x bg-gradient-to-bl from-orange-700 via-pink-500 to-yellow-400 ">
                     <div className="m-5">
                         <p className="text-left font-header text-5xl text-lighten-800">
                             Decentralized chat
