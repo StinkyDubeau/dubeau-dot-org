@@ -25,6 +25,7 @@ import Counter from "./pages/Toys/Counter";
 
 // Assets
 import Data from "./assets/Data";
+import Tabs from "./pages/Toys/Tabs";
 
 
 function App() {
@@ -155,6 +156,15 @@ function App() {
                         path="/fun/counter"
                         element={
                             <Counter
+                                data={data}
+                                setData={setData}
+                            />
+                        }
+                    />
+                    <Route
+                        path="/fun/tabs"
+                        element={
+                            <Tabs
                                 data={data}
                                 setData={setData}
                             />
