@@ -36,8 +36,7 @@ export default function fun(props) {
                             Peer-to-peer & end-to-end encryted.
                         </p>
                     </div>
-                    {/* Gradient bg */}
-                    <div className="m-5 flex animate-gradient-x flex-wrap justify-center gap-4 rounded-2xl p-4 sm:gap-8">
+                    <div className="m-5 flex flex-wrap justify-center gap-4 rounded-2xl p-4 sm:gap-8">
                         <Link
                             className="flex aspect-square flex-col justify-center rounded-xl border border-x-darken-50 border-b-darken-100 border-t-lighten-100 bg-darken-200 p-2  shadow-md backdrop-blur-md transition-all hover:scale-105 hover:shadow-lg"
                             to="/chat"
@@ -97,17 +96,24 @@ export default function fun(props) {
                     </div>
                 </div>
 
-                <div className="bg-lighten-700 rounded-2xl w-full m-4">
+                <div className="rounded-2xl w-full m-4 animate-gradient-x bg-gradient-to-br from-blue-400 via-cyan-400 to-orange-300">
                     <div className="m-5">
                         <p className="text-left font-header text-5xl text-darken-800">
-                            Hobby
+                            Game servers
                         </p>
-                        {/* <p className="text-left text-lg text-darken-800">
-                            Subtitle
-                        </p> */}
+                        <p className="text-left text-lg text-darken-800">
+                            These servers are are invite-only. Join our{" "}
+                            <Link
+                                to="/contact"
+                                className="underline underline-offset-1"
+                            >
+                                discord
+                            </Link>{" "}
+                            to get access.
+                        </p>
                     </div>
                     {/* Gradient bg */}
-                    <div className="m-5 flex animate-gradient-x flex-wrap justify-center gap-4 rounded-2xl bg-gradient-to-bl from-pink-700 via-purple-600 to-zinc-200 p-4 sm:gap-8">
+                    <div className="m-5 flex flex-wrap justify-center gap-4 rounded-2xl p-4 sm:gap-8">
                         <Link
                             className="min-w-24 flex aspect-square flex-col justify-center rounded-xl border border-x-darken-50 border-b-darken-100 border-t-lighten-100 bg-darken-200 p-2  shadow-md backdrop-blur-md transition-all hover:scale-105 hover:shadow-lg"
                             to="/fun/counter"
