@@ -23,8 +23,8 @@ export default function (props) {
         <>
             <Frame data={props.data}>
                 <div className="mt-10">
-                    <h1 className="mb-8 font-header text-3xl font-light tracking-tighter text-darken-700 max-sm:text-5xl">
-                        Under Construction
+                    <h1 className="mb-8 font-header text-3xl tracking-tighter text-darken-700 max-sm:text-5xl">
+                        Blog is under construction. <br /> All posts are experimental.
                     </h1>
 
                     <div className="flex flex-col gap-2">

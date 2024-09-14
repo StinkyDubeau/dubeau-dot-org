@@ -20,7 +20,7 @@ export default function fun(props) {
             - Game Servers
             - Astro Sightings
 
-            Personal
+            Hobby
             - Blog
             - Guitar Tabs
             - Reading List
@@ -100,7 +100,7 @@ export default function fun(props) {
                 <div className="">
                     <div className="m-5">
                         <p className="text-left font-header text-5xl text-darken-800">
-                            Toys
+                            Hobby
                         </p>
                         {/* <p className="text-left text-lg text-darken-800">
                             Subtitle
@@ -114,6 +114,22 @@ export default function fun(props) {
                         >
                             <p className="mb-1 font-header text-2xl text-lighten-800">
                                 Counter
+                            </p>
+                        </Link>
+                        <Link
+                            className="flex aspect-square flex-col justify-center rounded-xl border border-x-darken-50 border-b-darken-100 border-t-lighten-100 bg-darken-200 p-2  shadow-md backdrop-blur-md transition-all hover:scale-105 hover:shadow-lg"
+                            to="/blog"
+                        >
+                            <p className="mb-1 font-header text-2xl text-lighten-800">
+                                Blog
+                            </p>
+                        </Link>
+                        <Link
+                            className="flex aspect-square flex-col justify-center rounded-xl border border-x-darken-50 border-b-darken-100 border-t-lighten-100 bg-darken-200 p-2  shadow-md backdrop-blur-md transition-all hover:scale-105 hover:shadow-lg"
+                            to="/fun/tabs"
+                        >
+                            <p className="mb-1 font-header text-2xl text-lighten-800">
+                                Guitar
                             </p>
                         </Link>
                     </div>
