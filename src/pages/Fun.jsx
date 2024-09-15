@@ -26,7 +26,7 @@ export default function fun(props) {
             - Reading List
             */}
 
-            <div className="flex flex-wrap justify-center max-w-screen-md">
+            <div className="flex flex-wrap justify-center">
                 <div className="rounded-2xl w-full m-4 animate-gradient-x bg-gradient-to-bl from-orange-700 via-pink-500 to-yellow-400 ">
                     <div className="m-5">
                         <p className="text-left font-header text-5xl text-lighten-800">
@@ -64,7 +64,7 @@ export default function fun(props) {
                         </p>
                     </div>
                     {/* Gradient bg */}
-                    <div className="m-5 flex flex-wrap justify-center gap-4 rounded-2xl p-4 sm:gap-8">
+                    <div className="my-5 flex flex-wrap justify-center gap-4 rounded-2xl py-4 sm:gap-8">
                         <ServerCard
                             title="Vanilla"
                             subtitle="Minecraft 1.21"
