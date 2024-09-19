@@ -22,23 +22,23 @@ export default function fun(props) {
 
     return (
         <Frame data={props.data}>
-            <div className="m-2 flex flex-col justify-center gap-6 overflow-hidden max-sm:mt-12 sm:m-4 sm:p-4">
-                <div className="flex justify-between gap-12 align-middle max-sm:flex-col sm:h-72">
-                    <div className="flex-0 flex max-w-full justify-center ">
+            <div className="m-2 flex flex-col justify-center gap-6 overflow-hidden max-sm:mt-12 sm:p-4">
+                <div className="flex justify-between gap-12 align-middle max-sm:flex-col max-sm:relative sm:h-72 max-sm:h-72 overflow-clip">
+                    <div className="z-10  flex-0 flex max-w-full justify-center max-sm:h-full">
                         <div className="my-auto flex h-fit flex-col justify-center gap-12 align-middle">
                             <div className="flex flex-col gap-2">
-                                <p className="text-left font-header text-5xl text-darken-700 max-md:text-center">
+                                <p className="text-left font-header text-5xl text-darken-700 max-sm:text-lighten-800 max-md:text-center">
                                     Vanilla
                                 </p>
 
-                                <p className="text-left text-xl font-light text-darken-700 max-md:text-center">
+                                <p className="text-left text-xl font-light text-darken-700 max-sm:h-shrink max-sm:text-lighten-800 max-md:text-center">
                                     An invite-only Minecraft community
                                 </p>
                             </div>
                         </div>
                     </div>
                     <img
-                        className="flex-1 rounded-3xl object-cover sm:w-96"
+                        className="flex-1 max-sm:absolute z-0 top-0 rounded-3xl object-cover sm:w-96 max-sm:h-full max-sm:brightness-50"
                         src={PackImg}
                     />
                 </div>
