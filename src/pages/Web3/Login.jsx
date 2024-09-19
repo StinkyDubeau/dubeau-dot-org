@@ -15,7 +15,7 @@ export default function Login(props) {
             nick: "Bob Loblaw",
             id: "rXKIunbHtTsbGTgsU62C",
         },
-        content: "Try setting a nickname above to preview unique user icons.",
+        content: "Try setting a nickname to preview unique user icons",
         timestamp: "9/12/2024, 12:08:16 AM",
 
     }
