@@ -22,10 +22,10 @@ export default function fun(props) {
 
     return (
         <Frame data={props.data}>
-            <div className="sm:m-4 max-sm:mt-12 m-2 flex flex-col justify-center gap-6 overflow-hidden sm:p-4">
-                <div className="flex justify-between gap-12 align-middle max-sm:flex-col">
+            <div className="m-2 flex flex-col justify-center gap-6 overflow-hidden max-sm:mt-12 sm:m-4 sm:p-4">
+                <div className="flex justify-between gap-12 align-middle max-sm:flex-col sm:h-72">
                     <div className="flex-0 flex max-w-full justify-center ">
-                        <div className="flex flex-col justify-center gap-12 align-middle">
+                        <div className="my-auto flex h-fit flex-col justify-center gap-12 align-middle">
                             <div className="flex flex-col gap-2">
                                 <p className="text-left font-header text-5xl text-darken-700 max-md:text-center">
                                     Vanilla
@@ -38,7 +38,7 @@ export default function fun(props) {
                         </div>
                     </div>
                     <img
-                        className="sm:max-w-96 flex-1 rounded-3xl object-cover"
+                        className="flex-1 rounded-3xl object-cover sm:w-96"
                         src={PackImg}
                     />
                 </div>
@@ -47,15 +47,36 @@ export default function fun(props) {
                     <p className="text-left font-header text-3xl text-darken-800">
                         Join with a vanilla client
                     </p>
-                    <p className="text-left font-header font-light text-darken-800">
-                        A vanilla client is the easiest way to get started, and
-                        is reccomended for most users.
-                    </p>
+                    <div
+                        id="pros cons"
+                        className="flex flex-wrap justify-center gap-2"
+                    >
+                        <div className="flex-grow rounded-full bg-green-600 px-3 py-1">
+                            <p className="font-header font-light text-lighten-800">
+                                Easy to set up
+                            </p>
+                        </div>
+                        <div className="flex-grow rounded-full bg-green-600 px-3 py-1">
+                            <p className="font-header font-light text-lighten-800">
+                                Works on most PCs
+                            </p>
+                        </div>
+                        <div className="flex-grow rounded-full bg-red-500 px-3 py-1">
+                            <p className="font-header font-light text-lighten-800">
+                                Missing social features
+                            </p>
+                        </div>
+                        <div className="flex-grow rounded-full bg-red-500 px-3 py-1">
+                            <p className="font-header font-light text-lighten-800">
+                                Worse graphics
+                            </p>
+                        </div>
+                    </div>
 
                     <p className="text-left font-header text-xl text-darken-800">
                         0. Connect with us on discord to be whitelisted
                     </p>
-                    <div className="flex justify-center gap-4 font-header text-darken-800 underline">
+                    <div className="justify-left flex gap-4 font-header text-darken-800 underline">
                         <Link
                             className=" scale-100 transition-all hover:scale-110"
                             to="/contact"
@@ -65,7 +86,8 @@ export default function fun(props) {
                     </div>
 
                     <p className="text-left font-header text-xl text-darken-800">
-                        1. Launch the latest version of Minecraft Java Edition
+                        1. Download and launch the latest version of Minecraft
+                        Java Edition
                     </p>
                     <p className="text-left font-header text-xl text-darken-800">
                         2. Connect to{" "}
@@ -84,15 +106,36 @@ export default function fun(props) {
                     <p className="text-left font-header text-3xl text-darken-800">
                         Join with a modded client
                     </p>
-                    <p className="text-left font-header font-light text-darken-800">
-                        A modded client provides the best experience for
-                        advanced users who desire longer render distances and
-                        other amenities.
-                    </p>
+                    <div
+                        id="pros cons"
+                        className="flex flex-wrap justify-center gap-2"
+                    >
+                        <div className="flex-grow rounded-full bg-green-600 px-3 py-1">
+                            <p className="font-header font-light text-lighten-800">
+                                Infinite render distance
+                            </p>
+                        </div>
+                        <div className="flex-grow rounded-full bg-green-600 px-3 py-1">
+                            <p className="font-header font-light text-lighten-800">
+                                Built-in shaders
+                            </p>
+                        </div>
+                        <div className="flex-grow rounded-full bg-red-500 px-3 py-1">
+                            <p className="font-header font-light text-lighten-800">
+                                Higher system requirements
+                            </p>
+                        </div>
+                        <div className="flex-grow rounded-full bg-red-500 px-3 py-1">
+                            <p className="font-header font-light text-lighten-800">
+                                Harder to set up
+                            </p>
+                        </div>
+                    </div>
                     <p className="text-left font-header text-xl text-darken-800">
-                        0. Connect with us on discord to be whitelisted
+                        0. Connect with us on discord for support and
+                        whitelisting
                     </p>
-                    <div className="flex justify-center gap-4 font-header text-darken-800 underline">
+                    <div className="justify-left flex gap-4 font-header text-darken-800 underline">
                         <Link
                             className=" scale-100 transition-all hover:scale-110"
                             to="/contact"
@@ -103,7 +146,7 @@ export default function fun(props) {
                     <p className="text-left font-header text-xl text-darken-800">
                         1. Download the MultiMC launcher for your system:
                     </p>
-                    <div className="flex justify-center gap-4 font-header text-darken-800 underline">
+                    <div className="justify-left flex gap-4 font-header text-darken-800 underline">
                         <Link
                             className=" scale-100 transition-all hover:scale-110"
                             to="https://files.multimc.org/downloads/mmc-develop-win32.zip"
@@ -132,7 +175,7 @@ export default function fun(props) {
                     <p className="text-left font-header text-xl text-darken-800">
                         2. Download our official MultiMC instance
                     </p>
-                    <div className="flex justify-center gap-4 font-header text-darken-800 underline">
+                    <div className="justify-left flex gap-4 font-header text-darken-800 underline">
                         <Link
                             className=" scale-100 transition-all hover:scale-110"
                             to="https://files.multimc.org/downloads/mmc-develop-win32.zip"
@@ -153,9 +196,20 @@ export default function fun(props) {
                         <span className="font-light text-red-500">
                             dubeau.ddns.net
                         </span>
-                    </p>{" "}
+                    </p>
                     <p className="text-left font-header text-xl text-darken-800">
-                        6. Have fun and be cool! Follow posted signs for general
+                        6. <span className="font-light">(Optional)</span> For
+                        the best experience, temporarily set your render
+                        distance to 32 chunks, and do some exploring. All
+                        terrain that you generate will stay within your render
+                        distance even if you set your render distance to
+                        something low.{" "}
+                        <span className="font-light">
+                            (16 chunks recommended.)
+                        </span>
+                    </p>
+                    <p className="text-left font-header text-xl text-darken-800">
+                        7. Have fun and be cool! Follow posted signs for general
                         rules
                     </p>
                 </div>
@@ -199,7 +253,7 @@ export default function fun(props) {
                     <p className="text-left font-header text-xl text-darken-800">
                         Whitelisted players, hover to see their UUIDs
                         <div className="flex w-full justify-center">
-                            <div className="flex max-w-prose justify-center text-center max-md:max-w-96">
+                            <div className="flex w-12 flex-1 justify-center text-center">
                                 <Marquee
                                     speed="150"
                                     className="mt-6 w-full overflow-clip"
