@@ -27,11 +27,11 @@ export default function fun(props) {
                     <div className="flex-0 flex max-w-full justify-center ">
                         <div className="flex flex-col justify-center gap-12 align-middle">
                             <div className="flex flex-col gap-2">
-                                <p className="text-left font-header text-5xl text-darken-800 max-md:text-center">
+                                <p className="text-left font-header text-5xl text-darken-700 max-md:text-center">
                                     Vanilla
                                 </p>
 
-                                <p className="text-left text-xl font-light text-darken-800 max-md:text-center">
+                                <p className="text-left text-xl font-light text-darken-700 max-md:text-center">
                                     An invite-only Minecraft community
                                 </p>
                             </div>
