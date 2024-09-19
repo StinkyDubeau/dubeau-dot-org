@@ -23,22 +23,22 @@ export default function fun(props) {
     return (
         <Frame data={props.data}>
             <div className="m-2 flex flex-col justify-center gap-6 overflow-hidden max-sm:mt-12 sm:p-4">
-                <div className="flex justify-between gap-12 align-middle max-sm:flex-col max-sm:relative sm:h-72 max-sm:h-72 overflow-clip">
-                    <div className="z-10  flex-0 flex max-w-full justify-center max-sm:h-full">
+                <div className="flex justify-between gap-12 overflow-clip align-middle max-sm:relative max-sm:h-72 max-sm:flex-col sm:h-72">
+                    <div className="flex-0  z-10 flex max-w-full justify-center max-sm:h-full">
                         <div className="my-auto flex h-fit flex-col justify-center gap-12 align-middle">
                             <div className="flex flex-col gap-2">
-                                <p className="text-left font-header text-5xl text-darken-700 max-sm:text-lighten-800 max-md:text-center">
+                                <p className="text-left font-header text-5xl text-darken-700 max-md:text-center max-sm:text-lighten-800">
                                     Vanilla
                                 </p>
 
-                                <p className="text-left text-xl font-light text-darken-700 max-sm:h-shrink max-sm:text-lighten-800 max-md:text-center">
+                                <p className="max-sm:h-shrink text-left text-xl font-light text-darken-700 max-md:text-center max-sm:text-lighten-800">
                                     An invite-only Minecraft community
                                 </p>
                             </div>
                         </div>
                     </div>
                     <img
-                        className="flex-1 max-sm:absolute z-0 top-0 rounded-3xl object-cover sm:w-96 max-sm:h-full max-sm:brightness-50"
+                        className="top-0 z-0 flex-1 rounded-3xl object-cover max-sm:absolute max-sm:h-full max-sm:brightness-75 sm:w-96"
                         src={PackImg}
                     />
                 </div>
@@ -265,8 +265,8 @@ export default function fun(props) {
                     </p>
                 </div>
             </div>
-            <p className="mt-6 font-header text-darken-800">
-                Last updated September 5th, 2024
+            <p className="mb-6 text-xl font-light text-darken-700 max-md:text-center">
+                Last updated September 19th, 2024
             </p>
         </Frame>
     );
