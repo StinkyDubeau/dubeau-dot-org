@@ -21,7 +21,7 @@ import Factorio from "./pages/Servers/Factorio";
 import KSP from "./pages/Servers/KSP";
 
 // Pages: Fun
-import Counter from "./pages/Toys/Counter";
+import Widgits from "./pages/Toys/Widgits";
 
 // Assets
 import Data from "./assets/Data";
@@ -153,9 +153,9 @@ function App() {
                         }
                     />
                     <Route
-                        path="/fun/counter"
+                        path="/fun/widgits"
                         element={
-                            <Counter
+                            <Widgits
                                 data={data}
                                 setData={setData}
                             />
