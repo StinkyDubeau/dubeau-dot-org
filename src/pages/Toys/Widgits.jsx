@@ -13,6 +13,11 @@ export default function (props) {
         }),
     );
 
+    // Widgits are:
+    // - Rich: Strong design that's engagingly animated
+    // - Connected: Backed by a secure connection to others
+    // - Responsive: From centimeters to fullscreen, they scale
+
     return (
         <>
             <Frame
@@ -32,13 +37,13 @@ export default function (props) {
                             </h1>
                             <div className="flex justify-center gap-2 max-sm:flex-col">
                                 <button
-                                    className="min-h-36 min-w-36 rounded-xl bg-pink-500 p-6 font-header text-6xl transition-all hover:scale-105 hover:bg-pink-300 active:scale-95 active:bg-pink-100 active:blur sm:hidden"
+                                    className="min-h-36 min-w-36 rounded-xl bg-pink-500 p-6 font-header text-6xl transition-all hover:scale-105 hover:bg-pink-300 active:scale-95 active:bg-pink-800 active:blur sm:hidden"
                                     onClick={() => setCount(count + 1)}
                                 >
                                     +
                                 </button>
                                 <button
-                                    className="min-h-36 min-w-36 rounded-xl bg-pink-500 p-6 font-header text-7xl transition-all hover:scale-105 hover:bg-pink-300 active:scale-95 active:bg-pink-100 active:blur"
+                                    className="min-h-36 min-w-36 rounded-xl bg-pink-500 p-6 font-header text-7xl transition-all hover:scale-105 hover:bg-pink-300 active:scale-95 active:bg-pink-800 active:blur"
                                     onClick={() => setCount(count - 1)}
                                 >
                                     -
