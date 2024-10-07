@@ -14,7 +14,7 @@ export default function (props) {
                 <div className="flex flex-col h-screen w-screen text-darken-800 text-xl p-6">
                     <div className="flex h-full flex-col justify-center">
                         <h1 className="font-header text-darken-200 text-9xl">
-                            Gallery under construction
+                            Dayplanner under construction
                         </h1>
 
 

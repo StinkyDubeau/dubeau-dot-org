@@ -27,7 +27,7 @@ import Widgits from "./pages/Toys/Widgits";
 import Data from "./assets/Data";
 import Tabs from "./pages/Toys/Tabs";
 import Gallery from "./pages/Toys/Gallery";
-
+import Dayplanner from "./pages/Toys/Dayplanner";
 
 function App() {
     const [data, setData] = useState(Data);
@@ -171,10 +171,19 @@ function App() {
                             />
                         }
                     />
-                                        <Route
+                    <Route
                         path="/fun/gallery"
                         element={
                             <Gallery
+                                data={data}
+                                setData={setData}
+                            />
+                        }
+                    />
+                    <Route
+                        path="/fun/dayplanner"
+                        element={
+                            <Dayplanner
                                 data={data}
                                 setData={setData}
                             />

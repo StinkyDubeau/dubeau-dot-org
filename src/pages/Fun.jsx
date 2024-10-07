@@ -133,7 +133,7 @@ export default function fun(props) {
                         </Link>
                         <Link
                             className="flex min-w-24   flex-col justify-center rounded-xl border border-x-darken-50 border-b-darken-100 border-t-lighten-100 bg-darken-200 p-2  shadow-md backdrop-blur-md transition-all hover:scale-105 hover:shadow-lg"
-                            to="/fun/tabs"
+                            to="/fun/gallery"
                         >
                             <p className="mb-1 font-header text-2xl text-lighten-800">
                                 Photography
@@ -141,7 +141,7 @@ export default function fun(props) {
                         </Link>
                         <Link
                             className="flex min-w-24   flex-col justify-center rounded-xl border border-x-darken-50 border-b-darken-100 border-t-lighten-100 bg-darken-200 p-2  shadow-md backdrop-blur-md transition-all hover:scale-105 hover:shadow-lg"
-                            to="/fun/tabs"
+                            to="/fun/dayplanner"
                         >
                             <p className="mb-1 font-header text-2xl text-lighten-800">
                                 Dayplanner
