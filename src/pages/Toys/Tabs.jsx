@@ -8,7 +8,7 @@ export default function (props) {
                 noNavbar
                 data={props.data}
             >
-                <UnderContruction />
+                <UnderContruction heading="Guitar tabs coming soon."/>
             </Frame>
         </>
     );
