@@ -21,12 +21,13 @@ import Factorio from "./pages/Servers/Factorio";
 import KSP from "./pages/Servers/KSP";
 
 // Pages: Fun
-import Counter from "./pages/Toys/Counter";
+import Widgits from "./pages/Toys/Widgits";
 
 // Assets
 import Data from "./assets/Data";
 import Tabs from "./pages/Toys/Tabs";
-
+import Gallery from "./pages/Toys/Gallery";
+import Dayplanner from "./pages/Toys/Dayplanner";
 
 function App() {
     const [data, setData] = useState(Data);
@@ -153,9 +154,9 @@ function App() {
                         }
                     />
                     <Route
-                        path="/fun/counter"
+                        path="/fun/widgits"
                         element={
-                            <Counter
+                            <Widgits
                                 data={data}
                                 setData={setData}
                             />
@@ -165,6 +166,24 @@ function App() {
                         path="/fun/tabs"
                         element={
                             <Tabs
+                                data={data}
+                                setData={setData}
+                            />
+                        }
+                    />
+                    <Route
+                        path="/fun/gallery"
+                        element={
+                            <Gallery
+                                data={data}
+                                setData={setData}
+                            />
+                        }
+                    />
+                    <Route
+                        path="/fun/dayplanner"
+                        element={
+                            <Dayplanner
                                 data={data}
                                 setData={setData}
                             />

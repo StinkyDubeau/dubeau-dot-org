@@ -27,7 +27,7 @@ export default function fun(props) {
             */}
 
             <div className="flex flex-wrap justify-center">
-                <div className="rounded-2xl w-full m-4 animate-gradient-x bg-gradient-to-bl from-orange-700 via-pink-500 to-yellow-400 ">
+                <div className="m-4 w-full animate-gradient-x rounded-2xl bg-gradient-to-bl from-orange-700 via-pink-500 to-yellow-400 ">
                     <div className="m-5">
                         <p className="text-left font-header text-5xl text-lighten-800">
                             Decentralized chat
@@ -47,13 +47,13 @@ export default function fun(props) {
                         </Link>
                     </div>
                 </div>
-                <div className="rounded-2xl w-full m-4 animate-gradient-x bg-gradient-to-br from-blue-400 via-cyan-400 to-orange-300">
+                <div className="m-4 w-full animate-gradient-x rounded-2xl bg-gradient-to-br from-blue-400 via-cyan-400 to-orange-300">
                     <div className="m-5">
                         <p className="text-left font-header text-5xl text-darken-600">
                             Game servers
                         </p>
                         <p className="text-left text-lg text-darken-600">
-                            These servers are are invite-only. Join our{" "}
+                            Most servers are are invite-only. Join our{" "}
                             <Link
                                 to="/contact"
                                 className="underline underline-offset-1"
@@ -96,7 +96,7 @@ export default function fun(props) {
                     </div>
                 </div>
 
-                <div className="animate-gradient-x bg-gradient-to-bl from-pink-700 via-purple-600 to-zinc-200  rounded-2xl w-full m-4">
+                <div className="m-4 p-2 w-full animate-gradient-x rounded-2xl bg-gradient-to-bl  from-pink-700 via-purple-600 to-zinc-200">
                     <div className="m-5">
                         <p className="text-left font-header text-5xl text-lighten-800">
                             Hobby
@@ -106,17 +106,17 @@ export default function fun(props) {
                         </p>
                     </div>
                     {/* Gradient bg */}
-                    <div className="m-5 flex flex-wrap justify-center gap-4 rounded-2xl p-4 sm:gap-8">
+                    <div className="m-5 flex flex-wrap justify-center b-green-500 gap-2">
                         <Link
-                            className="min-w-24 flex aspect-square flex-col justify-center rounded-xl border border-x-darken-50 border-b-darken-100 border-t-lighten-100 bg-darken-200 p-2  shadow-md backdrop-blur-md transition-all hover:scale-105 hover:shadow-lg"
-                            to="/fun/counter"
+                            className="flex min-w-24 flex-col justify-center rounded-xl border border-x-darken-50 border-b-darken-100 border-t-lighten-100 bg-darken-200 p-2  shadow-md backdrop-blur-md transition-all hover:scale-105 hover:shadow-lg"
+                            to="/fun/widgits"
                         >
                             <p className="mb-1 font-header text-2xl text-lighten-800">
-                                Counter
+                                Widgits
                             </p>
                         </Link>
                         <Link
-                            className="min-w-24 flex aspect-square flex-col justify-center rounded-xl border border-x-darken-50 border-b-darken-100 border-t-lighten-100 bg-darken-200 p-2  shadow-md backdrop-blur-md transition-all hover:scale-105 hover:shadow-lg"
+                            className="flex min-w-24   flex-col justify-center rounded-xl border border-x-darken-50 border-b-darken-100 border-t-lighten-100 bg-darken-200 p-2  shadow-md backdrop-blur-md transition-all hover:scale-105 hover:shadow-lg"
                             to="/blog"
                         >
                             <p className="mb-1 font-header text-2xl text-lighten-800">
@@ -124,7 +124,7 @@ export default function fun(props) {
                             </p>
                         </Link>
                         <Link
-                            className="min-w-24 flex aspect-square flex-col justify-center rounded-xl border border-x-darken-50 border-b-darken-100 border-t-lighten-100 bg-darken-200 p-2  shadow-md backdrop-blur-md transition-all hover:scale-105 hover:shadow-lg"
+                            className="flex min-w-24   flex-col justify-center rounded-xl border border-x-darken-50 border-b-darken-100 border-t-lighten-100 bg-darken-200 p-2  shadow-md backdrop-blur-md transition-all hover:scale-105 hover:shadow-lg"
                             to="/fun/tabs"
                         >
                             <p className="mb-1 font-header text-2xl text-lighten-800">
@@ -132,8 +132,16 @@ export default function fun(props) {
                             </p>
                         </Link>
                         <Link
-                            className="min-w-24 flex aspect-square flex-col justify-center rounded-xl border border-x-darken-50 border-b-darken-100 border-t-lighten-100 bg-darken-200 p-2  shadow-md backdrop-blur-md transition-all hover:scale-105 hover:shadow-lg"
-                            to="/fun/tabs"
+                            className="flex min-w-24   flex-col justify-center rounded-xl border border-x-darken-50 border-b-darken-100 border-t-lighten-100 bg-darken-200 p-2  shadow-md backdrop-blur-md transition-all hover:scale-105 hover:shadow-lg"
+                            to="/fun/gallery"
+                        >
+                            <p className="mb-1 font-header text-2xl text-lighten-800">
+                                Gallery
+                            </p>
+                        </Link>
+                        <Link
+                            className="flex min-w-24   flex-col justify-center rounded-xl border border-x-darken-50 border-b-darken-100 border-t-lighten-100 bg-darken-200 p-2  shadow-md backdrop-blur-md transition-all hover:scale-105 hover:shadow-lg"
+                            to="/fun/dayplanner"
                         >
                             <p className="mb-1 font-header text-2xl text-lighten-800">
                                 Dayplanner
@@ -142,7 +150,7 @@ export default function fun(props) {
                     </div>
                 </div>
 
-                <div className="animate-gradient-x  bg-gradient-to-tl from-yellow-400 via-orange-400 to-zinc-200 rounded-2xl w-full m-4">
+                <div className="m-4  w-full animate-gradient-x rounded-2xl bg-gradient-to-tl from-yellow-400 via-orange-400 to-zinc-200">
                     <div className="m-5">
                         <p className="text-left font-header text-5xl text-darken-600">
                             Astro sightings
