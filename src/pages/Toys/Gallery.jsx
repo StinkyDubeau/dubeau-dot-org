@@ -19,6 +19,8 @@ export default function (props) {
 
 
                     </div>
+                    <image className="bg-blue-300 h-24 w-24" src="s3://dubeau-dot-org/Backgrounds/aleksey-parakhnevich-E6EoRgfMOok-unsplash.jpg" />
+                    <image className="bg-red-300 h-24 w-24" src="https://static.vecteezy.com/system/resources/previews/022/448/291/large_2x/save-earth-day-poster-environment-day-nature-green-ai-generative-glossy-background-images-tree-and-water-free-photo.jpg" />
                     <Link
                         to="/fun"
                         className="text-darken-800 font-header m-0"

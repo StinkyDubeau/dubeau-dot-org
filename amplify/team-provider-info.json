@@ -1,0 +1,23 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-dubeaudotorg-dev-e5bbf-authRole",
+      "UnauthRoleArn": "arn:aws:iam::339713176851:role/amplify-dubeaudotorg-dev-e5bbf-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::339713176851:role/amplify-dubeaudotorg-dev-e5bbf-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-dubeaudotorg-dev-e5bbf-deployment",
+      "UnauthRoleName": "amplify-dubeaudotorg-dev-e5bbf-unauthRole",
+      "StackName": "amplify-dubeaudotorg-dev-e5bbf",
+      "StackId": "arn:aws:cloudformation:us-east-1:339713176851:stack/amplify-dubeaudotorg-dev-e5bbf/7d784d60-84c3-11ef-bf6f-0affce134e5d",
+      "AmplifyAppId": "d1j86w7k8idbqz"
+    },
+    "categories": {
+      "auth": {
+        "dubeaudotorg508feb04": {}
+      },
+      "storage": {
+        "dubeaudotorg": {}
+      }
+    }
+  }
+}

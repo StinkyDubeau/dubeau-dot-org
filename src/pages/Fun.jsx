@@ -136,7 +136,7 @@ export default function fun(props) {
                             to="/fun/gallery"
                         >
                             <p className="mb-1 font-header text-2xl text-lighten-800">
-                                Photography
+                                Gallery
                             </p>
                         </Link>
                         <Link
