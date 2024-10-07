@@ -26,6 +26,7 @@ import Widgits from "./pages/Toys/Widgits";
 // Assets
 import Data from "./assets/Data";
 import Tabs from "./pages/Toys/Tabs";
+import Gallery from "./pages/Toys/Gallery";
 
 
 function App() {
@@ -165,6 +166,15 @@ function App() {
                         path="/fun/tabs"
                         element={
                             <Tabs
+                                data={data}
+                                setData={setData}
+                            />
+                        }
+                    />
+                                        <Route
+                        path="/fun/gallery"
+                        element={
+                            <Gallery
                                 data={data}
                                 setData={setData}
                             />
