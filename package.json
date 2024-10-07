@@ -10,6 +10,7 @@
         "preview": "vite preview"
     },
     "dependencies": {
+        "@aws-amplify/storage": "^6.6.9",
         "@aws-amplify/ui-react": "^6.5.2",
         "@gibme/timer": "^1.0.12",
         "avvvatars-react": "^0.4.2",
