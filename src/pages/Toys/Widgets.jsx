@@ -26,6 +26,37 @@ export default function (props) {
             >
                 {/* Container */}
                 <div className="my-auto flex h-screen flex-col justify-center gap-2 drop-shadow-lg">
+                    {/* Steering Widgit */}
+                    <div className=" flex flex-col rounded-3xl bg-pink-600 p-6 text-xl text-lighten-800">
+                        <div
+                            id="main-container"
+                            className="flex h-full flex-col justify-center"
+                        >
+                            <h1 className="font-headerScript text-9xl text-pink-100">
+                                {count}
+                            </h1>
+                            <div className="flex justify-center gap-2 max-sm:flex-col">
+                                <button
+                                    className="min-h-36 min-w-36 rounded-xl bg-pink-500 p-6 font-header text-6xl transition-all hover:scale-105 hover:bg-pink-300 active:scale-95 active:bg-pink-800 active:blur sm:hidden"
+                                    onClick={() => setCount(count + 1)}
+                                >
+                                    +
+                                </button>
+                                <button
+                                    className="min-h-36 min-w-36 rounded-xl bg-pink-500 p-6 font-header text-7xl transition-all hover:scale-105 hover:bg-pink-300 active:scale-95 active:bg-pink-800 active:blur"
+                                    onClick={() => setCount(count - 1)}
+                                >
+                                    -
+                                </button>
+                                <button
+                                    className="min-h-36 min-w-36 rounded-xl bg-pink-500 p-6 font-header text-6xl transition-all hover:scale-105 hover:bg-pink-300 active:scale-95 active:bg-pink-100 active:blur max-sm:hidden"
+                                    onClick={() => setCount(count + 1)}
+                                >
+                                    +
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                     {/* Counter Widgit */}
                     <div className=" flex flex-col rounded-3xl bg-pink-600 p-6 text-xl text-lighten-800">
                         <div
