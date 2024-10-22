@@ -13,7 +13,9 @@ export default function fun(props) {
     function createUser(user) {
         return (
             <div className="scale-100 text-darken-10 transition-all hover:scale-110 hover:text-darken-800">
-                <p className="font-pixel text-lg text-blue-800">{user.name}</p>
+                <p className="font-pixel text-lg text-blue-800">
+                    {user.name}
+                </p>
                 <p className="font-header text-xs font-light">{user.uuid}</p>
             </div>
         );
@@ -217,13 +219,13 @@ export default function fun(props) {
                             mc.dubeau.org
                         </span>
                     </p>
-                    <p className="text-left font-header text-xl font-light text-darken-800">
-                        6. <span className="underline">Optional</span>: For the
-                        best experience, temporarily set your render distance to
-                        32 chunks and do some exploring. All terrain that you
-                        generate will stay within your render distance even if
-                        you set your render distance to something low. 16 chunks
-                        if a good place to start.
+                    <p className="text-left font-light font-header text-xl text-darken-800">
+                        6. <span className="underline">Optional</span>: For
+                        the best experience, temporarily set your render
+                        distance to 32 chunks and do some exploring. All
+                        terrain that you generate will stay within your render
+                        distance even if you set your render distance to
+                        something low. 16 chunks if a good place to start.
                     </p>
                     <p className="text-left font-header text-xl text-darken-800">
                         7. Have fun and be cool! Follow posted signs for general
