@@ -13,9 +13,7 @@ export default function fun(props) {
     function createUser(user) {
         return (
             <div className="scale-100 text-darken-10 transition-all hover:scale-110 hover:text-darken-800">
-                <p className="font-header text-lg text-darken-800">
-                    {user.name}
-                </p>
+                <p className="font-pixel text-lg text-blue-800">{user.name}</p>
                 <p className="font-header text-xs font-light">{user.uuid}</p>
             </div>
         );
@@ -69,7 +67,7 @@ export default function fun(props) {
                                 This server is currently in pre-release. The
                                 world file is temporary, and all users have been
                                 granted{" "}
-                                <span className="font-pixel">operator</span>{" "}
+                                <span className="font-pixel">moderator</span>{" "}
                                 status.
                             </p>
                         </div>
@@ -93,7 +91,7 @@ export default function fun(props) {
                             </svg>
                             <p className="text-left font-header text-darken-800">
                                 At release, only whitelisted players will be
-                                allowed to access the server. Message an{" "}
+                                allowed to access this server. Message an{" "}
                                 <span className="font-pixel">admin</span> if you
                                 haven't already been whitelisted.
                             </p>
@@ -111,10 +109,25 @@ export default function fun(props) {
                     >
                         <div className="flex w-full max-w-screen-lg flex-col gap-2 rounded-2xl bg-blue-600 p-4 shadow-xl">
                             <p className="m-auto max-w-lg text-center font-header font-light text-lighten-800">
-                                We provide an easy-to-install modpack that works
-                                well on all desktop platforms.
+                                There's an official modpack for most desktop
+                                platforms.
                             </p>
                             <div className="flex justify-center gap-2 text-white">
+                                <Link
+                                    className=" scale-100 transition-all hover:scale-110"
+                                    to="https://files.multimc.org/downloads/mmc-develop-win32.zip"
+                                >
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="16"
+                                        height="16"
+                                        fill="currentColor"
+                                        className="bi bi-microsoft"
+                                        viewBox="0 0 16 16"
+                                    >
+                                        <path d="M7.462 0H0v7.19h7.462zM16 0H8.538v7.19H16zM7.462 8.211H0V16h7.462zm8.538 0H8.538V16H16z" />
+                                    </svg>
+                                </Link>
                                 <Link
                                     className=" scale-100 transition-all hover:scale-110"
                                     to="https://files.multimc.org/downloads/mmc-develop-osx64.tar.gz"
@@ -144,21 +157,6 @@ export default function fun(props) {
                                         viewBox="0 0 16 16"
                                     >
                                         <path d="M2.273 9.53a2.273 2.273 0 1 0 0-4.546 2.273 2.273 0 0 0 0 4.547Zm9.467-4.984a2.273 2.273 0 1 0 0-4.546 2.273 2.273 0 0 0 0 4.546M7.4 13.108a5.54 5.54 0 0 1-3.775-2.88 3.27 3.27 0 0 1-1.944.24 7.4 7.4 0 0 0 5.328 4.465c.53.113 1.072.169 1.614.166a3.25 3.25 0 0 1-.666-1.9 6 6 0 0 1-.557-.091m3.828 2.285a2.273 2.273 0 1 0 0-4.546 2.273 2.273 0 0 0 0 4.546m3.163-3.108a7.44 7.44 0 0 0 .373-8.726 3.3 3.3 0 0 1-1.278 1.498 5.57 5.57 0 0 1-.183 5.535 3.26 3.26 0 0 1 1.088 1.693M2.098 3.998a3.3 3.3 0 0 1 1.897.486 5.54 5.54 0 0 1 4.464-2.388c.037-.67.277-1.313.69-1.843a7.47 7.47 0 0 0-7.051 3.745" />
-                                    </svg>
-                                </Link>
-                                <Link
-                                    className=" scale-100 transition-all hover:scale-110"
-                                    to="https://files.multimc.org/downloads/mmc-develop-win32.zip"
-                                >
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="16"
-                                        height="16"
-                                        fill="currentColor"
-                                        className="bi bi-microsoft"
-                                        viewBox="0 0 16 16"
-                                    >
-                                        <path d="M7.462 0H0v7.19h7.462zM16 0H8.538v7.19H16zM7.462 8.211H0V16h7.462zm8.538 0H8.538V16H16z" />
                                     </svg>
                                 </Link>
                             </div>
@@ -215,20 +213,17 @@ export default function fun(props) {
                     </p>
                     <p className="text-left font-header text-xl text-darken-800">
                         5. Launch the new instance and connect to{" "}
-                        <span className="font-light text-red-500">
+                        <span className="font-pixel text-blue-600">
                             mc.dubeau.org
                         </span>
                     </p>
-                    <p className="text-left font-header text-xl text-darken-800">
-                        6. <span className="font-light">(Optional)</span> For
-                        the best experience, temporarily set your render
-                        distance to 32 chunks, and do some exploring. All
-                        terrain that you generate will stay within your render
-                        distance even if you set your render distance to
-                        something low.{" "}
-                        <span className="font-light">
-                            (16 chunks recommended.)
-                        </span>
+                    <p className="text-left font-header text-xl font-light text-darken-800">
+                        6. <span className="underline">Optional</span>: For the
+                        best experience, temporarily set your render distance to
+                        32 chunks and do some exploring. All terrain that you
+                        generate will stay within your render distance even if
+                        you set your render distance to something low. 16 chunks
+                        if a good place to start.
                     </p>
                     <p className="text-left font-header text-xl text-darken-800">
                         7. Have fun and be cool! Follow posted signs for general
@@ -243,32 +238,32 @@ export default function fun(props) {
 
                     <p className="text-left font-header text-xl text-darken-800">
                         There are currently{" "}
-                        <span className="font-light text-red-500">
+                        <span className="font-pixel text-blue-600">
                             {whitelist.length}
                         </span>{" "}
                         players whitelisted.
                     </p>
                     <p className="text-left font-header text-xl text-darken-800">
                         World Seed{" "}
-                        <span className="font-light text-red-500">
+                        <span className="font-pixel text-blue-600">
                             -3185478975619901032
                         </span>
                     </p>
                     <p className="text-left font-header text-xl text-darken-800">
                         Spawn Generation{" "}
-                        <span className="font-light text-red-500">
-                            Modded 1.20.4
+                        <span className="font-pixel text-blue-600">
+                            Vanilla 1.20.4
                         </span>
                     </p>
                     <p className="text-left font-header text-xl text-darken-800">
                         Render distance{" "}
-                        <span className="font-light text-red-500">
-                            32 chunks
+                        <span className="font-pixel text-blue-600">
+                            24 chunks
                         </span>
                     </p>
                     <p className="text-left font-header text-xl text-darken-800">
                         Simulation distance{" "}
-                        <span className="font-light text-red-500">
+                        <span className="font-pixel text-blue-600">
                             16 chunks
                         </span>
                     </p>
@@ -288,7 +283,7 @@ export default function fun(props) {
                 </div>
             </div>
             <p className="mb-6 text-xl font-light text-darken-700 max-md:text-center">
-                Last updated September 19th, 2024
+                Last updated October 19th, 2024
             </p>
         </Frame>
     );

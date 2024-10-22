@@ -80,7 +80,7 @@ export default function fun(props) {
                             to="/servers/modded"
                             style=""
                             colour="bg-red-400"
-                            announcement="Modpack v0.1 available now"
+                            announcement="0.1 live now"
                         />
                         <ServerCard
                             title="Better Than Wolves"
