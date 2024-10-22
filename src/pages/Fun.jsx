@@ -6,7 +6,7 @@ import ServerCard from "../components/ServerCard";
 
 import ModdedBanner from "../assets/modded-banner.png";
 import BetaBanner from "../assets/beta-banner.webp";
-import ModernBanner from "../assets/modern-banner.jpeg";
+import VanillaBanner from "../assets/dubeau-banner.png";
 import FactorioBanner from "../assets/factorio-banner.jpg";
 import RotnBanner from "../assets/rotn-banner.png";
 import KspBanner from "../assets/ksp-banner.jpg";
@@ -68,9 +68,19 @@ export default function fun(props) {
                         <ServerCard
                             title="Vanilla"
                             subtitle="Minecraft 1.21"
-                            img={ModdedBanner}
+                            img={VanillaBanner}
                             // to="/vanilla"
                             to="/servers/vanilla"
+                        />
+
+                        <ServerCard
+                            title="Modded"
+                            subtitle="Fabric 1.20"
+                            img={ModdedBanner}
+                            to="/servers/modded"
+                            style=""
+                            colour="bg-red-400"
+                            announcement="Modpack v0.1 available now"
                         />
                         <ServerCard
                             title="Better Than Wolves"
@@ -81,7 +91,7 @@ export default function fun(props) {
                         />
                         <ServerCard
                             title="Factorio"
-                            subtitle="Modded 1.1.0"
+                            subtitle="Modded 2.0"
                             img={FactorioBanner}
                             // to="/factorio"
                             to="/servers/factorio"
@@ -96,7 +106,7 @@ export default function fun(props) {
                     </div>
                 </div>
 
-                <div className="m-4 p-2 w-full animate-gradient-x rounded-2xl bg-gradient-to-bl  from-pink-700 via-purple-600 to-zinc-200">
+                <div className="m-4 w-full animate-gradient-x rounded-2xl bg-gradient-to-bl from-pink-700  via-purple-600 to-zinc-200 p-2">
                     <div className="m-5">
                         <p className="text-left font-header text-5xl text-lighten-800">
                             Hobby
@@ -106,7 +116,7 @@ export default function fun(props) {
                         </p>
                     </div>
                     {/* Gradient bg */}
-                    <div className="m-5 flex flex-wrap justify-center b-green-500 gap-2">
+                    <div className="b-green-500 m-5 flex flex-wrap justify-center gap-2">
                         <Link
                             className="flex min-w-24 flex-col justify-center rounded-xl border border-x-darken-50 border-b-darken-100 border-t-lighten-100 bg-darken-200 p-2  shadow-md backdrop-blur-md transition-all hover:scale-105 hover:shadow-lg"
                             to="/fun/widgets"

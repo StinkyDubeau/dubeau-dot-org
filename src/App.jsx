@@ -16,6 +16,7 @@ import Trackers from "./pages/Trackers";
 
 // Pages: Game Servers
 import Vanilla from "./pages/Servers/Vanilla";
+import Modded from "./pages/Servers/Modded";
 import BetterThanWolves from "./pages/Servers/BetterThanWolves";
 import Factorio from "./pages/Servers/Factorio";
 import KSP from "./pages/Servers/KSP";
@@ -121,6 +122,15 @@ function App() {
                         path="/servers/vanilla"
                         element={
                             <Vanilla
+                                data={data}
+                                setData={setData}
+                            />
+                        }
+                    />
+                    <Route
+                        path="/servers/modded"
+                        element={
+                            <Modded
                                 data={data}
                                 setData={setData}
                             />
