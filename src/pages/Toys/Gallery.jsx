@@ -2,20 +2,6 @@ import { useEffect, useState } from "react";
 import Frame from "../../components/Frame";
 import { Link } from "react-router-dom";
 
-import { list } from "aws-amplify/storage";
-
-async function List() {
-    try {
-        const result = await list({
-            path: "Backgrounds/",
-            // Alternatively, path: ({identityId}) => `protected/${identityId}/photos/`
-        });
-    } catch (error) {
-        console.log(error);
-    }
-}
-
-List();
 
 export default function (props) {
     return (
