@@ -92,7 +92,7 @@ export default function fun(props) {
                     <p className="text-left font-header text-xl text-darken-800">
                         2. Connect to{" "}
                         <span className="font-light text-red-500">
-                            dubeau.ddns.net
+                            mc.dubeau.org
                         </span>
                     </p>
 
@@ -194,7 +194,7 @@ export default function fun(props) {
                     <p className="text-left font-header text-xl text-darken-800">
                         5. Launch the new instance and connect to{" "}
                         <span className="font-light text-red-500">
-                            dubeau.ddns.net
+                            mc.dubeau.org
                         </span>
                     </p>
                     <p className="text-left font-header text-xl text-darken-800">
