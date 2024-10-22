@@ -216,7 +216,7 @@ export default function fun(props) {
                     <p className="text-left font-header text-xl text-darken-800">
                         5. Launch the new instance and connect to{" "}
                         <span className="font-pixel text-blue-600">
-                            mc.dubeau.org
+                            mc.dubeau.org:25569
                         </span>
                     </p>
                     <p className="text-left font-light font-header text-xl text-darken-800">
