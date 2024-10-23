@@ -15,8 +15,8 @@ export default function Home(props) {
                 data={props.data}
                 noNavbar
             >
-                <div className="flex h-screen flex-col justify-center gap-1">
-                    <Panel className="m-4">
+                <div className="flex h-screen flex-col justify-center gap-4">
+                    <Panel className="">
                         <div className="flex justify-center py-8 sm:p-12">
                             <h1 className="font-header text-5xl font-light tracking-tighter text-darken-700 max-sm:text-5xl">
                                 dubeau.org
@@ -29,15 +29,15 @@ export default function Home(props) {
                     </h1> */}
                         </div>
                     </Panel>
-                    <Panel className="m-4">
-                        <div className="-mt-6 flex justify-center gap-2">
+                    <Panel className="">
+                        <div className="flex justify-center gap-2">
                             <div className="m-2 flex h-16 justify-center p-1  sm:w-96">
                                 <NavButtons />
                             </div>
                         </div>
                     </Panel>
                     {/* Gallery Reel */}
-                    <Panel className="m-4">
+                    <Panel className="">
                         <div className="h-56">Hello</div>
                     </Panel>
                 </div>

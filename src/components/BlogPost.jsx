@@ -1,9 +1,10 @@
 import Markdown from "react-markdown";
+import Panel from "./Panel";
 
 export default function BlogPost(props) {
     return (
         <>
-            <div className="max-w-screen-md rounded-xl bg-lighten-800 p-4 text-left font-header font-light text-darken-800">
+            <Panel className="max-w-screen-md rounded-xl p-4 text-left text-darken-800">
                 <Markdown className="text-2xl font-normal">
                     {props.title}
                 </Markdown>
@@ -15,7 +16,7 @@ export default function BlogPost(props) {
                 <Markdown className="">{props.body}</Markdown>
 
                 <p className="mt-4 font-normal text-darken-300">{props.id}</p>
-            </div>
+            </Panel>
         </>
     );
 }
