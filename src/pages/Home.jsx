@@ -6,6 +6,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import NavButtons from "../components/NavButtons";
+import Button from "../components/Button";
 
 export default function Home(props) {
     return (
@@ -14,29 +15,32 @@ export default function Home(props) {
                 data={props.data}
                 noNavbar
             >
-                <div className="flex flex-col gap-1 h-screen justify-center">
-
-                <Panel className="m-4">
-                    <div className="flex justify-center py-8 sm:p-12">
-                        <h1 className="font-header text-5xl font-light tracking-tighter text-darken-700 max-sm:text-5xl">
-                            dubeau.org
-                        </h1>
-                        {/* <div className="flex flex-col justify-center text-2xl italic text-darken-500 max-sm:text-2xl">
+                <div className="flex h-screen flex-col justify-center gap-1">
+                    <Panel className="m-4">
+                        <div className="flex justify-center py-8 sm:p-12">
+                            <h1 className="font-header text-5xl font-light tracking-tighter text-darken-700 max-sm:text-5xl">
+                                dubeau.org
+                            </h1>
+                            {/* <div className="flex flex-col justify-center text-2xl italic text-darken-500 max-sm:text-2xl">
                             dot
                         </div>
                         <h1 className="font-headerScript text-6xl text-darken-700 max-sm:text-5xl">
                         org
                     </h1> */}
-                    </div>
-                </Panel>
-                <Panel className="m-4 mb-56">
-                    <div className="-mt-6 flex justify-center gap-2">
-                        <div className="m-2 flex h-16 justify-center p-1  sm:w-96">
-                            <NavButtons />
                         </div>
-                    </div>
-                </Panel>
-                    </div>
+                    </Panel>
+                    <Panel className="m-4">
+                        <div className="-mt-6 flex justify-center gap-2">
+                            <div className="m-2 flex h-16 justify-center p-1  sm:w-96">
+                                <NavButtons />
+                            </div>
+                        </div>
+                    </Panel>
+                    {/* Gallery Reel */}
+                    <Panel className="m-4">
+                        <div className="h-56">Hello</div>
+                    </Panel>
+                </div>
             </Frame>
         </div>
     );
