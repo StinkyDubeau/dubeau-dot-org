@@ -7,6 +7,9 @@ import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import NavButtons from "../components/NavButtons";
 import Button from "../components/Button";
+import ServerCard from "../components/ServerCard";
+
+import ModdedBanner from "../assets/modded-banner.png";
 
 export default function Home(props) {
     return (
@@ -36,10 +39,20 @@ export default function Home(props) {
                             </div>
                         </div>
                     </Panel>
-                    {/* Gallery Reel */}
-                    <Panel className="">
-                        <div className="h-56">Hello</div>
-                    </Panel>
+                    <div className="flex w-full justify-center">
+                        <ServerCard
+                            title="Modded"
+                            subtitle="Fabric 1.20"
+                            img={ModdedBanner}
+                            to="/servers/modded"
+                            className="backdrop-blur"
+                            colour="bg-red-400"
+                            announcement="0.1 live now"
+                        />
+                    </div>
+                    <h1 className="font-header text-darken-800">
+                        Read about the modded server's Fall Update
+                    </h1>
                 </div>
             </Frame>
         </div>

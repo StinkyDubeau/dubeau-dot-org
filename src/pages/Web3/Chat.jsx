@@ -145,7 +145,7 @@ export default function Chat(props) {
     }
 
     return (
-        <div className="pt fixed left-0 top-0 h-lvh h-screen w-screen p-2">
+        <div className="pt fixed left-0 top-0 h-screen w-screen p-2">
             <div className="h-full w-full">
                 <div className="flex h-full flex-col justify-between gap-2">
                     <div className="flex-0 h-12 overflow-auto rounded-3xl bg-lighten-800 sm:hidden">
