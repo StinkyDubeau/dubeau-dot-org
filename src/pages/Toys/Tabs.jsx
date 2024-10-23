@@ -4,11 +4,12 @@ import { Link } from "react-router-dom";
 import Panel from "../../components/Panel";
 
 // This component accepts a json file of Firefox bookmarks. It will create the folder structure of the data, rendering individual bookmarks as hyperlinks to their defined URIs.
+// The component can only handle 2 layer of folder depth. All guitar tabs should be under a single folder, and artists may be further sorted into their own folders.
 
 function createBookmark(bookmark, index) {
     return (
         <Panel
-            className=""
+            className="overflow-hidden p-4"
             key={bookmark.guid}
         >
             {bookmark.children ? createFolder(bookmark) : createTab(bookmark)}
@@ -18,10 +19,12 @@ function createBookmark(bookmark, index) {
 
 function createTab(tab, index) {
     return (
-        <div>
+        <div key={tab.guid}>
             <Link to={tab.uri}>
-                <p className="text-3xl text-darken-800">{tab.title}</p>
-                <p>{tab.guid}</p>
+                <p className="font-header text-3xl text-darken-800">
+                    {tab.title}
+                </p>
+                <p className="font-header text-xs text-darken-600">{tab.uri}</p>
             </Link>
         </div>
     );
@@ -30,9 +33,13 @@ function createTab(tab, index) {
 function createFolder(folder, index) {
     return (
         <div className="">
-            <p>{folder.title}</p>
-            <p>{folder.guid}</p>
-            {folder.children && folder.children.map(createBookmark)}
+            <p className="rounded-full bg-darken-100 font-header text-3xl text-darken-800">
+                {folder.title}
+            </p>
+            {/* <p>{folder.guid}</p> */}
+            <div className="gap-4da flex flex-col">
+                {folder.children && folder.children.map(createTab)}
+            </div>
         </div>
     );
 }
