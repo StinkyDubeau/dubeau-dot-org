@@ -32,12 +32,12 @@ function createTab(tab, index) {
 
 function createFolder(folder, index) {
     return (
-        <div className="">
-            <p className="rounded-full bg-darken-100 font-header text-3xl text-darken-800">
+        <div className="flex flex-col gap-4">
+            <p className="rounded-full bg-darken-50 font-header text-3xl text-darken-800">
                 {folder.title}
             </p>
             {/* <p>{folder.guid}</p> */}
-            <div className="gap-4da flex flex-col">
+            <div className="flex flex-col gap-6">
                 {folder.children && folder.children.map(createTab)}
             </div>
         </div>
@@ -47,17 +47,27 @@ export default function (props) {
     return (
         <>
             <Frame data={props.data}>
-                <div
-                    id="container"
-                    className="flex flex-col gap-4"
-                >
-                    {Bookmarks ? (
-                        Bookmarks.children.map(createBookmark)
-                    ) : (
-                        <p className="italic text-darken-600">
-                            Failed to load guitar tabs JSON.
+                <div className="flex w-full justify-center">
+                    <div
+                        id="container"
+                        className="mt-4 flex flex-col gap-4"
+                    >
+                        <p className="font-header text-3xl text-darken-800">
+                            Guitar Tabs
                         </p>
-                    )}
+                        <p className="max-w-md font-header text-darken-600">
+                            This section of the site is under construction. This
+                            is my personal collection of bookmarks to songs I
+                            like to play.
+                        </p>
+                        {Bookmarks ? (
+                            Bookmarks.children.map(createBookmark)
+                        ) : (
+                            <p className="italic text-darken-600">
+                                Failed to load guitar tabs JSON.
+                            </p>
+                        )}
+                    </div>
                 </div>
             </Frame>
         </>
