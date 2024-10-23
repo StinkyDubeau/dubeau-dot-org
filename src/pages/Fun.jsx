@@ -26,7 +26,7 @@ export default function fun(props) {
             - Reading List
             */}
 
-            <div className="flex flex-wrap justify-center">
+            <div className="flex flex-wrap justify-center my-4">
                 <div className="m-4 w-full animate-gradient-x rounded-2xl bg-gradient-to-bl from-orange-700 via-pink-500 to-yellow-400 ">
                     <div className="m-5">
                         <p className="text-left font-header text-5xl text-lighten-800">

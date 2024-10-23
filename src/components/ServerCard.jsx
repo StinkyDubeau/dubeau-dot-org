@@ -4,7 +4,7 @@ export default function ServerCard(props) {
     return (
         <>
             <div
-                className={`${props.style} card h-56 w-44 overflow-hidden rounded-xl bg-slate-50 shadow-lg transition-all hover:scale-105 hover:shadow-xl`}
+                className={`${props.className} card h-56 w-44 overflow-hidden rounded-2xl bg-slate-50 shadow-lg transition-all hover:scale-105 hover:shadow-xl`}
             >
                 <Link to={props.to}>
                     <img
