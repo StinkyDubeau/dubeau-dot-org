@@ -28,8 +28,9 @@ export default function Frame(props) {
     }
     return (
         <>
-            {/* Data-Dependant Components */}
+            {/* Data Components */}
             {props.data && createDataDependants()}
+            <ScrollToTop />
 
             {/* Navbar */}
             {!props.noNavbar && <Navbar data={props.data} />}
@@ -38,7 +39,6 @@ export default function Frame(props) {
             <div
                 className={`-z-30 h-max min-h-screen ${props.vignette === !null ? "bg-zinc-800 shadow-inner-4xl" : "bg-zinc-200"}`}
             >
-                <ScrollToTop />
                 <div className={`m-auto ${!props.noNavbar && "pt-16"} `}>
                     <div className="mx-auto flex max-w-screen-xl justify-center">
                         <div className="flex flex-col">{props.children}</div>
