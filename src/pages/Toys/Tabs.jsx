@@ -2,6 +2,8 @@ import Frame from "../../components/Frame";
 import Bookmarks from "../../assets/tabs.json";
 import { Link } from "react-router-dom";
 import Panel from "../../components/Panel";
+import { useState } from "react";
+import Button from "../../components/Button";
 
 // This component accepts a json file of Firefox bookmarks. It will create the folder structure of the data, rendering individual bookmarks as hyperlinks to their defined URIs.
 // The component can only handle 2 layer of folder depth. All guitar tabs should be under a single folder, and artists may be further sorted into their own folders.
@@ -31,6 +33,18 @@ function createTab(tab, index) {
 }
 
 function createFolder(folder, index) {
+    const [collapsed, setCollapsed] = useState(true);
+
+    function createButton() {
+        return (
+            <>
+                <button className="bg-blue-300" onClick={() => setCollapsed(collapsed ? false : true)}>
+                    Open
+                </button>
+            </>
+        );
+    }
+
     return (
         <div className="flex flex-col gap-4">
             <p className="rounded-full bg-darken-50 font-header text-3xl text-darken-800">
@@ -38,11 +52,14 @@ function createFolder(folder, index) {
             </p>
             {/* <p>{folder.guid}</p> */}
             <div className="flex flex-col gap-6">
-                {folder.children && folder.children.map(createTab)}
+                {collapsed
+                    ? createButton()
+                    : folder.children && folder.children.map(createTab)}
             </div>
         </div>
     );
 }
+
 export default function (props) {
     return (
         <>
