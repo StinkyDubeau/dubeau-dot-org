@@ -44,6 +44,74 @@ export default function fun(props) {
                 </div>
 
                 <div className="flex flex-col gap-4 rounded-3xl bg-lighten-800 p-4">
+                    <div className="rounded-2xl bg-red-500 p-4">
+                        <p className="text-left font-header text-3xl text-lighten-800">
+                        As of <span className="animate-pulse">
+                               November 8th{" "}
+                            </span>
+                            we are migrating to a modded world!
+                        </p>
+                        <p className="text-left text-lighten-400">
+                            Please empty your player inventory into a chest to
+                            prevent loss.
+                        </p>
+                    </div>
+                    <div
+                        id="pros cons"
+                        className="flex flex-wrap justify-center gap-2"
+                    >
+                        <div className="flex-grow rounded-full bg-green-600 px-3 py-1">
+                            <p className="font-header font-light text-lighten-800">
+                                Easy to set up
+                            </p>
+                        </div>
+                        <div className="flex-grow rounded-full bg-green-600 px-3 py-1">
+                            <p className="font-header font-light text-lighten-800">
+                                Works on most PCs
+                            </p>
+                        </div>
+                        <div className="flex-grow rounded-full bg-red-500 px-3 py-1">
+                            <p className="font-header font-light text-lighten-800">
+                                Missing social features
+                            </p>
+                        </div>
+                        <div className="flex-grow rounded-full bg-red-500 px-3 py-1">
+                            <p className="font-header font-light text-lighten-800">
+                                Worse graphics
+                            </p>
+                        </div>
+                    </div>
+
+                    <p className="text-left font-header text-xl text-darken-800">
+                        0. Connect with us on discord to be whitelisted
+                    </p>
+                    <div className="justify-left flex gap-4 font-header text-darken-800 underline">
+                        <Link
+                            className=" scale-100 transition-all hover:scale-110"
+                            to="/contact"
+                        >
+                            Join the discord server
+                        </Link>
+                    </div>
+
+                    <p className="text-left font-header text-xl text-darken-800">
+                        1. Download and launch the latest version of Minecraft
+                        Java Edition
+                    </p>
+                    <p className="text-left font-header text-xl text-darken-800">
+                        2. Connect to{" "}
+                        <span className="font-light text-red-500">
+                            mc.dubeau.org
+                        </span>
+                    </p>
+
+                    <p className="text-left font-header text-xl text-darken-800">
+                        3. Have fun and be cool! Follow posted signs for general
+                        rules
+                    </p>
+                </div>
+
+                <div className="flex flex-col gap-4 rounded-3xl bg-lighten-800 p-4">
                     <p className="text-left font-header text-3xl text-darken-800">
                         Join with a vanilla client
                     </p>
