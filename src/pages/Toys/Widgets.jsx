@@ -24,6 +24,12 @@ export default function (props) {
             console.log("use effect mounted");
         }, [1000]);
 
+        function getVagueTimeDelta(date) {
+            return vagueTime.get({
+                to: date,
+            });
+        }
+
         function renderCookie(count, diameter) {
             return (
                 <div
