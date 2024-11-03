@@ -3,7 +3,6 @@ import Bookmarks from "../../assets/tabs.json";
 import { Link } from "react-router-dom";
 import Panel from "../../components/Panel";
 import { useState } from "react";
-import Button from "../../components/Button";
 
 // This component accepts a json file of Firefox bookmarks. It will create the folder structure of the data, rendering individual bookmarks as hyperlinks to their defined URIs.
 // The component can only handle 2 layer of folder depth. All guitar tabs should be under a single folder, and artists may be further sorted into their own folders.
@@ -20,10 +19,15 @@ function createBookmark(bookmark, index) {
 }
 
 function createTab(tab, index) {
+    const friendlyTitle = tab.title;
+
     return (
         <div key={tab.guid}>
-            <Link to={tab.uri}>
-                <p className="font-header text-3xl text-darken-800">
+            <Link
+                to={tab.uri}
+                className="flex flex-col"
+            >
+                <p className="text-left font-header text-xl text-darken-800">
                     {tab.title}
                 </p>
                 <p className="font-header text-xs text-darken-600">{tab.uri}</p>
@@ -37,11 +41,14 @@ function createFolder(folder, index) {
 
     function createButton() {
         return (
-            <>
-                <button className="bg-blue-300" onClick={() => setCollapsed(collapsed ? false : true)}>
-                    Open
+            <div className={`${collapsed && "h-4"} transition-all`}>
+                <button
+                    className="rounded-2xl bg-darken-300 font-header text-lighten-800 transition-all hover:bg-darken-400 active:bg-darken-500"
+                    onClick={() => setCollapsed(collapsed ? false : true)}
+                >
+                    Open folder
                 </button>
-            </>
+            </div>
         );
     }
 
@@ -49,12 +56,13 @@ function createFolder(folder, index) {
         <div className="flex flex-col gap-4">
             <p className="rounded-full bg-darken-50 font-header text-3xl text-darken-800">
                 {folder.title}
+                {collapsed && createButton()}
             </p>
             {/* <p>{folder.guid}</p> */}
             <div className="flex flex-col gap-6">
-                {collapsed
-                    ? createButton()
-                    : folder.children && folder.children.map(createTab)}
+                {!collapsed &&
+                    folder.children &&
+                    folder.children.map(createTab)}
             </div>
         </div>
     );
