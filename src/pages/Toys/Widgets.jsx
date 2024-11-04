@@ -20,6 +20,8 @@ export default function (props) {
         const [birthDate, setBirthdate] = useState(new Date());
         const [cookies, setCookies] = useState(0);
 
+        const initialGrandmaCost = 10;
+
         useEffect(() => {
             console.log("use effect mounted");
         }, [1000]);
@@ -46,14 +48,64 @@ export default function (props) {
             );
         }
 
+        // Helper functions
+        function howManyICanAffordPerUnitCost(unitPrice) {
+            const n = Math.floor(cookies / unitPrice);
+            return n;
+        }
+
+        function calculateTotal(unitPrice, n) {
+            const total = unitPrice * n;
+            return total;
+        }
+
+        // Render functions
+        function renderTransactionReceipt(items) {
+            return (
+                <div>
+                    <p>This is a transaction receipt.</p>
+                </div>
+            );
+        }
+
         function renderShop() {
+            const [grandmaCost, setGrandmaCost] = useState(initialGrandmaCost);
+            const [grandmas, setGrandmas] = useState(0);
+
+            function buyGrandmas(n) {
+                const cost = n * grandmaCost;
+                if (cost > cookies) {
+                    console.log("Not enough cookies to purchase grandma(s).");
+                } else {
+                    // Complete the transaction
+                    setGrandmas(grandmas + n);
+                    setCookies(cookies - cost);
+                    renderTransactionReceipt();
+                }
+            }
+
             return (
                 <div
                     id="statistics"
                     className="flex flex-col gap-2 rounded-xl bg-darken-200 p-2 font-header text-sm text-lighten-700"
                 >
                     <h1 className="text-left underline">Shop</h1>
-                    <p className="">grandmas</p>
+                    <p className="">grandmas: {grandmas}</p>
+                    <button onClick={() => buyGrandmas(1)}>
+                        Buy 1 ${grandmaCost}
+                    </button>
+                    <button onClick={() => buyGrandmas(10)}>
+                        Buy 10 ${grandmaCost * 10}
+                    </button>
+                    <button
+                        onClick={() =>
+                            buyGrandmas(
+                                howManyICanAffordPerUnitCost(grandmaCost),
+                            )
+                        }
+                    >
+                        Buy Max ({howManyICanAffordPerUnitCost(grandmaCost)})
+                    </button>
                 </div>
             );
         }
