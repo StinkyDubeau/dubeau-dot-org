@@ -19,12 +19,16 @@ export default function (props) {
     function createCookieWidget() {
         const [birthDate, setBirthdate] = useState(new Date());
         const [cookies, setCookies] = useState(0);
+        const [time, setTime] = useState(new Date());
+        const [ticks, setTicks] = useState(0); //start at 0 ticks. Add one tick per 1000ms. This is a 1TPS simulation.
 
-        const initialGrandmaCost = 10;
+        const initialGrandmaCost = 2;
 
-        useEffect(() => {
-            console.log("use effect mounted");
-        }, [1000]);
+        // useEffect(() => {
+        //     setTime(new Date());
+        //     console.log("Tick " + ticks);
+        //     setTicks(ticks + 1);
+        // }, [() => time.getSeconds()]);
 
         function getVagueTimeDelta(date) {
             return vagueTime.get({
@@ -72,8 +76,50 @@ export default function (props) {
             const [grandmaCost, setGrandmaCost] = useState(initialGrandmaCost);
             const [grandmas, setGrandmas] = useState(0);
 
+            function RenderShopButton({ body, onClick }) {
+                return (
+                    <button
+                        onClick={onClick}
+                        className="rounded-lg bg-lighten-50 p-2 transition-all hover:bg-none active:bg-lighten-100"
+                    >
+                        {body}
+                    </button>
+                );
+            }
+
+            function renderGrandmas() {
+                return (
+                    <div className="flex flex-col justify-center gap-2 rounded-lg bg-darken-200 p-2">
+                        <p className="">grandmas: {grandmas}</p>
+                        <RenderShopButton
+                            body={`Buy 1 $${grandmaCost}`}
+                            onClick={() => buyGrandmas(1)}
+                        />
+                        <RenderShopButton
+                            body={`Buy 5 $${grandmaCost}`}
+                            onClick={() => buyGrandmas(5)}
+                        />
+                        <RenderShopButton
+                            body={`Buy Max (${howManyICanAffordPerUnitCost(grandmaCost)}) $${grandmaCost * howManyICanAffordPerUnitCost(grandmaCost)}`}
+                            onClick={() =>
+                                buyGrandmas(
+                                    howManyICanAffordPerUnitCost(grandmaCost),
+                                )
+                            }
+                        />
+                    </div>
+                );
+            }
+
             function buyGrandmas(n) {
-                const cost = n * grandmaCost;
+                var cost = n * grandmaCost;
+                // if n is -1, the function will buy the maximum number of grandmas.
+                if (n == -1) {
+                    n = howManyICanAffordPerUnitCost(grandmaCost);
+                    console.log(`Buying max grandmas (${n})`);
+                    cost = n * grandmaCost;
+                }
+
                 if (cost > cookies) {
                     console.log("Not enough cookies to purchase grandma(s).");
                 } else {
@@ -86,26 +132,11 @@ export default function (props) {
 
             return (
                 <div
-                    id="statistics"
+                    id="shop"
                     className="flex flex-col gap-2 rounded-xl bg-darken-200 p-2 font-header text-sm text-lighten-700"
                 >
                     <h1 className="text-left underline">Shop</h1>
-                    <p className="">grandmas: {grandmas}</p>
-                    <button onClick={() => buyGrandmas(1)}>
-                        Buy 1 ${grandmaCost}
-                    </button>
-                    <button onClick={() => buyGrandmas(10)}>
-                        Buy 10 ${grandmaCost * 10}
-                    </button>
-                    <button
-                        onClick={() =>
-                            buyGrandmas(
-                                howManyICanAffordPerUnitCost(grandmaCost),
-                            )
-                        }
-                    >
-                        Buy Max ({howManyICanAffordPerUnitCost(grandmaCost)})
-                    </button>
+                    {renderGrandmas()}
                 </div>
             );
         }
@@ -118,15 +149,11 @@ export default function (props) {
                 >
                     <h1 className="text-left underline">Statistics</h1>
                     <p className="">
-                        birthDate: {birthDate.toLocaleTimeString()}
+                        birthDate: {birthDate.toLocaleTimeString()} (
+                        {getVagueTimeDelta(birthDate)})
                     </p>
-                    <p className="">
-                        currentDate: {new Date().toLocaleTimeString()}
-                    </p>
-                    <p className="">
-                        You have been playing since{" "}
-                        {getVagueTimeDelta(birthDate)}
-                    </p>
+                    <p className="">currentDate: {time.toLocaleTimeString()}</p>
+                    <p className="">ticks passed: {ticks}</p>
                 </div>
             );
         }
@@ -192,7 +219,7 @@ export default function (props) {
         <>
             <Frame data={props.data}>
                 {/* Container */}
-                <div className="my-auto mt-8 flex h-screen flex-col justify-center gap-2 drop-shadow-lg">
+                <div className="my-4 flex h-screen flex-col justify-center gap-2 drop-shadow-lg">
                     {/* Cookie Widgit */}
                     {createCookieWidget()}
                     {/* Counter Widgit */}
