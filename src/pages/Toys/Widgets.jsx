@@ -4,31 +4,22 @@ import { Link } from "react-router-dom";
 import vagueTime from "vague-time";
 
 export default function (props) {
-    // returns 'in a minute'
-    console.log(
-        vagueTime.get({
-            to: Date.now() + 60000,
-        }),
-    );
-
-    // Widgits are:
+    // Widgets are:
     // - Rich: Strong design that's engagingly animated
     // - Connected: Backed by a secure connection to others
     // - Responsive: From centimeters to fullscreen, they scale
 
     function createCookieWidget() {
         const [birthDate, setBirthdate] = useState(new Date());
-        const [cookies, setCookies] = useState(0);
         const [time, setTime] = useState(new Date());
-        const [ticks, setTicks] = useState(0); //start at 0 ticks. Add one tick per 1000ms. This is a 1TPS simulation.
+
+        // Todo: Move constants to a constants.js file
+        const [cookies, setCookies] = useState(0);
+        const [ticks, setTicks] = useState(0); //start at 0 ticks. This is a 1TPS simulation.
+        const [mspt, setMspt] = useState(1000); // how many miliseconds per tick
+        const [timestep, setTimestep] = useState(1); // how many ticks to advance per tick.
 
         const initialGrandmaCost = 2;
-
-        // useEffect(() => {
-        //     setTime(new Date());
-        //     console.log("Tick " + ticks);
-        //     setTicks(ticks + 1);
-        // }, [() => time.getSeconds()]);
 
         function getVagueTimeDelta(date) {
             return vagueTime.get({
@@ -36,21 +27,20 @@ export default function (props) {
             });
         }
 
-        function renderCookie(count, diameter) {
-            return (
-                <div
-                    className={`h-${diameter} w-${diameter} rounded-full bg-orange-900 shadow-xl`}
-                >
-                    <div className="flex h-full justify-center">
-                        <div className="flex flex-col justify-center">
-                            <p className="font-header text-lighten-800">
-                                {count && count}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            );
-        }
+        // Game loop logic is here
+        useEffect(() => {
+            const interval = setInterval(() => {
+                var newTime = new Date();
+                var newTicks = ticks + 1;
+                setTime(new Date());
+                setTicks(newTicks);
+                console.log(
+                    `Tick! (${ticks}) (${mspt}ms) (${newTime.toLocaleTimeString()})`,
+                );
+            }, mspt);
+
+            return () => clearInterval(interval); // This represents the unmount function, in which you need to clear your interval to prevent memory leaks.
+        }, [ticks]);
 
         // Helper functions
         function howManyICanAffordPerUnitCost(unitPrice) {
@@ -64,6 +54,22 @@ export default function (props) {
         }
 
         // Render functions
+        function renderCookie(count, diameter) {
+            return (
+                <div
+                    className={`h-${diameter} w-${diameter}  rounded-full bg-orange-900 shadow-xl`}
+                >
+                    <div className="flex h-full justify-center">
+                        <div className="flex flex-col justify-center">
+                            <p className="font-header text-lighten-800">
+                                {count && count}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+
         function renderTransactionReceipt(items) {
             return (
                 <div>
@@ -72,16 +78,27 @@ export default function (props) {
             );
         }
 
+        function renderAbsoluteToast(x, y, size, body, lifespan) {
+            // Declare the absolute position (x,y coordinates), size(tailwind scale), and lifespan (ms) for the toast
+            return (
+                <div
+                    id="toast"
+                    className="animate-message-pop-in rounded-full bg-red-700 text-lighten-800"
+                ></div>
+            );
+        }
+
         function renderShop() {
             const [grandmaCost, setGrandmaCost] = useState(initialGrandmaCost);
             const [grandmas, setGrandmas] = useState(0);
 
-            function RenderShopButton({ body, onClick }) {
+            function RenderShopButton({ quantity, body, onClick }) {
                 return (
                     <button
                         onClick={onClick}
                         className="rounded-lg bg-lighten-50 p-2 transition-all hover:bg-none active:bg-lighten-100"
                     >
+                        {quantity}
                         {body}
                     </button>
                 );
@@ -92,15 +109,17 @@ export default function (props) {
                     <div className="flex flex-col justify-center gap-2 rounded-lg bg-darken-200 p-2">
                         <p className="">grandmas: {grandmas}</p>
                         <RenderShopButton
+                            quantity={1}
                             body={`Buy 1 $${grandmaCost}`}
                             onClick={() => buyGrandmas(1)}
                         />
                         <RenderShopButton
-                            body={`Buy 5 $${grandmaCost}`}
+                            body={`Buy 5 $${grandmaCost * 5}`}
                             onClick={() => buyGrandmas(5)}
                         />
+                        {/* This is a gnarly line of code lol */}
                         <RenderShopButton
-                            body={`Buy Max (${howManyICanAffordPerUnitCost(grandmaCost)}) $${grandmaCost * howManyICanAffordPerUnitCost(grandmaCost)}`}
+                            body={`Buy Max (${howManyICanAffordPerUnitCost(grandmaCost) == 0 ? "None" : howManyICanAffordPerUnitCost(grandmaCost)}) $${grandmaCost * howManyICanAffordPerUnitCost(grandmaCost)}`}
                             onClick={() =>
                                 buyGrandmas(
                                     howManyICanAffordPerUnitCost(grandmaCost),
@@ -122,6 +141,12 @@ export default function (props) {
 
                 if (cost > cookies) {
                     console.log("Not enough cookies to purchase grandma(s).");
+                    renderAbsoluteToast(
+                        100,
+                        100,
+                        "lg",
+                        "Not enough cookies to purchase grandma(s)",
+                    );
                 } else {
                     // Complete the transaction
                     setGrandmas(grandmas + n);
@@ -219,7 +244,7 @@ export default function (props) {
         <>
             <Frame data={props.data}>
                 {/* Container */}
-                <div className="my-4 flex h-screen flex-col justify-center gap-2 drop-shadow-lg">
+                <div className="my-4 flex flex-col justify-center gap-2 drop-shadow-lg">
                     {/* Cookie Widgit */}
                     {createCookieWidget()}
                     {/* Counter Widgit */}
