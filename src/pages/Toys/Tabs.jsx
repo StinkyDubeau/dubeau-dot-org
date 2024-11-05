@@ -19,7 +19,19 @@ function createBookmark(bookmark, index) {
 }
 
 function createTab(tab, index) {
-    const friendlyTitle = tab.title;
+    var friendlyTitle = tab.title;
+    var friendlyArtist = "Unknown artist";
+    const regex = /^(.*?)\s+(?:CHORDS|TAB)\s+.*?by\s+([^@]+)/i;
+    const match = friendlyTitle.match(regex);
+
+    if (match) {
+        console.log("Match " + typeof match[1].trim() + " " + match[2].trim());
+
+        friendlyTitle = match[1].trim();
+        friendlyArtist = match[2].trim();
+    } else {
+        // friendlyTitle = "FAILED";
+    }
 
     return (
         <div key={tab.guid}>
@@ -28,7 +40,13 @@ function createTab(tab, index) {
                 className="flex flex-col"
             >
                 <p className="text-left font-header text-xl text-darken-800">
-                    {tab.title}
+                    {friendlyTitle}
+                </p>
+                <p className="text-left font-header text-xl text-darken-800">
+                    by{" "}
+                    <span className="font-light">
+                        {friendlyArtist}
+                    </span>
                 </p>
                 <p className="font-header text-xs text-darken-600">{tab.uri}</p>
             </Link>
@@ -43,7 +61,7 @@ function createFolder(folder, index) {
         return (
             <div className={`${collapsed && "h-4"} transition-all`}>
                 <button
-                    className="rounded-2xl bg-darken-300 font-header text-lighten-800 transition-all hover:bg-darken-400 active:bg-darken-500"
+                    className="text-md rounded-2xl bg-darken-300 font-header text-lighten-800 transition-all hover:bg-darken-400 active:bg-darken-500"
                     onClick={() => setCollapsed(collapsed ? false : true)}
                 >
                     Open folder
@@ -71,7 +89,7 @@ function createFolder(folder, index) {
 export default function (props) {
     return (
         <>
-            <Frame data={props.data}>
+            <Frame data={props.data} noScroll>
                 <div className="flex w-full justify-center">
                     <div
                         id="container"
