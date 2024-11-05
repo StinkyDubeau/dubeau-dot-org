@@ -16,10 +16,12 @@ export default function (props) {
         // Todo: Move constants to a constants.js file
         const [cookies, setCookies] = useState(0);
         const [ticks, setTicks] = useState(0); //start at 0 ticks.
-        const [mspt, setMspt] = useState(1000); // how many milliseconds per tick
+        const [mspt, setMspt] = useState(500); // how many milliseconds per tick
         const [timestep, setTimestep] = useState(1); // how many ticks to advance per tick.
 
         const initialGrandmaCost = 2;
+        const [grandmaCost, setGrandmaCost] = useState(initialGrandmaCost);
+        const [grandmas, setGrandmas] = useState(0);
 
         // Game loop logic is here
         useEffect(() => {
@@ -27,7 +29,6 @@ export default function (props) {
                 var newTime = new Date();
                 var newTicks = ticks + timestep;
 
-                setTime(new Date());
                 setTicks(newTicks);
 
                 console.log(
@@ -36,6 +37,12 @@ export default function (props) {
             }, mspt);
 
             return () => clearInterval(interval); // This represents the unmount function, in which you need to clear your interval to prevent memory leaks.
+        }, [ticks]);
+
+        // Do every tick
+        useEffect(() => {
+            setTime(new Date());
+            setCookies(cookies + grandmas);
         }, [ticks]);
 
         // Helper functions
@@ -59,7 +66,7 @@ export default function (props) {
         function renderCookie(count, diameter) {
             return (
                 <div
-                    className={`h-${diameter} w-${diameter}  rounded-full bg-orange-900 shadow-xl`}
+                    className={`flex-0 w-full rounded-full bg-orange-900 shadow-xl`}
                 >
                     <div className="flex h-full justify-center">
                         <div className="flex flex-col justify-center">
@@ -80,20 +87,23 @@ export default function (props) {
             );
         }
 
-        function renderAbsoluteToast(x, y, size, body, lifespan) {
+        function renderAbsoluteToast({
+            x = 100,
+            y = 100,
+            siz = 100,
+            body = "Toast",
+            lifespan = 5000,
+        }) {
             // Declare the absolute position (x,y coordinates), size(tailwind scale), and lifespan (ms) for the toast
             return (
                 <div
                     id="toast"
-                    className="animate-message-pop-in rounded-full bg-red-700 text-lighten-800"
+                    className={`t-y absolute animate-message-pop-in left-${x} rounded-full bg-red-700 text-lighten-800`}
                 ></div>
             );
         }
 
         function renderShop() {
-            const [grandmaCost, setGrandmaCost] = useState(initialGrandmaCost);
-            const [grandmas, setGrandmas] = useState(0);
-
             function RenderShopButton({ quantity, body, onClick }) {
                 return (
                     <button
@@ -106,7 +116,7 @@ export default function (props) {
                 );
             }
 
-            function renderGrandmas() {
+            function RenderGrandmas() {
                 return (
                     <div className="flex flex-col justify-center gap-2 rounded-lg bg-darken-200 p-2">
                         <p className="">grandmas: {grandmas}</p>
@@ -143,12 +153,7 @@ export default function (props) {
 
                 if (cost > cookies) {
                     console.log("Not enough cookies to purchase grandma(s).");
-                    renderAbsoluteToast(
-                        100,
-                        100,
-                        "lg",
-                        "Not enough cookies to purchase grandma(s)",
-                    );
+                    renderAbsoluteToast();
                 } else {
                     // Complete the transaction
                     setGrandmas(grandmas + n);
@@ -163,7 +168,7 @@ export default function (props) {
                     className="flex flex-col gap-2 rounded-xl bg-darken-200 p-2 font-header text-sm text-lighten-700"
                 >
                     <h1 className="text-left underline">Shop</h1>
-                    {renderGrandmas()}
+                    <RenderGrandmas />
                 </div>
             );
         }
@@ -181,6 +186,10 @@ export default function (props) {
                     </p>
                     <p className="">currentDate: {time.toLocaleTimeString()}</p>
                     <p className="">ticks passed: {ticks}</p>
+                    <p className="">
+                        tick rate: {1 / (mspt / 1000)} per second, {mspt}ms per
+                        tick.
+                    </p>
                 </div>
             );
         }
@@ -190,7 +199,7 @@ export default function (props) {
                 <h1 className="font-headerScript text-5xl text-yellow-800">
                     Cookie cloner
                 </h1>
-                <div className="flex justify-center gap-2 max-sm:flex-col">
+                <div className="flex justify-between gap-2 max-sm:flex-col sm:w-full">
                     {renderCookie(cookies, 52)}
                     <button
                         className="min-h-36 min-w-36 rounded-xl bg-yellow-500 p-6 font-header text-6xl transition-all hover:scale-105 hover:bg-yellow-600 hover:shadow-lg active:scale-95 active:bg-yellow-800 active:blur"
@@ -201,6 +210,19 @@ export default function (props) {
                 </div>
                 {renderShop()}
                 {renderStatistics()}
+                <div className="flex flex-wrap gap-2">
+                    <p className="flex-0 max-sm:w-full max-sm:text-center">
+                        Simulation speed (mspt)
+                    </p>
+                    <input
+                        type="range"
+                        onChange={(e) => setMspt(e.target.value)}
+                        min={50} //20 ticks per sec
+                        max={10000} //10 sec per tick
+                        value={mspt}
+                        className="range fill-darken-500 sm:flex-1"
+                    />
+                </div>
             </div>
         );
     }
