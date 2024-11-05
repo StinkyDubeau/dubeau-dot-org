@@ -15,25 +15,21 @@ export default function (props) {
 
         // Todo: Move constants to a constants.js file
         const [cookies, setCookies] = useState(0);
-        const [ticks, setTicks] = useState(0); //start at 0 ticks. This is a 1TPS simulation.
-        const [mspt, setMspt] = useState(1000); // how many miliseconds per tick
+        const [ticks, setTicks] = useState(0); //start at 0 ticks.
+        const [mspt, setMspt] = useState(1000); // how many milliseconds per tick
         const [timestep, setTimestep] = useState(1); // how many ticks to advance per tick.
 
         const initialGrandmaCost = 2;
-
-        function getVagueTimeDelta(date) {
-            return vagueTime.get({
-                to: date,
-            });
-        }
 
         // Game loop logic is here
         useEffect(() => {
             const interval = setInterval(() => {
                 var newTime = new Date();
-                var newTicks = ticks + 1;
+                var newTicks = ticks + timestep;
+
                 setTime(new Date());
                 setTicks(newTicks);
+
                 console.log(
                     `Tick! (${ticks}) (${mspt}ms) (${newTime.toLocaleTimeString()})`,
                 );
@@ -43,6 +39,12 @@ export default function (props) {
         }, [ticks]);
 
         // Helper functions
+        function getVagueTimeDelta(date) {
+            return vagueTime.get({
+                to: date,
+            });
+        }
+
         function howManyICanAffordPerUnitCost(unitPrice) {
             const n = Math.floor(cookies / unitPrice);
             return n;
@@ -242,7 +244,10 @@ export default function (props) {
 
     return (
         <>
-            <Frame data={props.data}>
+            <Frame
+                data={props.data}
+                noScroll
+            >
                 {/* Container */}
                 <div className="my-4 flex flex-col justify-center gap-2 drop-shadow-lg">
                     {/* Cookie Widgit */}

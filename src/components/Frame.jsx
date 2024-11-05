@@ -30,7 +30,7 @@ export default function Frame(props) {
         <>
             {/* Data Components */}
             {props.data && createDataDependants()}
-            <ScrollToTop />
+            {!props.noScroll && <ScrollToTop />}
 
             {/* Navbar */}
             {!props.noNavbar && <Navbar data={props.data} />}
