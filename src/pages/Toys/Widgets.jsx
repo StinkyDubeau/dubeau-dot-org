@@ -9,6 +9,9 @@ export default function (props) {
     // - Connected: Backed by a secure connection to others
     // - Responsive: From centimeters to fullscreen, they scale
 
+    // TODO:
+    // - Cannot click purchase buttons while the game is mid-tick. This is problematic at fast simulation speeds. (>250ms)
+
     function createCookieWidget() {
         const [birthDate, setBirthdate] = useState(new Date());
         const [time, setTime] = useState(new Date());
@@ -197,7 +200,7 @@ export default function (props) {
         return (
             <div className=" flex flex-col gap-2 rounded-3xl bg-yellow-300 p-6 text-xl text-yellow-900">
                 <h1 className="font-headerScript text-5xl text-yellow-800">
-                    Cookie cloner
+                    Cookie Cloner
                 </h1>
                 <div className="flex justify-between gap-2 max-sm:flex-col sm:w-full">
                     {renderCookie(cookies, 52)}
@@ -236,6 +239,9 @@ export default function (props) {
                     id="main-container"
                     className="flex h-full flex-col justify-center"
                 >
+                    <h1 className="font-headerScript text-5xl text-pink-100">
+                        Counter
+                    </h1>
                     <h1 className="font-headerScript text-9xl text-pink-100">
                         {count}
                     </h1>
@@ -259,6 +265,14 @@ export default function (props) {
                             +
                         </button>
                     </div>
+                    <div className="flex flex-wrap justify-end gap-2">
+                        <button className="font-underline font-header text-lighten-800 underline">
+                            Save
+                        </button>
+                        <button className="font-underline font-header text-lighten-800 underline">
+                            Load
+                        </button>
+                    </div>
                 </div>
             </div>
         );
@@ -272,6 +286,20 @@ export default function (props) {
             >
                 {/* Container */}
                 <div className="my-4 flex flex-col justify-center gap-2 drop-shadow-lg">
+                    <p className="mx-auto max-w-96 font-header text-darken-600">
+                        These are some test widgets for the 2024 Trifecta North
+                        American standard. Some will be games, some will be
+                        peer-to-peer experiences, some will have peripheral
+                        support. All user generated coontent is ephemeral unless
+                        otherwise stated. Given your permission, some cookies
+                        may be used for saving your widget content.
+                    </p>
+                    <Link
+                        to="/contact"
+                        className="font-header text-darken-300 underline"
+                    >
+                        Contact me directly for more information
+                    </Link>
                     {/* Cookie Widgit */}
                     {createCookieWidget()}
                     {/* Counter Widgit */}
