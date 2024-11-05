@@ -1,7 +1,14 @@
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import { useRef, useEffect } from "react";
 
 export default function Frame(props) {
+    function ScrollToTop() {
+        const elementRef = useRef();
+        useEffect(() => elementRef.current.scrollIntoView(), []);
+        return <div ref={elementRef} />;
+    }
+
     function createDataDependants() {
         return (
             <div>
@@ -21,17 +28,19 @@ export default function Frame(props) {
     }
     return (
         <>
+            {/* Data Components */}
             {props.data && createDataDependants()}
+            {!props.noScroll && <ScrollToTop />}
 
             {/* Navbar */}
             {!props.noNavbar && <Navbar data={props.data} />}
 
             {/* Content */}
             <div
-                className={`h-max -z-30 min-h-screen ${props.vignette === !null ? "bg-zinc-800 shadow-inner-4xl" : "bg-zinc-200"}`}
+                className={`-z-30 h-max min-h-screen ${props.vignette === !null ? "bg-zinc-800 shadow-inner-4xl" : "bg-zinc-200"}`}
             >
                 <div className={`m-auto ${!props.noNavbar && "pt-16"} `}>
-                    <div className="max-w-screen-xl mx-auto flex justify-center">
+                    <div className="mx-auto flex max-w-screen-xl justify-center">
                         <div className="flex flex-col">{props.children}</div>
                     </div>
                 </div>
@@ -39,7 +48,6 @@ export default function Frame(props) {
 
             {/* Footer */}
             {!props.noNavbar && <Footer data={props.data} />}
-
         </>
     );
 }
