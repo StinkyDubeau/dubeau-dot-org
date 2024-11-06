@@ -47,10 +47,7 @@ export default function (props) {
         // Run per tick
         useEffect(() => {
             console.log(`Tick! (${ticks}) (${time})`);
-
         }, [ticks]);
-
-
 
         function renderStatistics() {
             return (
@@ -70,6 +67,21 @@ export default function (props) {
             );
         }
 
+        function renderDynamo() {
+            const [angle, setAngle] = useState(0);
+
+            function updateDynamo() {}
+
+            return (
+                <div
+                    id="dynamo"
+                    className="flex flex-col gap-2 rounded-xl bg-darken-200 p-2 font-header text-sm text-lighten-700"
+                >
+                    <h1 className="text-left underline">Dynamo</h1>
+                </div>
+            );
+        }
+
         return (
             <div className=" flex flex-col gap-2 rounded-3xl bg-green-300 p-6 text-xl text-green-900">
                 <h1 className="font-headerScript text-5xl text-green-800">
@@ -80,6 +92,33 @@ export default function (props) {
                         +
                     </button>
                     {renderStatistics()}
+                    {renderDynamo()}
+                    <div className="flex flex-wrap gap-2">
+                        <p className="flex-0 max-sm:w-full max-sm:text-center">
+                            Fake load (mspt)
+                        </p>
+                        <input
+                            type="range"
+                            onChange={(e) => setMspt(e.target.value)}
+                            min={50} //20 ticks per sec
+                            max={10000} //10 sec per tick
+                            value={mspt}
+                            className="range fill-darken-500 sm:flex-1"
+                        />
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                        <p className="flex-0 max-sm:w-full max-sm:text-center">
+                            Simulation speed (mspt)
+                        </p>
+                        <input
+                            type="range"
+                            onChange={(e) => setMspt(e.target.value)}
+                            min={50} //20 ticks per sec
+                            max={10000} //10 sec per tick
+                            value={mspt}
+                            className="range fill-darken-500 sm:flex-1"
+                        />
+                    </div>
                 </div>
             </div>
         );
@@ -234,6 +273,7 @@ export default function (props) {
                     // Complete the transaction
                     setGrandmas(grandmas + n);
                     setCookies(cookies - cost);
+                    setGrandmaCost(grandmaCost + 1);
                     renderTransactionReceipt();
                 }
             }
@@ -374,7 +414,7 @@ export default function (props) {
                         Contact me directly for more information
                     </Link>
                     {/* Voltage Widget */}
-                    {createVoltageWidget()}
+                    {/* {createVoltageWidget()} */}
                     {/* Cookie Widget */}
                     {createCookieWidget()}
                     {/* Counter Widget */}
