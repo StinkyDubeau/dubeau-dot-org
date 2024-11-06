@@ -12,6 +12,79 @@ export default function (props) {
     // TODO:
     // - Cannot click purchase buttons while the game is mid-tick. This is problematic at fast simulation speeds. (>250ms)
 
+    function createVoltageWidget() {
+        const [time, setTime] = useState(new Date());
+        const [ticks, setTicks] = useState(0);
+        const [mspt, setMspt] = useState(500); // ms per tick
+        const [timestep, setTimestep] = useState(1); //ticks per mspt
+
+        const [voltage, setVoltage] = useState(12);
+        const [current, setCurrent] = useState(0); // Current in Watts
+
+        const [generators, setGenerators] = useState([]);
+        const [loads, setLoads] = useState([]);
+
+        function addGenerator() {}
+
+        function addLoad() {}
+
+        // Game loop logic is here
+        useEffect(() => {
+            const interval = setInterval(() => {
+                var newTime = new Date();
+                var newTicks = ticks + timestep;
+
+                setTicks(newTicks);
+
+                console.log(
+                    `Tick! (${ticks}) (${mspt}ms) (${newTime.toLocaleTimeString()})`,
+                );
+            }, mspt);
+
+            return () => clearInterval(interval); // This represents the unmount function, in which you need to clear your interval to prevent memory leaks.
+        }, [ticks]);
+
+        // Run per tick
+        useEffect(() => {
+            console.log(`Tick! (${ticks}) (${time})`);
+
+        }, [ticks]);
+
+
+
+        function renderStatistics() {
+            return (
+                <div
+                    id="statistics"
+                    className="flex flex-col gap-2 rounded-xl bg-darken-200 p-2 font-header text-sm text-lighten-700"
+                >
+                    <h1 className="text-left underline">Statistics</h1>
+                    <p className="">Voltage: {voltage}</p>
+                    <p className="">Wattage: {current}</p>
+                    <p className="">ticks passed: {ticks}</p>
+                    <p className="">
+                        tick rate: {1 / (mspt / 1000)} per second, {mspt}ms per
+                        tick.
+                    </p>
+                </div>
+            );
+        }
+
+        return (
+            <div className=" flex flex-col gap-2 rounded-3xl bg-green-300 p-6 text-xl text-green-900">
+                <h1 className="font-headerScript text-5xl text-green-800">
+                    Voltage
+                </h1>
+                <div className="flex justify-between gap-2 max-sm:flex-col sm:w-full">
+                    <button className="min-h-36 min-w-36 rounded-xl bg-green-500 p-6 font-header text-6xl transition-all hover:scale-105 hover:bg-green-600 hover:shadow-lg active:scale-95 active:bg-green-800 active:blur">
+                        +
+                    </button>
+                    {renderStatistics()}
+                </div>
+            </div>
+        );
+    }
+
     function createCookieWidget() {
         const [birthDate, setBirthdate] = useState(new Date());
         const [time, setTime] = useState(new Date());
@@ -300,9 +373,11 @@ export default function (props) {
                     >
                         Contact me directly for more information
                     </Link>
-                    {/* Cookie Widgit */}
+                    {/* Voltage Widget */}
+                    {createVoltageWidget()}
+                    {/* Cookie Widget */}
                     {createCookieWidget()}
-                    {/* Counter Widgit */}
+                    {/* Counter Widget */}
                     {createCounterWidget()}
                     {/* Back to home */}
                     <div className="flex min-h-24 justify-center rounded-3xl bg-lighten-800">
