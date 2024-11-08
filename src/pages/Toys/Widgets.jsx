@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Frame from "../../components/Frame";
 import { Link } from "react-router-dom";
 import vagueTime from "vague-time";
+import Checkbox from "../../components/Checkbox";
 
 export default function (props) {
     // Widgets are:
@@ -398,21 +399,31 @@ export default function (props) {
                 noScroll
             >
                 {/* Container */}
-                <div className="my-4 flex flex-col justify-center gap-2 drop-shadow-lg">
-                    <p className="mx-auto max-w-96 font-header text-darken-600">
-                        These are some test widgets for the 2024 Trifecta North
-                        American standard. Some will be games, some will be
-                        peer-to-peer experiences, some will have peripheral
-                        support. All user generated coontent is ephemeral unless
-                        otherwise stated. Given your permission, some cookies
-                        may be used for saving your widget content.
-                    </p>
-                    <Link
-                        to="/contact"
-                        className="font-header text-darken-300 underline"
-                    >
-                        Contact me directly for more information
-                    </Link>
+                <div className="mx-auto my-4 flex max-w-[400px] flex-col justify-center gap-4 drop-shadow-lg max-sm:p-2">
+                    <div className="flex flex-col gap-2 rounded-2xl bg-lighten-800 p-4">
+                        <h1 className="w-full text-left font-header text-3xl font-light text-darken-800">
+                            Widgets
+                        </h1>
+                        <p className="text-justify font-header text-darken-600">
+                            ℹ️ These "widgets" demonstrate the 2024 Trifecta
+                            standard. Some widgets will be games, some will
+                            foster peer-to-peer experiences, and some will
+                            feature peripheral support. All user data is
+                            ephemeral unless otherwise stated. However, with
+                            your permission, some widget content may be stored
+                            as cookies.
+                        </p>
+                        <Checkbox
+                            className="font-lighten font-header text-darken-600"
+                            body="Allow cookies: "
+                        />
+                        <Link
+                            to="/contact"
+                            className="font-header text-darken-600 underline"
+                        >
+                            Contact me directly for more information
+                        </Link>
+                    </div>
                     {/* Voltage Widget */}
                     {/* {createVoltageWidget()} */}
                     {/* Cookie Widget */}
