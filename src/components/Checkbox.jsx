@@ -6,7 +6,9 @@ export default function Checkbox(props) {
                 <input
                     type="checkbox"
                     name="myCheckbox"
-                    defaultChecked={true}
+                    defaultChecked={props.checked}
+                    checked={props.checked}
+                    onChange={props.onChange}
                 />
             </label>
         </div>
