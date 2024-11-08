@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Frame from "../../components/Frame";
 import { Link } from "react-router-dom";
 import vagueTime from "vague-time";
+import Checkbox from "../../components/Checkbox";
 
 export default function (props) {
     // Widgets are:
@@ -12,19 +13,21 @@ export default function (props) {
     // TODO:
     // - Cannot click purchase buttons while the game is mid-tick. This is problematic at fast simulation speeds. (>250ms)
 
-    function createCookieWidget() {
-        const [birthDate, setBirthdate] = useState(new Date());
+    function createVoltageWidget() {
         const [time, setTime] = useState(new Date());
+        const [ticks, setTicks] = useState(0);
+        const [mspt, setMspt] = useState(500); // ms per tick
+        const [timestep, setTimestep] = useState(1); //ticks per mspt
 
-        // Todo: Move constants to a constants.js file
-        const [cookies, setCookies] = useState(0);
-        const [ticks, setTicks] = useState(0); //start at 0 ticks.
-        const [mspt, setMspt] = useState(500); // how many milliseconds per tick
-        const [timestep, setTimestep] = useState(1); // how many ticks to advance per tick.
+        const [voltage, setVoltage] = useState(12);
+        const [current, setCurrent] = useState(0); // Current in Watts
 
-        const initialGrandmaCost = 2;
-        const [grandmaCost, setGrandmaCost] = useState(initialGrandmaCost);
-        const [grandmas, setGrandmas] = useState(0);
+        const [generators, setGenerators] = useState([]);
+        const [loads, setLoads] = useState([]);
+
+        function addGenerator() {}
+
+        function addLoad() {}
 
         // Game loop logic is here
         useEffect(() => {
@@ -42,11 +45,129 @@ export default function (props) {
             return () => clearInterval(interval); // This represents the unmount function, in which you need to clear your interval to prevent memory leaks.
         }, [ticks]);
 
+        // Run per tick
+        useEffect(() => {
+            console.log(`Tick! (${ticks}) (${time})`);
+        }, [ticks]);
+
+        function renderStatistics() {
+            return (
+                <div
+                    id="statistics"
+                    className="flex flex-col gap-2 rounded-xl bg-darken-200 p-2 font-header text-sm text-lighten-700"
+                >
+                    <h1 className="text-left underline">Statistics</h1>
+                    <p className="">Voltage: {voltage}</p>
+                    <p className="">Wattage: {current}</p>
+                    <p className="">ticks passed: {ticks}</p>
+                    <p className="">
+                        tick rate: {1 / (mspt / 1000)} per second, {mspt}ms per
+                        tick.
+                    </p>
+                </div>
+            );
+        }
+
+        function renderDynamo() {
+            const [angle, setAngle] = useState(0);
+
+            function updateDynamo() {}
+
+            return (
+                <div
+                    id="dynamo"
+                    className="flex flex-col gap-2 rounded-xl bg-darken-200 p-2 font-header text-sm text-lighten-700"
+                >
+                    <h1 className="text-left underline">Dynamo</h1>
+                </div>
+            );
+        }
+
+        return (
+            <div className=" flex flex-col gap-2 rounded-3xl bg-green-300 p-6 text-xl text-green-900">
+                <h1 className="font-headerScript text-5xl text-green-800">
+                    Voltage
+                </h1>
+                <div className="flex justify-between gap-2 max-sm:flex-col sm:w-full">
+                    <button className="min-h-36 min-w-36 rounded-xl bg-green-500 p-6 font-header text-6xl transition-all hover:scale-105 hover:bg-green-600 hover:shadow-lg active:scale-95 active:bg-green-800 active:blur">
+                        +
+                    </button>
+                    {renderStatistics()}
+                    {renderDynamo()}
+                    <div className="flex flex-wrap gap-2">
+                        <p className="flex-0 max-sm:w-full max-sm:text-center">
+                            Fake load (mspt)
+                        </p>
+                        <input
+                            type="range"
+                            onChange={(e) => setMspt(e.target.value)}
+                            min={50} //20 ticks per sec
+                            max={10000} //10 sec per tick
+                            value={mspt}
+                            className="range fill-darken-500 sm:flex-1"
+                        />
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                        <p className="flex-0 max-sm:w-full max-sm:text-center">
+                            Simulation speed (mspt)
+                        </p>
+                        <input
+                            type="range"
+                            onChange={(e) => setMspt(e.target.value)}
+                            min={50} //20 ticks per sec
+                            max={10000} //10 sec per tick
+                            value={mspt}
+                            className="range fill-darken-500 sm:flex-1"
+                        />
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
+    function createCookieWidget() {
+        const [birthDate, setBirthdate] = useState(new Date());
+        const [time, setTime] = useState(new Date());
+
+        // Todo: Move constants to a constants.js file
+        const [cookies, setCookies] = useState(0);
+        const [ticks, setTicks] = useState(0); //start at 0 ticks.
+        const [mspt, setMspt] = useState(500); // how many milliseconds per tick
+        const [timestep, setTimestep] = useState(1); // how many ticks to advance per tick.
+        const [timescale, setTimescale] = useState(1); // how fast (1x, 2x, 100x, should the simulation run? This will trickle down to mspt.)
+
+        const initialGrandmaCost = 2;
+        const [grandmaCost, setGrandmaCost] = useState(initialGrandmaCost);
+        const [grandmas, setGrandmas] = useState(0);
+
+        // Game loop logic is here
+        useEffect(() => {
+            const interval = setInterval(() => {
+                var newTime = new Date();
+                var newTicks = ticks + timestep;
+
+                setTicks(newTicks);
+
+                // console.log(
+                //     `Tick! (${ticks}) (${mspt}ms) (${newTime.toLocaleTimeString()})`,
+                // );
+            }, mspt / timescale);
+
+            return () => clearInterval(interval); // This represents the unmount function, in which you need to clear your interval to prevent memory leaks.
+        }, [ticks]);
+
         // Do every tick
         useEffect(() => {
             setTime(new Date());
             setCookies(cookies + grandmas);
         }, [ticks]);
+
+        // Update timescale
+        useEffect(() => {
+            console.log(
+                `Changing timescale to ${timescale}. Old mspt = ${mspt}`,
+            );
+        }, [timescale]);
 
         // Helper functions
         function getVagueTimeDelta(date) {
@@ -66,14 +187,14 @@ export default function (props) {
         }
 
         // Render functions
-        function renderCookie(count, diameter) {
+        function renderCookie(count) {
             return (
                 <div
-                    className={`flex-0 w-full rounded-full bg-orange-900 shadow-xl`}
+                    className={`${cookies % 2 ? "shadow-inner-xl" : "shadow-inner-2xl"} flex-1 rounded-full bg-orange-900 transition-all sm:aspect-square`}
                 >
                     <div className="flex h-full justify-center">
                         <div className="flex flex-col justify-center">
-                            <p className="font-header text-lighten-800">
+                            <p className="sm:text-fit font-header text-lighten-800">
                                 {count && count}
                             </p>
                         </div>
@@ -106,12 +227,12 @@ export default function (props) {
             );
         }
 
-        function renderShop() {
+        function RenderShop(props) {
             function RenderShopButton({ quantity, body, onClick }) {
                 return (
                     <button
                         onClick={onClick}
-                        className="rounded-lg bg-lighten-50 p-2 transition-all hover:bg-none active:bg-lighten-100"
+                        className="active:scale:100 flex-1 rounded-lg bg-lighten-700 p-2 text-darken-600 transition-all hover:scale-105"
                     >
                         {quantity}
                         {body}
@@ -121,26 +242,23 @@ export default function (props) {
 
             function RenderGrandmas() {
                 return (
-                    <div className="flex flex-col justify-center gap-2 rounded-lg bg-darken-200 p-2">
-                        <p className="">grandmas: {grandmas}</p>
-                        <RenderShopButton
-                            quantity={1}
-                            body={`Buy 1 $${grandmaCost}`}
-                            onClick={() => buyGrandmas(1)}
-                        />
-                        <RenderShopButton
-                            body={`Buy 5 $${grandmaCost * 5}`}
-                            onClick={() => buyGrandmas(5)}
-                        />
-                        {/* This is a gnarly line of code lol */}
-                        <RenderShopButton
-                            body={`Buy Max (${howManyICanAffordPerUnitCost(grandmaCost) == 0 ? "None" : howManyICanAffordPerUnitCost(grandmaCost)}) $${grandmaCost * howManyICanAffordPerUnitCost(grandmaCost)}`}
-                            onClick={() =>
-                                buyGrandmas(
-                                    howManyICanAffordPerUnitCost(grandmaCost),
-                                )
-                            }
-                        />
+                    <div className="flex flex-col gap-2">
+                        <p className="">Grandmas: {grandmas}</p>
+                        <div className="flex gap-2 max-sm:flex-col ">
+                            <RenderShopButton
+                                body={`Buy 1 $${grandmaCost}`}
+                                onClick={() => buyGrandmas(1)}
+                            />
+                            <RenderShopButton
+                                body={`Buy 5 $${grandmaCost * 5}`}
+                                onClick={() => buyGrandmas(5)}
+                            />
+                            {/* This is a gnarly line of code lol */}
+                            <RenderShopButton
+                                body={`Buy Max (${howManyICanAffordPerUnitCost(grandmaCost) == 0 ? "None" : howManyICanAffordPerUnitCost(grandmaCost)}) $${grandmaCost * howManyICanAffordPerUnitCost(grandmaCost)}`}
+                                onClick={() => buyGrandmas(-1)}
+                            />
+                        </div>
                     </div>
                 );
             }
@@ -161,6 +279,7 @@ export default function (props) {
                     // Complete the transaction
                     setGrandmas(grandmas + n);
                     setCookies(cookies - cost);
+                    setGrandmaCost(grandmaCost + 1);
                     renderTransactionReceipt();
                 }
             }
@@ -176,7 +295,10 @@ export default function (props) {
             );
         }
 
-        function renderStatistics() {
+        function RenderStatistics(props) {
+            function RenderStatistic(props) {
+                return <div></div>;
+            }
             return (
                 <div
                     id="statistics"
@@ -188,22 +310,73 @@ export default function (props) {
                         {getVagueTimeDelta(birthDate)})
                     </p>
                     <p className="">currentDate: {time.toLocaleTimeString()}</p>
+                    <p className="">timescale: {timescale}x</p>
                     <p className="">ticks passed: {ticks}</p>
                     <p className="">
-                        tick rate: {1 / (mspt / 1000)} per second, {mspt}ms per
-                        tick.
+                        tick rate: {Math.floor((1 / (mspt / 1000)) * timescale)}{" "}
+                        per second, {Math.floor(mspt / timescale)}ms per tick.
                     </p>
                 </div>
             );
         }
 
+        function renderSimulationControls(props) {
+            return (
+                <div>
+                    <div className="flex flex-wrap gap-2">
+                        <p className="flex-0">⏱️ Speed</p>
+                        <div className="sm:flex-1">
+                            <input
+                                type="range"
+                                min={0.5}
+                                max={2}
+                                value={timescale}
+                                className="range bg-darken-200 stroke-lighten-400 transition-all"
+                                onChange={(e) =>
+                                    setTimescale(Number(e.target.value))
+                                }
+                                step={0.5}
+                            />
+                            <div className="flex w-full justify-between px-2 text-xs">
+                                <span className="font-header font-bold text-darken-800">
+                                    0.5x
+                                </span>
+                                <span className="font-header font-bold text-darken-800">
+                                    1x
+                                </span>
+                                <span className="font-header font-bold text-darken-800">
+                                    1.5x
+                                </span>
+                                <span className="font-header font-bold text-darken-800">
+                                    2x
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                        <p className="flex-0 sm:text-left">
+                            Simulation speed (mspt)
+                        </p>
+                        <input
+                            type="range"
+                            onChange={(e) => setMspt(e.target.value)}
+                            min={50} //20 ticks per sec
+                            max={10000} //10 sec per tick
+                            value={mspt}
+                            className="range fill-darken-500 sm:flex-1"
+                        />
+                    </div>
+                </div>
+            );
+        }
+
         return (
-            <div className=" flex flex-col gap-2 rounded-3xl bg-yellow-300 p-6 text-xl text-yellow-900">
+            <div className=" flex flex-col gap-2 rounded-3xl border-2 border-orange-300 bg-yellow-300 p-6 text-xl text-yellow-900">
                 <h1 className="font-headerScript text-5xl text-yellow-800">
                     Cookie Cloner
                 </h1>
                 <div className="flex justify-between gap-2 max-sm:flex-col sm:w-full">
-                    {renderCookie(cookies, 52)}
+                    {renderCookie(cookies)}
                     <button
                         className="min-h-36 min-w-36 rounded-xl bg-yellow-500 p-6 font-header text-6xl transition-all hover:scale-105 hover:bg-yellow-600 hover:shadow-lg active:scale-95 active:bg-yellow-800 active:blur"
                         onClick={() => setCookies(cookies + 1)}
@@ -211,21 +384,9 @@ export default function (props) {
                         +
                     </button>
                 </div>
-                {renderShop()}
-                {renderStatistics()}
-                <div className="flex flex-wrap gap-2">
-                    <p className="flex-0 max-sm:w-full max-sm:text-center">
-                        Simulation speed (mspt)
-                    </p>
-                    <input
-                        type="range"
-                        onChange={(e) => setMspt(e.target.value)}
-                        min={50} //20 ticks per sec
-                        max={10000} //10 sec per tick
-                        value={mspt}
-                        className="range fill-darken-500 sm:flex-1"
-                    />
-                </div>
+                <RenderShop />
+                <RenderStatistics />
+                {renderSimulationControls()}
             </div>
         );
     }
@@ -285,24 +446,42 @@ export default function (props) {
                 noScroll
             >
                 {/* Container */}
-                <div className="my-4 flex flex-col justify-center gap-2 drop-shadow-lg">
-                    <p className="mx-auto max-w-96 font-header text-darken-600">
-                        These are some test widgets for the 2024 Trifecta North
-                        American standard. Some will be games, some will be
-                        peer-to-peer experiences, some will have peripheral
-                        support. All user generated coontent is ephemeral unless
-                        otherwise stated. Given your permission, some cookies
-                        may be used for saving your widget content.
-                    </p>
-                    <Link
-                        to="/contact"
-                        className="font-header text-darken-300 underline"
-                    >
-                        Contact me directly for more information
-                    </Link>
-                    {/* Cookie Widgit */}
+                <div className="mx-auto my-4 flex max-w-[600px] flex-col justify-center gap-4 drop-shadow-lg max-sm:p-2">
+                    <div className="flex flex-col gap-2 rounded-2xl bg-lighten-800 p-4">
+                        <h1 className="w-full text-left font-header text-3xl font-light text-darken-800">
+                            Widgets
+                        </h1>
+                        <p className="text-justify font-header text-darken-600">
+                            ℹ️ These "widgets" demonstrate the 2024 Trifecta
+                            standard. Some widgets will be games, some will
+                            foster peer-to-peer experiences, and some will
+                            feature peripheral support. All user data is
+                            ephemeral unless otherwise stated. However, with
+                            your permission, some widget content may be stored
+                            as cookies. Like the rest of the site,{" "}
+                            <span className="italic">
+                                everything here is a work in progress
+                            </span>
+                            .
+                        </p>
+                        <Checkbox
+                            className="font-lighten font-header text-darken-600"
+                            body="Allow cookies: "
+                            checked={false}
+                            onChange={(e) => console.log(e)}
+                        />
+                        <Link
+                            to="/contact"
+                            className="font-header text-darken-600 underline"
+                        >
+                            Contact me directly for more information
+                        </Link>
+                    </div>
+                    {/* Voltage Widget */}
+                    {/* {createVoltageWidget()} */}
+                    {/* Cookie Widget */}
                     {createCookieWidget()}
-                    {/* Counter Widgit */}
+                    {/* Counter Widget */}
                     {createCounterWidget()}
                     {/* Back to home */}
                     <div className="flex min-h-24 justify-center rounded-3xl bg-lighten-800">

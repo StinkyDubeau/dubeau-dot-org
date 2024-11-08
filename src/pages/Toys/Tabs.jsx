@@ -19,7 +19,21 @@ function createBookmark(bookmark, index) {
 }
 
 function createTab(tab, index) {
-    const friendlyTitle = tab.title;
+    var friendlyTitle = tab.title;
+    var friendlyArtist = "Unknown artist";
+    var friendlyType = "TABS";
+    const regex = /^(.*?)\s+(CHORDS?|TAB)\s+.*?by\s+([^@]+)/i;
+    const match = friendlyTitle.match(regex);
+
+    if (match) {
+        // console.log("Match " + typeof match[1].trim() + " " + match[2].trim());
+
+        friendlyTitle = match[1].trim();
+        friendlyType = match[2].trim();
+        friendlyArtist = match[3].trim();
+    } else {
+        console.log("Failed to parse information from entry");
+    }
 
     return (
         <div key={tab.guid}>
@@ -27,10 +41,18 @@ function createTab(tab, index) {
                 to={tab.uri}
                 className="flex flex-col"
             >
+                <div className="flex justify-between">
+                    <p className="text-left font-header text-xl text-darken-800">
+                        {friendlyTitle}
+                    </p>
+                    <p className="text-end text-darken-300">{friendlyType}</p>
+                </div>
                 <p className="text-left font-header text-xl text-darken-800">
-                    {tab.title}
+                    by <span className="font-light">{friendlyArtist}</span>
                 </p>
-                <p className="font-header text-xs text-darken-600">{tab.uri}</p>
+                <p className="text-left font-header text-xs text-darken-600">
+                    {tab.uri}
+                </p>
             </Link>
         </div>
     );
@@ -43,7 +65,7 @@ function createFolder(folder, index) {
         return (
             <div className={`${collapsed && "h-4"} transition-all`}>
                 <button
-                    className="rounded-2xl bg-darken-300 font-header text-lighten-800 transition-all hover:bg-darken-400 active:bg-darken-500"
+                    className="text-md rounded-2xl bg-darken-300 font-header text-lighten-800 transition-all hover:bg-darken-400 active:bg-darken-500"
                     onClick={() => setCollapsed(collapsed ? false : true)}
                 >
                     Open folder
@@ -69,9 +91,15 @@ function createFolder(folder, index) {
 }
 
 export default function (props) {
+    const [hideTabs, setHideTabs] = useState(false);
+    const [hideChords, setHideChords] = useState(false);
+
     return (
         <>
-            <Frame data={props.data}>
+            <Frame
+                data={props.data}
+                noScroll
+            >
                 <div className="flex w-full justify-center">
                     <div
                         id="container"
@@ -81,10 +109,38 @@ export default function (props) {
                             Guitar Tabs
                         </p>
                         <p className="max-w-md font-header text-darken-600">
-                            This section of the site is under construction. This
-                            is my personal collection of bookmarks to songs I
-                            like to play.
+                            This is my personal collection of bookmarks to songs
+                            I like to play.
                         </p>
+                        <div className="flex flex-wrap gap-2">
+                            <button
+                                onClick={() => {
+                                    setHideChords(false);
+                                    setHideTabs(false);
+                                }}
+                                className="text-darken-600 underline"
+                            >
+                                Show all
+                            </button>
+                            <button
+                                onClick={() => {
+                                    setHideChords(false);
+                                    setHideTabs(true);
+                                }}
+                                className="text-darken-600 underline"
+                            >
+                                Chords only
+                            </button>{" "}
+                            <button
+                                onClick={() => {
+                                    setHideChords(true);
+                                    setHideTabs(false);
+                                }}
+                                className="text-darken-600 underline"
+                            >
+                                Tabs only
+                            </button>{" "}
+                        </div>
                         {Bookmarks ? (
                             Bookmarks.children.map(createBookmark)
                         ) : (
