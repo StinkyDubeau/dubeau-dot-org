@@ -1,5 +1,4 @@
 import Frame from "../components/Frame";
-import BigButton from "../components/BigButton";
 import Panel from "../components/Panel";
 import fun from "./Fun";
 import { useState } from "react";

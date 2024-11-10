@@ -132,7 +132,7 @@ export default function (props) {
         // Todo: Move constants to a constants.js file
         const [cookies, setCookies] = useState(0);
         const [ticks, setTicks] = useState(0); //start at 0 ticks.
-        const [mspt, setMspt] = useState(500); // how many milliseconds per tick
+        const [mspt, setMspt] = useState(50); // how many milliseconds per tick
         const [timestep, setTimestep] = useState(1); // how many ticks to advance per tick.
         const [timescale, setTimescale] = useState(1); // how fast (1x, 2x, 100x, should the simulation run? This will trickle down to mspt.)
 
