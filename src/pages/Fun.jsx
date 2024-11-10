@@ -27,7 +27,7 @@ export default function fun(props) {
             */}
 
             <div className="my-4 flex flex-wrap justify-center">
-                <div className="m-4 w-full animate-gradient-x  rounded-2xl bg-blend-lighten bg-gradient-to-bl from-orange-700 via-pink-500 to-yellow-400 ">
+                <div className="m-4 w-full animate-gradient-x  rounded-2xl bg-gradient-to-bl from-orange-700 via-pink-500 to-yellow-400 bg-blend-lighten ">
                     <div className="m-5 ">
                         <p className="text-left font-header text-5xl text-lighten-800">
                             Decentralized chat
@@ -118,7 +118,7 @@ export default function fun(props) {
                     {/* Gradient bg */}
                     <div className="bg-lighten-80 m-5 flex flex-wrap justify-center gap-2 rounded-xl max-sm:flex-col">
                         <Link
-                            className="flex min-w-24 flex-col justify-center rounded-2xl border bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
+                            className="flex min-w-24 flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
                             to="/fun/widgets"
                         >
                             <p className="p-2 font-header font-medium text-darken-800">
@@ -126,7 +126,7 @@ export default function fun(props) {
                             </p>
                         </Link>
                         <Link
-                            className="flex min-w-24 flex-col justify-center rounded-2xl border bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
+                            className="flex min-w-24 flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
                             to="/blog"
                         >
                             <p className="p-2 font-header font-medium text-darken-800">
@@ -134,7 +134,7 @@ export default function fun(props) {
                             </p>
                         </Link>
                         <Link
-                            className="flex min-w-24 flex-col justify-center rounded-2xl border bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
+                            className="flex min-w-24 flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
                             to="/fun/tabs"
                         >
                             <p className="p-2 font-header font-medium text-darken-800">
@@ -142,7 +142,7 @@ export default function fun(props) {
                             </p>
                         </Link>
                         <Link
-                            className="flex min-w-24 flex-col justify-center rounded-2xl border bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
+                            className="flex min-w-24 flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
                             to="/fun/gallery"
                         >
                             <p className="p-2 font-header font-medium text-darken-800">
@@ -150,7 +150,7 @@ export default function fun(props) {
                             </p>
                         </Link>
                         <Link
-                            className="flex min-w-24 flex-col justify-center rounded-2xl border bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
+                            className="flex min-w-24 flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
                             to="/fun/dayplanner"
                         >
                             <p className="p-2 font-header font-medium text-darken-800">
