@@ -27,7 +27,7 @@ export default function Frame(props) {
         );
     }
     return (
-        <>
+        <div className="bg-black">
             {/* Data Components */}
             {props.data && createDataDependants()}
             {!props.noScroll && <ScrollToTop />}
@@ -48,6 +48,6 @@ export default function Frame(props) {
 
             {/* Footer */}
             {!props.noNavbar && <Footer data={props.data} />}
-        </>
+        </div>
     );
 }

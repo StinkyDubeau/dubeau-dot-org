@@ -13,7 +13,7 @@ export default {
             },
             colors: {
                 lighten: {
-                    DEFAULT: "#00000077",
+                    DEFAULT: "#ffffff11",
                     10: "#00000001",
                     50: "#00000011",
                     100: "#00000022",
