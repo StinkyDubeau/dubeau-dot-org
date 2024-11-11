@@ -3,7 +3,6 @@ export default {
     content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
     theme: {
         extend: {
-            
             boxShadow: {
                 vignette: "inset 0px 0px 150px 75px rgb(0 0 0 / 0.5)",
                 glow: "inset 0px 0px 150px 75px rgb(1 1 1 / 0.5)",
@@ -14,7 +13,7 @@ export default {
             },
             colors: {
                 darken: {
-                    DEFAULT: "#00000077",
+                    DEFAULT: "#ffffff11",
                     10: "#00000001",
                     50: "#00000011",
                     100: "#00000022",
@@ -28,7 +27,7 @@ export default {
                     900: "#000000ee",
                 },
                 lighten: {
-                    DEFAULT: "#ffffff33",
+                    DEFAULT: "#ffffffdd",
                     50: "#ffffff11",
                     100: "#ffffff22",
                     200: "#ffffff33",
@@ -45,7 +44,7 @@ export default {
                 "gradient-x": "gradient-x 5s ease infinite",
                 "gradient-y": "gradient-y 5s ease infinite",
                 "gradient-xy": "gradient-xy 5s ease infinite",
-                'message-pop-in': "bounce 1s ease infinite",
+                "message-pop-in": "bounce 1s ease infinite",
             },
             keyframes: {
                 "gradient-y": {

@@ -39,14 +39,17 @@ export default function (props) {
                     <div className="m-5 flex animate-gradient-x justify-center rounded-2xl bg-gradient-to-tr from-red-300 via-yellow-200 to-purple-200 p-4 sm:gap-8">
                         <div className="flex flex-wrap justify-around gap-6 lg:gap-48">
                             <div className="flex w-72 flex-col">
-                                <p className="font-header text-5xl text-zinc-800">
+                                <p className="font-header text-5xl text-darken-800">
                                     Contact
                                 </p>
                                 <p className="font-header text-darken-700">
                                     or report moderation issues
                                 </p>
                             </div>
-                            <ContactForm data={props.data} setData={props.setData}/>
+                            <ContactForm
+                                data={props.data}
+                                setData={props.setData}
+                            />
                         </div>
                     </div>
                     <div className="m-5 flex animate-gradient-x justify-center rounded-2xl bg-gradient-to-tl from-pink-600 via-purple-500 to-blue-400 p-4 sm:gap-8">

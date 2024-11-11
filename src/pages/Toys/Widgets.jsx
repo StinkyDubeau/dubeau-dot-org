@@ -132,7 +132,7 @@ export default function (props) {
         // Todo: Move constants to a constants.js file
         const [cookies, setCookies] = useState(0);
         const [ticks, setTicks] = useState(0); //start at 0 ticks.
-        const [mspt, setMspt] = useState(500); // how many milliseconds per tick
+        const [mspt, setMspt] = useState(33); // how many milliseconds per tick
         const [timestep, setTimestep] = useState(1); // how many ticks to advance per tick.
         const [timescale, setTimescale] = useState(1); // how fast (1x, 2x, 100x, should the simulation run? This will trickle down to mspt.)
 
@@ -320,9 +320,13 @@ export default function (props) {
             );
         }
 
-        function renderSimulationControls(props) {
+        function renderSimulationControls() {
             return (
-                <div>
+                <div
+                    id="simulationControls"
+                    className="flex flex-col gap-2 rounded-xl bg-darken-200 p-2 font-header text-sm text-lighten-700"
+                >
+                    <p className="text-left underline">Controls</p>
                     <div className="flex flex-wrap gap-2">
                         <p className="flex-0">⏱️ Speed</p>
                         <div className="sm:flex-1">
@@ -331,7 +335,7 @@ export default function (props) {
                                 min={0.5}
                                 max={2}
                                 value={timescale}
-                                className="range bg-darken-200 stroke-lighten-400 transition-all"
+                                className="range stroke-lighten-400 transition-all"
                                 onChange={(e) =>
                                     setTimescale(Number(e.target.value))
                                 }
@@ -353,19 +357,26 @@ export default function (props) {
                             </div>
                         </div>
                     </div>
-                    <div className="flex flex-wrap gap-2">
-                        <p className="flex-0 sm:text-left">
-                            Simulation speed (mspt)
-                        </p>
-                        <input
-                            type="range"
-                            onChange={(e) => setMspt(e.target.value)}
-                            min={50} //20 ticks per sec
-                            max={10000} //10 sec per tick
-                            value={mspt}
-                            className="range fill-darken-500 sm:flex-1"
-                        />
-                    </div>
+                    {props.data.experimental && (
+                        <div className="flex flex-col gap-2 rounded-2xl bg-red-500 p-4 text-left">
+                            <p className="font-pixel">
+                                - Experimental features -
+                            </p>
+                            <div className="flex flex-wrap gap-2">
+                                <p className="flex-0 sm:text-left">
+                                    Simulation speed ({mspt}mspt)
+                                </p>
+                                <input
+                                    type="range"
+                                    onChange={(e) => setMspt(e.target.value)}
+                                    min={1} //1ms per tick
+                                    max={10000} //10 sec per tick
+                                    value={mspt}
+                                    className="range fill-darken-500 sm:flex-1"
+                                />
+                            </div>
+                        </div>
+                    )}
                 </div>
             );
         }
@@ -483,15 +494,6 @@ export default function (props) {
                     {createCookieWidget()}
                     {/* Counter Widget */}
                     {createCounterWidget()}
-                    {/* Back to home */}
-                    <div className="flex min-h-24 justify-center rounded-3xl bg-lighten-800">
-                        <Link
-                            to="/fun"
-                            className="m-0 flex flex-col justify-center font-header text-xl text-darken-700"
-                        >
-                            Back to home
-                        </Link>
-                    </div>
                 </div>
             </Frame>
         </>

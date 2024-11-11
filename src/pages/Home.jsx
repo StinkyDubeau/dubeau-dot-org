@@ -1,5 +1,4 @@
 import Frame from "../components/Frame";
-import BigButton from "../components/BigButton";
 import Panel from "../components/Panel";
 import fun from "./Fun";
 import { useState } from "react";
@@ -39,20 +38,6 @@ export default function Home(props) {
                             </div>
                         </div>
                     </Panel>
-                    <div className="flex w-full justify-center">
-                        <ServerCard
-                            title="Modded"
-                            subtitle="Fabric 1.20"
-                            img={ModdedBanner}
-                            to="/servers/modded"
-                            className="backdrop-blur"
-                            colour="bg-red-400"
-                            announcement="0.1 live now"
-                        />
-                    </div>
-                    <h1 className="font-header text-darken-800">
-                        Read about the modded server's Fall Update
-                    </h1>
                 </div>
             </Frame>
         </div>

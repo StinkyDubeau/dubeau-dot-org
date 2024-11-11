@@ -27,8 +27,8 @@ export default function fun(props) {
             */}
 
             <div className="my-4 flex flex-wrap justify-center">
-                <div className="m-4 w-full animate-gradient-x rounded-2xl bg-gradient-to-bl from-orange-700 via-pink-500 to-yellow-400 ">
-                    <div className="m-5">
+                <div className="m-4 w-full animate-gradient-x  rounded-2xl bg-gradient-to-bl from-orange-700 via-pink-500 to-yellow-400 bg-blend-lighten ">
+                    <div className="m-5 ">
                         <p className="text-left font-header text-5xl text-lighten-800">
                             Decentralized chat
                         </p>
@@ -38,10 +38,10 @@ export default function fun(props) {
                     </div>
                     <div className="m-5 flex animate-gradient-x flex-wrap justify-center gap-4 rounded-2xl p-4 sm:gap-8">
                         <Link
-                            className="flex aspect-square flex-col justify-center rounded-xl border border-x-darken-50 border-b-darken-100 border-t-lighten-100 bg-darken-200 p-2  shadow-md backdrop-blur-md transition-all hover:scale-105 hover:shadow-lg"
+                            className="flex aspect-square flex-col justify-center rounded-xl border border-x-darken-50 border-b-darken-100 border-t-lighten-100 bg-lighten-200 p-2  shadow-md backdrop-blur-md transition-all hover:scale-105 hover:shadow-lg"
                             to="/chat"
                         >
-                            <p className="font-header text-2xl text-lighten-800">
+                            <p className="font-header text-2xl text-lighten-600">
                                 Connect
                             </p>
                         </Link>
@@ -118,43 +118,56 @@ export default function fun(props) {
                     {/* Gradient bg */}
                     <div className="bg-lighten-80 m-5 flex flex-wrap justify-center gap-2 rounded-xl max-sm:flex-col">
                         <Link
-                            className="flex min-w-24 flex-col justify-center rounded-2xl border bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
+                            className="flex min-w-24 flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
                             to="/fun/widgets"
                         >
                             <p className="p-2 font-header font-medium text-darken-800">
                                 📱 Widgets
                             </p>
                         </Link>
+
                         <Link
-                            className="flex min-w-24 flex-col justify-center rounded-2xl border bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
-                            to="/blog"
-                        >
-                            <p className="p-2 font-header font-medium text-darken-800">
-                                📓 Blog
-                            </p>
-                        </Link>
-                        <Link
-                            className="flex min-w-24 flex-col justify-center rounded-2xl border bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
+                            className="flex min-w-24 flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
                             to="/fun/tabs"
                         >
                             <p className="p-2 font-header font-medium text-darken-800">
                                 🎸 Guitar
                             </p>
                         </Link>
+                        {props.data.experimental && (
+                            <div className="flex gap-2 max-sm:flex-col">
+                                <Link
+                                    className="flex min-w-24 flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
+                                    to="/blog"
+                                >
+                                    <p className="p-2 font-header font-medium text-darken-800">
+                                        📓 Blog
+                                    </p>
+                                </Link>
+                                <Link
+                                    className="flex min-w-24 flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
+                                    to="/fun/gallery"
+                                >
+                                    <p className="p-2 font-header font-medium text-darken-800">
+                                        🖼️ Gallery
+                                    </p>
+                                </Link>
+                                <Link
+                                    className="flex min-w-24 flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
+                                    to="/fun/dayplanner"
+                                >
+                                    <p className="p-2 font-header font-medium text-darken-800">
+                                        📅 Dayplanner
+                                    </p>
+                                </Link>
+                            </div>
+                        )}
                         <Link
-                            className="flex min-w-24 flex-col justify-center rounded-2xl border bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
-                            to="/fun/gallery"
+                            className="flex min-w-24 flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
+                            to="/trackers"
                         >
                             <p className="p-2 font-header font-medium text-darken-800">
-                                🖼️ Gallery
-                            </p>
-                        </Link>
-                        <Link
-                            className="flex min-w-24 flex-col justify-center rounded-2xl border bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
-                            to="/fun/dayplanner"
-                        >
-                            <p className="p-2 font-header font-medium text-darken-800">
-                                📅 Dayplanner
+                                ⚙️ Experiments
                             </p>
                         </Link>
                     </div>

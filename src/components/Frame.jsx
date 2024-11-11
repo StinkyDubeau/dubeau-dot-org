@@ -1,6 +1,7 @@
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import { useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 export default function Frame(props) {
     function ScrollToTop() {
@@ -15,10 +16,18 @@ export default function Frame(props) {
                 {/* Experimental flag */}
                 {props.data.experimental && (
                     <div className="fixed bottom-0 z-50 mx-auto flex w-full justify-between bg-red-500 ">
-                        <p className="font-header text-lighten-800">
-                            Experimental features are active
-                        </p>
-                        <p className="font-header text-lighten-800">
+                        <div className="flex gap-2">
+                            <p className="font-header text-white">
+                                Experimental features are active.
+                            </p>
+                            <Link
+                                to="/trackers"
+                                className="font-header text-white underline"
+                            >
+                                Go to trackers page
+                            </Link>
+                        </div>
+                        <p className="font-header text-white">
                             {props.data && Object.values(props.data).toString()}
                         </p>
                     </div>
@@ -27,7 +36,7 @@ export default function Frame(props) {
         );
     }
     return (
-        <>
+        <div className={`${props.vignette === null} && "bg-black"`}>
             {/* Data Components */}
             {props.data && createDataDependants()}
             {!props.noScroll && <ScrollToTop />}
@@ -37,7 +46,7 @@ export default function Frame(props) {
 
             {/* Content */}
             <div
-                className={`-z-30 h-max min-h-screen ${props.vignette === !null ? "bg-zinc-800 shadow-inner-4xl" : "bg-zinc-200"}`}
+                className={`min-w-screen -z-30 h-max min-h-screen ${props.vignette === !null ? "shadow-inner-4xl" : "bg-lighten"}`}
             >
                 <div className={`m-auto ${!props.noNavbar && "pt-16"} `}>
                     <div className="mx-auto flex max-w-screen-xl justify-center">
@@ -48,6 +57,6 @@ export default function Frame(props) {
 
             {/* Footer */}
             {!props.noNavbar && <Footer data={props.data} />}
-        </>
+        </div>
     );
 }

@@ -93,7 +93,7 @@ export default function ContactForm(props) {
         } else {
             return (
                 <div className="flex h-full flex-col justify-center">
-                    <p className="font-header text-xl text-darken-700">
+                    <p className="font-header text-darken-700">
                         Your message was sent.
                     </p>
                 </div>
@@ -155,7 +155,7 @@ export default function ContactForm(props) {
                 ></textarea>
 
                 <button
-                    className="h-10 rounded-xl bg-darken-50 font-semibold text-darken-600 transition-all hover:rounded-lg hover:bg-darken-50"
+                    className="h-10 rounded-xl bg-darken-50 font-header font-bold text-darken-600 transition-all hover:rounded-lg hover:bg-darken-50"
                     onClick={handleSubmit}
                 >
                     Submit
@@ -165,7 +165,7 @@ export default function ContactForm(props) {
     }
 
     return (
-        <div className="w-72 rounded-xl bg-orange-50 p-4 shadow-xl">
+        <div className="w-72 rounded-xl bg-lighten-500 p-4 shadow-xl">
             {!submitted ? createForm() : createResult()}
         </div>
     );

@@ -1,4 +1,5 @@
 import NavButtons from "./NavButtons";
+import { Link } from "react-router-dom";
 
 export default function Navbar(props) {
     // Run only if the parent Frame has props.data
@@ -18,8 +19,15 @@ export default function Navbar(props) {
     }
 
     return (
-        <div className="z-40 mx-auto p-2 flex w-full justify-center bg-slate-100 backdrop-blur-3xl transition-all">
-            <p className="font-header text-darken-800">Jake Dubeau  🇨🇦  2024</p>
+        <div
+            className={`z-40 mx-auto flex w-full justify-center bg-lighten-900 p-2 ${props.data.experimental && "pb-8"} backdrop-blur-3xl transition-all`}
+        >
+            <Link
+                to="/contact"
+                className="font-header text-darken-800"
+            >
+                Jake Dubeau 🇨🇦 2024
+            </Link>
         </div>
     );
 }
