@@ -29,7 +29,7 @@ import Data from "./assets/Data";
 import Tabs from "./pages/Toys/Tabs";
 import Gallery from "./pages/Toys/Gallery";
 import Dayplanner from "./pages/Toys/Dayplanner";
-import Idle from "./pages/Toys/Idle";
+import Idle from "./pages/Toys/Idle/Main";
 
 function App() {
     const [data, setData] = useState(Data);
