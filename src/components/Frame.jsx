@@ -1,6 +1,7 @@
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import { useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 export default function Frame(props) {
     function ScrollToTop() {
@@ -15,10 +16,18 @@ export default function Frame(props) {
                 {/* Experimental flag */}
                 {props.data.experimental && (
                     <div className="fixed bottom-0 z-50 mx-auto flex w-full justify-between bg-red-500 ">
-                        <p className="font-header text-lighten-800">
-                            Experimental features are active
-                        </p>
-                        <p className="font-header text-lighten-800">
+                        <div className="flex gap-2">
+                            <p className="font-header text-white">
+                                Experimental features are active.
+                            </p>
+                            <Link
+                                to="/trackers"
+                                className="font-header text-white underline"
+                            >
+                                Go to trackers page
+                            </Link>
+                        </div>
+                        <p className="font-header text-white">
                             {props.data && Object.values(props.data).toString()}
                         </p>
                     </div>

@@ -34,26 +34,30 @@ export default function (props) {
 
         return (
             <div className="flex flex-col gap-4">
-                {!collapsed &&
-                    folder.children &&
-                    folder.children.map(createTab)}
+                {!collapsed ? (
+                    folder.children && folder.children.map(createTab)
+                ) : (
+                    <div className="flex justify-between">
+                        {/* Title */}
+                        <button
+                            className="flex-1 text-left font-header text-xl text-darken-800 underline"
+                            onClick={() =>
+                                setCollapsed(collapsed ? false : true)
+                            }
+                        >
+                            <span className="font-light">
+                                {collapsed ? "Open" : "Close"}{" "}
+                            </span>
+                            {folder.title.toUpperCase()}
+                        </button>
+                        {/* Type */}
+                        <p className="text-nowrap text-end text-darken-300">
+                            {length} songs
+                        </p>
+                    </div>
+                )}
 
-                <div className="flex justify-between">
-                    {/* Title */}
-                    <p className="text-left font-header text-xl text-darken-800">
-                        {folder.title}
-                    </p>
-                    {/* Type */}
-                    <p className="text-end text-darken-300">{length} songs</p>
-                </div>
-                {/* Open button */}
-                <button
-                    className="text-left font-header text-xl text-darken-800"
-                    onClick={() => setCollapsed(collapsed ? false : true)}
-                >
-                    {collapsed ? "open" : "close"}{" "}
-                    <span className="font-light">folder</span>
-                </button>
+                {/* Open/close button */}
             </div>
         );
     }
@@ -149,6 +153,43 @@ export default function (props) {
         );
     }
 
+    function createSortControls() {
+        return (
+            <div className="flex flex-wrap gap-2">
+                <p className="font-header text-darken-800">
+                    {hideChords.toString()}
+                </p>
+                <button
+                    onClick={() => {
+                        setHideChords(false);
+                        setHideTabs(false);
+                    }}
+                    className="text-darken-600 underline"
+                >
+                    Show all
+                </button>
+                <button
+                    onClick={() => {
+                        setHideChords(false);
+                        setHideTabs(true);
+                    }}
+                    className="text-darken-600 underline"
+                >
+                    Chords only
+                </button>{" "}
+                <button
+                    onClick={() => {
+                        setHideChords(true);
+                        setHideTabs(false);
+                    }}
+                    className="text-darken-600 underline"
+                >
+                    Tabs only
+                </button>{" "}
+            </div>
+        );
+    }
+
     return (
         <>
             <Frame
@@ -168,38 +209,7 @@ export default function (props) {
                             I like to play. Click an entry to open its
                             tablature.
                         </p>
-                        <div className="flex flex-wrap gap-2">
-                            <p className="font-header text-darken-800">
-                                {hideChords.toString()}
-                            </p>
-                            <button
-                                onClick={() => {
-                                    setHideChords(false);
-                                    setHideTabs(false);
-                                }}
-                                className="text-darken-600 underline"
-                            >
-                                Show all
-                            </button>
-                            <button
-                                onClick={() => {
-                                    setHideChords(false);
-                                    setHideTabs(true);
-                                }}
-                                className="text-darken-600 underline"
-                            >
-                                Chords only
-                            </button>{" "}
-                            <button
-                                onClick={() => {
-                                    setHideChords(true);
-                                    setHideTabs(false);
-                                }}
-                                className="text-darken-600 underline"
-                            >
-                                Tabs only
-                            </button>{" "}
-                        </div>
+                        {props.data.experimental && createSortControls()}
                         {Bookmarks ? (
                             Bookmarks.children.map(createBookmark)
                         ) : (

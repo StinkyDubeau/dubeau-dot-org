@@ -157,6 +157,14 @@ export default function fun(props) {
                                 📅 Dayplanner
                             </p>
                         </Link>
+                        <Link
+                            className="flex min-w-24 flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
+                            to="/trackers"
+                        >
+                            <p className="p-2 font-header font-medium text-darken-800">
+                                ⚙️ Experimental
+                            </p>
+                        </Link>
                     </div>
                 </div>
 
