@@ -19,7 +19,9 @@ export default function Navbar(props) {
     }
 
     return (
-        <div className={`z-40 mx-auto flex w-full justify-center bg-lighten-900 p-2 ${props.data.experimental && "pb-8"} backdrop-blur-3xl transition-all`}>
+        <div
+            className={`z-40 mx-auto flex w-full justify-center bg-lighten-900 p-2 ${props.data.experimental && "pb-8"} backdrop-blur-3xl transition-all`}
+        >
             <Link
                 to="/contact"
                 className="font-header text-darken-800"

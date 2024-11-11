@@ -155,38 +155,46 @@ export default function (props) {
 
     function createSortControls() {
         return (
-            <div className="flex flex-wrap gap-2">
-                <p className="font-header text-darken-800">
-                    {hideChords.toString()}
-                </p>
-                <button
-                    onClick={() => {
-                        setHideChords(false);
-                        setHideTabs(false);
-                    }}
-                    className="text-darken-600 underline"
-                >
-                    Show all
-                </button>
-                <button
-                    onClick={() => {
-                        setHideChords(false);
-                        setHideTabs(true);
-                    }}
-                    className="text-darken-600 underline"
-                >
-                    Chords only
-                </button>{" "}
-                <button
-                    onClick={() => {
-                        setHideChords(true);
-                        setHideTabs(false);
-                    }}
-                    className="text-darken-600 underline"
-                >
-                    Tabs only
-                </button>{" "}
-            </div>
+            <Panel className="bg-red-500 p-4 text-left text-white">
+                <p className="font-pixel">- Experimental features -</p>
+                <div className="flex flex-wrap gap-2">
+                    <button
+                        onClick={() => {
+                            setHideChords(false);
+                            setHideTabs(false);
+                        }}
+                        className="underline"
+                    >
+                        Show all
+                    </button>
+                    <button
+                        onClick={() => {
+                            setHideChords(false);
+                            setHideTabs(true);
+                        }}
+                        className="underline"
+                    >
+                        Chords only
+                    </button>
+                    <button
+                        onClick={() => {
+                            setHideChords(true);
+                            setHideTabs(false);
+                        }}
+                        className="underline"
+                    >
+                        Tabs only
+                    </button>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                    <p>
+                        hideChords: {hideChords.toString()}
+                    </p>
+                    <p>
+                        hideTabs: {hideTabs.toString()}
+                    </p>
+                </div>
+            </Panel>
         );
     }
 
