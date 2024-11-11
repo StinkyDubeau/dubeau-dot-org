@@ -14,44 +14,46 @@ export default function (props) {
     function createBookmark(bookmark, index) {
         return (
             <Panel
-                className="overflow-hidden p-4"
+                className="max-w-screen overflow-hidden p-4"
                 key={bookmark.guid}
             >
+                {/* Create a folder if there are children under this component. Otherwise create the tab. */}
                 {bookmark.children
-                    ? createFolder(bookmark)
+                    ? createFolder(bookmark, bookmark.children.length)
                     : createTab(bookmark)}
             </Panel>
         );
     }
 
-    function createFolder(folder, index) {
+    function createFolder(folder, length) {
         const [collapsed, setCollapsed] = useState(true);
 
         function createButton() {
-            return (
-                <div className={`${collapsed && "h-4"} transition-all`}>
-                    <button
-                        className="text-md rounded-2xl bg-darken-300 font-header text-lighten-800 transition-all hover:bg-darken-400 active:bg-darken-500"
-                        onClick={() => setCollapsed(collapsed ? false : true)}
-                    >
-                        Open folder
-                    </button>
-                </div>
-            );
+            return <div className={`transition-all`}></div>;
         }
 
         return (
             <div className="flex flex-col gap-4">
-                <p className="rounded-full bg-darken-50 font-header text-3xl text-darken-800">
-                    {folder.title}
-                    {collapsed && createButton()}
-                </p>
-                {/* <p>{folder.guid}</p> */}
-                <div className="flex flex-col gap-6">
-                    {!collapsed &&
-                        folder.children &&
-                        folder.children.map(createTab)}
+                {!collapsed &&
+                    folder.children &&
+                    folder.children.map(createTab)}
+
+                <div className="flex justify-between">
+                    {/* Title */}
+                    <p className="text-left font-header text-xl text-darken-800">
+                        {folder.title}
+                    </p>
+                    {/* Type */}
+                    <p className="text-end text-darken-300">{length} songs</p>
                 </div>
+                {/* Open button */}
+                <button
+                    className="text-left font-header text-xl text-darken-800"
+                    onClick={() => setCollapsed(collapsed ? false : true)}
+                >
+                    {collapsed ? "open" : "close"}{" "}
+                    <span className="font-light">folder</span>
+                </button>
             </div>
         );
     }
@@ -59,7 +61,7 @@ export default function (props) {
     function createTab(tab, index) {
         var friendlyTitle = tab.title;
         var friendlyArtist = "Unknown artist";
-        var friendlyType = "TABS";
+        var friendlyType = "OTHER";
         const regex = /^(.*?)\s+(CHORDS?|TAB)\s+.*?by\s+([^@]+)/i;
         const match = friendlyTitle.match(regex);
 
@@ -156,14 +158,15 @@ export default function (props) {
                 <div className="">
                     <div
                         id="container"
-                        className="my-4 mx-2 flex flex-col gap-4"
+                        className="mx-2 my-4 flex flex-col gap-4"
                     >
                         <p className="text-left font-header text-3xl text-darken-800">
                             Guitar Tabs
                         </p>
                         <p className="max-w-md text-left font-header text-darken-600">
                             This is my personal collection of bookmarks to songs
-                            I like to play.
+                            I like to play. Click an entry to open its
+                            tablature.
                         </p>
                         <div className="flex flex-wrap gap-2">
                             <p className="font-header text-darken-800">

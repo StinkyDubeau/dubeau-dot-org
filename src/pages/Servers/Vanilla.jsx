@@ -44,7 +44,7 @@ export default function fun(props) {
                 </div>
 
                 <div className="flex flex-col gap-4 rounded-3xl bg-lighten-800 p-4">
-                    <div className="rounded-2xl bg-red-500 p-4">
+                    {/* <div className="rounded-2xl bg-red-500 p-4">
                         <p className="text-left font-header text-3xl text-lighten-800">
                         As of <span className="animate-pulse">
                                November 8th{" "}
@@ -55,7 +55,7 @@ export default function fun(props) {
                             Please empty your player inventory into a chest to
                             prevent loss.
                         </p>
-                    </div>
+                    </div> */}
                     <div
                         id="pros cons"
                         className="flex flex-wrap justify-center gap-2"
