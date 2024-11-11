@@ -24,14 +24,25 @@ export default function Trackers(props) {
             <Panel className="m-4 flex flex-col gap-2 p-4 text-darken-800">
                 <p>This is the experimental trackers page.</p>
                 <p>The following pages have experimental features:</p>
-                <ul className="underline">
+                <ul className="flex flex-col gap-2 underline">
                     <li>
-                        <Link to="/tabs">/tabs</Link>
+                        <Link to="/fun/tabs">/fun/tabs</Link>
                     </li>
                     <li>
                         <Link to="/astros">/astros</Link>
                     </li>
+                    <li>
+                        <Link to="/fun/gallery">/fun/gallery</Link>
+                    </li>
+                    <li>
+                        <Link to="/fun/dayplanner">/fun/dayplanner</Link>
+                    </li>
+                    <li>
+                        <Link to="/fun">/fun</Link>
+                    </li>
                 </ul>
+                <p>Ensure you <span className="text-green-500 font-bold">Activate Experimental</span>.</p>
+
                 <p className="text-nowrap">Splat: {useParams()[1]}</p>
 
                 <ul>

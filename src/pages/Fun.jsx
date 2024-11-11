@@ -125,14 +125,7 @@ export default function fun(props) {
                                 📱 Widgets
                             </p>
                         </Link>
-                        <Link
-                            className="flex min-w-24 flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
-                            to="/blog"
-                        >
-                            <p className="p-2 font-header font-medium text-darken-800">
-                                📓 Blog
-                            </p>
-                        </Link>
+
                         <Link
                             className="flex min-w-24 flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
                             to="/fun/tabs"
@@ -141,28 +134,40 @@ export default function fun(props) {
                                 🎸 Guitar
                             </p>
                         </Link>
-                        <Link
-                            className="flex min-w-24 flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
-                            to="/fun/gallery"
-                        >
-                            <p className="p-2 font-header font-medium text-darken-800">
-                                🖼️ Gallery
-                            </p>
-                        </Link>
-                        <Link
-                            className="flex min-w-24 flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
-                            to="/fun/dayplanner"
-                        >
-                            <p className="p-2 font-header font-medium text-darken-800">
-                                📅 Dayplanner
-                            </p>
-                        </Link>
+                        {props.data.experimental && (
+                            <div className="flex gap-2 max-sm:flex-col">
+                                <Link
+                                    className="flex min-w-24 flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
+                                    to="/blog"
+                                >
+                                    <p className="p-2 font-header font-medium text-darken-800">
+                                        📓 Blog
+                                    </p>
+                                </Link>
+                                <Link
+                                    className="flex min-w-24 flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
+                                    to="/fun/gallery"
+                                >
+                                    <p className="p-2 font-header font-medium text-darken-800">
+                                        🖼️ Gallery
+                                    </p>
+                                </Link>
+                                <Link
+                                    className="flex min-w-24 flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
+                                    to="/fun/dayplanner"
+                                >
+                                    <p className="p-2 font-header font-medium text-darken-800">
+                                        📅 Dayplanner
+                                    </p>
+                                </Link>
+                            </div>
+                        )}
                         <Link
                             className="flex min-w-24 flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
                             to="/trackers"
                         >
                             <p className="p-2 font-header font-medium text-darken-800">
-                                ⚙️ Experimental
+                                ⚙️ Experiments
                             </p>
                         </Link>
                     </div>
