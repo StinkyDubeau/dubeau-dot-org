@@ -75,34 +75,34 @@ export default function (props) {
 
         if (hideChords && tab.friendlyType == "CHORDS") {
             return;
-        }
-        if (hideTabs && tab.friendlyType == "TAB") {
+        } else if (hideTabs && tab.friendlyType == "TAB") {
             return;
-        }
-
-        return (
-            <div key={tab.guid}>
-                <Link
-                    to={tab.uri}
-                    className="flex flex-col"
-                >
-                    <div className="flex justify-between">
+        } else {
+            return (
+                <div key={tab.guid}>
+                    <Link
+                        to={tab.uri}
+                        className="flex flex-col"
+                    >
+                        <div className="flex justify-between">
+                            <p className="text-left font-header text-xl text-darken-800">
+                                {friendlyTitle}
+                            </p>
+                            <p className="text-end text-darken-300">
+                                {friendlyType}
+                            </p>
+                        </div>
                         <p className="text-left font-header text-xl text-darken-800">
-                            {friendlyTitle}
+                            by{" "}
+                            <span className="font-light">{friendlyArtist}</span>
                         </p>
-                        <p className="text-end text-darken-300">
-                            {friendlyType}
+                        <p className="text-left font-header text-xs text-darken-600">
+                            {tab.uri}
                         </p>
-                    </div>
-                    <p className="text-left font-header text-xl text-darken-800">
-                        by <span className="font-light">{friendlyArtist}</span>
-                    </p>
-                    <p className="text-left font-header text-xs text-darken-600">
-                        {tab.uri}
-                    </p>
-                </Link>
-            </div>
-        );
+                    </Link>
+                </div>
+            );
+        }
     }
 
     function createTab(tab, index) {
@@ -153,10 +153,10 @@ export default function (props) {
                 data={props.data}
                 noScroll
             >
-                <div className="flex w-full justify-center">
+                <div className="">
                     <div
                         id="container"
-                        className="mt-4 flex flex-col gap-4"
+                        className="my-4 mx-2 flex flex-col gap-4"
                     >
                         <p className="text-left font-header text-3xl text-darken-800">
                             Guitar Tabs
