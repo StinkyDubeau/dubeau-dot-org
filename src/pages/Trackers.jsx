@@ -22,32 +22,26 @@ export default function Trackers(props) {
             vignette
         >
             <Panel className="m-4 flex flex-col gap-2 p-4 text-darken-800">
-                <p>This is the experimental trackers page.</p>
-                <p>The following pages have experimental features:</p>
-                <ul className="flex flex-col gap-2 underline">
+                <p>
+                    <span className="font-semibold text-green-500">
+                        Activate Experimental
+                    </span>{" "}
+                    and return to the <span className="font-semibold">fun</span>{" "}
+                    page.
+                </p>
+                <p>All pages with experimental features:</p>
+                <ul className="flex flex-col gap-2">
                     <li>
-                        <Link to="/fun/tabs">/fun/tabs</Link>
-                    </li>
-                    <li>
-                        <Link to="/astros">/astros</Link>
-                    </li>
-                    <li>
-                        <Link to="/fun/gallery">/fun/gallery</Link>
-                    </li>
-                    <li>
-                        <Link to="/fun/dayplanner">/fun/dayplanner</Link>
-                    </li>
-                    <li>
-                        <Link to="/fun">/fun</Link>
+                        -{" "}
+                        <Link
+                            className="underline"
+                            to="/fun/tabs"
+                        >
+                            /fun/tabs
+                        </Link>
                     </li>
                 </ul>
-                <p>Ensure you <span className="text-green-500 font-bold">Activate Experimental</span>.</p>
 
-                <p className="text-nowrap">Splat: {useParams()[1]}</p>
-
-                <ul>
-                    <li>{data && Object.values(data).toString()}</li>
-                </ul>
                 <div className="flex justify-center gap-2 text-darken-800">
                     <button
                         className="w-36 rounded-xl  bg-lighten-800 p-2 text-darken-800 shadow-md transition-all hover:scale-105 hover:bg-lighten-900 hover:shadow-lg"
@@ -108,7 +102,7 @@ export default function Trackers(props) {
                 )}
                 <div className="flex justify-center gap-2 text-darken-800">
                     <button
-                        className="w-36 rounded-xl bg-green-500 p-2 text-darken-800 shadow-md transition-all hover:scale-105 hover:bg-lighten-900 hover:shadow-lg"
+                        className="w-36 rounded-xl bg-green-500 font-semibold p-2 text-darken-800 shadow-md transition-all hover:scale-105 hover:bg-green-100 hover:shadow-lg"
                         onClick={() => {
                             props.setData({
                                 ...props.data,
@@ -130,6 +124,16 @@ export default function Trackers(props) {
                         Disable Experimental
                     </button>
                 </div>
+
+                <p className="text-nowrap font-pixel">
+                    Splat: {useParams()[1] ? useParams()[1] : "None"}
+                </p>
+
+                <ul>
+                    <li className="text-nowrap font-pixel">
+                        Local: {data && Object.values(data).toString()}
+                    </li>
+                </ul>
             </Panel>
         </Frame>
     );
