@@ -406,7 +406,7 @@ export default function (props) {
         const [count, setCount] = useState(0);
 
         return (
-            <div className=" flex flex-col rounded-3xl bg-pink-600 p-6 text-xl text-lighten-800">
+            <div className=" flex flex-col overflow-clip rounded-3xl bg-pink-600 p-6 text-xl text-lighten-800">
                 <div
                     id="main-container"
                     className="flex h-full flex-col justify-center"
@@ -437,13 +437,25 @@ export default function (props) {
                             +
                         </button>
                     </div>
-                    <div className="flex flex-wrap justify-end gap-2">
-                        <button className="font-underline font-header text-lighten-800 underline">
-                            Save
-                        </button>
-                        <button className="font-underline font-header text-lighten-800 underline">
-                            Load
-                        </button>
+                    <div className="-m-6 mt-4 bg-darken-200">
+                        <div className="flex flex-nowrap justify-between gap-2 px-4 py-2">
+                            <div>
+                                <button
+                                    onClick={() => setCount(0)}
+                                    className=" font-header text-lighten-800 transition-all hover:text-lighten-400 active:text-lighten-900"
+                                >
+                                    Reset
+                                </button>
+                            </div>
+                            <div className="flex flex-nowrap gap-4">
+                                <button className="font-header text-lighten-800 transition-all hover:text-lighten-400 active:text-lighten-900">
+                                    📂 Load
+                                </button>
+                                <button className="font-header text-lighten-800 transition-all hover:text-lighten-400 active:text-lighten-900">
+                                    💾 Save
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -489,7 +501,7 @@ export default function (props) {
                         </Link>
                     </div>
                     {/* Voltage Widget */}
-                    {/* {createVoltageWidget()} */}
+                    {createVoltageWidget()}
                     {/* Cookie Widget */}
                     {createCookieWidget()}
                     {/* Counter Widget */}
