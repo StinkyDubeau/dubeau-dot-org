@@ -36,7 +36,7 @@ export default function Frame(props) {
         );
     }
     return (
-        <div className="bg-black">
+        <div className={`${props.vignette === null} && "bg-black"`}>
             {/* Data Components */}
             {props.data && createDataDependants()}
             {!props.noScroll && <ScrollToTop />}
@@ -46,7 +46,7 @@ export default function Frame(props) {
 
             {/* Content */}
             <div
-                className={`min-w-screen -z-30 h-max min-h-screen ${props.vignette === !null ? "bg-darken-800 shadow-inner-4xl" : "bg-lighten"}`}
+                className={`min-w-screen -z-30 h-max min-h-screen ${props.vignette === !null ? "shadow-inner-4xl" : "bg-lighten"}`}
             >
                 <div className={`m-auto ${!props.noNavbar && "pt-16"} `}>
                     <div className="mx-auto flex max-w-screen-xl justify-center">
