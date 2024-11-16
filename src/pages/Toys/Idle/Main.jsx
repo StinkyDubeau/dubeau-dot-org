@@ -53,7 +53,7 @@ export default function Main(props) {
         });
     }
 
-    function tick() {}
+    function tick() { }
 
     function ManualDynamo(props) {
         const [rpm, setRpm] = useState(0);
@@ -107,7 +107,7 @@ export default function Main(props) {
 
     function UI() {
         return (
-            <div className="flex max-w-screen-md flex-col gap-2 overflow-hidden rounded-3xl bg-orange-400 p-2 sm:bg-green-500  sm:p-8">
+            <motion.div layoutId="modal" className="flex max-w-screen-md flex-col gap-2 overflow-hidden rounded-3xl bg-orange-400 p-2 sm:bg-green-500 sm:p-8">
                 <h1 className="text-3xl">Idle Clicker</h1>
                 <p>Capacity: {capacity} watts</p>
                 <Button
@@ -154,7 +154,7 @@ export default function Main(props) {
                     </div>
                 </div>
                 <ManualDynamo />
-            </div>
+            </motion.div>
         );
     }
 
