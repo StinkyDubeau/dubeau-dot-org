@@ -145,7 +145,7 @@ export default function (props) {
                     <p className="text-left font-header text-xl text-darken-800">
                         by <span className="font-light">{friendlyArtist}</span>
                     </p>
-                    <p className="text-left font-header text-xs text-darken-600">
+                    <p className="max-xs:hidden text-left font-header text-xs text-darken-600">
                         {tab.uri}
                     </p>
                 </Link>
@@ -204,7 +204,7 @@ export default function (props) {
                 data={props.data}
                 noScroll
             >
-                <div className="">
+                <div className="max-xs:w-screen">
                     <div
                         id="container"
                         className="mx-2 my-4 flex flex-col gap-4"
