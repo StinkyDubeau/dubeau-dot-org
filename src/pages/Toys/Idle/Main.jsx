@@ -2,6 +2,7 @@ import Frame from "../../../components/Frame";
 import { useState, useEffect } from "react";
 import vagueTime from "vague-time";
 import Panel from "../../../components/Panel";
+import { motion } from "framer-motion";
 
 export default function Main(props) {
     const [peakCapacity, setPeakCapacity] = useState(100); // In watts
@@ -159,12 +160,14 @@ export default function Main(props) {
 
     function renderPage(page, index) {
         return (
-            <div
+            <motion.div
+                initial={{ scale: 0, opacity: 0.5 }}
+                animate={{ scale: 1, opacity: 1 }}
                 className="flex-1"
                 key={index}
             >
                 {page}
-            </div>
+            </motion.div>
         );
     }
 
