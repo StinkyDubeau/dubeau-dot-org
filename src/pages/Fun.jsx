@@ -8,7 +8,6 @@ import ModdedBanner from "../assets/modded-banner.png";
 import BetaBanner from "../assets/beta-banner.webp";
 import VanillaBanner from "../assets/dubeau-banner.png";
 import FactorioBanner from "../assets/factorio-banner.jpg";
-import RotnBanner from "../assets/rotn-banner.png";
 import KspBanner from "../assets/ksp-banner.jpg";
 
 export default function fun(props) {

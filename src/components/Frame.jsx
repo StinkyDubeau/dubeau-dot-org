@@ -35,8 +35,9 @@ export default function Frame(props) {
             </div>
         );
     }
+
     return (
-        <div className={`${props.vignette === null} && "bg-black"`}>
+        <div className="bg-darken-900">
             {/* Data Components */}
             {props.data && createDataDependants()}
             {!props.noScroll && <ScrollToTop />}

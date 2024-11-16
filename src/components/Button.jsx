@@ -1,7 +1,9 @@
-export default function Button(props) {
+import { motion } from "framer-motion";
+
+export default function Button({className, body, to, children}) {
     return (
-        <button className={`${props.className} overflow-hidden rounded-xl bg-lighten-400 px-2 transition-all hover:px-4`}>
-            {props.children}
-        </button>
+        <motion.button className={className && className}>
+            {children && children}
+        </motion.button>
     );
 }

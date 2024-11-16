@@ -1,6 +1,8 @@
 import Frame from "../../../components/Frame";
 import { useState, useEffect } from "react";
 import vagueTime from "vague-time";
+import Panel from "../../../components/Panel";
+import { motion } from "framer-motion";
 
 export default function Main(props) {
     const [peakCapacity, setPeakCapacity] = useState(100); // In watts
@@ -51,7 +53,7 @@ export default function Main(props) {
         });
     }
 
-    function tick() {}
+    function tick() { }
 
     function ManualDynamo(props) {
         const [rpm, setRpm] = useState(0);
@@ -103,6 +105,109 @@ export default function Main(props) {
         );
     }
 
+    function UI() {
+        return (
+            <motion.div layoutId="modal" className="flex max-w-screen-md flex-col gap-2 overflow-hidden rounded-3xl bg-orange-400 p-2 sm:bg-green-500 sm:p-8">
+                <h1 className="text-3xl">Idle Clicker</h1>
+                <p>Capacity: {capacity} watts</p>
+                <Button
+                    body="Turn manual dynamo"
+                    onClick={() => setCapacity(capacity + 1)}
+                />
+                <div className="flex flex-col justify-center">
+                    <div className="flex justify-around gap-2 rounded-xl bg-darken-200 p-2 max-sm:flex-col">
+                        <p>Set arbitrary capacity</p>
+                        <Slider
+                            onChange={setCapacity}
+                            value={capacity}
+                            min={0}
+                            max={1000}
+                        />
+                    </div>
+                </div>
+                <div className="flex flex-col justify-center">
+                    <div className="flex justify-around gap-2 rounded-xl bg-darken-200 p-2 max-sm:flex-col">
+                        <p>Set arbitrary load</p>
+                        <Button
+                            body="-5"
+                            onClick={() => setLoad(load - 5)}
+                        />
+                        <Button
+                            body="-1"
+                            onClick={() => setLoad(load - 1)}
+                        />
+                        <Button
+                            body="+1"
+                            onClick={() => setLoad(load + 1)}
+                        />
+                        <Button
+                            body="+5"
+                            onClick={() => setLoad(load + 5)}
+                        />
+
+                        <Slider
+                            onChange={setLoad}
+                            value={load}
+                            min={0}
+                            max={1000}
+                        />
+                    </div>
+                </div>
+                <ManualDynamo />
+            </motion.div>
+        );
+    }
+
+    function renderPage(page, index) {
+        return (
+            <motion.div
+                animate={{ x: 100, opacity: 1 }}
+                className="flex-1"
+                key={index}
+            >
+                {page}
+            </motion.div>
+        );
+    }
+
+    function PageRenderer(props) {
+        const [pages, setPages] = useState(props.children);
+        const [index, setIndex] = useState(pages.length);
+
+        return (
+            <div
+                id="container"
+                className="flex flex-col gap-2"
+            >
+                <div
+                    id="controls"
+                    className="flex justify-between gap-2"
+                >
+                    <Button
+                        body="Next"
+                        className="font-header font-bold text-darken-800"
+                    />
+                </div>
+                <div
+                    id="pages"
+                    className="flex w-screen justify-center gap-2 bg-blue-400 p-2 max-sm:flex-col"
+                >
+                    {pages.map(renderPage)}
+                </div>
+            </div>
+        );
+    }
+
+    function TestPage(props) {
+        return (
+            <>
+                <Panel className="p-2">
+                    <p>Test Page</p>
+                </Panel>
+            </>
+        );
+    }
+
     return (
         <Frame
             data={props.data}
@@ -110,53 +215,12 @@ export default function Main(props) {
         >
             <Header />
             <div className="flex w-screen justify-center gap-2 font-header text-darken-700">
-                <div className="flex max-w-screen-md flex-col gap-2 overflow-hidden rounded-3xl bg-orange-400 p-2 sm:bg-green-500  sm:p-8">
-                    <h1 className="text-3xl">Idle Clicker</h1>
-                    <p>Capacity: {capacity} watts</p>
-                    <Button
-                        body="Turn manual dynamo"
-                        onClick={() => setCapacity(capacity + 1)}
-                    />
-                    <div className="flex flex-col justify-center">
-                        <div className="flex justify-around gap-2 rounded-xl bg-darken-200 p-2 max-sm:flex-col">
-                            <p>Set arbitrary capacity</p>
-                            <Slider
-                                onChange={setCapacity}
-                                value={capacity}
-                                min={0}
-                                max={1000}
-                            />
-                        </div>
-                    </div>
-                    <div className="flex flex-col justify-center">
-                        <div className="flex justify-around gap-2 rounded-xl bg-darken-200 p-2 max-sm:flex-col">
-                            <p>Set arbitrary load</p>
-                            <Button
-                                body="-5"
-                                onClick={() => setLoad(load - 5)}
-                            />
-                            <Button
-                                body="-1"
-                                onClick={() => setLoad(load - 1)}
-                            />
-                            <Button
-                                body="+1"
-                                onClick={() => setLoad(load + 1)}
-                            />
-                            <Button
-                                body="+5"
-                                onClick={() => setLoad(load + 5)}
-                            />
-
-                            <Slider
-                                onChange={setLoad}
-                                value={load}
-                                min={0}
-                                max={1000}
-                            />
-                        </div>
-                    </div>
-                    <ManualDynamo />
+                <div className="flex flex-col gap-2">
+                    <PageRenderer>
+                        <UI />
+                        <UI />
+                        <TestPage />
+                    </PageRenderer>
                 </div>
             </div>
             <Footer />
