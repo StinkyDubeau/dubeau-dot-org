@@ -35,6 +35,7 @@ export default function Frame(props) {
             </div>
         );
     }
+
     return (
         <div className="bg-darken-900">
             {/* Data Components */}
