@@ -501,7 +501,7 @@ export default function (props) {
                         </Link>
                     </div>
                     {/* Voltage Widget */}
-                    {createVoltageWidget()}
+                    {/* {createVoltageWidget()} */}
                     {/* Cookie Widget */}
                     {createCookieWidget()}
                     {/* Counter Widget */}

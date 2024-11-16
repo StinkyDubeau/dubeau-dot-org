@@ -161,8 +161,7 @@ export default function Main(props) {
     function renderPage(page, index) {
         return (
             <motion.div
-                initial={{ scale: 0, opacity: 0.5 }}
-                animate={{ scale: 1, opacity: 1 }}
+                animate={{ x: 100, opacity: 1 }}
                 className="flex-1"
                 key={index}
             >
