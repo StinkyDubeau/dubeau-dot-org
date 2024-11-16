@@ -65,6 +65,7 @@ export default function fun(props) {
                     {/* Gradient bg */}
                     <div className="my-5 flex flex-wrap justify-center gap-4 rounded-2xl py-4 sm:gap-8">
                         <ServerCard
+                            id="vanilla"
                             title="Vanilla"
                             subtitle="Minecraft 1.21"
                             img={VanillaBanner}
