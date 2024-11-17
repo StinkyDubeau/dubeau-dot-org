@@ -13,9 +13,10 @@ export default function Main(props) {
     const [systemState, setSystemState] = useState("net zero");
     const [generation, setGeneration] = useState(100); // In watts
     const [capacity, setCapacity] = useState(100); // In joules
-    const [maximumCapacity, setMaximumCapacity] = useState(10000); // In joules
+    const [maximumCapacity, setMaximumCapacity] = useState(10000); // In joules, should convert to kWh for display.
     const [load, setLoad] = useState(100); // In watts
-    const [production, setProduction] = useState(0); // Net output (or input if negative)
+    const [maximumLoad, setMaximumLoad] = useState(1000); // In Watts, default 1kW
+    const [output, setOutput] = useState(0); // In joules,  system net output (or input if negative)
     const [flow, setFlow] = useState(0); // Instantaneous power use (watts)
     const [godmode, setGodmode] = useState(false); // Whether to check for lack of capacity, or just keep running the simulation
 
@@ -152,7 +153,9 @@ export default function Main(props) {
                     Capacity: {capacity}/{maximumCapacity} joules
                 </p>
                 <p>Generation: {generation} watts</p>
-                <p>Load: {load} watts</p>
+                <p>
+                    Load: {load}/{maximumLoad} watts
+                </p>
                 <p>Time: {time.toLocaleTimeString()}</p>
                 <p>Spawn time: {birthDate.toLocaleTimeString()}</p>
                 <p>Born: {getVagueTimeSince(birthDate)}</p>
@@ -244,24 +247,21 @@ export default function Main(props) {
             <div className="flex w-screen justify-center gap-2 font-header text-darken-700">
                 <div className="flex flex-col gap-2 bg-blue-400">
                     <PaginatedTileRenderer>
-                        <Ver1UI
+                        {/* <Ver1UI
                             setLoad={setLoad}
                             load={load}
                             setCapacity={setCapacity}
                             capacity={capacity}
                             maximumCapacity={maximumCapacity}
-                        />
+                        /> */}
                         <Ver2UI
                             setLoad={setLoad}
                             load={load}
                             setCapacity={setCapacity}
                             capacity={capacity}
                             flow={flow}
-                            production={production}
+                            production={output}
                         />
-                        <TestPage />
-                        <TestPage />
-                        <TestPage />
                     </PaginatedTileRenderer>
                 </div>
             </div>
