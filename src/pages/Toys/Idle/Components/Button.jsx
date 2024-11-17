@@ -1,3 +1,4 @@
+import daisyui from "daisyui";
 import { motion } from "framer-motion";
 
 export default function Button({ className, body, children, onClick }) {
@@ -5,7 +6,10 @@ export default function Button({ className, body, children, onClick }) {
         <motion.button
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            className={className ? className : "rounded-2xl bg-lighten-900"}
+            transition={{ duration: 0.1 }}
+            className={
+                className ? className : "rounded-2xl bg-lighten-900 font-header"
+            }
             onClick={onClick}
         >
             {body && body}

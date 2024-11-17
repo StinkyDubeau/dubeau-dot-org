@@ -7,6 +7,7 @@ import Button from "./Components/Button";
 
 import Ver2UI from "./Tiles/Ver2UI";
 import Slider from "./Components/Slider";
+import Ver1UI from "./Tiles/Ver1UI";
 
 export default function Main(props) {
     const [systemState, setSystemState] = useState("net zero");
@@ -24,7 +25,6 @@ export default function Main(props) {
     // TODO: SUMMARY TILE
     // It will effectively be a user account page.
     // It will feature account name, profile image (generated like in p2p chat)
-    //
 
     // -----------------------------------------
     // Timestep Timescale Interdependency
@@ -39,9 +39,8 @@ export default function Main(props) {
         const interval = setInterval(() => {
             var newTicks = ticks + timestep;
 
-            if (capacity > load) {
-                setCapacity(capacity - load); // If generation is less than load, subtract that many watts per second from the capacity.
-            }
+            systemState == "discharging" &&
+                setCapacity(capacity - (load - generation));
 
             setTicks(newTicks);
         }, mspt);
@@ -52,13 +51,13 @@ export default function Main(props) {
     // Do every tick
     useEffect(() => {
         setTime(new Date());
-    }, [ticks]);
+    }, [ticks, capacity]);
 
-    // Check that system can still provide power
+    // System State Calculations
     useEffect(() => {
         if (capacity < load) {
             setSystemState("overloaded");
-        } else if (load > capacity) {
+        } else if (load < capacity) {
             setSystemState("discharging");
         }
     }, [capacity]);
@@ -71,14 +70,6 @@ export default function Main(props) {
     }
 
     function tick() {}
-
-    function ManualDynamo(props) {
-        const [rpm, setRpm] = useState(0);
-
-        function turn(force) {
-            setRpm(rpm + force);
-        }
-    }
 
     function Header() {
         return (
@@ -111,62 +102,6 @@ export default function Main(props) {
         );
     }
 
-    function Ver1UI() {
-        return (
-            <motion.div
-                layoutId="modal"
-                className="flex max-w-screen-md flex-col gap-2 overflow-hidden rounded-3xl bg-orange-400 p-2 sm:bg-green-500 sm:p-8"
-            >
-                <h1 className="text-3xl">Ver1.0</h1>
-                <p>Capacity: {capacity} watts</p>
-                <Button
-                    body="Turn manual dynamo"
-                    onClick={() => setCapacity(capacity + 1)}
-                />
-                <div className="flex flex-col justify-center">
-                    <div className="flex justify-around gap-2 rounded-xl bg-darken-200 p-2 max-sm:flex-col">
-                        <p>Set arbitrary capacity</p>
-                        <Slider
-                            onChange={setCapacity}
-                            value={capacity}
-                            min={0}
-                            max={1000}
-                        />
-                    </div>
-                </div>
-                <div className="flex flex-col justify-center">
-                    <div className="flex justify-around gap-2 rounded-xl bg-darken-200 p-2 max-sm:flex-col">
-                        <p>Set arbitrary load</p>
-                        <Button
-                            body="-5"
-                            onClick={() => setLoad(load - 5)}
-                        />
-                        <Button
-                            body="-1"
-                            onClick={() => setLoad(load - 1)}
-                        />
-                        <Button
-                            body="+1"
-                            onClick={() => setLoad(load + 1)}
-                        />
-                        <Button
-                            body="+5"
-                            onClick={() => setLoad(load + 5)}
-                        />
-
-                        <Slider
-                            onChange={setLoad}
-                            value={load}
-                            min={0}
-                            max={1000}
-                        />
-                    </div>
-                </div>
-                <ManualDynamo />
-            </motion.div>
-        );
-    }
-
     function renderPage(page, index) {
         return (
             <div
@@ -178,7 +113,7 @@ export default function Main(props) {
         );
     }
 
-    function PageRenderer(props) {
+    function PaginatedTileRenderer(props) {
         const [pages, setPages] = useState(props.children);
         const [index, setIndex] = useState(0);
 
@@ -225,7 +160,9 @@ export default function Main(props) {
                 >
                     {/* Run mapping function only if there is more than one page to be rendered */}
                     {/* {pages.length ? pages.map(renderPage) : renderPage(pages)} */}
-                    {renderPage(pages[index])}
+                    {pages.length
+                        ? renderPage(pages[index])
+                        : renderPage(pages)}
                 </div>
             </div>
         );
@@ -249,15 +186,20 @@ export default function Main(props) {
             <Header />
             <div className="flex w-screen justify-center gap-2 font-header text-darken-700">
                 <div className="flex flex-col gap-2 bg-blue-400">
-                    <PageRenderer>
-                        <Ver1UI />
+                    <PaginatedTileRenderer>
+                        {/* <Ver1UI
+                            setLoad={setLoad}
+                            load={load}
+                            setCapacity={setCapacity}
+                            capacity={capacity}
+                        /> */}
                         <Ver2UI
                             setLoad={setLoad}
                             load={load}
                             setCapacity={setCapacity}
                             capacity={capacity}
                         />
-                    </PageRenderer>
+                    </PaginatedTileRenderer>
                 </div>
             </div>
             <Footer />

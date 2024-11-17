@@ -2,11 +2,12 @@ export default function Slider({ min, max, value, step, onChange }) {
     return (
         <input
             type="range"
-            onChange={(e) => onChange(e.target.value)}
-            min={min}
-            max={max}
-            value={value}
-            step={step ? step : 1} // Move 1 unit per pixel unless otherwise specified
+            // Send the slider value to the callback function "onChange". Usually, this is paired with a setState on the caller.
+            onChange={onChange && ((e) => onChange(e.target.value))} // Optional
+            min={min} // Required
+            max={max} // Required
+            value={value} // Required
+            step={step ? step : 1} // Optional
             className="range fill-lighten-800 text-lighten-800 sm:flex-1"
         />
     );
