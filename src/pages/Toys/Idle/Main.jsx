@@ -72,20 +72,20 @@ export default function Main(props) {
     }, [ticks, capacity, load]);
 
     // System State Calculations, ordered by severity
-    // States: 0 - Balanced | 1 - Discharging | 2 - charging | 3 - Sagging | 4 - Overloaded
+    // States: 0 - Balanced | 1 - Discharging | 2 - Charging | 3 - Sagging | 4 - Overloaded
     useEffect(() => {
         if (generation === load) {
             setSystemState(0);
         } else if (load > generation && capacity > load - generation) {
             setSystemState(1);
-        } else if (load < generation && capacity < maximumCapacity) {
+        } else if (load > generation && capacity > 0) {
             setSystemState(2);
-        } else if (load > generation && capacity < load - generation) {
+        } else if (generation > load && capacity < maximumCapacity) {
             setSystemState(3);
         } else if (generation > load && capacity >= maximumCapacity) {
             setSystemState(4);
         } else {
-            setSystemState(5); // Error
+            setSystemState(5);
         }
     }, [capacity]);
 

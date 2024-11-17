@@ -44,6 +44,11 @@ export default function Ver2UI({
                 onChange={setLoad}
                 body="Load"
             />
+            <div className="flex flex-wrap gap-x-4 gap-y-2 max-sm:flex-col text-xs">
+                <p className="border border-darken-400 p-0.5">load: {typeof load} | setLoad: {typeof setLoad}</p>
+                <p className="border border-darken-400 p-0.5">capacity: {typeof capacity} | setCapacity: {typeof setCapacity}</p>
+                <p className="border border-darken-400 p-0.5">generation: {typeof generation} | setGeneration: {typeof setGeneration}</p>
+            </div>
         </motion.div>
     );
 }

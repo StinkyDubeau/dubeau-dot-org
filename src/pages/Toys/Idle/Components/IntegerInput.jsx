@@ -8,7 +8,7 @@ export default function IntegerInput({ id, onChange, value, className }) {
                 id={id}
                 className={className}
                 pattern="[0-9]{0,5}"
-                onChange={(e) => onChange(e.target.value)}
+                onChange={(e) => onChange(Number(e.target.value))}
                 value={value}
             />
         </>

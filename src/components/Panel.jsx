@@ -8,7 +8,7 @@ export default function Panel(props) {
             className={
                 props.className
                     ? props.className
-                    : `rounded-3xl bg-lighten-900 shadow-lg`
+                    : `rounded-3xl bg-lighten-900 shadow-lg p-2`
             }
         >
             {props.children}
