@@ -127,17 +127,28 @@ export default function Main(props) {
 
     function Header() {
         return (
-            <div className="flex w-full flex-nowrap gap-2 bg-lighten-800 p-2 text-xs">
-                <div className="flex flex-nowrap gap-2">
-                    <p>Supported display sizes:</p>
-                    <p className="min-xs:hidden xs:hidden">Too small!</p>
-                    <p className="max-xs:hidden">xs,</p>
-                    <p className="max-sm:hidden">sm,</p>
-                    <p className="max-md:hidden">md,</p>
-                    <p className="max-lg:hidden">lg,</p>
-                    <p className="max-xl:hidden">& xl</p>
+            <div
+                id="header"
+                className="font-header text-darken-900"
+            >
+                <p className="p-2">
+                    I do not currently know why the fuck everything is
+                    re-rendering and bouncing.
+                </p>
+                <div className="flex w-full gap-2 bg-lighten-800 p-2 text-xs">
+                    <div className="flex flex-nowrap gap-2">
+                        <p>Supported display sizes:</p>
+                        <p className="min-xs:hidden xs:hidden">Too small!</p>
+                        <p className="max-xs:hidden">xs,</p>
+                        <p className="max-sm:hidden">sm,</p>
+                        <p className="max-md:hidden">md,</p>
+                        <p className="max-lg:hidden">lg,</p>
+                        <p className="max-xl:hidden">& xl</p>
+                    </div>
+                    <p className="flex-1 text-right">
+                        {window.innerWidth} pixels
+                    </p>
                 </div>
-                <p className="flex-1 text-right">{window.innerWidth} pixels</p>
             </div>
         );
     }
@@ -167,7 +178,7 @@ export default function Main(props) {
         return (
             <div
                 key={index}
-                className="flex-1"
+                className=""
             >
                 {page}
             </div>
@@ -192,7 +203,7 @@ export default function Main(props) {
                 id="container"
                 className="flex flex-col gap-2"
             >
-                <div
+                <Panel
                     id="controls"
                     className="flex justify-around gap-2"
                 >
@@ -214,7 +225,7 @@ export default function Main(props) {
                         className="font-header font-bold text-darken-800"
                         onClick={increment}
                     />
-                </div>
+                </Panel>
                 <div
                     id="pages"
                     className="flex w-screen justify-center gap-2 bg-pink-400 p-2 max-sm:flex-col"
