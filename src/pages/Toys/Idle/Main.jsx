@@ -272,6 +272,8 @@ export default function Main(props) {
                             capacity={capacity}
                             flow={flow}
                             production={output}
+                            generation={generation}
+                            setGeneration={setGeneration}
                         />
                     </PaginatedTileRenderer>
                 </div>
