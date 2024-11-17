@@ -13,7 +13,10 @@ export default function Main(props) {
     const [systemState, setSystemState] = useState("net zero");
     const [generation, setGeneration] = useState(100); // In watts
     const [capacity, setCapacity] = useState(100); // In joules
+    const [maximumCapacity, setMaximumCapacity] = useState(10000); // In joules
     const [load, setLoad] = useState(100); // In watts
+    const [production, setProduction] = useState(0); // Net output (or input if negative)
+    const [flow, setFlow] = useState(0); // Instantaneous power use (watts)
     const [godmode, setGodmode] = useState(false); // Whether to check for lack of capacity, or just keep running the simulation
 
     const [birthDate, setBirthdate] = useState(new Date());
@@ -26,24 +29,38 @@ export default function Main(props) {
     // It will effectively be a user account page.
     // It will feature account name, profile image (generated like in p2p chat)
 
-    // -----------------------------------------
-    // Timestep Timescale Interdependency
     const [timestep, setTimestep] = useState(1); // E.g. 0.5x speed, 2x speed. This multiple is applied to deltaT itself, and thus dictates the simulation speed of the game.
-    const [timescale, setTimescale] = useState(1); // how fast (1x, 2x, 100x, should the simulation run? This will trickle down to mspt.)
 
     // TODO: Rethink this. I believe setInterval() is what's preventing input during frame changes.
     // Instead, maybe let's just check for irl time to change, and calculate DeltaT.
 
-    // Electric simulation here
+    // Electric simulation here. Code should run once per second. Currently, it runs once per mspt.
     useEffect(() => {
         const interval = setInterval(() => {
             var newTicks = ticks + timestep;
 
-            systemState == "discharging" &&
-                setCapacity(capacity - (load - generation));
+            switch (systemState) {
+                case 0: // Balanced
+                    break;
+                case 1: // Discharging
+                    setCapacity(capacity - load);
+                    break;
+                case 2: // Charging
+                    setCapacity(capacity + generation - load);
+                    break;
+                case 3: // Insufficient supply
+                    setCapacity(0);
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    console.error(
+                        "systemState should be less than 5. Something is wrong.",
+                    );
+            }
 
             setTicks(newTicks);
-        }, mspt);
+        }, [mspt]);
 
         return () => clearInterval(interval); // This represents the unmount function, in which you need to clear your interval to prevent memory leaks.
     }, [ticks]);
@@ -51,14 +68,23 @@ export default function Main(props) {
     // Do every tick
     useEffect(() => {
         setTime(new Date());
-    }, [ticks, capacity]);
+    }, [ticks, capacity, load]);
 
-    // System State Calculations
+    // System State Calculations, ordered by severity
+    // States: 0 - Balanced | 1 - Discharging | 2 - charging | 3 - Sagging | 4 - Overloaded
     useEffect(() => {
-        if (capacity < load) {
-            setSystemState("overloaded");
-        } else if (load < capacity) {
-            setSystemState("discharging");
+        if (generation === load) {
+            setSystemState(0);
+        } else if (load > generation && capacity > load - generation) {
+            setSystemState(1);
+        } else if (load < generation && capacity < maximumCapacity) {
+            setSystemState(2);
+        } else if (load > generation && capacity < load - generation) {
+            setSystemState(3);
+        } else if (generation > load && capacity >= maximumCapacity) {
+            setSystemState(4);
+        } else {
+            setSystemState(5); // Error
         }
     }, [capacity]);
 
@@ -67,6 +93,33 @@ export default function Main(props) {
         return vagueTime.get({
             to: date,
         });
+    }
+
+    function getVagueState(state) {
+        var x = "";
+
+        switch (state) {
+            case 0:
+                x = "🌏 Balanced";
+                break;
+            case 1:
+                x = "🪫 Discharging";
+                break;
+            case 2:
+                x = "🔋 Charging";
+                break;
+            case 3:
+                x = "⚠️ Sagging";
+                break;
+            case 4:
+                x = "💥 Overloaded";
+                break;
+            case 5:
+                x = "❓ An error occurred.";
+                break;
+        }
+
+        return x;
     }
 
     function tick() {}
@@ -91,8 +144,13 @@ export default function Main(props) {
     function Footer() {
         return (
             <div className="flex w-full justify-around gap-2 bg-lighten-800 text-darken-800 max-sm:flex-col sm:gap-6">
-                <p>System state: {systemState}</p>
-                <p>Capacity: {capacity} joules</p>
+                <Panel className="flex flex-col flex-wrap justify-center sm:p-2">
+                    <p className="text-nowrap">System state: {systemState}</p>
+                    <p className="text-nowrap">{getVagueState(systemState)}</p>
+                </Panel>
+                <p>
+                    Capacity: {capacity}/{maximumCapacity} joules
+                </p>
                 <p>Generation: {generation} watts</p>
                 <p>Load: {load} watts</p>
                 <p>Time: {time.toLocaleTimeString()}</p>
@@ -158,8 +216,7 @@ export default function Main(props) {
                     id="pages"
                     className="flex w-screen justify-center gap-2 bg-pink-400 p-2 max-sm:flex-col"
                 >
-                    {/* Run mapping function only if there is more than one page to be rendered */}
-                    {/* {pages.length ? pages.map(renderPage) : renderPage(pages)} */}
+                    {/* Render the chosen tile */}
                     {pages.length
                         ? renderPage(pages[index])
                         : renderPage(pages)}
@@ -187,18 +244,24 @@ export default function Main(props) {
             <div className="flex w-screen justify-center gap-2 font-header text-darken-700">
                 <div className="flex flex-col gap-2 bg-blue-400">
                     <PaginatedTileRenderer>
-                        {/* <Ver1UI
+                        <Ver1UI
                             setLoad={setLoad}
                             load={load}
                             setCapacity={setCapacity}
                             capacity={capacity}
-                        /> */}
+                            maximumCapacity={maximumCapacity}
+                        />
                         <Ver2UI
                             setLoad={setLoad}
                             load={load}
                             setCapacity={setCapacity}
                             capacity={capacity}
+                            flow={flow}
+                            production={production}
                         />
+                        <TestPage />
+                        <TestPage />
+                        <TestPage />
                     </PaginatedTileRenderer>
                 </div>
             </div>

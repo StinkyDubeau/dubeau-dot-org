@@ -3,7 +3,7 @@ import Button from "../Components/Button";
 import Slider from "../Components/Slider";
 import ManualDynamo from "../Components/ManualDynamo";
 
-export default function Ver1UI({ capacity, setCapacity, load, setLoad }) {
+export default function Ver1UI({ capacity, setCapacity, load, setLoad, maximumCapacity }) {
     return (
         <motion.div
             layoutId="modal"
@@ -22,7 +22,7 @@ export default function Ver1UI({ capacity, setCapacity, load, setLoad }) {
                         onChange={setCapacity}
                         value={capacity}
                         min={0}
-                        max={1000}
+                        max={maximumCapacity}
                     />
                 </div>
             </div>
