@@ -187,12 +187,8 @@ export default function (props) {
                     </button>
                 </div>
                 <div className="flex flex-wrap gap-2">
-                    <p>
-                        hideChords: {hideChords.toString()}
-                    </p>
-                    <p>
-                        hideTabs: {hideTabs.toString()}
-                    </p>
+                    <p>hideChords: {hideChords.toString()}</p>
+                    <p>hideTabs: {hideTabs.toString()}</p>
                 </div>
             </Panel>
         );
