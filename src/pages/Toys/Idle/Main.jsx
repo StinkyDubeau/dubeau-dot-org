@@ -80,8 +80,6 @@ export default function Main(props) {
         }
     }
 
-
-
     function Header() {
         return (
             <div className="flex w-full flex-nowrap gap-2 bg-lighten-800 p-2 text-xs">
@@ -103,7 +101,7 @@ export default function Main(props) {
         return (
             <div className="flex w-full justify-around gap-2 bg-lighten-800 text-darken-800 max-sm:flex-col sm:gap-6">
                 <p>System state: {systemState}</p>
-                <p>Capacity (capacitance): {capacity} joules</p>
+                <p>Capacity: {capacity} joules</p>
                 <p>Generation: {generation} watts</p>
                 <p>Load: {load} watts</p>
                 <p>Time: {time.toLocaleTimeString()}</p>
@@ -184,6 +182,15 @@ export default function Main(props) {
         const [pages, setPages] = useState(props.children);
         const [index, setIndex] = useState(0);
 
+        function decrement() {
+            // Do not lower the index if we're already on the first page.
+            index > 0 && setIndex(index - 1);
+        }
+
+        function increment() {
+            index < pages.length && setIndex(index + 1);
+        }
+
         return (
             <div
                 id="container"
@@ -197,8 +204,9 @@ export default function Main(props) {
                     <Button
                         body="Previous"
                         className="font-header font-bold text-darken-800"
+                        onClick={decrement}
                     />
-                    {pages.length ? `${index}/${pages.length}` : "1/1"}
+                    {pages.length ? `${index + 1}/${pages.length}` : "1/1"}
                     {/* {pages.map((page, index) => {
                         <Button
                             key={index}
@@ -208,6 +216,7 @@ export default function Main(props) {
                     <Button
                         body="Next"
                         className="font-header font-bold text-darken-800"
+                        onClick={increment}
                     />
                 </div>
                 <div
@@ -215,7 +224,8 @@ export default function Main(props) {
                     className="flex w-screen justify-center gap-2 bg-pink-400 p-2 max-sm:flex-col"
                 >
                     {/* Run mapping function only if there is more than one page to be rendered */}
-                    {pages.length ? pages.map(renderPage) : renderPage(pages)}
+                    {/* {pages.length ? pages.map(renderPage) : renderPage(pages)} */}
+                    {renderPage(pages[index])}
                 </div>
             </div>
         );
@@ -244,6 +254,8 @@ export default function Main(props) {
                         <Ver2UI
                             setLoad={setLoad}
                             load={load}
+                            setCapacity={setCapacity}
+                            capacity={capacity}
                         />
                     </PageRenderer>
                 </div>
