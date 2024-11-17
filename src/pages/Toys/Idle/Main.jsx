@@ -3,35 +3,48 @@ import { useState, useEffect } from "react";
 import vagueTime from "vague-time";
 import Panel from "../../../components/Panel";
 import { motion } from "framer-motion";
+import Button from "./Components/Button";
+
+import Ver2UI from "./Tiles/Ver2UI";
+import Slider from "./Components/Slider";
 
 export default function Main(props) {
-    const [peakCapacity, setPeakCapacity] = useState(100); // In watts
-    const [capacity, setCapacity] = useState(100); // In watts
+    const [systemState, setSystemState] = useState("net zero");
+    const [generation, setGeneration] = useState(100); // In watts
+    const [capacity, setCapacity] = useState(100); // In joules
     const [load, setLoad] = useState(100); // In watts
-    const [stored, setStored] = useState(100); // In joules
     const [godmode, setGodmode] = useState(false); // Whether to check for lack of capacity, or just keep running the simulation
 
     const [birthDate, setBirthdate] = useState(new Date());
     const [time, setTime] = useState(new Date());
 
     const [ticks, setTicks] = useState(0); //start at 0 ticks.
-    const [mspt, setMspt] = useState(1000); // how many milliseconds per tick
-    const [timestep, setTimestep] = useState(1); // how many ticks to advance per tick.
+    const [mspt, setMspt] = useState(1000); // how many milliseconds per tick. 1000mspt = 1tps
+
+    // TODO: SUMMARY TILE
+    // It will effectively be a user account page.
+    // It will feature account name, profile image (generated like in p2p chat)
+    //
+
+    // -----------------------------------------
+    // Timestep Timescale Interdependency
+    const [timestep, setTimestep] = useState(1); // E.g. 0.5x speed, 2x speed. This multiple is applied to deltaT itself, and thus dictates the simulation speed of the game.
     const [timescale, setTimescale] = useState(1); // how fast (1x, 2x, 100x, should the simulation run? This will trickle down to mspt.)
 
     // TODO: Rethink this. I believe setInterval() is what's preventing input during frame changes.
     // Instead, maybe let's just check for irl time to change, and calculate DeltaT.
-    // Game loop logic is here
+
+    // Electric simulation here
     useEffect(() => {
         const interval = setInterval(() => {
             var newTicks = ticks + timestep;
 
             if (capacity > load) {
-                setCapacity(capacity - load); // If capacity is insufficient, subtract the load from the stored power
+                setCapacity(capacity - load); // If generation is less than load, subtract that many watts per second from the capacity.
             }
 
             setTicks(newTicks);
-        }, mspt / timescale);
+        }, mspt);
 
         return () => clearInterval(interval); // This represents the unmount function, in which you need to clear your interval to prevent memory leaks.
     }, [ticks]);
@@ -41,10 +54,14 @@ export default function Main(props) {
         setTime(new Date());
     }, [ticks]);
 
-    // Update timescale
+    // Check that system can still provide power
     useEffect(() => {
-        console.log(`Changing timescale to ${timescale}. Old mspt = ${mspt}`);
-    }, [timescale]);
+        if (capacity < load) {
+            setSystemState("overloaded");
+        } else if (load > capacity) {
+            setSystemState("discharging");
+        }
+    }, [capacity]);
 
     // Helper functions
     function getVagueTimeSince(date) {
@@ -53,7 +70,7 @@ export default function Main(props) {
         });
     }
 
-    function tick() { }
+    function tick() {}
 
     function ManualDynamo(props) {
         const [rpm, setRpm] = useState(0);
@@ -63,41 +80,32 @@ export default function Main(props) {
         }
     }
 
-    function Button({ body, onClick }) {
-        return (
-            <button
-                className="rounded-2xl bg-lighten-800 p-2 font-header text-darken-800 transition-all hover:bg-lighten-900 active:bg-lighten-200"
-                onClick={onClick}
-            >
-                {body}
-            </button>
-        );
-    }
 
-    function Slider({ min, max, value, step, onChange }) {
-        return (
-            <input
-                type="range"
-                onChange={(e) => onChange(e.target.value)}
-                min={min}
-                max={max}
-                value={value}
-                step={step ? step : 1} // Move 1 unit per pixel unless otherwise specified
-                className="range fill-lighten-800 text-lighten-800 sm:flex-1"
-            />
-        );
-    }
 
     function Header() {
-        return <div className="w-full bg-lighten-800">Header</div>;
+        return (
+            <div className="flex w-full flex-nowrap gap-2 bg-lighten-800 p-2 text-xs">
+                <div className="flex flex-nowrap gap-2">
+                    <p>Supported display sizes:</p>
+                    <p className="min-xs:hidden xs:hidden">Too small!</p>
+                    <p className="max-xs:hidden">xs,</p>
+                    <p className="max-sm:hidden">sm,</p>
+                    <p className="max-md:hidden">md,</p>
+                    <p className="max-lg:hidden">lg,</p>
+                    <p className="max-xl:hidden">& xl</p>
+                </div>
+                <p className="flex-1 text-right">{window.innerWidth} pixels</p>
+            </div>
+        );
     }
 
     function Footer() {
         return (
             <div className="flex w-full justify-around gap-2 bg-lighten-800 text-darken-800 max-sm:flex-col sm:gap-6">
-                <p>Capacity: {capacity} watts</p>
+                <p>System state: {systemState}</p>
+                <p>Capacity (capacitance): {capacity} joules</p>
+                <p>Generation: {generation} watts</p>
                 <p>Load: {load} watts</p>
-                <p>Stored energy: {stored} joules</p>
                 <p>Time: {time.toLocaleTimeString()}</p>
                 <p>Spawn time: {birthDate.toLocaleTimeString()}</p>
                 <p>Born: {getVagueTimeSince(birthDate)}</p>
@@ -105,10 +113,13 @@ export default function Main(props) {
         );
     }
 
-    function UI() {
+    function Ver1UI() {
         return (
-            <motion.div layoutId="modal" className="flex max-w-screen-md flex-col gap-2 overflow-hidden rounded-3xl bg-orange-400 p-2 sm:bg-green-500 sm:p-8">
-                <h1 className="text-3xl">Idle Clicker</h1>
+            <motion.div
+                layoutId="modal"
+                className="flex max-w-screen-md flex-col gap-2 overflow-hidden rounded-3xl bg-orange-400 p-2 sm:bg-green-500 sm:p-8"
+            >
+                <h1 className="text-3xl">Ver1.0</h1>
                 <p>Capacity: {capacity} watts</p>
                 <Button
                     body="Turn manual dynamo"
@@ -160,19 +171,18 @@ export default function Main(props) {
 
     function renderPage(page, index) {
         return (
-            <motion.div
-                animate={{ x: 100, opacity: 1 }}
-                className="flex-1"
+            <div
                 key={index}
+                className="flex-1"
             >
                 {page}
-            </motion.div>
+            </div>
         );
     }
 
     function PageRenderer(props) {
         const [pages, setPages] = useState(props.children);
-        const [index, setIndex] = useState(pages.length);
+        const [index, setIndex] = useState(0);
 
         return (
             <div
@@ -181,8 +191,20 @@ export default function Main(props) {
             >
                 <div
                     id="controls"
-                    className="flex justify-between gap-2"
+                    className="flex justify-around gap-2"
                 >
+                    {/* Display the number of pages, or "1 page" if pages is not an array. */}
+                    <Button
+                        body="Previous"
+                        className="font-header font-bold text-darken-800"
+                    />
+                    {pages.length ? `${index}/${pages.length}` : "1/1"}
+                    {/* {pages.map((page, index) => {
+                        <Button
+                            key={index}
+                            body={index}
+                        />;
+                    })} */}
                     <Button
                         body="Next"
                         className="font-header font-bold text-darken-800"
@@ -190,9 +212,10 @@ export default function Main(props) {
                 </div>
                 <div
                     id="pages"
-                    className="flex w-screen justify-center gap-2 bg-blue-400 p-2 max-sm:flex-col"
+                    className="flex w-screen justify-center gap-2 bg-pink-400 p-2 max-sm:flex-col"
                 >
-                    {pages.map(renderPage)}
+                    {/* Run mapping function only if there is more than one page to be rendered */}
+                    {pages.length ? pages.map(renderPage) : renderPage(pages)}
                 </div>
             </div>
         );
@@ -215,11 +238,13 @@ export default function Main(props) {
         >
             <Header />
             <div className="flex w-screen justify-center gap-2 font-header text-darken-700">
-                <div className="flex flex-col gap-2">
+                <div className="flex flex-col gap-2 bg-blue-400">
                     <PageRenderer>
-                        <UI />
-                        <UI />
-                        <TestPage />
+                        <Ver1UI />
+                        <Ver2UI
+                            setLoad={setLoad}
+                            load={load}
+                        />
                     </PageRenderer>
                 </div>
             </div>
