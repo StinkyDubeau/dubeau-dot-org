@@ -34,6 +34,10 @@ export default function Main(props) {
     // It will effectively be a user account page.
     // It will feature account name, profile image (generated like in p2p chat)
 
+    // TODO: All tiles should have a small, glanceable thumbnail.
+    // E.G. Power meter tile may just display excess in the thumbnail
+    // Expanded, it will show load, capacity, and generation.
+
     const [timestep, setTimestep] = useState(1); // E.g. 0.5x speed, 2x speed. This multiple is applied to deltaT itself, and thus dictates the simulation speed of the game.
 
     // TODO: Rethink this. I believe setInterval() is what's preventing input during frame changes.
