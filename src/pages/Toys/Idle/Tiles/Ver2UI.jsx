@@ -10,7 +10,7 @@ export default function Ver2UI({
     generation,
     setGeneration,
 }) {
-    function RenderIntegerInput({ onChange, value, body }) {
+    function RenderIntegerInput({ onChange, value, body, unit }) {
         return (
             <div className="flex justify-stretch gap-2 max-sm:flex-col">
                 <p className="my-auto flex-1 text-left">{body}</p>
@@ -19,6 +19,7 @@ export default function Ver2UI({
                     onChange={onChange}
                     value={value}
                 />
+                <p className="my-auto flex-0 text-right">{unit && unit}</p>
             </div>
         );
     }
@@ -33,16 +34,19 @@ export default function Ver2UI({
                 value={capacity}
                 onChange={setCapacity}
                 body="Capacity"
+                unit="joules"
             />
             <RenderIntegerInput
                 value={generation}
                 onChange={setGeneration}
                 body="Generation"
+                unit="watts"
             />
             <RenderIntegerInput
                 value={load}
                 onChange={setLoad}
                 body="Load"
+                unit="watts"
             />
             <div className="flex flex-wrap gap-x-4 gap-y-2 max-sm:flex-col text-xs">
                 <p className="border border-darken-400 p-0.5">load: {typeof load} | setLoad: {typeof setLoad}</p>

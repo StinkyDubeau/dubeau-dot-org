@@ -14,7 +14,7 @@ export default function (props) {
     function createBookmark(bookmark, index) {
         return (
             <Panel
-                className="max-w-screen overflow-hidden p-4"
+                className="max-w-screen overflow-hidden p-4 bg-lighten-800 rounded-2xl shadow-xl"
                 key={bookmark.guid}
             >
                 {/* Create a folder if there are children under this component. Otherwise create the tab. */}
@@ -208,8 +208,7 @@ export default function (props) {
                         <p className="text-left font-header text-3xl text-darken-800">
                             Guitar Tabs
                         </p>
-                        <p className="max-w-md text-left font-header text-darken-600">
-                            This is my personal collection of bookmarks to songs
+                        <p className="text-left font-header text-darken-600">
                             I like to play. Click an entry to open its
                             tablature.
                         </p>

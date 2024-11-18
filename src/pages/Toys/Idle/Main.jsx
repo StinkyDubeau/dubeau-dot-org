@@ -15,9 +15,13 @@ export default function Main(props) {
     const [capacity, setCapacity] = useState(100); // In joules
     const [maximumCapacity, setMaximumCapacity] = useState(10000); // In joules, should convert to kWh for display.
     const [load, setLoad] = useState(100); // In watts
-    const [maximumLoad, setMaximumLoad] = useState(1000); // In Watts, default 1kW
-    const [output, setOutput] = useState(0); // In joules,  system net output (or input if negative)
-    const [flow, setFlow] = useState(0); // Instantaneous power use (watts)
+    const [maximumLoad, setMaximumLoad] = useState(1000); // In watts, default 1kW
+    const [output, setOutput] = useState(0); // In joules, system net output (or input if negative)
+
+    const [flow, setFlow] = useState(0); // In watts, istantaneous power use
+    const [excess, setExcess] = useState(0) //In watts, the delta between generation and load. Optimally, this is zero.
+
+
     const [godmode, setGodmode] = useState(false); // Whether to check for lack of capacity, or just keep running the simulation
 
     const [birthDate, setBirthdate] = useState(new Date());
@@ -71,23 +75,36 @@ export default function Main(props) {
         setTime(new Date());
     }, [ticks, capacity, load]);
 
+
     // System State Calculations, ordered by severity
     // States: 0 - Balanced | 1 - Discharging | 2 - Charging | 3 - Sagging | 4 - Overloaded
     useEffect(() => {
-        if (generation === load) {
+        setExcess(generation - load);
+
+        if (excess === 0) {
+            // The system is balanced
             setSystemState(0);
-        } else if (load > generation && capacity > load - generation) {
-            setSystemState(1);
-        } else if (load > generation && capacity > 0) {
-            setSystemState(2);
-        } else if (generation > load && capacity < maximumCapacity) {
-            setSystemState(3);
-        } else if (generation > load && capacity >= maximumCapacity) {
-            setSystemState(4);
-        } else {
-            setSystemState(5);
+        } else if (excess < 0) {
+            // Insufficient generation, try to use stored capacity.
+            if (capacity + excess > 0) {
+                // There is enough stored capacity. We are discharging.
+                setSystemState(1);
+            } else if (capacity + excess < 0) {
+                // There is not enough stored capacity. We are sagging.
+                setSystemState(3);
+            }
+
+        } else if (excess > 0) {
+            // There is an excess of generation, try to charge capacity.
+            if (capacity + excess > maximumCapacity) {
+                // No more capacity to charge. We are overloaded.
+                setSystemState(4);
+            } else {
+                // Room to charge. Charging.
+                setSystemState(2)
+            }
         }
-    }, [capacity]);
+    }, [capacity, load, generation]);
 
     // Helper functions
     function getVagueTimeSince(date) {
@@ -123,7 +140,7 @@ export default function Main(props) {
         return x;
     }
 
-    function tick() {}
+    function tick() { }
 
     function Header() {
         return (
