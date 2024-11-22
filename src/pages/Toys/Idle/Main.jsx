@@ -19,8 +19,7 @@ export default function Main(props) {
     const [output, setOutput] = useState(0); // In joules, system net output (or input if negative)
 
     const [flow, setFlow] = useState(0); // In watts, istantaneous power use
-    const [excess, setExcess] = useState(0) //In watts, the delta between generation and load. Optimally, this is zero.
-
+    const [excess, setExcess] = useState(0); //In watts, the delta between generation and load. Optimally, this is zero.
 
     const [godmode, setGodmode] = useState(false); // Whether to check for lack of capacity, or just keep running the simulation
 
@@ -79,7 +78,6 @@ export default function Main(props) {
         setTime(new Date());
     }, [ticks, capacity, load]);
 
-
     // System State Calculations, ordered by severity
     // States: 0 - Balanced | 1 - Discharging | 2 - Charging | 3 - Sagging | 4 - Overloaded
     useEffect(() => {
@@ -97,7 +95,6 @@ export default function Main(props) {
                 // There is not enough stored capacity. We are sagging.
                 setSystemState(3);
             }
-
         } else if (excess > 0) {
             // There is an excess of generation, try to charge capacity.
             if (capacity + excess > maximumCapacity) {
@@ -105,7 +102,7 @@ export default function Main(props) {
                 setSystemState(4);
             } else {
                 // Room to charge. Charging.
-                setSystemState(2)
+                setSystemState(2);
             }
         }
     }, [capacity, load, generation]);
@@ -144,7 +141,7 @@ export default function Main(props) {
         return x;
     }
 
-    function tick() { }
+    function tick() {}
 
     function Header() {
         return (
@@ -216,7 +213,7 @@ export default function Main(props) {
         }
 
         function increment() {
-            index < pages.length && setIndex(index + 1);
+            (index + 1) < pages.length && setIndex(index + 1);
         }
 
         return (
@@ -279,13 +276,13 @@ export default function Main(props) {
             <div className="flex w-screen justify-center gap-2 font-header text-darken-700">
                 <div className="flex flex-col gap-2 bg-blue-400">
                     <PaginatedTileRenderer>
-                        {/* <Ver1UI
+                        <Ver1UI
                             setLoad={setLoad}
                             load={load}
                             setCapacity={setCapacity}
                             capacity={capacity}
                             maximumCapacity={maximumCapacity}
-                        /> */}
+                        />
                         <Ver2UI
                             setLoad={setLoad}
                             load={load}
