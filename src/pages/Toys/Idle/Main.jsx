@@ -16,9 +16,8 @@ export default function Main(props) {
     const [maximumCapacity, setMaximumCapacity] = useState(10000); // In joules, should convert to kWh for display.
     const [load, setLoad] = useState(100); // In watts
     const [maximumLoad, setMaximumLoad] = useState(1000); // In watts, default 1kW
-    const [output, setOutput] = useState(0); // In joules, system net output (or input if negative)
 
-    const [flow, setFlow] = useState(0); // In watts, istantaneous power use
+    const [output, setOutput] = useState(0); // In joules, system net output (or input if negative)
     const [excess, setExcess] = useState(0); //In watts, the delta between generation and load. Optimally, this is zero.
 
     const [godmode, setGodmode] = useState(false); // Whether to check for lack of capacity, or just keep running the simulation
@@ -42,7 +41,8 @@ export default function Main(props) {
     // TODO: Rethink this. I believe setInterval() is what's preventing input during frame changes.
     // Instead, maybe let's just check for irl time to change, and calculate DeltaT.
 
-    // Electric simulation here. Code should run once per second. Currently, it runs once per mspt.
+    // Electric simulation here.
+    //TODO: Code should run once per second. Currently, it runs once per mspt.
     useEffect(() => {
         const interval = setInterval(() => {
             var newTicks = ticks + timestep;
@@ -51,13 +51,16 @@ export default function Main(props) {
                 case 0: // Balanced
                     break;
                 case 1: // Discharging
-                    setCapacity(capacity - load);
+                    setCapacity(capacity + excess);
+                    setOutput(load);
                     break;
                 case 2: // Charging
-                    setCapacity(capacity + generation - load);
+                    setCapacity(capacity - excess);
+                    setOutput(load);
                     break;
-                case 3: // Insufficient supply
+                case 3: // Sagging
                     setCapacity(0);
+                    setOutput(generation);
                     break;
                 case 4:
                     break;
@@ -114,33 +117,6 @@ export default function Main(props) {
         });
     }
 
-    function getVagueState(state) {
-        var x = "";
-
-        switch (state) {
-            case 0:
-                x = "🌏 Balanced";
-                break;
-            case 1:
-                x = "🪫 Discharging";
-                break;
-            case 2:
-                x = "🔋 Charging";
-                break;
-            case 3:
-                x = "⚠️ Sagging";
-                break;
-            case 4:
-                x = "💥 Overloaded";
-                break;
-            case 5:
-                x = "❓ An error occurred.";
-                break;
-        }
-
-        return x;
-    }
-
     function tick() {}
 
     function Header() {
@@ -171,7 +147,34 @@ export default function Main(props) {
         );
     }
 
-    function Footer() {
+    function Footer({ capacity, maximumCapacity, load, maximumLoad }) {
+        function getVagueState(state) {
+            var x = "";
+
+            switch (state) {
+                case 0:
+                    x = "🌏 Balanced";
+                    break;
+                case 1:
+                    x = "🪫 Discharging";
+                    break;
+                case 2:
+                    x = "🔋 Charging";
+                    break;
+                case 3:
+                    x = "⚠️ Sagging";
+                    break;
+                case 4:
+                    x = "💥 Overloaded";
+                    break;
+                case 5:
+                    x = "❓ An error occurred.";
+                    break;
+            }
+
+            return x;
+        }
+
         return (
             <div className="flex w-full justify-around gap-2 bg-lighten-800 text-darken-800 max-sm:flex-col sm:gap-6">
                 <Panel className="flex flex-col flex-wrap justify-center sm:p-2">
@@ -213,7 +216,7 @@ export default function Main(props) {
         }
 
         function increment() {
-            (index + 1) < pages.length && setIndex(index + 1);
+            index + 1 < pages.length && setIndex(index + 1);
         }
 
         return (
@@ -276,27 +279,32 @@ export default function Main(props) {
             <div className="flex w-screen justify-center gap-2 font-header text-darken-700">
                 <div className="flex flex-col gap-2 bg-blue-400">
                     <PaginatedTileRenderer>
-                        <Ver1UI
+                        {/* <Ver1UI
                             setLoad={setLoad}
                             load={load}
                             setCapacity={setCapacity}
                             capacity={capacity}
                             maximumCapacity={maximumCapacity}
-                        />
+                        /> */}
                         <Ver2UI
                             setLoad={setLoad}
                             load={load}
                             setCapacity={setCapacity}
                             capacity={capacity}
-                            flow={flow}
-                            production={output}
+                            output={output}
                             generation={generation}
                             setGeneration={setGeneration}
+                            excess={excess}
                         />
                     </PaginatedTileRenderer>
                 </div>
             </div>
-            <Footer />
+            <Footer
+                capacity={capacity}
+                maximumCapacity={maximumCapacity}
+                load={load}
+                maximumLoad={maximumLoad}
+            />
         </Frame>
     );
 }
