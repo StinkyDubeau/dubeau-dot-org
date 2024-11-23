@@ -14,7 +14,7 @@ export default function Ver2UI({
 }) {
     function RenderIntegerInput({ onChange, value, body, unit }) {
         return (
-            <div className="flex justify-stretch gap-2 max-sm:flex-col">
+            <div className="flex justify-stretch gap-2">
                 <p className="my-auto flex-1 text-left">{body}</p>
                 <IntegerInput
                     className="flex-0 rounded-xl bg-darken-200 p-2 text-right"
@@ -28,7 +28,7 @@ export default function Ver2UI({
 
     function RenderInteger({ value, body, unit }) {
         return (
-            <div className="flex justify-stretch gap-2 max-sm:flex-col">
+            <div className="flex justify-stretch gap-2">
                 <p className="my-auto flex-1 text-left">{body}</p>
                 <p className="my-auto flex-1 text-right">{value}</p>
                 <p className="flex-0 my-auto text-right">{unit && unit}</p>
@@ -39,7 +39,7 @@ export default function Ver2UI({
     return (
         <motion.div
             layoutId="modal"
-            className="flex max-w-screen-md flex-col overflow-hidden rounded-3xl bg-orange-400 p-2 sm:gap-12 sm:bg-green-500 sm:p-8"
+            className="flex max-w-screen-md flex-col overflow-hidden rounded-3xl bg-orange-400 p-2"
         >
             <h1 className="text-3xl">dev controller v2</h1>
             <RenderIntegerInput
@@ -72,7 +72,7 @@ export default function Ver2UI({
             />
             <p className="my-auto flex-1 text-left">Datatypes:</p>
 
-            <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs max-sm:flex-col">
+            <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs">
                 <p className="border border-darken-400 p-0.5">
                     load: {typeof load} | setLoad: {typeof setLoad}
                 </p>

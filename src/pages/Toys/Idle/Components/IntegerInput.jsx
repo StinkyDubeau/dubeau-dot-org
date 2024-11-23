@@ -2,7 +2,7 @@ export default function IntegerInput({ id, onChange, value, className }) {
     return (
         <>
             <input
-                // TODO: Get scroll functionality working light Adobe integer inputs
+                // TODO: Get scroll functionality working like Adobe integer inputs
                 onScroll={(e) => console.log(e)}
                 type="number"
                 id={id}

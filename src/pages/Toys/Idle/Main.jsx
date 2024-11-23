@@ -50,6 +50,7 @@ export default function Main(props) {
 
             switch (systemState) {
                 case 0: // Balanced
+                    setOutput(load);
                     break;
                 case 1: // Discharging
                     setCapacity(capacity + excess);
@@ -102,7 +103,8 @@ export default function Main(props) {
                 // There is not enough stored capacity. We are sagging.
                 setSystemState(3);
             }
-        } else if (excess > 0) {
+        }
+        if (excess > 0) {
             // There is an excess of generation, try to charge capacity.
             if (capacity + excess > maximumCapacity) {
                 // No more capacity to charge. We are overloaded.
@@ -123,7 +125,7 @@ export default function Main(props) {
 
     function tick() { }
 
-    function Header() {
+    function createHeaderComponent() {
         return (
             <div
                 id="header"
@@ -151,7 +153,7 @@ export default function Main(props) {
         );
     }
 
-    function Footer({ capacity, maximumCapacity, load, maximumLoad }) {
+    function createFooterComponent() {
         function getVagueState(state) {
             var x = "";
 
@@ -210,8 +212,8 @@ export default function Main(props) {
         );
     }
 
-    function PaginatedTileRenderer(props) {
-        const [pages, setPages] = useState(props.children);
+    function createPaginatedTileRendererComponent(tiles) {
+        const [pages, setPages] = useState(tiles);
         const [index, setIndex] = useState(0);
 
         function decrement() {
@@ -253,7 +255,7 @@ export default function Main(props) {
                 </Panel>
                 <div
                     id="pages"
-                    className="flex w-screen justify-center gap-2 bg-pink-400 p-2 max-sm:flex-col"
+                    className="flex w-screen justify-center gap-2 bg-pink-400 p-2"
                 >
                     {/* Render the chosen tile */}
                     {pages.length
@@ -279,10 +281,12 @@ export default function Main(props) {
             data={props.data}
             noScroll
         >
-            <Header />
+            <p>Test</p>
+            <Button body="Test" />
+            {createHeaderComponent()}
             <div className="flex w-screen justify-center gap-2 font-header text-darken-700">
                 <div className="flex flex-col gap-2 bg-blue-400">
-                    <PaginatedTileRenderer>
+                    <createPaginatedTileRendererComponent>
                         {/* <Ver1UI
                             setLoad={setLoad}
                             load={load}
@@ -300,15 +304,10 @@ export default function Main(props) {
                             setGeneration={setGeneration}
                             excess={excess}
                         />
-                    </PaginatedTileRenderer>
+                    </createPaginatedTileRendererComponent>
                 </div>
             </div>
-            <Footer
-                capacity={capacity}
-                maximumCapacity={maximumCapacity}
-                load={load}
-                maximumLoad={maximumLoad}
-            />
+            {createFooterComponent()}
         </Frame>
     );
 }
