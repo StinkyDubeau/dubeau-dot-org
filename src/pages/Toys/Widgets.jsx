@@ -227,7 +227,7 @@ export default function (props) {
             );
         }
 
-        function RenderShop(props) {
+        function renderShop() {
             function RenderShopButton({ quantity, body, onClick }) {
                 return (
                     <button
@@ -240,11 +240,26 @@ export default function (props) {
                 );
             }
 
-            function RenderGrandmas() {
+            function renderShopButton(quantity, body, onClick) {
+                return (
+                    <button
+                        onClick={onClick}
+                        className="active:scale:100 flex-1 rounded-lg bg-lighten-700 p-2 text-darken-600 transition-all hover:scale-105"
+                    >
+                        {quantity}
+                        {body}
+                    </button>
+                );
+            }
+
+            function renderGrandmas() {
                 return (
                     <div className="flex flex-col gap-2">
                         <p className="">Grandmas: {grandmas}</p>
                         <div className="flex gap-2 max-sm:flex-col ">
+                            {renderShopButton(1, `Buy 1 $${grandmaCost}`, () =>
+                                buyGrandmas(1),
+                            )}
                             <RenderShopButton
                                 body={`Buy 1 $${grandmaCost}`}
                                 onClick={() => buyGrandmas(1)}
@@ -290,15 +305,12 @@ export default function (props) {
                     className="flex flex-col gap-2 rounded-xl bg-darken-200 p-2 font-header text-sm text-lighten-700"
                 >
                     <h1 className="text-left underline">Shop</h1>
-                    <RenderGrandmas />
+                    {renderGrandmas()}
                 </div>
             );
         }
 
-        function RenderStatistics(props) {
-            function RenderStatistic(props) {
-                return <div></div>;
-            }
+        function renderStatistics() {
             return (
                 <div
                     id="statistics"
@@ -395,8 +407,8 @@ export default function (props) {
                         +
                     </button>
                 </div>
-                <RenderShop />
-                <RenderStatistics />
+                {renderShop()}
+                {renderStatistics()}
                 {renderSimulationControls()}
             </div>
         );
