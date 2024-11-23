@@ -1,13 +1,14 @@
-import Frame from "../../../components/Frame";
 import { useState, useEffect } from "react";
-import vagueTime from "vague-time";
-import Panel from "../../../components/Panel";
 import { motion } from "framer-motion";
-import Button from "./Components/Button";
+import vagueTime from "vague-time";
 
-import Ver2UI from "./Tiles/Ver2UI";
+import Frame from "../../../components/Frame";
+import Panel from "../../../components/Panel";
+import Button from "./Components/Button";
 import Slider from "./Components/Slider";
+
 import Ver1UI from "./Tiles/Ver1UI";
+import Ver2UI from "./Tiles/Ver2UI";
 
 export default function Main(props) {
     const [systemState, setSystemState] = useState("net zero");
