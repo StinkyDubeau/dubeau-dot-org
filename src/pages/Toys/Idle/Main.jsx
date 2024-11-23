@@ -56,14 +56,17 @@ export default function Main(props) {
                     setOutput(load);
                     break;
                 case 2: // Charging
-                    setCapacity(capacity - excess);
+                    setCapacity(capacity + excess);
                     setOutput(load);
                     break;
                 case 3: // Sagging
                     setCapacity(0);
                     setOutput(generation);
                     break;
-                case 4:
+                case 4: // Overloaded
+                    console.log("The system was overloaded!");
+                    setOutput(load + excess);
+                    setCapacity(maximumCapacity);
                     break;
                 case 5:
                     console.error(
@@ -118,7 +121,7 @@ export default function Main(props) {
         });
     }
 
-    function tick() {}
+    function tick() { }
 
     function Header() {
         return (
