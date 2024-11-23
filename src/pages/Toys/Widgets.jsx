@@ -128,6 +128,7 @@ export default function (props) {
     function createCookieWidget() {
         const [birthDate, setBirthdate] = useState(new Date());
         const [time, setTime] = useState(new Date());
+        const [inflation, setInflation] = useState(1);
 
         // Todo: Move constants to a constants.js file
         const [cookies, setCookies] = useState(0);
@@ -228,25 +229,12 @@ export default function (props) {
         }
 
         function renderShop() {
-            function RenderShopButton({ quantity, body, onClick }) {
-                return (
-                    <button
-                        onClick={onClick}
-                        className="active:scale:100 flex-1 rounded-lg bg-lighten-700 p-2 text-darken-600 transition-all hover:scale-105"
-                    >
-                        {quantity}
-                        {body}
-                    </button>
-                );
-            }
-
             function renderShopButton(quantity, body, onClick) {
                 return (
                     <button
                         onClick={onClick}
                         className="active:scale:100 flex-1 rounded-lg bg-lighten-700 p-2 text-darken-600 transition-all hover:scale-105"
                     >
-                        {quantity}
                         {body}
                     </button>
                 );
@@ -260,19 +248,16 @@ export default function (props) {
                             {renderShopButton(1, `Buy 1 $${grandmaCost}`, () =>
                                 buyGrandmas(1),
                             )}
-                            <RenderShopButton
-                                body={`Buy 1 $${grandmaCost}`}
-                                onClick={() => buyGrandmas(1)}
-                            />
-                            <RenderShopButton
-                                body={`Buy 5 $${grandmaCost * 5}`}
-                                onClick={() => buyGrandmas(5)}
-                            />
-                            {/* This is a gnarly line of code lol */}
-                            <RenderShopButton
-                                body={`Buy Max (${howManyICanAffordPerUnitCost(grandmaCost) == 0 ? "None" : howManyICanAffordPerUnitCost(grandmaCost)}) $${grandmaCost * howManyICanAffordPerUnitCost(grandmaCost)}`}
-                                onClick={() => buyGrandmas(-1)}
-                            />
+                            {renderShopButton(
+                                5,
+                                `Buy 5 $${5 * grandmaCost}`,
+                                () => buyGrandmas(5),
+                            )}
+                            {renderShopButton(
+                                1,
+                                `Buy Max (${howManyICanAffordPerUnitCost(grandmaCost) == 0 ? "None" : howManyICanAffordPerUnitCost(grandmaCost)}) $${grandmaCost * howManyICanAffordPerUnitCost(grandmaCost)}`,
+                                () => buyGrandmas(-1),
+                            )}
                         </div>
                     </div>
                 );
@@ -294,7 +279,7 @@ export default function (props) {
                     // Complete the transaction
                     setGrandmas(grandmas + n);
                     setCookies(cookies - cost);
-                    setGrandmaCost(grandmaCost + 1);
+                    setGrandmaCost(grandmaCost + (n > 0 ? inflation : 0));
                     renderTransactionReceipt();
                 }
             }
