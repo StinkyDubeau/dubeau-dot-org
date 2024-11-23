@@ -22,7 +22,7 @@ export default function Trackers(props) {
             vignette
         >
             <div className="flex h-screen pb-32 w-full flex-col justify-center">
-                <Panel className="m-4 flex flex-col gap-2 p-4 text-left text-darken-800">
+                <Panel className="bg-lighten-900 rounded-2xl m-4 flex flex-col gap-2 p-4 text-left text-darken-800">
                     <p>
                         <span className="font-semibold text-green-500">
                             Activate Experimental

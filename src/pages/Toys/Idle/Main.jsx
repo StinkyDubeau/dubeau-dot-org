@@ -1,13 +1,14 @@
-import Frame from "../../../components/Frame";
 import { useState, useEffect } from "react";
-import vagueTime from "vague-time";
-import Panel from "../../../components/Panel";
 import { motion } from "framer-motion";
-import Button from "./Components/Button";
+import vagueTime from "vague-time";
 
-import Ver2UI from "./Tiles/Ver2UI";
+import Frame from "../../../components/Frame";
+import Panel from "../../../components/Panel";
+import Button from "./Components/Button";
 import Slider from "./Components/Slider";
+
 import Ver1UI from "./Tiles/Ver1UI";
+import Ver2UI from "./Tiles/Ver2UI";
 
 export default function Main(props) {
     const [systemState, setSystemState] = useState("net zero");
@@ -15,9 +16,11 @@ export default function Main(props) {
     const [capacity, setCapacity] = useState(100); // In joules
     const [maximumCapacity, setMaximumCapacity] = useState(10000); // In joules, should convert to kWh for display.
     const [load, setLoad] = useState(100); // In watts
-    const [maximumLoad, setMaximumLoad] = useState(1000); // In Watts, default 1kW
-    const [output, setOutput] = useState(0); // In joules,  system net output (or input if negative)
-    const [flow, setFlow] = useState(0); // Instantaneous power use (watts)
+    const [maximumLoad, setMaximumLoad] = useState(1000); // In watts, default 1kW
+
+    const [output, setOutput] = useState(0); // In joules, system net output (or input if negative)
+    const [excess, setExcess] = useState(0); //In watts, the delta between generation and load. Optimally, this is zero.
+
     const [godmode, setGodmode] = useState(false); // Whether to check for lack of capacity, or just keep running the simulation
 
     const [birthDate, setBirthdate] = useState(new Date());
@@ -30,29 +33,41 @@ export default function Main(props) {
     // It will effectively be a user account page.
     // It will feature account name, profile image (generated like in p2p chat)
 
+    // TODO: All tiles should have a small, glanceable thumbnail.
+    // E.G. Power meter tile may just display excess in the thumbnail
+    // Expanded, it will show load, capacity, and generation.
+
     const [timestep, setTimestep] = useState(1); // E.g. 0.5x speed, 2x speed. This multiple is applied to deltaT itself, and thus dictates the simulation speed of the game.
 
     // TODO: Rethink this. I believe setInterval() is what's preventing input during frame changes.
     // Instead, maybe let's just check for irl time to change, and calculate DeltaT.
 
-    // Electric simulation here. Code should run once per second. Currently, it runs once per mspt.
+    // Electric simulation here.
+    //TODO: Code should run once per second. Currently, it runs once per mspt.
     useEffect(() => {
         const interval = setInterval(() => {
             var newTicks = ticks + timestep;
 
             switch (systemState) {
                 case 0: // Balanced
+                    setOutput(load);
                     break;
                 case 1: // Discharging
-                    setCapacity(capacity - load);
+                    setCapacity(capacity + excess);
+                    setOutput(load);
                     break;
                 case 2: // Charging
-                    setCapacity(capacity + generation - load);
+                    setCapacity(capacity + excess);
+                    setOutput(load);
                     break;
-                case 3: // Insufficient supply
+                case 3: // Sagging
                     setCapacity(0);
+                    setOutput(generation);
                     break;
-                case 4:
+                case 4: // Overloaded
+                    console.log("The system was overloaded!");
+                    setOutput(load + excess);
+                    setCapacity(maximumCapacity);
                     break;
                 case 5:
                     console.error(
@@ -74,20 +89,32 @@ export default function Main(props) {
     // System State Calculations, ordered by severity
     // States: 0 - Balanced | 1 - Discharging | 2 - Charging | 3 - Sagging | 4 - Overloaded
     useEffect(() => {
-        if (generation === load) {
+        setExcess(generation - load);
+
+        if (excess === 0) {
+            // The system is balanced
             setSystemState(0);
-        } else if (load > generation && capacity > load - generation) {
-            setSystemState(1);
-        } else if (load > generation && capacity > 0) {
-            setSystemState(2);
-        } else if (generation > load && capacity < maximumCapacity) {
-            setSystemState(3);
-        } else if (generation > load && capacity >= maximumCapacity) {
-            setSystemState(4);
-        } else {
-            setSystemState(5);
+        } else if (excess < 0) {
+            // Insufficient generation, try to use stored capacity.
+            if (capacity + excess > 0) {
+                // There is enough stored capacity. We are discharging.
+                setSystemState(1);
+            } else if (capacity + excess < 0) {
+                // There is not enough stored capacity. We are sagging.
+                setSystemState(3);
+            }
         }
-    }, [capacity]);
+        if (excess > 0) {
+            // There is an excess of generation, try to charge capacity.
+            if (capacity + excess > maximumCapacity) {
+                // No more capacity to charge. We are overloaded.
+                setSystemState(4);
+            } else {
+                // Room to charge. Charging.
+                setSystemState(2);
+            }
+        }
+    }, [capacity, load, generation]);
 
     // Helper functions
     function getVagueTimeSince(date) {
@@ -96,36 +123,9 @@ export default function Main(props) {
         });
     }
 
-    function getVagueState(state) {
-        var x = "";
-
-        switch (state) {
-            case 0:
-                x = "🌏 Balanced";
-                break;
-            case 1:
-                x = "🪫 Discharging";
-                break;
-            case 2:
-                x = "🔋 Charging";
-                break;
-            case 3:
-                x = "⚠️ Sagging";
-                break;
-            case 4:
-                x = "💥 Overloaded";
-                break;
-            case 5:
-                x = "❓ An error occurred.";
-                break;
-        }
-
-        return x;
-    }
-
     function tick() {}
 
-    function Header() {
+    function createHeaderComponent() {
         return (
             <div
                 id="header"
@@ -153,7 +153,34 @@ export default function Main(props) {
         );
     }
 
-    function Footer() {
+    function createFooterComponent() {
+        function getVagueState(state) {
+            var x = "";
+
+            switch (state) {
+                case 0:
+                    x = "🌏 Balanced";
+                    break;
+                case 1:
+                    x = "🪫 Discharging";
+                    break;
+                case 2:
+                    x = "🔋 Charging";
+                    break;
+                case 3:
+                    x = "⚠️ Sagging";
+                    break;
+                case 4:
+                    x = "💥 Overloaded";
+                    break;
+                case 5:
+                    x = "❓ An error occurred.";
+                    break;
+            }
+
+            return x;
+        }
+
         return (
             <div className="flex w-full justify-around gap-2 bg-lighten-800 text-darken-800 max-sm:flex-col sm:gap-6">
                 <Panel className="flex flex-col flex-wrap justify-center sm:p-2">
@@ -185,8 +212,8 @@ export default function Main(props) {
         );
     }
 
-    function PaginatedTileRenderer(props) {
-        const [pages, setPages] = useState(props.children);
+    function createPaginatedTileRendererComponent(tiles) {
+        const [pages, setPages] = useState(tiles);
         const [index, setIndex] = useState(0);
 
         function decrement() {
@@ -195,7 +222,7 @@ export default function Main(props) {
         }
 
         function increment() {
-            index < pages.length && setIndex(index + 1);
+            index + 1 < pages.length && setIndex(index + 1);
         }
 
         return (
@@ -228,7 +255,7 @@ export default function Main(props) {
                 </Panel>
                 <div
                     id="pages"
-                    className="flex w-screen justify-center gap-2 bg-pink-400 p-2 max-sm:flex-col"
+                    className="flex w-screen justify-center gap-2 bg-pink-400 p-2"
                 >
                     {/* Render the chosen tile */}
                     {pages.length
@@ -254,10 +281,12 @@ export default function Main(props) {
             data={props.data}
             noScroll
         >
-            <Header />
+            <p>Test</p>
+            <Button body="Test" />
+            {createHeaderComponent()}
             <div className="flex w-screen justify-center gap-2 font-header text-darken-700">
                 <div className="flex flex-col gap-2 bg-blue-400">
-                    <PaginatedTileRenderer>
+                    <createPaginatedTileRendererComponent>
                         {/* <Ver1UI
                             setLoad={setLoad}
                             load={load}
@@ -270,15 +299,15 @@ export default function Main(props) {
                             load={load}
                             setCapacity={setCapacity}
                             capacity={capacity}
-                            flow={flow}
-                            production={output}
+                            output={output}
                             generation={generation}
                             setGeneration={setGeneration}
+                            excess={excess}
                         />
-                    </PaginatedTileRenderer>
+                    </createPaginatedTileRendererComponent>
                 </div>
             </div>
-            <Footer />
+            {createFooterComponent()}
         </Frame>
     );
 }
