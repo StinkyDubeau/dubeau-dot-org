@@ -123,7 +123,7 @@ export default function Main(props) {
         });
     }
 
-    function tick() { }
+    function tick() {}
 
     function createHeaderComponent() {
         return (
