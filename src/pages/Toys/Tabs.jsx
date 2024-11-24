@@ -196,10 +196,13 @@ export default function (props) {
 
     return (
         <>
-            <Frame data={props.data} noScroll>
+            <Frame
+                data={props.data}
+                noScroll
+            >
                 <div
                     id="container"
-                    className="my-4 flex flex-col gap-4 mx-2"
+                    className="mx-2 my-4 flex flex-col gap-4"
                 >
                     <p className="text-left font-header text-3xl text-darken-800">
                         Guitar Tabs
