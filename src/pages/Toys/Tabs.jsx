@@ -196,7 +196,7 @@ export default function (props) {
 
     return (
         <>
-            <Frame data={props.data}>
+            <Frame data={props.data} noScroll>
                 <div
                     id="container"
                     className="my-4 flex flex-col gap-4 mx-2"
