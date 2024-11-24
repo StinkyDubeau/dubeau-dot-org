@@ -86,7 +86,7 @@ export default {
             pixel: ["Silkscreen", "monospace"],
         },
         screens: {
-            xs: "320px",
+            xs: "480px",
             // => @media (min-width: 320px) { ... }
 
             sm: "640px",

@@ -14,7 +14,7 @@ export default function (props) {
     function createBookmark(bookmark, index) {
         return (
             <Panel
-                className="max-w-screen overflow-hidden p-4 bg-lighten-800 rounded-2xl shadow-xl"
+                className="overflow-hidden rounded-2xl bg-lighten-800 p-4 shadow-xl"
                 key={bookmark.guid}
             >
                 {/* Create a folder if there are children under this component. Otherwise create the tab. */}
@@ -145,7 +145,7 @@ export default function (props) {
                     <p className="text-left font-header text-xl text-darken-800">
                         by <span className="font-light">{friendlyArtist}</span>
                     </p>
-                    <p className="max-xs:hidden text-left font-header text-xs text-darken-600">
+                    <p className="text-left font-header text-xs text-darken-600 max-xs:hidden">
                         {tab.uri}
                     </p>
                 </Link>
@@ -155,7 +155,7 @@ export default function (props) {
 
     function createSortControls() {
         return (
-            <Panel className="bg-red-500 p-4 text-left text-white">
+            <Panel className="bg-red-500 text-left text-white xs:p-4">
                 <p className="font-pixel">- Experimental features -</p>
                 <div className="flex flex-wrap gap-2">
                     <button
@@ -196,31 +196,25 @@ export default function (props) {
 
     return (
         <>
-            <Frame
-                data={props.data}
-                noScroll
-            >
-                <div className="max-xs:w-screen">
-                    <div
-                        id="container"
-                        className="mx-2 my-4 flex flex-col gap-4"
-                    >
-                        <p className="text-left font-header text-3xl text-darken-800">
-                            Guitar Tabs
+            <Frame data={props.data}>
+                <div
+                    id="container"
+                    className="my-4 flex flex-col gap-4 mx-2"
+                >
+                    <p className="text-left font-header text-3xl text-darken-800">
+                        Guitar Tabs
+                    </p>
+                    <p className="text-left font-header text-darken-600">
+                        I like to play. Click an entry to open its tablature.
+                    </p>
+                    {props.data.experimental && createSortControls()}
+                    {Bookmarks ? (
+                        Bookmarks.children.map(createBookmark)
+                    ) : (
+                        <p className="italic text-darken-600">
+                            Failed to load guitar tabs JSON.
                         </p>
-                        <p className="text-left font-header text-darken-600">
-                            I like to play. Click an entry to open its
-                            tablature.
-                        </p>
-                        {props.data.experimental && createSortControls()}
-                        {Bookmarks ? (
-                            Bookmarks.children.map(createBookmark)
-                        ) : (
-                            <p className="italic text-darken-600">
-                                Failed to load guitar tabs JSON.
-                            </p>
-                        )}
-                    </div>
+                    )}
                 </div>
             </Frame>
         </>
