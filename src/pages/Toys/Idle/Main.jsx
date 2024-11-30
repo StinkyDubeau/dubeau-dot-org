@@ -114,7 +114,7 @@ export default function Main(props) {
                 setSystemState(2);
             }
         }
-    }, [capacity, load, generation]);
+    }, [capacity, load, generation, excess]);
 
     // Helper functions
     function getVagueTimeSince(date) {
