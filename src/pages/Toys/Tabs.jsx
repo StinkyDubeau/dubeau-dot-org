@@ -208,7 +208,8 @@ export default function (props) {
                         Guitar Tabs
                     </p>
                     <p className="text-left font-header text-darken-600">
-                        I like to play. Click an entry to open its tablature.
+                        This is my collection of tabs dating back to about 2016.
+                        Click a tab to go to its ultimate-guitar page.
                     </p>
                     {props.data.experimental && createSortControls()}
                     {Bookmarks ? (

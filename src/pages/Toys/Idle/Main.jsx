@@ -286,14 +286,9 @@ export default function Main(props) {
             {createHeaderComponent()}
             <div className="flex w-screen justify-center gap-2 font-header text-darken-700">
                 <div className="flex flex-col gap-2 bg-blue-400">
-                    <createPaginatedTileRendererComponent>
-                        {/* <Ver1UI
-                            setLoad={setLoad}
-                            load={load}
-                            setCapacity={setCapacity}
-                            capacity={capacity}
-                            maximumCapacity={maximumCapacity}
-                        /> */}
+                    {createPaginatedTileRendererComponent([
+                        <TestPage />,
+                        Ver1UI,
                         <Ver2UI
                             setLoad={setLoad}
                             load={load}
@@ -303,8 +298,8 @@ export default function Main(props) {
                             generation={generation}
                             setGeneration={setGeneration}
                             excess={excess}
-                        />
-                    </createPaginatedTileRendererComponent>
+                        />,
+                    ])}
                 </div>
             </div>
             {createFooterComponent()}
