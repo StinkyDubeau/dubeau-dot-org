@@ -196,16 +196,20 @@ export default function (props) {
 
     return (
         <>
-            <Frame data={props.data}>
+            <Frame
+                data={props.data}
+                noScroll
+            >
                 <div
                     id="container"
-                    className="my-4 flex flex-col gap-4 mx-2"
+                    className="mx-2 my-4 flex flex-col gap-4"
                 >
                     <p className="text-left font-header text-3xl text-darken-800">
                         Guitar Tabs
                     </p>
                     <p className="text-left font-header text-darken-600">
-                        I like to play. Click an entry to open its tablature.
+                        This is my collection of tabs dating back to about 2016.
+                        Click a tab to go to its ultimate-guitar page.
                     </p>
                     {props.data.experimental && createSortControls()}
                     {Bookmarks ? (
