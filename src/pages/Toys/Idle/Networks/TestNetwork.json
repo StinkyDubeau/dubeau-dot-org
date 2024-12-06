@@ -1,0 +1,16 @@
+{
+    "capacitors": [
+        {
+            "name": "9 volt battery",
+            "type": "battery",
+            "volts": 9,
+            "energy": 162000
+        },
+        {
+            "name": "AA battery",
+            "type": "battery",
+            "volts": 1.5,
+            "energy": 162000
+        }
+    ]
+}

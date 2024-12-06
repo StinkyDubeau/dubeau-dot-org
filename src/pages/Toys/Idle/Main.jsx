@@ -212,8 +212,8 @@ export default function Main(props) {
         );
     }
 
-    function createPaginatedTileRendererComponent(tiles) {
-        const [pages, setPages] = useState(tiles);
+    function CreatePaginatedTileRendererComponent(props) {
+        const [pages, setPages] = useState(props.children);
         const [index, setIndex] = useState(0);
 
         function decrement() {
@@ -286,20 +286,29 @@ export default function Main(props) {
             {createHeaderComponent()}
             <div className="flex w-screen justify-center gap-2 font-header text-darken-700">
                 <div className="flex flex-col gap-2 bg-blue-400">
-                    {createPaginatedTileRendererComponent([
-                        <TestPage />,
-                        Ver1UI,
+                    <CreatePaginatedTileRendererComponent>
+                        {/* <TestPage /> */}
+                        <Ver1UI
+                            setLoad={setLoad}
+                            load={load}
+                            setCapacity={setCapacity}
+                            capacity={capacity}
+                            output={output}
+                            generation={() => generation}
+                            setGeneration={() => setGeneration}
+                            excess={excess}
+                        />
                         <Ver2UI
                             setLoad={setLoad}
                             load={load}
                             setCapacity={setCapacity}
                             capacity={capacity}
                             output={output}
-                            generation={generation}
-                            setGeneration={setGeneration}
+                            generation={() => generation}
+                            setGeneration={() => setGeneration}
                             excess={excess}
-                        />,
-                    ])}
+                        />
+                    </CreatePaginatedTileRendererComponent>
                 </div>
             </div>
             {createFooterComponent()}
