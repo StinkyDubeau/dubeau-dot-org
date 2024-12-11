@@ -68,10 +68,10 @@ export default class Network {
         nodes.forEach((node) => this.verifyStateOfNode);
     }
 
-    constructor(simulation, nodes) {
+    constructor(nodes) {
         // Add the requested notes and instantiation, if there are any
-        this.nodes = nodes ? [nodes] : [];
-        this.simulation = simulation;
+        this.nodes = nodes;
+        // this.simulation = simulation;
         this.uuid = uuidv4(); // Networks have UUIDs to identify different systems in the mass simulation.
 
         // Sorted nodes
@@ -82,5 +82,9 @@ export default class Network {
         // Calculated values
         this.sum = this.sumWattage();
         this.capacitance = this.sumCapacitance();
+    }
+
+    get nodes() {
+        return this.nodes;
     }
 }

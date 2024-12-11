@@ -11,7 +11,7 @@
 
 import { v4 as uuidv4 } from "uuid";
 
-class Node {
+export default class Node {
     constructor(
         network,
         dependencies,
