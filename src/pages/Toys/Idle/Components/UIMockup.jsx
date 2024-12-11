@@ -5,6 +5,7 @@ import { useState } from "react";
 import InnerCard from "./InnerCard";
 import OuterCard from "./OuterCard";
 import Button from "./Button";
+import RadioButton from "./RadioButton";
 
 export default function UIMockup(props) {
     const [focus, setFocus] = useState(0); // 0: Capacitors, 1: Generators, 2: Loads
@@ -61,61 +62,25 @@ export default function UIMockup(props) {
                 id="node-creator"
                 className="bg-lighten-800"
             >
-                <p className="text-left underline">Node Creator</p>
+                <p className="underline">Node Creator</p>
+
+                {/* Size Options */}
                 <div
                     id="size-options"
                     className="flex flex-col gap-2 "
                 >
-                    <div className="flex justify-center gap-2">
-                        <div
-                            id="radio-button"
-                            className=""
-                        >
-                            <input
-                                type="radio"
-                                name="radio-1"
-                                className="h-12"
-                            />
-                            SM
-                        </div>
-                        <div
-                            id="radio-button"
-                            className=""
-                        >
-                            <input
-                                type="radio"
-                                name="radio-1"
-                                className="h-12"
-                                defaultChecked
-                            />
-                            MD
-                        </div>
-                        <div
-                            id="radio-button"
-                            className=""
-                        >
-                            <input
-                                type="radio"
-                                name="radio-1"
-                                className="h-12"
-                            />
-                            LG
-                        </div>
-                        <div
-                            id="radio-button"
-                            className=""
-                        >
-                            <input
-                                type="radio"
-                                name="radio-1"
-                                className="h-12"
-                            />
-                            XL
-                        </div>
-                        
-                    </div>
-                    
+                    <p className="text-left">Size</p>
+
+                    <form className="flex justify-center gap-2">
+                        <RadioButton body="SM" />
+                        <RadioButton body="MD" />
+                        <RadioButton body="LG" />
+                        <RadioButton body="XL" />
+                    </form>
                 </div>
+
+                {/* Instantiate Buttons */}
+
                 <div
                     id="instantiate-buttons"
                     className="flex flex-col gap-2"
