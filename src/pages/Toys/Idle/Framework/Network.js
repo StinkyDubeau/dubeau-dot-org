@@ -3,28 +3,12 @@
 
 import { NIL, v4 as uuidv4 } from "uuid";
 
-class Network {
-    constructor(simulation, nodes) {
-        // Add the requested notes and instantiation, if there are any
-        this.nodes = nodes ? [nodes] : [];
-        this.simulation = simulation;
-        this.uuid = uuidv4(); // Networks have UUIDs to identify different systems in the mass simulation.
-
-        // Sorted nodes
-        this.capacitors = findCapacitors();
-        this.generators = findGenerators();
-        this.consumers = findConsumers();
-
-        // Calculated values
-        this.sum = sumWattage();
-        this.capacitance = sumCapacitance();
-    }
-
+export default class Network {
     // Calculate and return total network capacitance in Joules
-    get sumCapacitance() {}
+    sumCapacitance() {}
 
     // Calculate and return sum of all generators and consumers
-    get sumWattage() {
+    sumWattage() {
         // sum = ∑ generators watts -  ∑ consumers watts + capacitor output
     }
 
@@ -54,7 +38,11 @@ class Network {
     }
     findGenerators() {
         // Return all nodes with output state.
-        return this.nodes.find(state == 1);
+        // const generators = [];
+        // this.nodes.forEach((node) => {
+        //     if(node.state == 1)
+        // })
+        return this.nodes.find((node) => node.state == 1);
     }
     findConsumers() {}
 
@@ -78,5 +66,21 @@ class Network {
     // This helper function should only be used to prove states after a sweeping network change.
     verifyStateOfNodes() {
         nodes.forEach((node) => this.verifyStateOfNode);
+    }
+
+    constructor(simulation, nodes) {
+        // Add the requested notes and instantiation, if there are any
+        this.nodes = nodes ? [nodes] : [];
+        this.simulation = simulation;
+        this.uuid = uuidv4(); // Networks have UUIDs to identify different systems in the mass simulation.
+
+        // Sorted nodes
+        this.capacitors = this.findCapacitors();
+        this.generators = this.findGenerators();
+        this.consumers = this.findConsumers();
+
+        // Calculated values
+        this.sum = this.sumWattage();
+        this.capacitance = this.sumCapacitance();
     }
 }

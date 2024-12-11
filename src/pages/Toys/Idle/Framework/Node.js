@@ -35,10 +35,6 @@ class Node {
         this.state = network.verifyStateOfNode(this); // Node States: -1: Input | 0: Idle | 1: Output
     }
 
-    delta() {
-        // Calculate load - generation
-    }
-
     // Manual state function.
     // Generally, nodes should have their state defined at instantiation. (Generator / Consumer)
     setState(n) {
@@ -60,6 +56,9 @@ class Node {
         return this.uuid;
     }
 
+    get state() {
+        return this.state;
+    }
     get isCapacitor() {
         return false;
     }
