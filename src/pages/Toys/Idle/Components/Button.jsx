@@ -8,7 +8,9 @@ export default function Button({ className, body, children, onClick }) {
             whileTap={{ scale: 0.9 }}
             transition={{ duration: 0.1 }}
             className={
-                className ? className : "rounded-2xl bg-lighten-900 font-header"
+                className
+                    ? className
+                    : "rounded-xl bg-lighten-900 p-2 font-header"
             }
             onClick={onClick}
         >
