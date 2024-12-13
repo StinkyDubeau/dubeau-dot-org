@@ -316,7 +316,7 @@ export default function fun(props) {
                 </div>
             </div>
             <p className="mb-6 text-xl font-light text-darken-700 max-md:text-center">
-                Last updated October 23rd, 2024
+                Last updated December 13th, 2024
             </p>
         </Frame>
     );
