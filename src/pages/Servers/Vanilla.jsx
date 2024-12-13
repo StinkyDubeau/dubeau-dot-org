@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import wl from "../../assets/whitelist.json";
 import Marquee from "react-fast-marquee";
 import { motion } from "framer-motion";
+import Markdown from "react-markdown";
 
 export default function fun(props) {
     const whitelist = wl;
@@ -23,7 +24,10 @@ export default function fun(props) {
 
     return (
         <Frame data={props.data}>
-            <motion.div layoutId="thumbnail" className="m-2 flex flex-col justify-center gap-6 overflow-hidden max-sm:mt-12 sm:p-4">
+            <motion.div
+                layoutId="thumbnail"
+                className="m-2 flex flex-col justify-center gap-6 overflow-hidden max-sm:mt-12 sm:p-4"
+            >
                 <div className="flex justify-between gap-12 overflow-clip align-middle max-sm:relative max-sm:h-72 max-sm:flex-col sm:h-72">
                     <div className="flex-0  z-10 flex max-w-full justify-center max-sm:h-full">
                         <div className="my-auto flex h-fit flex-col justify-center gap-12 align-middle">
@@ -45,34 +49,24 @@ export default function fun(props) {
                     />
                 </div>
 
-                <div className="flex flex-col gap-4 rounded-3xl bg-lighten-800 p-4">
-                    <p className="text-left font-header text-xl text-darken-800">
-                        0. Connect with us on discord to be whitelisted
+                <div className="flex flex-col gap-2 rounded-3xl bg-lighten-800 p-4">
+                    <p className="text-left font-header text-2xl text-darken-800">
+                        ℹ️ Modded migration update
                     </p>
-                    <div className="justify-left flex gap-4 font-header text-darken-800 underline">
-                        <Link
-                            className=" scale-100 transition-all hover:scale-110"
-                            to="/contact"
-                        >
-                            Join the discord server
-                        </Link>
-                    </div>
-
-                    <p className="text-left font-header text-xl text-darken-800">
-                        1. Download and launch the latest version of Minecraft
-                        Java Edition
+                    <p className="text-left font-header mb-4 text-xl text-darken-600">
+                        December 13th, 2024
                     </p>
-                    <p className="text-left font-header text-xl text-darken-800">
-                        2. Connect to{" "}
-                        <span className="font-light text-red-500">
-                            mc.dubeau.org
-                        </span>
-                    </p>
-
-                    <p className="text-left font-header text-xl text-darken-800">
-                        3. Have fun and be cool! Follow posted signs for general
-                        rules
-                    </p>
+                    <Markdown className="text-left font-header text-xl text-darken-800">
+                        This world is still running on Vanilla 1.21.1, and it
+                        will remain that way until Create 1.21 is released.
+                        Anything you build today __will__ be migrated into the
+                        Create server.
+                    </Markdown>
+                    <Markdown className="text-left font-header text-xl text-darken-800">
+                        Migrating the world to a modded server is currently
+                        impossible due to issues with downgrading to 1.20. So,
+                        we'll wait for Create to update instead.
+                    </Markdown>
                 </div>
 
                 <div className="flex flex-col gap-4 rounded-3xl bg-lighten-800 p-4">
