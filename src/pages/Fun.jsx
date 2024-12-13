@@ -80,7 +80,7 @@ export default function fun(props) {
                             to="/servers/modded"
                             style=""
                             colour="bg-red-400"
-                            announcement="0.1 live now"
+                            announcement="pre-release"
                         />
                         <ServerCard
                             title="Better Than Wolves"
