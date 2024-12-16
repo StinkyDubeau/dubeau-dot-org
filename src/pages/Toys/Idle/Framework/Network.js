@@ -68,9 +68,20 @@ export default class Network {
         nodes.forEach((node) => this.verifyStateOfNode);
     }
 
+    addNodeToNetwork(node) {
+        console.log(`Added node ${node.uuid} to network ${this.uuid}`);
+        this.nodes.push(node);
+    }
+
+    addNodesToNetwork(nodes) {
+        nodes.forEach((node) => {
+            this.addNodeToNetwork(node);
+        });
+    }
+
     constructor(nodes) {
-        // Add the requested notes and instantiation, if there are any
-        this.nodes = nodes;
+        this.nodes = nodes ? nodes : [];
+
         // this.simulation = simulation;
         this.uuid = uuidv4(); // Networks have UUIDs to identify different systems in the mass simulation.
 
@@ -84,7 +95,7 @@ export default class Network {
         this.capacitance = this.sumCapacitance();
     }
 
-    get nodes() {
-        return this.nodes;
-    }
+    // get nodes() {
+    //     return this.nodes;
+    // }
 }
