@@ -32,7 +32,7 @@ export default class Node {
         this.consumption = consumption ? consumption : 0;
         this.isCapacitor = isCapacitor ? isCapacitor : false;
 
-        this.state = network.verifyStateOfNode(this); // Node States: -1: Input | 0: Idle | 1: Output
+        // this.state = network.verifyStateOfNode(this); // Node States: -1: Input | 0: Idle | 1: Output
     }
 
     // Manual state function.
@@ -52,23 +52,23 @@ export default class Node {
         // Add to this.capacitance at rate
     }
 
-    get uuid() {
-        return this.uuid;
-    }
+    // get uuid() {
+    //     return this.uuid;
+    // }
 
-    get state() {
-        return this.state;
-    }
-    get isCapacitor() {
-        return false;
-    }
-    get capacitance() {
-        return this.capacitance;
-    }
-    get generation() {
-        return this.generation;
-    }
-    get consumption() {
-        return this.consumption;
-    }
+    // get state() {
+    //     return this.state;
+    // }
+    // get isCapacitor() {
+    //     return false;
+    // }
+    // get capacitance() {
+    //     return this.capacitance;
+    // }
+    // get generation() {
+    //     return this.generation;
+    // }
+    // get consumption() {
+    //     return this.consumption;
+    // }
 }
