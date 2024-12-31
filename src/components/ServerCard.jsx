@@ -7,14 +7,14 @@ export default function ServerCard(props) {
     return (
         <>
             <motion.div
-                layoutId={props.img}
                 whileHover={{ width: 200 }}
                 whileTap={{ y: -10 }}
                 transition={{ duration: 0.15 }}
                 className={`${props.className} card h-[200px] w-44 overflow-hidden rounded-2xl bg-lighten-900 shadow-lg`}
             >
                 <Link to={props.to}>
-                    <img
+                    <motion.img
+                        layoutId={props.img}    
                         id={props.img}
                         className="h-full object-cover brightness-90 transition-all"
                         src={props.img}

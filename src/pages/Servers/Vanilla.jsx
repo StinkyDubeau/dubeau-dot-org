@@ -25,7 +25,7 @@ export default function fun(props) {
     return (
         <Frame data={props.data}>
             <motion.div
-                layoutId="thumbnail"
+                layoutId={PackImg}
                 className="m-2 flex flex-col justify-center gap-6 overflow-hidden max-sm:mt-12 sm:p-4"
             >
                 <div className="flex justify-between gap-12 overflow-clip align-middle max-sm:relative max-sm:h-72 max-sm:flex-col sm:h-72">
@@ -349,7 +349,7 @@ export default function fun(props) {
                     <div className="flex w-full justify-center">
                         <div className="flex w-12 flex-1 justify-center text-center">
                             <Marquee
-                                speed="150"
+                                speed="50"
                                 className="mt-6 w-full overflow-clip"
                             >
                                 {whitelist.map(createUser)}

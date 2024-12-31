@@ -42,6 +42,8 @@ export default function FrameworkTest(props) {
                 className="bg-lighten-800"
             >
                 <p>Network: {network.uuid}</p>
+                <p>Nodes: {network.nodes.length}</p>
+                <p></p>
                 <ul className="flex flex-col gap-2">
                     {testNetwork.nodes.map(renderOneNode)}
                     {renderOneNode(

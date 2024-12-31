@@ -5,6 +5,7 @@ import PackImg from "../../assets/modded-banner.png";
 import { Link } from "react-router-dom";
 import wl from "../../assets/whitelist.json";
 import Marquee from "react-fast-marquee";
+import { motion } from "framer-motion";
 import Markdown from "react-markdown";
 
 export default function fun(props) {
@@ -23,7 +24,10 @@ export default function fun(props) {
 
     return (
         <Frame data={props.data}>
-            <div className="m-2 flex flex-col justify-center gap-6 overflow-hidden max-sm:mt-12 sm:p-4">
+            <motion.div
+                layoutId={PackImg}
+                className="m-2 flex flex-col justify-center gap-6 overflow-hidden max-sm:mt-12 sm:p-4"
+            >
                 <div className="flex justify-between gap-12 overflow-clip align-middle max-sm:relative max-sm:h-72 max-sm:flex-col sm:h-72">
                     <div className="flex-0  z-10 flex max-w-full justify-center max-sm:h-full">
                         <div className="my-auto flex h-fit flex-col justify-center gap-12 align-middle">
@@ -314,7 +318,7 @@ export default function fun(props) {
                         </div>
                     </p>
                 </div>
-            </div>
+            </motion.div>
             <p className="mb-6 text-xl font-light text-darken-700 max-md:text-center">
                 Last updated December 13th, 2024
             </p>
