@@ -26,7 +26,7 @@ export default function Navbar(props) {
                 to="/contact"
                 className="font-header text-darken-800"
             >
-                Jake Dubeau 🇨🇦 2024
+                Jake Dubeau 🇨🇦 2025
             </Link>
         </div>
     );

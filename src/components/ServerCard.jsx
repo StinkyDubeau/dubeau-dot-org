@@ -10,13 +10,13 @@ export default function ServerCard(props) {
                 whileHover={{ width: 200 }}
                 whileTap={{ y: -10 }}
                 transition={{ duration: 0.15 }}
-                className={`${props.className} card h-[200px] w-44 overflow-hidden rounded-2xl bg-lighten-900 shadow-lg`}
+                className={`${props.className} card h-[200px] w-44 overflow-hidden rounded-2xl bg-darken-900 shadow-lg`}
             >
                 <Link to={props.to}>
                     <motion.img
-                        layoutId={props.img}    
+                        layoutId={props.img}
                         id={props.img}
-                        className="h-full object-cover brightness-90 transition-all"
+                        className="h-full object-cover brightness-90"
                         src={props.img}
                     />
                     {/* Container */}
