@@ -1,5 +1,4 @@
 import NavButtons from "./NavButtons";
-import { motion } from "framer-motion";
 
 export default function Navbar(props) {
     // Run only if the parent Frame has props.data
@@ -20,12 +19,7 @@ export default function Navbar(props) {
 
     return (
         <div className="fixed z-40 mx-auto flex w-full justify-center bg-lighten-600 py-2 shadow-lg backdrop-blur-3xl transition-all">
-            <motion.div
-                layoutId="NavButtons"
-                layoutScroll
-            >
                 <NavButtons />
-            </motion.div>
             {props.data && createDataDependants()}
         </div>
     );

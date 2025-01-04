@@ -5,7 +5,7 @@ export default function Panel(props) {
         <AnimatePresence>
             <motion.div
                 whileTap={{ scale: 1.01 }}
-                initial={{ scale: 0 }}
+                initial={{ scale: 0.5 }}
                 whileInView={{ scale: 1 }}
                 className={
                     props.className

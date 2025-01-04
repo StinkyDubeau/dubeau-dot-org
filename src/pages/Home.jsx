@@ -25,17 +25,13 @@ export default function Home(props) {
                     </h1> */}
                         </div>
                     </Panel>
-                    <Panel className="">
-                        <div className="flex justify-center gap-2">
-                            <motion.div
-                                layoutId="NavButtons"
-                                layoutScroll
-                                className="m-2 flex h-16 justify-center p-1  sm:w-96"
-                            >
+                    <div className="flex justify-center gap-2">
+                        <Panel className="">
+                            <div className="m-2 flex h-16 justify-center p-1  sm:w-96">
                                 <NavButtons />
-                            </motion.div>
-                        </div>
-                    </Panel>
+                            </div>
+                        </Panel>
+                    </div>
                 </div>
             </Frame>
         </div>
