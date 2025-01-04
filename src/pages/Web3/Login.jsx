@@ -13,11 +13,11 @@ export default function Login(props) {
 
     const message = {
         from: {
-            nick: "Bob Loblaw",
+            nick: "John Human",
             id: "rXKIunbHtTsbGTgsU62C",
         },
-        content: "Try setting a nickname to preview unique user icons",
-        timestamp: "9/12/2024, 12:08:16 AM",
+        content: "Try setting a nickname to preview your user icon",
+        timestamp: "1/4/2025, 11:04:14 AM",
     };
 
     function createLogin(props) {
@@ -26,21 +26,21 @@ export default function Login(props) {
                 <div className="mb-12 flex max-w-screen-sm flex-col gap-8">
                     {/* Choose lobby */}
                     <motion.div
-                        layoutId={42069}
+                        layoutId="ChatLoginPanel"
                         className="m-auto mt-3 flex w-full animate-gradient-y flex-col justify-center gap-2 rounded-3xl bg-gradient-to-bl from-orange-700 via-pink-500 to-yellow-400 p-5 transition-colors max-sm:max-w-xs"
                     >
-                        <p className="m-auto font-header text-5xl font-extralight text-lighten-900">
+                        <motion.p className="m-auto font-header text-5xl font-extralight text-lighten-900">
                             p2p chat
-                        </p>
-                        <p className="font-header text-xl font-medium text-lighten-700">
+                        </motion.p>
+                        <motion.p className="font-header text-xl font-medium text-lighten-700">
                             Choose a lobby
-                        </p>
-                        <div className="flex justify-center gap-2">
+                        </motion.p>
+                        <motion.div className="flex justify-center gap-2">
                             {createRoomButton("A")}
                             {createRoomButton("B")}
                             {createRoomButton("C")}
                             {createRoomButton("D")}
-                        </div>
+                        </motion.div>
                     </motion.div>
                     <div className="-mt-6 flex w-full flex-wrap gap-2 transition-all">
                         {/* Set nickname */}
@@ -124,7 +124,7 @@ export default function Login(props) {
                         to="/fun"
                         className="p-2 underline"
                     >
-                        dubeau.org
+                        back to dubeau.org
                     </Link>
                 </div>
             </div>

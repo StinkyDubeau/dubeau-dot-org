@@ -29,18 +29,28 @@ export default function fun(props) {
 
             <div className="my-4 flex flex-wrap justify-center">
                 <motion.div
-                    layoutId={42069}
+                    layoutId="ChatLoginPanel"
+                    layoutScroll
                     className="m-4 w-full animate-gradient-x  rounded-2xl bg-gradient-to-bl from-orange-700 via-pink-500 to-yellow-400 bg-blend-lighten"
                 >
                     <div className="m-5 ">
-                        <p className="text-left font-header text-5xl text-lighten-800">
+                        <motion.p
+                            layoutId="ChatLoginTitle"
+                            className="text-left font-header text-5xl text-lighten-800"
+                        >
                             Decentralized chat
-                        </p>
-                        <p className="text-left text-lg text-lighten-800">
+                        </motion.p>
+                        <motion.p
+                            layoutId="ChatLoginSubtitle"
+                            className="text-left text-lg text-lighten-800"
+                        >
                             Peer-to-peer & end-to-end encrypted.
-                        </p>
+                        </motion.p>
                     </div>
-                    <div className="m-5 flex animate-gradient-x flex-wrap justify-center gap-4 rounded-2xl p-4 sm:gap-8">
+                    <motion.div
+                        layoutId=""
+                        className="m-5 flex animate-gradient-x flex-wrap justify-center gap-4 rounded-2xl p-4 sm:gap-8"
+                    >
                         <Link
                             className="flex aspect-square flex-col justify-center rounded-xl border border-x-darken-50 border-b-darken-100 border-t-lighten-100 bg-darken-200 p-2 shadow-md backdrop-blur-md transition-all hover:scale-105 hover:shadow-lg"
                             to="/chat"
@@ -49,7 +59,7 @@ export default function fun(props) {
                                 Connect
                             </p>
                         </Link>
-                    </div>
+                    </motion.div>
                 </motion.div>
                 <div className="m-4 w-full animate-gradient-x rounded-2xl bg-gradient-to-br from-blue-400 via-cyan-400 to-orange-300">
                     <div className="m-5">
