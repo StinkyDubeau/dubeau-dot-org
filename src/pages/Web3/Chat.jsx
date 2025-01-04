@@ -27,7 +27,6 @@ export default function Chat(props) {
 
     room.onPeerJoin(async (idOfJoiningPeer) => {
         console.log(`${idOfJoiningPeer} is connecting...`);
-
         // Bounce ID back to joining peer
         await sendUser(
             { id: idOfJoiningPeer, dob: new Date() },
@@ -180,7 +179,7 @@ export default function Chat(props) {
                     <div className="flex-0 bg-lighten-800 p-2 max-sm:-m-2 sm:rounded-3xl">
                         {/* INPUT FIELD */}
                         <MessageEntry
-                            // Is there some structuring magic I can do to make this less-awful?
+                            // Is there some structuring magic I can do to make this less awful?
                             myMessage={myMessage}
                             setMyMessage={setMyMessage}
                             sendMyMessage={sendMyMessage}

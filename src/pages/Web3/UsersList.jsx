@@ -6,7 +6,7 @@ export default function UsersList(props) {
     return (
         <div className="flex flex-col sm:gap-2">
             <p className="m-auto max-h-6 max-w-24 overflow-hidden text-darken-800 max-sm:text-sm">
-                Lobby <span className="font-header">#{roomID}</span>
+                Room <span className="font-header">#{roomID}</span>
             </p>
             <div className="flex justify-center">
                 <ul className="flex gap-1 overflow-auto scrollbar-hide max-sm:px-3 sm:max-w-52 sm:flex-wrap">
@@ -29,9 +29,12 @@ export default function UsersList(props) {
                             );
                         })
                     ) : (
-                        <p className="mx-auto italic text-darken-600">
-                            You are the only one here
-                        </p>
+                        <div>
+                            <p className="mx-auto italic text-darken-600">
+                                Looking for others...
+                            </p>
+                            <progress className="progress w-24 border-lighten-800 bg-darken-400 fill-lighten-800 text-lighten-800"></progress>
+                        </div>
                     )}
                 </ul>
             </div>
