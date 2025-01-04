@@ -10,6 +10,7 @@ import Markdown from "react-markdown";
 
 export default function fun(props) {
     const whitelist = wl;
+    const addr = "mc.dubeau.org";
 
     function createUser(user) {
         return (
@@ -39,6 +40,33 @@ export default function fun(props) {
                                 <p className="max-sm:h-shrink text-left text-xl font-light text-darken-700 max-md:text-center max-sm:text-lighten-800">
                                     An invite-only Minecraft community
                                 </p>
+                                
+                                <button
+                                    className="max-sm:h-shrink flex gap-2 text-nowrap text-left text-xl font-light text-darken-700 max-md:text-center max-sm:mx-auto max-sm:text-lighten-800"
+                                    onClick={() => {
+                                        navigator.clipboard.writeText(addr);
+                                    }}
+                                >
+                                    <p>
+                                        Join at{" "}
+                                        <span className="rounded-xl bg-lighten-800 p-2 text-darken-800">
+                                            {addr}
+                                        </span>
+                                    </p>
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="16"
+                                        height="16"
+                                        fill="currentColor"
+                                        className="my-auto transition-all hover:scale-105 active:scale-95"
+                                        viewBox="0 0 16 16"
+                                    >
+                                        <path
+                                            fill-rule="evenodd"
+                                            d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z"
+                                        />
+                                    </svg>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -54,15 +82,21 @@ export default function fun(props) {
                         ℹ️ Modded migration update
                     </p>
                     <p className="mb-4 text-left font-header text-xl text-darken-600">
-                        December 13th, 2024
+                        January 4th, 2025
                     </p>
-                    <Markdown className="text-left font-header text-xl text-darken-800">
+                    <p className="text-left font-header text-xl text-darken-600">
+                        What:
+                    </p>
+                    <Markdown className="ml-4 text-left font-header text-xl text-darken-800">
                         This world is still running on Vanilla 1.21.1, and it
                         will remain that way until Create 1.21 is released.
                         Anything you build today __will__ be migrated into the
                         Create server.
                     </Markdown>
-                    <Markdown className="text-left font-header text-xl text-darken-800">
+                    <p className="mt-4 text-left font-header text-xl text-darken-600">
+                        Why:
+                    </p>
+                    <Markdown className="ml-4 text-left font-header text-xl text-darken-800">
                         Migrating the world to a modded server is currently
                         impossible due to issues with downgrading to 1.20. So,
                         we'll wait for Create to update instead.

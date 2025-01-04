@@ -7,35 +7,67 @@ import { motion } from "framer-motion";
 import Marquee from "react-fast-marquee";
 
 export default function fun(props) {
+    const addr = "mc.dubeau.org:25575";
+    const name = "Better than Wolves";
+    const desc = 'A challenging "back-to-beta" modpack.';
+
     return (
         <Frame data={props.data}>
-            <motion.div layoutId={PackImg}>
-                <div className="w-xl flex flex-col justify-center gap-6">
-                    <div className="mt-5 flex justify-between gap-12 overflow-clip rounded-3xl align-middle max-sm:flex-col">
-                        <div className="flex-0 flex max-w-full justify-center ">
-                            <div className="flex flex-col justify-center gap-12 align-middle">
-                                <div className="flex flex-col gap-2">
-                                    <p className="text-left font-header text-5xl text-darken-800 max-md:text-center">
-                                        Better than Wolves
+            <motion.div
+                layoutId={PackImg}
+                className="m-2 flex flex-col justify-center gap-6 overflow-hidden max-sm:mt-12 sm:p-4"
+            >
+                <div className="flex justify-between gap-12 overflow-clip align-middle max-sm:relative max-sm:h-72 max-sm:flex-col sm:h-72">
+                    <div className="flex-0  z-10 flex max-w-full justify-center max-sm:h-full">
+                        <div className="my-auto flex h-fit flex-col justify-center gap-12 align-middle">
+                            <div className="flex flex-col gap-2">
+                                <p className="text-left font-header text-5xl text-darken-700 max-md:text-center max-sm:text-lighten-800">
+                                    {name}
+                                </p>
+                                <p className="max-sm:h-shrink text-left text-xl font-light text-darken-700 max-md:text-center max-sm:text-lighten-800">
+                                    {desc}
+                                </p>
+                                <button
+                                    className="max-sm:h-shrink flex gap-2 text-nowrap text-left text-xl font-light text-darken-700 max-md:text-center max-sm:mx-auto max-sm:text-lighten-800"
+                                    onClick={() => {
+                                        navigator.clipboard.writeText(addr);
+                                    }}
+                                >
+                                    <p>
+                                        Join at{" "}
+                                        <span className="rounded-xl bg-lighten-800 p-2 text-darken-800">
+                                            {addr}
+                                        </span>
                                     </p>
-
-                                    <p className="text-left text-xl font-light text-darken-800 max-md:text-center">
-                                        An alternative to modern Minecraft
-                                    </p>
-                                </div>
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="16"
+                                        height="16"
+                                        fill="currentColor"
+                                        className="my-auto transition-all hover:scale-105 active:scale-95"
+                                        viewBox="0 0 16 16"
+                                    >
+                                        <path
+                                            fill-rule="evenodd"
+                                            d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z"
+                                        />
+                                    </svg>
+                                </button>
                             </div>
                         </div>
-                        <img
-                            className="max-w-96 flex-1 rounded-3xl object-cover max-sm:max-w-full"
-                            src={PackImg}
-                        />
                     </div>
+                    <img
+                        className="top-0 z-0 flex-1 rounded-3xl object-cover max-sm:absolute max-sm:h-full max-sm:w-full max-sm:brightness-75 sm:w-96"
+                        src={PackImg}
+                    />
+                </div>
 
+                <div className="w-xl flex flex-col justify-center gap-6">
                     <div className="flex flex-grow justify-between gap-6 max-sm:flex-wrap">
                         {/* Warnings */}
 
                         <div className="flex flex-col gap-4 rounded-3xl bg-lighten-800 p-4">
-                            {/* Pre-release warning */}
+                            {/* Public server warning */}
                             <div
                                 id="container"
                                 className="flex h-full gap-4"
@@ -59,7 +91,7 @@ export default function fun(props) {
                             </div>
                         </div>
                         <div className="flex flex-col gap-4 rounded-3xl bg-lighten-800 p-4">
-                            {/* Pre-release warning */}
+                            {/* Hardcore warning */}
                             <div
                                 id="container"
                                 className="flex h-full gap-4"

@@ -107,18 +107,23 @@ export default function fun(props) {
                             img={FactorioBanner}
                             to="/servers/factorio"
                         />
-                        {/* <ServerCard
-                            title="BeamNG"
-                            subtitle="BeamMP Events"
-                            img={BeamBanner}
-                            to="/servers/beam"
-                        />
-                        <ServerCard
-                            title="DMP"
-                            subtitle="Kerbal Space Program"
-                            img={KspBanner}
-                            to="/servers/ksp"
-                        /> */}
+                        {props.data.experimental && (
+                            // In-progress server pages.
+                            <>
+                                <ServerCard
+                                    title="BeamNG"
+                                    subtitle="BeamMP Events"
+                                    img={BeamBanner}
+                                    to="/servers/beam"
+                                />
+                                <ServerCard
+                                    title="DMP"
+                                    subtitle="Kerbal Space Program"
+                                    img={KspBanner}
+                                    to="/servers/ksp"
+                                />
+                            </>
+                        )}
                     </div>
                 </div>
 
@@ -215,9 +220,38 @@ export default function fun(props) {
                     </div>
                     {/* Gradient bg */}
                     <div className="m-5 flex flex-wrap justify-center gap-4 rounded-2xl p-4 sm:gap-8">
-                        <p className="text-left font-header text-3xl text-darken-300">
-                            Coming soon.
-                        </p>
+                        {props.data.experimental ? (
+                            <>
+                                <Link
+                                    className="flex min-w-24 flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
+                                    to="/fun/gallery"
+                                >
+                                    <p className="p-2 font-header font-medium text-darken-800">
+                                        🖼️ Astro Gallery
+                                    </p>
+                                </Link>
+                                <Link
+                                    className="flex min-w-24 flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
+                                    to="/fun/dayplanner"
+                                >
+                                    <p className="p-2 font-header font-medium text-darken-800">
+                                        Astro of the day
+                                    </p>
+                                </Link>
+                                <Link
+                                    className="flex min-w-24 flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
+                                    to="/fun/idle"
+                                >
+                                    <p className="p-2 font-header font-medium text-darken-800">
+                                        Submit a sighting
+                                    </p>
+                                </Link>
+                            </>
+                        ) : (
+                            <p className="text-left font-header text-3xl text-darken-300">
+                                Coming soon.
+                            </p>
+                        )}
                     </div>
                 </div>
             </div>
