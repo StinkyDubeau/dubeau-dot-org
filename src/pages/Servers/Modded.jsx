@@ -5,10 +5,14 @@ import PackImg from "../../assets/modded-banner.png";
 import { Link } from "react-router-dom";
 import wl from "../../assets/whitelist.json";
 import Marquee from "react-fast-marquee";
+import { motion } from "framer-motion";
 import Markdown from "react-markdown";
 
 export default function fun(props) {
     const whitelist = wl;
+    const addr = "mc.dubeau.org:25569";
+    const name = "Modded";
+    const desc = "A whitelisted Create and Pixelmon server ⚙️🐿️";
 
     function createUser(user) {
         return (
@@ -23,19 +27,46 @@ export default function fun(props) {
 
     return (
         <Frame data={props.data}>
-            <div className="m-2 flex flex-col justify-center gap-6 overflow-hidden max-sm:mt-12 sm:p-4">
+            <motion.div
+                layoutId={PackImg}
+                className="m-2 flex flex-col justify-center gap-6 overflow-hidden max-sm:mt-12 sm:p-4"
+            >
                 <div className="flex justify-between gap-12 overflow-clip align-middle max-sm:relative max-sm:h-72 max-sm:flex-col sm:h-72">
                     <div className="flex-0  z-10 flex max-w-full justify-center max-sm:h-full">
                         <div className="my-auto flex h-fit flex-col justify-center gap-12 align-middle">
                             <div className="flex flex-col gap-2">
                                 <p className="text-left font-header text-5xl text-darken-700 max-md:text-center max-sm:text-lighten-800">
-                                    Modded Server, Fall 2024
+                                    {name}
                                 </p>
-
                                 <p className="max-sm:h-shrink text-left text-xl font-light text-darken-700 max-md:text-center max-sm:text-lighten-800">
-                                    A whitelisted Create and Pixelmon server
-                                    ⚙️🐿️
+                                    {desc}
                                 </p>
+                                <button
+                                    className="max-sm:h-shrink flex gap-2 text-nowrap text-left text-xl font-light text-darken-700 max-md:text-center max-sm:mx-auto max-sm:text-lighten-800"
+                                    onClick={() => {
+                                        navigator.clipboard.writeText(addr);
+                                    }}
+                                >
+                                    <p>
+                                        Join at{" "}
+                                        <span className="rounded-xl bg-lighten-800 p-2 text-darken-800">
+                                            {addr}
+                                        </span>
+                                    </p>
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="16"
+                                        height="16"
+                                        fill="currentColor"
+                                        className="my-auto transition-all hover:scale-105 active:scale-95"
+                                        viewBox="0 0 16 16"
+                                    >
+                                        <path
+                                            fill-rule="evenodd"
+                                            d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z"
+                                        />
+                                    </svg>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -314,10 +345,10 @@ export default function fun(props) {
                         </div>
                     </p>
                 </div>
-            </div>
-            <p className="mb-6 text-xl font-light text-darken-700 max-md:text-center">
-                Last updated December 13th, 2024
-            </p>
+                <p className="mb-6 text-xl font-light text-darken-700 max-md:text-center">
+                    Last updated January 4th, 2025
+                </p>
+            </motion.div>
         </Frame>
     );
 }

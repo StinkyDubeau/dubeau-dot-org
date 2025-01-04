@@ -12,7 +12,11 @@ import Node from "../Framework/Node.js";
 
 export default function FrameworkTest(props) {
     const [focus, setFocus] = useState(0); // 0: Capacitors, 1: Generators, 2: Loads
-    const testNetwork = new Network();
+
+    // TODO: Move Network() state into react useState if I expect it to refresh automatically.
+    // NO magic. YES hooks. 🤦‍♀️
+
+    const [testNetwork, setTestNetwork] = useState(new Network());
 
     // Helper Functions
     function addTestNodesToNetwork(network, n) {
@@ -23,7 +27,10 @@ export default function FrameworkTest(props) {
             nodesToAdd.push(node);
             n -= 1;
         }
+        // Add nodes to the existing network
         network.addNodesToNetwork(nodesToAdd);
+        // Update state, adding our current array of nodes.
+        setTestNetwork(new Network(testNetwork.nodes));
         console.log(network.nodes);
     }
 
@@ -35,8 +42,10 @@ export default function FrameworkTest(props) {
                 className="bg-lighten-800"
             >
                 <p>Network: {network.uuid}</p>
+                <p>Nodes: {network.nodes.length}</p>
+                <p></p>
                 <ul className="flex flex-col gap-2">
-                    {/* {testNetwork.nodes.map(renderOneNode)} */}
+                    {testNetwork.nodes.map(renderOneNode)}
                     {renderOneNode(
                         network.nodes[0] ? network.nodes[0] : new Node(network),
                     )}

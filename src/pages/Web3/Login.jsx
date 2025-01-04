@@ -4,6 +4,7 @@ import Frame from "../../components/Frame";
 import Avatar from "./Avatar";
 import Markdown from "react-markdown";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 export default function Login(props) {
     const [loggedIn, setLoggedIn] = useState(props.loggedIn);
@@ -12,32 +13,35 @@ export default function Login(props) {
 
     const message = {
         from: {
-            nick: "Bob Loblaw",
+            nick: "John Human",
             id: "rXKIunbHtTsbGTgsU62C",
         },
-        content: "Try setting a nickname to preview unique user icons",
-        timestamp: "9/12/2024, 12:08:16 AM",
+        content: "Try setting a nickname to preview your user icon",
+        timestamp: "1/4/2025, 11:04:14 AM",
     };
 
     function createLogin(props) {
         return (
             <div className="flex h-screen flex-col justify-center gap-8">
                 <div className="mb-12 flex max-w-screen-sm flex-col gap-8">
-                    {/* Choose lobby */}
-                    <div className="m-auto mt-3 flex w-full animate-gradient-y flex-col justify-center gap-2 rounded-3xl bg-gradient-to-bl from-gray-700 via-cyan-600 to-blue-500 p-5 transition-all max-sm:max-w-xs">
-                        <p className="m-auto font-header text-5xl font-extralight text-lighten-900">
+                    {/* Choose room */}
+                    <motion.div
+                        layoutId="ChatLoginPanel"
+                        className="m-auto mt-3 flex w-full animate-gradient-y flex-col justify-center gap-2 rounded-3xl bg-gradient-to-bl from-orange-700 via-pink-500 to-yellow-400 p-5 transition-colors max-sm:max-w-xs"
+                    >
+                        <motion.p className="m-auto font-header text-5xl font-extralight text-lighten-900">
                             p2p chat
-                        </p>
-                        <p className="font-header text-xl font-medium text-lighten-700">
-                            Choose a lobby
-                        </p>
-                        <div className="flex justify-center gap-2">
+                        </motion.p>
+                        <motion.p className="font-header text-xl font-medium text-lighten-700">
+                            Choose a room
+                        </motion.p>
+                        <motion.div className="flex justify-center gap-2">
                             {createRoomButton("A")}
                             {createRoomButton("B")}
                             {createRoomButton("C")}
                             {createRoomButton("D")}
-                        </div>
-                    </div>
+                        </motion.div>
+                    </motion.div>
                     <div className="-mt-6 flex w-full flex-wrap gap-2 transition-all">
                         {/* Set nickname */}
                         <div className="m-auto flex max-w-sm gap-2 rounded-3xl bg-lighten-800 p-2">
@@ -118,9 +122,9 @@ export default function Login(props) {
 
                     <Link
                         to="/fun"
-                        className="underline p-2"
+                        className="p-2 underline"
                     >
-                        Back
+                        back to dubeau.org
                     </Link>
                 </div>
             </div>

@@ -2,6 +2,7 @@
 // Node States: -1: Input | 0: Idle | 1: Output
 
 import { NIL, v4 as uuidv4 } from "uuid";
+import { useState } from "react";
 
 export default class Network {
     // Calculate and return total network capacitance in Joules

@@ -20,6 +20,7 @@ import Modded from "./pages/Servers/Modded";
 import BetterThanWolves from "./pages/Servers/BetterThanWolves";
 import Factorio from "./pages/Servers/Factorio";
 import KSP from "./pages/Servers/KSP";
+import Beam from "./pages/Servers/BeamMP";
 
 // Pages: Fun
 import Widgets from "./pages/Toys/Widgets";
@@ -150,6 +151,15 @@ function App() {
                         path="/servers/factorio"
                         element={
                             <Factorio
+                                data={data}
+                                setData={setData}
+                            />
+                        }
+                    />
+                    <Route
+                        path="/servers/beam"
+                        element={
+                            <Beam
                                 data={data}
                                 setData={setData}
                             />
