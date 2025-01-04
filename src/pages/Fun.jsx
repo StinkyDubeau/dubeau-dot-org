@@ -42,10 +42,10 @@ export default function fun(props) {
                     </div>
                     <div className="m-5 flex animate-gradient-x flex-wrap justify-center gap-4 rounded-2xl p-4 sm:gap-8">
                         <Link
-                            className="flex aspect-square flex-col justify-center rounded-xl border border-x-darken-50 border-b-darken-100 border-t-lighten-100 bg-lighten-200 p-2  shadow-md backdrop-blur-md transition-all hover:scale-105 hover:shadow-lg"
+                            className="flex aspect-square flex-col justify-center rounded-xl border border-x-darken-50 border-b-darken-100 border-t-lighten-100 bg-darken-200 p-2 shadow-md backdrop-blur-md transition-all hover:scale-105 hover:shadow-lg"
                             to="/chat"
                         >
-                            <p className="font-header text-2xl text-lighten-600">
+                            <p className="font-header text-2xl text-lighten-700">
                                 Connect
                             </p>
                         </Link>
@@ -68,7 +68,7 @@ export default function fun(props) {
                         </p>
                     </div>
                     {/* Gradient bg */}
-                    <div className="my-5 flex flex-wrap justify-center gap-4 rounded-2xl py-4 sm:gap-8">
+                    <div className="my-5 flex flex-wrap justify-evenly gap-4 rounded-2xl px-6 py-4 sm:gap-8">
                         <ServerCard
                             id="vanilla"
                             title="Vanilla"

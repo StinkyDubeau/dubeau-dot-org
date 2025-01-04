@@ -10,8 +10,7 @@ import Marquee from "react-fast-marquee";
 export default function fun(props) {
     return (
         <Frame data={props.data}>
-            <motion.div 
-                layoutId={PackImg}>
+            <motion.div layoutId={PackImg}>
                 <div className="w-xl flex flex-col justify-center gap-6">
                     <div className="mt-5 flex justify-between gap-12 overflow-clip rounded-3xl align-middle max-sm:flex-col">
                         <div className="flex-0 flex max-w-full justify-center ">
@@ -77,10 +76,10 @@ export default function fun(props) {
                         </div>
                     </div>
                 </div>
+                <p className="mt-6 font-header text-darken-800">
+                    Last updated September 5th, 2024
+                </p>
             </motion.div>
-            <p className="mt-6 font-header text-darken-800">
-                Last updated September 5th, 2024
-            </p>
         </Frame>
     );
 }

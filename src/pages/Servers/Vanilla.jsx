@@ -357,10 +357,10 @@ export default function fun(props) {
                         </div>
                     </div>
                 </div>
+                <p className="mb-6 text-xl font-light text-darken-700 max-md:text-center">
+                    Last updated December 13th, 2024
+                </p>
             </motion.div>
-            <p className="mb-6 text-xl font-light text-darken-700 max-md:text-center">
-                Last updated December 13th, 2024
-            </p>
         </Frame>
     );
 }

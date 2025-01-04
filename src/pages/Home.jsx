@@ -1,14 +1,8 @@
 import Frame from "../components/Frame";
 import Panel from "../components/Panel";
-import fun from "./Fun";
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import Navbar from "../components/Navbar";
 import NavButtons from "../components/NavButtons";
-import Button from "../components/Button";
-import ServerCard from "../components/ServerCard";
 
-import ModdedBanner from "../assets/modded-banner.png";
+import { motion } from "framer-motion";
 
 export default function Home(props) {
     return (
@@ -33,9 +27,13 @@ export default function Home(props) {
                     </Panel>
                     <Panel className="">
                         <div className="flex justify-center gap-2">
-                            <div className="m-2 flex h-16 justify-center p-1  sm:w-96">
+                            <motion.div
+                                layoutId="NavButtons"
+                                layoutScroll
+                                className="m-2 flex h-16 justify-center p-1  sm:w-96"
+                            >
                                 <NavButtons />
-                            </div>
+                            </motion.div>
                         </div>
                     </Panel>
                 </div>
