@@ -3,7 +3,7 @@ import Frame from "../components/Frame";
 import Button from "../components/Button";
 import { Link } from "react-router-dom";
 import ServerCard from "../components/ServerCard";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 import ModdedBanner from "../assets/modded-banner.png";
 import BetaBanner from "../assets/beta-banner.webp";
@@ -30,7 +30,6 @@ export default function fun(props) {
             <div className="my-4 flex flex-wrap justify-center">
                 <motion.div
                     layoutId="ChatLoginPanel"
-                    layoutScroll
                     className="m-4 w-full animate-gradient-x  rounded-2xl bg-gradient-to-bl from-orange-700 via-pink-500 to-yellow-400 bg-blend-lighten"
                 >
                     <div className="m-5 ">
@@ -79,52 +78,47 @@ export default function fun(props) {
                     </div>
                     {/* Gradient bg */}
                     <div className="my-5 flex flex-wrap justify-evenly gap-4 rounded-2xl px-6 py-4 sm:gap-8">
-                        <ServerCard
-                            id="vanilla"
-                            title="Vanilla"
-                            subtitle="Minecraft 1.21"
-                            img={VanillaBanner}
-                            // to="/vanilla"
-                            to="/servers/vanilla"
-                        />
-
+                        <AnimatePresence>
+                            <ServerCard
+                                id="vanilla"
+                                title="Vanilla"
+                                subtitle="Minecraft 1.21"
+                                img={VanillaBanner}
+                                // to="/vanilla"
+                                to="/servers/vanilla"
+                            />
+                        </AnimatePresence>
                         <ServerCard
                             title="Modded"
                             subtitle="Fabric 1.20"
                             img={ModdedBanner}
                             to="/servers/modded"
-                            style=""
-                            colour="bg-red-400"
                             announcement="pre-release"
                         />
                         <ServerCard
                             title="Better Than Wolves"
                             subtitle="Modded 1.5.2"
                             img={BetaBanner}
-                            // to="/beta"
                             to="/servers/btw"
                         />
                         <ServerCard
                             title="Factorio"
                             subtitle="Modded 2.0"
                             img={FactorioBanner}
-                            // to="/factorio"
                             to="/servers/factorio"
                         />
-                        <ServerCard
+                        {/* <ServerCard
                             title="BeamNG"
                             subtitle="BeamMP Events"
                             img={BeamBanner}
-                            // to="/factorio"
                             to="/servers/beam"
                         />
                         <ServerCard
                             title="DMP"
                             subtitle="Kerbal Space Program"
                             img={KspBanner}
-                            // to="/ksp"
                             to="/servers/ksp"
-                        />
+                        /> */}
                     </div>
                 </div>
 

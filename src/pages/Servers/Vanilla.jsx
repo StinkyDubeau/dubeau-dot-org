@@ -26,9 +26,9 @@ export default function fun(props) {
         <Frame data={props.data}>
             <motion.div
                 layoutId={PackImg}
-                className="m-2 flex flex-col justify-center gap-6 overflow-hidden max-sm:mt-12 sm:p-4"
+                className="m-2 flex flex-col justify-center gap-6 overflow-hidden rounded-3xl max-sm:mt-12 sm:p-4"
             >
-                <div className="flex justify-between gap-12 overflow-clip align-middle max-sm:relative max-sm:h-72 max-sm:flex-col sm:h-72">
+                <motion.div className="flex justify-between gap-12 overflow-clip align-middle max-sm:relative max-sm:h-72 max-sm:flex-col sm:h-72">
                     <div className="flex-0  z-10 flex max-w-full justify-center max-sm:h-full">
                         <div className="my-auto flex h-fit flex-col justify-center gap-12 align-middle">
                             <div className="flex flex-col gap-2">
@@ -42,12 +42,12 @@ export default function fun(props) {
                             </div>
                         </div>
                     </div>
-                    <img
+                    <motion.img
                         id="vanilla"
                         className="top-0 z-0 flex-1 rounded-3xl object-cover max-sm:absolute max-sm:h-full max-sm:brightness-75 sm:w-96"
                         src={PackImg}
                     />
-                </div>
+                </motion.div>
 
                 <div className="flex flex-col gap-2 rounded-3xl bg-lighten-800 p-4">
                     <p className="text-left font-header text-2xl text-darken-800">
