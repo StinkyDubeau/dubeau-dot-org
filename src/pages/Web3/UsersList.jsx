@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 export default function UsersList(props) {
     const users = props.users;
     const myUser = props.myUser;
@@ -18,22 +20,30 @@ export default function UsersList(props) {
                     {users[0] ? (
                         users.map((user, index) => {
                             return (
-                                <li
+                                <motion.li
+                                    initial={{
+                                        scale: 0.5,
+                                        opacity: 0,
+                                    }}
+                                    animate={{
+                                        scale: 1,
+                                        opacity: 1,
+                                    }}
                                     className="flex-0 whitespace-nowrap text-nowrap rounded-3xl bg-darken-50 px-2 py-1 text-darken-700 max-sm:max-h-6 max-sm:text-xs sm:w-52"
                                     key={index}
                                 >
                                     <p className="">
                                         {user.nick ? user.nick : user.id}
                                     </p>
-                                </li>
+                                </motion.li>
                             );
                         })
                     ) : (
-                        <div>
-                            <p className="mx-auto italic text-darken-600">
+                        <div className="flex gap-2 sm:flex-col">
+                            <p className="mx-auto text-nowrap italic text-darken-600">
                                 Looking for others...
                             </p>
-                            <progress className="progress w-24 border-lighten-800 bg-darken-400 fill-lighten-800 text-lighten-800"></progress>
+                            <progress className="progress my-auto border-lighten-800 bg-darken-400 fill-lighten-800 text-lighten-800"></progress>
                         </div>
                     )}
                 </ul>

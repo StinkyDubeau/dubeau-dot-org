@@ -21,15 +21,34 @@ export default function Frame(props) {
                                 Experimental features are active.
                             </p>
                             <Link
+                                onClick={() => {
+                                    props.setData({
+                                        ...props.data,
+                                        experimental: false,
+                                    });
+                                }}
+                                to="/"
+                                className="font-header text-white underline"
+                            >
+                                Disable
+                            </Link>
+                            <Link
                                 to="/trackers"
                                 className="font-header text-white underline"
                             >
                                 Go to trackers page
                             </Link>
                         </div>
-                        <p className="font-header text-white">
-                            {props.data && Object.values(props.data).toString()}
-                        </p>
+
+                        <div className="flex gap-2">
+                            <p className="font-header text-white">
+                                Session data:
+                            </p>
+                            <p className="font-header text-white">
+                                {props.data &&
+                                    Object.values(props.data).toString()}
+                            </p>
+                        </div>
                     </div>
                 )}
             </div>
@@ -50,7 +69,7 @@ export default function Frame(props) {
                 className={`min-w-screen -z-30 h-max min-h-screen ${props.vignette === !null ? "shadow-inner-4xl" : "bg-lighten"}`}
             >
                 <div className={`m-auto ${!props.noNavbar && "pt-16"} `}>
-                    <div className="mx-auto xs:flex max-w-screen-xl justify-center">
+                    <div className="mx-auto max-w-screen-xl justify-center xs:flex">
                         <div className="flex flex-col">{props.children}</div>
                     </div>
                 </div>
