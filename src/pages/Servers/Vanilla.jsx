@@ -40,7 +40,7 @@ export default function fun(props) {
                                 <p className="max-sm:h-shrink text-left text-xl font-light text-darken-700 max-md:text-center max-sm:text-lighten-800">
                                     An invite-only Minecraft community
                                 </p>
-                                
+
                                 <button
                                     className="max-sm:h-shrink flex gap-2 text-nowrap text-left text-xl font-light text-darken-700 max-md:text-center max-sm:mx-auto max-sm:text-lighten-800"
                                     onClick={() => {
@@ -146,8 +146,8 @@ export default function fun(props) {
                     </div>
 
                     <p className="text-left font-header text-xl text-darken-800">
-                        1. Download and launch the latest version of Minecraft
-                        Java Edition
+                        1. Download and launch Minecraft Java Edition version
+                        1.21.1
                     </p>
                     <p className="text-left font-header text-xl text-darken-800">
                         2. Connect to{" "}

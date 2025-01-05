@@ -124,7 +124,7 @@ export default function Login(props) {
                         to="/fun"
                         className="p-2 underline"
                     >
-                        back to dubeau.org
+                        more experiments
                     </Link>
                 </div>
             </div>

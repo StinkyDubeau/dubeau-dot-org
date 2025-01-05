@@ -12,7 +12,7 @@ import FactorioBanner from "../assets/factorio-banner.jpg";
 import KspBanner from "../assets/ksp-banner.jpg";
 import BeamBanner from "../assets/beam-banner.jpg";
 
-export default function fun(props) {
+export default function Fun(props) {
     return (
         <Frame data={props.data}>
             {/* 
@@ -37,13 +37,13 @@ export default function fun(props) {
                             layoutId="ChatLoginTitle"
                             className="text-left font-header text-5xl text-lighten-800"
                         >
-                            Decentralized chat
+                            Peer-to-peer chatrooms
                         </motion.p>
                         <motion.p
                             layoutId="ChatLoginSubtitle"
                             className="text-left text-lg text-lighten-800"
                         >
-                            Peer-to-peer & end-to-end encrypted.
+                            Serverless and ephemeral chat.
                         </motion.p>
                     </div>
                     <motion.div
@@ -196,7 +196,7 @@ export default function fun(props) {
                             to="/trackers"
                         >
                             <p className="p-2 font-header font-medium text-darken-800">
-                                ⚙️ Experiments
+                                ⚙️ Experimental
                             </p>
                         </Link>
                     </div>
