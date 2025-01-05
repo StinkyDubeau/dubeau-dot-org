@@ -15,7 +15,6 @@ export default function MessageEntry(props) {
                     className="flex-0"
                     onSubmit={(e) => {
                         e.preventDefault();
-                        sendMyMessage(myMessage);
                     }}
                 >
                     <input

@@ -29,11 +29,11 @@ export default function UsersList(props) {
                             );
                         })
                     ) : (
-                        <div className="gap-2 max-sm:flex">
-                            <p className="mx-auto italic text-darken-600">
+                        <div className="sm:flex-col gap-2 flex">
+                            <p className="mx-auto text-nowrap italic text-darken-600">
                                 Looking for others...
                             </p>
-                            <progress className="progress my-auto w-24 border-lighten-800 bg-darken-400 fill-lighten-800 text-lighten-800"></progress>
+                            <progress className="progress my-auto border-lighten-800 bg-darken-400 fill-lighten-800 text-lighten-800"></progress>
                         </div>
                     )}
                 </ul>
