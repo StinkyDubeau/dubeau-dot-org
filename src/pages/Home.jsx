@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 import { motion } from "framer-motion";
 
-export default function Experiments(props) {
+export default function Home(props) {
     return (
         <motion.div layout>
             <Frame
