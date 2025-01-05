@@ -27,7 +27,9 @@ export default function createMessage(message, index) {
     //       The above code was my start to that
 
     return (
-        <div
+        <motion.div
+            initial={{ scale: 0.5, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
             key={index + message.from.id}
             className="justify-left flex-0 flex justify-between gap-2 overflow-y-auto overflow-x-scroll rounded-3xl bg-darken-50 px-4 py-2 scrollbar-hide"
         >
@@ -63,6 +65,6 @@ export default function createMessage(message, index) {
                 </p>
                 <p className="text-xs text-darken-500">{message.from.id}</p>
             </div>
-        </div>
+        </motion.div>
     );
 }
