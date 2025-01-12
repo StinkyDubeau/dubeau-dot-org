@@ -18,7 +18,9 @@ export default function Home(props) {
                             <h1 className="font-header text-5xl font-light tracking-tighter text-darken-700 max-sm:text-5xl">
                                 dubeau.org
                             </h1>
-                            <p>jake's web playground</p>
+                            <p className="font-header text-darken-700">
+                                jake's web playground
+                            </p>
                         </div>
                     </Panel>
                     <div className="flex justify-center gap-2">
