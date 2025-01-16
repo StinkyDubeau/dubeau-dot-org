@@ -9,16 +9,16 @@ export default function ServerCard(props) {
             layoutId={props.img}
             whileHover={{ width: 200 }}
             whileTap={{ y: -10 }}
-            className={`${props.className} card h-[200px] w-44 overflow-hidden rounded-2xl bg-darken-900 shadow-lg`}
+            className={`${props.className} card h-52 w-44 overflow-hidden rounded-2xl bg-darken-900 shadow-lg`}
         >
             <Link to={props.to}>
                 <motion.img
                     id={props.img}
-                    className="h-full object-cover brightness-90"
+                    className="absolute h-full object-cover brightness-90 shadow-xl"
                     src={props.img}
                 />
                 {/* Container */}
-                <div className="z-25 relative -top-[95%] m-2 flex h-40 flex-col justify-center gap-2 rounded-lg drop-shadow">
+                <div className="z-25 m-2 flex h-48 flex-col justify-center gap-2 rounded-lg drop-shadow">
                     {/* Spacer */}
                     <p className="z-10 mt-4 font-header text-3xl text-white drop-shadow">
                         {props.title}
