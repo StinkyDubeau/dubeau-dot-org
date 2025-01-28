@@ -199,7 +199,8 @@ export default function Fun(props) {
                                 </Link>
                             </div>
                         )}
-                        <motion.button
+                        <Link
+                            to="/trackers"
                             layoutId="Experimental"
                             className="flex min-w-24 flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
                             onClick={() => {
@@ -210,9 +211,9 @@ export default function Fun(props) {
                             }}
                         >
                             <p className="p-2 font-header font-medium text-darken-800">
-                                ⚙️ Show experimental pages
+                                ⚙️ Experiments
                             </p>
-                        </motion.button>
+                        </Link>
                     </div>
                 </div>
 
