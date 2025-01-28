@@ -13,6 +13,14 @@ import KspBanner from "../assets/ksp-banner.jpg";
 import BeamBanner from "../assets/beam-banner.jpg";
 
 export default function Fun(props) {
+    const FramerPostionHook = () => {
+        const { scrollYProgress } = useViewportScroll();
+        const [hookedYPostion, setHookedYPosition] = React.useState(0);
+        React.useEffect(() => {
+            // hook into the onChange, store the current value as state.
+            scrollYProgress.onChange((v) => setHookedYPosition(v));
+        }, [scrollYProgress]);
+    }; //make sure to re-subscriobe when scrollYProgress changes
     return (
         <Frame data={props.data}>
             {/* 
@@ -191,14 +199,20 @@ export default function Fun(props) {
                                 </Link>
                             </div>
                         )}
-                        <Link
+                        <motion.button
+                            layoutId="Experimental"
                             className="flex min-w-24 flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
-                            to="/trackers"
+                            onClick={() => {
+                                props.setData({
+                                    ...props.data,
+                                    experimental: true,
+                                });
+                            }}
                         >
                             <p className="p-2 font-header font-medium text-darken-800">
-                                ⚙️ Experimental
+                                ⚙️ Show experimental pages
                             </p>
-                        </Link>
+                        </motion.button>
                     </div>
                 </div>
 

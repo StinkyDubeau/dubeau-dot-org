@@ -3,6 +3,8 @@ import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import Panel from "../components/Panel";
 
+import { motion } from "framer-motion";
+
 export default function Trackers(props) {
     // Function to input from JSON
 
@@ -22,7 +24,7 @@ export default function Trackers(props) {
             vignette
         >
             <div className="flex h-screen w-full flex-col justify-center pb-32">
-                <Panel className="m-4 flex flex-col gap-2 rounded-2xl bg-lighten-900 p-4 text-left text-darken-800">
+                <motion.div layoutId="Experimental" className="m-4 flex flex-col gap-2 rounded-2xl bg-lighten-900 p-4 text-left text-darken-800">
                     <p>
                         <span className="font-semibold text-green-500">
                             Activate Experimental
@@ -153,7 +155,7 @@ export default function Trackers(props) {
                             Local: {data && Object.values(data).toString()}
                         </li>
                     </ul>
-                </Panel>
+                </motion.div>
             </div>
         </Frame>
     );
