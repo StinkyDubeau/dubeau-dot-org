@@ -203,12 +203,12 @@ export default function Fun(props) {
                             to="/trackers"
                             layoutId="Experimental"
                             className="flex min-w-24 flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
-                            onClick={() => {
-                                props.setData({
-                                    ...props.data,
-                                    experimental: true,
-                                });
-                            }}
+                            // onClick={() => {
+                            //     props.setData({
+                            //         ...props.data,
+                            //         experimental: true,
+                            //     });
+                            // }}
                         >
                             <p className="p-2 font-header font-medium text-darken-800">
                                 ⚙️ Experiments
