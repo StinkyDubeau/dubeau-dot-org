@@ -131,20 +131,28 @@ export default function Trackers(props) {
                             Disable Experimental
                         </button>
                     </div>
+                    <div className="flex flex-col gap-2 rounded-xl bg-darken-50 p-4">
+                        <p className="m-auto font-header">
+                            Site flags and data
+                        </p>
+                        <div>
+                            <p className="text-nowrap font-header">Splat:</p>
+                            <p className="ml-4 text-nowrap font-header">
+                                {useParams()[1] ? useParams()[1] : "None"}
+                            </p>
+                        </div>
 
-                    <p className="text-nowrap font-header">
-                        Splat: {useParams()[1] ? useParams()[1] : "None"}
-                    </p>
-
-                    <ul>
-                        <li className="text-nowrap font-header">
-                            Local scope:{" "}
-                            {data &&
-                                Object.values(data).map((value) => (
-                                    <p>{value.toString()}</p>
-                                ))}
-                        </li>
-                    </ul>
+                        <ul className="">
+                            Local scope:
+                            {data
+                                ? Object.keys(data).map((key) => (
+                                      <li className="ml-4">
+                                          {key.toString()}: {data[key]}
+                                      </li>
+                                  ))
+                                : "None"}
+                        </ul>
+                    </div>
                 </motion.div>
             </div>
         </Frame>
