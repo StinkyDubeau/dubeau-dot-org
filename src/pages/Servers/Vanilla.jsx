@@ -103,6 +103,10 @@ export default function fun(props) {
                     </Markdown>
                 </div>
 
+                <p className="text-left font-header text-5xl text-darken-700 max-md:text-center">
+                    How to play
+                </p>
+
                 <div className="flex flex-col gap-4 rounded-3xl bg-lighten-800 p-4">
                     <p className="text-left font-header text-3xl text-darken-800">
                         Join with a vanilla client

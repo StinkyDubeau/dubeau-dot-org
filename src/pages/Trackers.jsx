@@ -3,6 +3,8 @@ import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import Panel from "../components/Panel";
 
+import { motion } from "framer-motion";
+
 export default function Trackers(props) {
     // Function to input from JSON
 
@@ -22,56 +24,41 @@ export default function Trackers(props) {
             vignette
         >
             <div className="flex h-screen w-full flex-col justify-center pb-32">
-                <Panel className="m-4 flex flex-col gap-2 rounded-2xl bg-lighten-900 p-4 text-left text-darken-800">
-                    <p>
+                <motion.div
+                    layoutId="Experimental"
+                    className="m-4 flex max-w-96 flex-col gap-2 rounded-2xl bg-lighten-900 p-4 text-left font-header text-darken-800"
+                >
+                    <h1 className="text-center text-3xl font-light">
+                        ⚙️ Experiments
+                    </h1>
+                    <p className="">
+                        Click{" "}
                         <span className="font-semibold text-green-500">
                             Activate Experimental
                         </span>{" "}
                         and return to the{" "}
-                        <span className="font-semibold">fun</span> page.
+                        <a
+                            href="/fun"
+                            className="font-semibold"
+                        >
+                            playground
+                        </a>{" "}
+                        page. You'll find several new links and features there,
+                        and sitewide.
                     </p>
-                    <p>All pages with experimental features:</p>
-                    <ul className="flex flex-col gap-2">
-                        <li>
-                            -{" "}
-                            <Link
-                                className="underline"
-                                to="/fun"
-                            >
-                                /fun
-                            </Link>
-                        </li>
-                        <li>
-                            -{" "}
-                            <Link
-                                className="underline"
-                                to="/fun/tabs"
-                            >
-                                /fun/tabs
-                            </Link>
-                        </li>
-                        <li>
-                            -{" "}
-                            <Link
-                                className="underline"
-                                to="/fun/widgets"
-                            >
-                                /fun/widgets
-                            </Link>
-                        </li>
-                    </ul>
 
-                    <div className="flex justify-center gap-2 text-darken-800">
+                    <div className="flex gap-2 text-darken-800">
                         <button
-                            className="w-36 rounded-xl  bg-lighten-800 p-2 text-darken-800 shadow-md transition-all hover:scale-105 hover:bg-lighten-900 hover:shadow-lg"
+                            className="w-full rounded-xl bg-lighten-800 p-2 text-darken-800 shadow-md transition-all hover:scale-105 hover:bg-lighten-900 hover:shadow-lg"
                             onClick={() => {
                                 setData({ ...data, One: data.One + 1 });
                             }}
                         >
-                            Add local scope
+                            Add to local scope <br />{" "}
+                            <span className="">(Page data)</span>
                         </button>
                         <button
-                            className="w-36 rounded-xl  bg-lighten-800 p-2 text-darken-800 shadow-md transition-all hover:scale-105 hover:bg-lighten-900 hover:shadow-lg"
+                            className="w-full rounded-xl bg-lighten-800 p-2 text-darken-800 shadow-md transition-all hover:scale-105 hover:bg-lighten-900 hover:shadow-lg"
                             onClick={() => {
                                 props.setData({
                                     ...props.data,
@@ -79,12 +66,13 @@ export default function Trackers(props) {
                                 });
                             }}
                         >
-                            Add global scope
+                            Add to global scope <br />{" "}
+                            <span className="">(Session data)</span>
                         </button>
                     </div>
                     <div className="flex justify-center gap-2 text-darken-800">
                         <button
-                            className="w-36 rounded-xl  bg-lighten-800 p-2 text-darken-800 shadow-md transition-all hover:scale-105 hover:bg-lighten-900 hover:shadow-lg"
+                            className="w-full rounded-xl  bg-lighten-800 p-2 text-darken-800 shadow-md transition-all hover:scale-105 hover:bg-lighten-900 hover:shadow-lg"
                             onClick={() => {
                                 props.setData({
                                     ...props.data,
@@ -95,7 +83,7 @@ export default function Trackers(props) {
                             Start 'loading'...
                         </button>
                         <button
-                            className="w-36 rounded-xl  bg-lighten-800 p-2 text-darken-800 shadow-md transition-all hover:scale-105 hover:bg-lighten-900 hover:shadow-lg"
+                            className="w-full rounded-xl  bg-lighten-800 p-2 text-darken-800 shadow-md transition-all hover:scale-105 hover:bg-lighten-900 hover:shadow-lg"
                             onClick={() => {
                                 props.setData({
                                     ...props.data,
@@ -109,7 +97,7 @@ export default function Trackers(props) {
                     {props.data.loading && (
                         <textarea
                             className="rounded-xl bg-darken-50  p-2"
-                            placeholder="Enter a loading message (optional)"
+                            placeholder="Enter a loading message..."
                             value={props.data.loading.text}
                             onChange={(e) => {
                                 props.setData({
@@ -121,7 +109,7 @@ export default function Trackers(props) {
                     )}
                     <div className="flex justify-center gap-2 text-darken-800">
                         <button
-                            className="w-36 rounded-xl bg-green-500 p-2 font-semibold text-darken-800 shadow-md transition-all hover:scale-105 hover:bg-green-100 hover:shadow-lg"
+                            className="w-full rounded-xl bg-green-500 p-2 font-semibold text-darken-800 shadow-md transition-all hover:scale-105 hover:bg-green-100 hover:shadow-lg"
                             onClick={() => {
                                 props.setData({
                                     ...props.data,
@@ -132,7 +120,7 @@ export default function Trackers(props) {
                             Activate Experimental
                         </button>
                         <button
-                            className="w-36 rounded-xl bg-lighten-800 p-2 text-darken-800 shadow-md transition-all hover:scale-105 hover:bg-lighten-900 hover:shadow-lg"
+                            className="w-full rounded-xl bg-lighten-800 p-2 text-darken-800 shadow-md transition-all hover:scale-105 hover:bg-lighten-900 hover:shadow-lg"
                             onClick={() => {
                                 props.setData({
                                     ...props.data,
@@ -143,17 +131,29 @@ export default function Trackers(props) {
                             Disable Experimental
                         </button>
                     </div>
+                    <div className="flex flex-col gap-2 rounded-xl bg-darken-50 p-4">
+                        <p className="m-auto font-header">
+                            Site flags and data
+                        </p>
+                        <div>
+                            <p className="text-nowrap font-header">Splat:</p>
+                            <p className="ml-4 text-nowrap font-header">
+                                {useParams()[1] ? useParams()[1] : "None"}
+                            </p>
+                        </div>
 
-                    <p className="text-nowrap font-pixel">
-                        Splat: {useParams()[1] ? useParams()[1] : "None"}
-                    </p>
-
-                    <ul>
-                        <li className="text-nowrap font-pixel">
-                            Local: {data && Object.values(data).toString()}
-                        </li>
-                    </ul>
-                </Panel>
+                        <ul className="">
+                            Local scope:
+                            {data
+                                ? Object.keys(data).map((key) => (
+                                      <li className="ml-4">
+                                          {key.toString()}: {data[key]}
+                                      </li>
+                                  ))
+                                : "None"}
+                        </ul>
+                    </div>
+                </motion.div>
             </div>
         </Frame>
     );
