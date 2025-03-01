@@ -114,8 +114,8 @@ export default function ContactForm(props) {
                         <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z" />
                     </svg>
                     <input
-                        type="text"
-                        className="grow bg-transparent text-darken-800"
+                        type=""
+                        className="border-none bg-transparent text-darken-800"
                         placeholder="Name"
                         value={username}
                         onChange={(e) => {
@@ -135,8 +135,8 @@ export default function ContactForm(props) {
                         <path d="M15 6.954 8.978 9.86a2.25 2.25 0 0 1-1.956 0L1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z" />
                     </svg>
                     <input
-                        type="text"
-                        className="grow bg-transparent text-darken-800"
+                        type=""
+                        className="flex-1 grow border-none bg-transparent text-darken-800"
                         placeholder="Email"
                         value={email}
                         onChange={(e) => {
@@ -146,12 +146,12 @@ export default function ContactForm(props) {
                 </label>
 
                 <textarea
-                    className="rounded-xl bg-darken-50  p-2 text-darken-800"
+                    className="rounded-xl border-none bg-darken-50  p-2 text-darken-800"
                     placeholder="Body"
                     value={body}
                     onChange={(e) => {
                         setBody(e.target.value);
-                    }}  
+                    }}
                 ></textarea>
 
                 <button
