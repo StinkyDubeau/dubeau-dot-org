@@ -2,9 +2,43 @@ import Frame from "../components/Frame";
 import ContactForm from "../components/ContactForm";
 import { Link } from "react-router-dom";
 import BlogPost from "../components/BlogPost";
+import { useEffect, useState } from "react";
 
+const url = `http://${import.meta.env.VITE_API_URL}`;
 
-export default function (props) {
+export default function Blog(props) {
+    const [blogPosts, setBlogPosts] = useState([]);
+
+    useEffect(() => {
+        async function fetchBlogPosts() {
+            try {
+                console.log(`Fetching blog posts from ${url}/fetchBlogPosts`);
+                const response = await fetch(`${url}/fetchBlogPosts`, {
+                    mode: "cors",
+                });
+                const data = await response.json();
+                setBlogPosts(data);
+            } catch (error) {
+                console.error("Error fetching blog posts:", error);
+            }
+        }
+
+        fetchBlogPosts();
+    }, []);
+
+    function createBlogPost(post) {
+        return (
+            <BlogPost
+                key={post._id || "no-key"}
+                title={post.title || "Untitled"}
+                date={post.date || new Date().toDateString()}
+                author={post.author || "Unknown"}
+                id={post._id || "no-id"}
+                body={post.body || ""}
+            />
+        );
+    }
+
     return (
         <>
             <Frame data={props.data}>
@@ -14,29 +48,7 @@ export default function (props) {
                     </h1>
 
                     <div className="flex flex-col gap-2">
-                        <BlogPost
-                            title="Test post 1"
-                            date={new Date().toDateString()}
-                            author="Jake Dubeau"
-                            id="this-is-the-post-identifier"
-                            body={""}
-                        />
-
-                        <BlogPost
-                            title="**Vanilla Minecraft Server** |  Fall Changes"
-                            date={new Date().toDateString()}
-                            author="Jake Dubeau"
-                            id="1234-asdf-5678-qwer"
-                            body="This may very well be a blog post. Or it may not be. Or maybe it is?"
-                        />
-
-                        <BlogPost
-                            title="Test post 3"
-                            date={new Date().toDateString()}
-                            author="Jake Dubeau"
-                            id="random-letters-and-numbers"
-                            body="This is the body text of this post."
-                        />
+                        {blogPosts.map((post) => createBlogPost(post))}
                     </div>
                 </div>
             </Frame>
