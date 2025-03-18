@@ -1,19 +1,16 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import defaultImg from "../../../../assets/coin.png";
 
-```
-The interface of a resource:
-- name: string
-- img: image file
-- count: number
-- description: string
-- unit: string
-- enlarged: boolean
-
-```;
-
 export default function Resource(props) {
+    // The interface of a resource:
+    // - name: string
+    // - img: image file
+    // - count: number
+    // - description: string
+    // - unit: string
+    // - enlarged: boolean
+
     const [name, setName] = useState(props.name ? props.name : "Resource");
     const [img, setImg] = useState(props.img ? props.img : defaultImg);
     const [count, setCount] = useState(props.count ? props.count : 0);
@@ -28,12 +25,14 @@ export default function Resource(props) {
         props.englarged ? props.enlarged : false,
     );
 
-    function createThumbnail() {
+    function CreateThumbnail() {
         return (
             <motion.button
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 2 }}
                 onClick={() => setEnlarged(true)}
-                layoutId="count"
-                className="flex"
+                className="flex rounded-xl bg-darken-200 p-1"
             >
                 <img
                     className="h-6"
@@ -44,27 +43,39 @@ export default function Resource(props) {
         );
     }
 
-    function createEnlarged() {
+    function CreateEnlarged() {
         return (
-            <div className="fixed z-30 h-screen w-screen bg-green-400 text-left">
+            <motion.div
+                initial={{ opacity: 0.85, height: 32 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 32 }}
+                className="z-30 overflow-hidden rounded-xl bg-darken-200 bg-contain text-left"
+            >
                 <div
-                    id="titlebar"
-                    className="flex w-full justify-end gap-2"
+                    id="content"
+                    className="ml-2"
                 >
-                    <p
+                    <motion.button
+                        onClick={() => setEnlarged(false)}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1, transition: { duration: 0.5 } }}
+                        exit={{ width: 0 }}
                         id="window-title"
-                        className=""
+                        className="text-xl font-bold"
                     >
-                        {name}
-                    </p>
-                    <button onClick={() => setEnlarged(false)}>Close</button>
+                        {count} {name.toLowerCase()}
+                    </motion.button>
+                    <p>About {name.toLowerCase()}:</p>
+                    <p>{description}</p>
                 </div>
-                <p>This is {name.toLowerCase()}'s fullscreen resource page.</p>
-                <p>Description:</p>
-                <p>{description}</p>
-            </div>
+            </motion.div>
         );
     }
 
-    return enlarged ? createEnlarged() : createThumbnail();
+    return (
+        <AnimatePresence mode="wait">
+            {enlarged && <CreateEnlarged />}
+            {!enlarged && <CreateThumbnail />}
+        </AnimatePresence>
+    );
 }
