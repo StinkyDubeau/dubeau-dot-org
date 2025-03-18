@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, cloneElement } from "react";
+import { useLocation, useOutlet } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import defaultImg from "../../../../assets/coin.png";
 
@@ -10,6 +11,9 @@ export default function Resource(props) {
     // - description: string
     // - unit: string
     // - enlarged: boolean
+
+    const { pathname } = useLocation();
+    const element = useOutlet();
 
     const [name, setName] = useState(props.name ? props.name : "Resource");
     const [img, setImg] = useState(props.img ? props.img : defaultImg);
@@ -28,17 +32,24 @@ export default function Resource(props) {
     function CreateThumbnail() {
         return (
             <motion.button
-                initial={{ opacity: 0, scale: 0.95 }}
+                initial={{}}
                 animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 2 }}
+                exit={{}}
                 onClick={() => setEnlarged(true)}
                 className="flex rounded-xl bg-darken-200 p-1"
             >
-                <img
+                <motion.img
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, scale: 1, x: 0 }}
                     className="h-6"
                     src={img}
                 />
-                {name}: {count} {unit}
+                <motion.p
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                >
+                    {name}: {count} {unit}
+                </motion.p>
             </motion.button>
         );
     }
@@ -48,7 +59,7 @@ export default function Resource(props) {
             <motion.div
                 initial={{ opacity: 0.85, height: 32 }}
                 animate={{ opacity: 1, height: "auto" }}
-                exit={{ opacity: 0, height: 32 }}
+                exit={{ opacity: 0.85, height: 32 }}
                 className="z-30 overflow-hidden rounded-xl bg-darken-200 bg-contain text-left"
             >
                 <div
@@ -58,10 +69,10 @@ export default function Resource(props) {
                     <motion.button
                         onClick={() => setEnlarged(false)}
                         initial={{ opacity: 0 }}
-                        animate={{ opacity: 1, transition: { duration: 0.5 } }}
-                        exit={{ width: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0, x: 10 }}
                         id="window-title"
-                        className="text-xl font-bold"
+                        className="overflow-hidden text-xl font-bold"
                     >
                         {count} {name.toLowerCase()}
                     </motion.button>
@@ -74,8 +85,8 @@ export default function Resource(props) {
 
     return (
         <AnimatePresence mode="wait">
-            {enlarged && <CreateEnlarged />}
-            {!enlarged && <CreateThumbnail />}
+            {enlarged && cloneElement(<CreateEnlarged />, { key: "a" })}
+            {!enlarged && cloneElement(<CreateThumbnail />, { key: "b" })}
         </AnimatePresence>
     );
 }

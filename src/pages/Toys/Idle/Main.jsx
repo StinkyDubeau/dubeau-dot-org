@@ -15,7 +15,7 @@ export default function Main(props) {
             <Background />
             <div className="flex h-screen w-screen flex-col p-4">
                 {/* Status area */}
-                <div className="flex flex-col gap-1 shadow-xl">
+                <div className="flex flex-col gap-1">
                     <Resource
                         name="Gold"
                         count={55}
