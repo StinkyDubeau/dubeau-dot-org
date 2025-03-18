@@ -211,7 +211,7 @@ function App() {
                         }
                     />
                     <Route
-                        path="/fun/idle"
+                        path="/idle"
                         element={
                             <Idle
                                 data={data}

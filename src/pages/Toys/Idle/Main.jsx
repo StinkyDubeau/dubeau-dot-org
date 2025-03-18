@@ -8,13 +8,20 @@ import Resource from "./Tiles/Resource";
 export default function Main(props) {
     return (
         <>
-            <Background></Background>
+            <Background />
             <div className="flex h-screen w-screen flex-col p-4">
                 {/* Status area */}
-                <div className="mx-4 flex gap-2 bg-lighten-800 shadow-xl">
+                <div className=" shadow-xl">
                     <Resource
                         name="Gold"
                         count={55}
+                        unit="g"
+                    />
+                    <Resource
+                        name="Excess Lode Capacity"
+                        description="The amount of excess power you're currently dissipating. Measured in Lps (Lodes per second)."
+                        count={90}
+                        unit="Lps "
                     />
                 </div>
                 {/* Fullscreen area */}
