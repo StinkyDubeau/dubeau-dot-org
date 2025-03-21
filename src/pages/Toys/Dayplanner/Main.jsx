@@ -1,15 +1,14 @@
 import Frame from "../../../components/Frame";
-import UnderContruction from "../../../components/UnderConstruction";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 // TODO:
-// Categories: Is a task "Learning", "Health", "Work", "Fun"?
+// Categories: Is a task "Learning", "Alone-time", "Self-care", "Chores"?
 // Priority: Is a task "Urgent", "Important", "Normal", "Low"?
 // creationDate: How long will a task take? Choose from a list of time blocks
 
-// Weekly tasks: An option on all dailies to promote to a weekly.
-// Weekly tasks: Daily tasks that the user can promote to weekly recurring tasks:
+// Weekly tasks:
+// - Daily tasks that the user can promote to weekly recurring tasks:
 // - A weekly task has a target "completions count", which is set at the time of promotion.
 
 // Data handling:
@@ -17,6 +16,11 @@ import { v4 as uuidv4 } from "uuid";
 // - Load tasks from cookies or local storage.
 // - Save tasks to a database, or share as plain text.
 // - Load tasks from a database, or import from plain text.
+
+// Time management:
+// https://www.npmjs.com/package/d3-time
+// Use that package for doing relative time calculations.
+// - How much time is left in the day?
 
 export default function Dayplanner(props) {
     const [dailyTasks, setDailyTasks] = useState([
@@ -33,9 +37,15 @@ export default function Dayplanner(props) {
 
     // In minutes, how much time to dedicate to the day's tasks.
     const [dayDuration, setDayDuration] = useState(8 * 60);
+    const [dayInformation, setDayInformation] = useState({
+        startTime: new Date(),
+        endTime: new Date(),
+    });
 
     function RenderDailyTasks() {
         // This component visualizes a day of tasks, taking into consideration the duration of the "day duration", which can be set or changed by the user.
+        // TODO: Visually represent the duration of each task in relation to the day duration.
+
         return (
             <>
                 <p>There are {dayDuration / 60} hours to fill today.</p>
