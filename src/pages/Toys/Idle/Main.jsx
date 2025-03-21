@@ -13,9 +13,9 @@ export default function Main(props) {
     return (
         <>
             <Background />
-            <div className="flex h-screen w-screen flex-col p-4">
+            <div className="flex h-screen w-screen flex-col gap-1 p-4">
                 {/* Status area */}
-                <div className="flex flex-col gap-1">
+                <div className="flex-0 flex flex-col gap-1">
                     <Resource
                         name="Gold"
                         count={55}
@@ -29,7 +29,7 @@ export default function Main(props) {
                     />
                 </div>
                 {/* Fullscreen area */}
-                <motion.div className="h-full w-full rounded-2xl bg-darken-300 p-4 shadow-inner-3xl">
+                <motion.div className="h-full w-full flex-1 rounded-2xl bg-darken-300 p-4 shadow-inner-3xl">
                     <div className="justify-stretch gap-2">
                         <p className="h-full w-full text-center text-3xl text-lighten-200">
                             Game Map

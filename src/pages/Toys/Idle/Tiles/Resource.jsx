@@ -57,28 +57,40 @@ export default function Resource(props) {
     function CreateEnlarged() {
         return (
             <motion.div
-                initial={{ opacity: 0.85, height: 32 }}
-                animate={{ opacity: 1, height: "auto" }}
-                exit={{ opacity: 0.85, height: 32 }}
+                initial={{ height: 32 }}
+                animate={{ height: "auto" }}
+                exit={{ height: 32 }}
                 className="z-30 overflow-hidden rounded-xl bg-darken-200 bg-contain text-left"
             >
-                <div
-                    id="content"
-                    className="ml-2"
+                <motion.div
+                    exit={{ x: -100 }}
+                    className="flex gap-3"
                 >
-                    <motion.button
-                        onClick={() => setEnlarged(false)}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0, x: 10 }}
-                        id="window-title"
-                        className="overflow-hidden text-xl font-bold"
+                    <motion.img
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={{ opacity: 1, scale: 1, x: 0 }}
+                        exit={{ opacity: 0 }}
+                        className="h-24"
+                        src={img}
+                    />
+                    <div
+                        id="content"
+                        className="ml-2"
                     >
-                        {count} {name.toLowerCase()}
-                    </motion.button>
-                    <p>About {name.toLowerCase()}:</p>
-                    <p>{description}</p>
-                </div>
+                        <motion.button
+                            onClick={() => setEnlarged(false)}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            id="window-title"
+                            className="overflow-hidden text-xl font-bold"
+                        >
+                            {count} {name.toLowerCase()}
+                        </motion.button>
+                        <p>About {name.toLowerCase()}:</p>
+                        <p>{description}</p>
+                    </div>
+                </motion.div>
             </motion.div>
         );
     }

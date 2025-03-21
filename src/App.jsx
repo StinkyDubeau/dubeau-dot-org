@@ -202,7 +202,7 @@ function App() {
                         }
                     />
                     <Route
-                        path="/fun/dayplanner"
+                        path="/dayplanner"
                         element={
                             <Dayplanner
                                 data={data}

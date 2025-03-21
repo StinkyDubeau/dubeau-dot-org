@@ -183,7 +183,7 @@ export default function Fun(props) {
                                 </Link>
                                 <Link
                                     className="flex min-w-24 flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
-                                    to="/fun/dayplanner"
+                                    to="/dayplanner"
                                 >
                                     <p className="p-2 font-header font-medium text-darken-800">
                                         📅 Dayplanner
@@ -247,7 +247,7 @@ export default function Fun(props) {
                                 </Link>
                                 <Link
                                     className="flex min-w-24 flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
-                                    to="/fun/dayplanner"
+                                    to="/dayplanner"
                                 >
                                     <p className="p-2 font-header font-medium text-darken-800">
                                         Astro of the day
