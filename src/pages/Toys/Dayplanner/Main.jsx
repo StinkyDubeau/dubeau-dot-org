@@ -23,17 +23,7 @@ import { v4 as uuidv4 } from "uuid";
 // - How much time is left in the day?
 
 export default function Dayplanner(props) {
-    const [dailyTasks, setDailyTasks] = useState([
-        {
-            name: "Example daily task",
-            duration: 45,
-            description: "This is the description of the task.",
-            uuid: uuidv4(),
-            colour: "bg-yellow-400",
-            creationDate: new Date(),
-        },
-    ]);
-
+    const [dailyTasks, setDailyTasks] = useState([]);
     const [weeklyTasks, setWeeklyTasks] = useState([]);
 
     // In minutes, how much time to dedicate to the day's tasks.
@@ -43,25 +33,41 @@ export default function Dayplanner(props) {
         endTime: new Date(),
     });
 
+    function RenderDailySummary() {
+        return (
+            <>
+                <p>Today is {new Date().toDateString()}.</p>
+                <p>Shift start: {dayInformation.startTime.toString()}</p>
+                <p>Shift end: {dayInformation.endTime.toString()}</p>
+                <p>There are {dailyTasks.length} tasks for today.</p>
+                <p>There are {dayDuration / 60} hours to fill today.</p>
+                <p>x% of your day is accounted for.</p>
+            </>
+        );
+    }
+
     function RenderDailyTasks() {
         // This component visualizes a day of tasks, taking into consideration the duration of the "day duration", which can be set or changed by the user.
         // TODO: Visually represent the duration of each task in relation to the day duration.
 
         return (
             <>
-                <p>There are {dayDuration / 60} hours to fill today.</p>
-                {dailyTasks.map((task, index) => (
-                    <RenderTask
-                        key={task.uuid}
-                        name={task.name}
-                        duration={task.duration}
-                        description={task.description}
-                        creationDate={task.creationDate}
-                        colour={task.colour}
-                        uuid={task.uuid ? task.uuid : "No UUID!"}
-                        index={index}
-                    />
-                ))}
+                {dailyTasks.length === 0 ? (
+                    <p>There are no tasks for today.</p>
+                ) : (
+                    dailyTasks.map((task, index) => (
+                        <RenderTask
+                            key={task.uuid}
+                            name={task.name}
+                            duration={task.duration}
+                            description={task.description}
+                            creationDate={task.creationDate}
+                            colour={task.colour}
+                            uuid={task.uuid ? task.uuid : "No UUID!"}
+                            index={index}
+                        />
+                    ))
+                )}
             </>
         );
     }
@@ -178,14 +184,18 @@ export default function Dayplanner(props) {
             <Frame data={props.data}>
                 {/* <UnderContruction heading="Dayplanner is under construction." /> */}
                 <div className="mt-8 flex flex-col justify-center gap-2">
+                    {/* TODAYS SUMMARY */}
+                    <RenderDailySummary />
+
+                    {/* TODAYS TASKS */}
                     <div
                         id="tasks-container"
                         className="my-auto flex flex-col gap-2 rounded bg-lighten-800 p-2"
                     >
-                        {" "}
                         <RenderDailyTasks />
                     </div>
 
+                    {/* TASK FORM */}
                     <RenderTaskForm />
                 </div>
             </Frame>
