@@ -15,7 +15,7 @@ export default function Frame(props) {
             <div>
                 {/* Experimental flag */}
                 {props.data.experimental && (
-                    <div className="fixed bottom-0 z-50 mx-auto flex w-full justify-between bg-red-500 ">
+                    <div className="fixed bottom-0 z-50 mx-auto flex w-full justify-between bg-red-500 px-2 ">
                         <div className="flex gap-2">
                             <p className="font-header text-white">
                                 Experimental features are active.
@@ -44,7 +44,7 @@ export default function Frame(props) {
                             <p className="font-header text-white">
                                 Session data:
                             </p>
-                            <p className="font-header text-white">
+                            <p className="overflow-scroll text-nowrap font-header text-white">
                                 {props.data &&
                                     Object.values(props.data).toString()}
                             </p>

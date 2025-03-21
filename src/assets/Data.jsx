@@ -1,7 +1,6 @@
 const Data = {
     One: 1,
-    Two: "Two",
-    Three: ["T", "h", "r", "e", "e"],
+    "dubeau.org": new Date().getFullYear(),
 };
 
 export default Data;

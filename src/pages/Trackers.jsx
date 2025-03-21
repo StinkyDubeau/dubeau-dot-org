@@ -54,8 +54,7 @@ export default function Trackers(props) {
                                 setData({ ...data, One: data.One + 1 });
                             }}
                         >
-                            Add to local scope <br />{" "}
-                            <span className="">(Page data)</span>
+                            Add to page data
                         </button>
                         <button
                             className="w-full rounded-xl bg-lighten-800 p-2 text-darken-800 shadow-md transition-all hover:scale-105 hover:bg-lighten-900 hover:shadow-lg"
@@ -66,8 +65,7 @@ export default function Trackers(props) {
                                 });
                             }}
                         >
-                            Add to global scope <br />{" "}
-                            <span className="">(Session data)</span>
+                            Add to session data
                         </button>
                     </div>
                     <div className="flex justify-center gap-2 text-darken-800">
