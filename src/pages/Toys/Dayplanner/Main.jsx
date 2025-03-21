@@ -26,6 +26,7 @@ export default function Dayplanner(props) {
     const [dailyTasks, setDailyTasks] = useState([
         {
             name: "Example daily task",
+            duration: 45,
             description: "This is the description of the task.",
             uuid: uuidv4(),
             colour: "bg-yellow-400",
@@ -53,6 +54,7 @@ export default function Dayplanner(props) {
                     <RenderTask
                         key={task.uuid}
                         name={task.name}
+                        duration={task.duration}
                         description={task.description}
                         creationDate={task.creationDate}
                         colour={task.colour}
@@ -67,6 +69,7 @@ export default function Dayplanner(props) {
     function RenderTaskForm() {
         // name, description, creationDate, colour, uuids
         const [name, setName] = useState("");
+        const [duration, setDuration] = useState(0);
         const [description, setDescription] = useState("");
         const [creationDate, setCreationDate] = useState(new Date());
         const [colour, setColour] = useState("");
@@ -88,11 +91,23 @@ export default function Dayplanner(props) {
                     className="rounded border-none bg-darken-50 p-1 shadow-inner"
                     onChange={(e) => setDescription(e.target.value)}
                 />
+                {/* DURATION */}
+                <select
+                    className="min-w-36 rounded border-none bg-lighten-600 p-1 shadow"
+                    onChange={(e) => setDuration(parseInt(e.target.value))}
+                >
+                    <option value={15}>15 minutes</option>
+                    <option value={30}>30 minutes</option>
+                    <option value={45}>45 minutes</option>
+                    <option value={60}>60 minutes</option>
+                    <option value={90}>90 minutes</option>
+                    <option value={120}>120 minutes</option>
+                    <option value={180}>180 minutes</option>
+                </select>
                 {/* COLOUR */}
                 <select
-                    className="w-grow rounded border-none bg-lighten-600 p-1 shadow"
+                    className="min-w-24 rounded border-none bg-lighten-600 p-1 shadow"
                     onChange={(e) => setColour(e.target.value)}
-                    defaultValue="bg-yellow-400"
                 >
                     <option value="bg-yellow-400">Yellow</option>
                     <option value="bg-green-400">Green</option>
@@ -100,7 +115,6 @@ export default function Dayplanner(props) {
                     <option value="bg-blue-400">Blue</option>
                     <option value="bg-purple-500">Purple</option>
                 </select>
-
                 <button
                     className="rounded bg-lighten-600 p-1 shadow"
                     onClick={() => {
@@ -109,6 +123,7 @@ export default function Dayplanner(props) {
                             ...dailyTasks,
                             {
                                 name,
+                                duration,
                                 description,
                                 creationDate,
                                 colour,
@@ -130,6 +145,7 @@ export default function Dayplanner(props) {
     function RenderTask({
         index,
         name,
+        duration,
         description,
         creationDate,
         colour,
@@ -138,8 +154,11 @@ export default function Dayplanner(props) {
         const [showDetails, setShowDetails] = useState(false);
 
         return (
-            <div className={`${colour} flex gap-2 rounded p-2 shadow`}>
-                <p className="text-xl text-darken-600">#{index}</p>
+            <div className={`${colour} flex gap-6 rounded p-2 shadow`}>
+                <div className="flex flex-col gap-2 text-darken-600">
+                    <p className="text-xl">#{index + 1}</p>
+                    <p className="text-left">{duration}min</p>
+                </div>
                 <div className="flex flex-col gap-2 text-left">
                     <p className="text-darken-600">{name}</p>
                     <p className="text-darken-600">{description}</p>
