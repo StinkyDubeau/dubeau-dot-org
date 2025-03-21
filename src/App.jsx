@@ -29,7 +29,7 @@ import Widgets from "./pages/Toys/Widgets";
 import Data from "./assets/Data";
 import Tabs from "./pages/Toys/Tabs";
 import Gallery from "./pages/Toys/Gallery";
-import Dayplanner from "./pages/Toys/Dayplanner";
+import Dayplanner from "./pages/Toys/Dayplanner/Main";
 import Idle from "./pages/Toys/Idle/Main";
 
 function App() {
