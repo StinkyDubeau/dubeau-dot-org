@@ -25,9 +25,9 @@ export default function Home(props) {
                     </Panel>
                     <div className="flex justify-center gap-2">
                         <Panel className="">
-                            <div className="m-2 flex h-16 justify-center p-1  sm:w-96">
+                            <div className="m-2 flex h-16 justify-center p-1">
                                 <Link
-                                    className="m-1 -mr-2 rounded-xl p-1 font-header text-2xl text-darken-700 transition-all hover:rounded-3xl hover:bg-darken-50 hover:px-3 hover:shadow"
+                                    className="m-1 rounded-xl p-1 font-header text-2xl text-darken-700 transition-all hover:rounded-3xl hover:bg-darken-50 hover:px-3 hover:shadow"
                                     to="/chat"
                                 >
                                     <p className="mt-0.5 text-nowrap">
