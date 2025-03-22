@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function NavButtons(props) {
     return (
-        <div className="mx-4 flex ">
+        <div className="mx-auto flex">
             {!props.noHome && (
                 <Link
                     className="m-1 rounded-xl p-1 font-header text-2xl text-darken-700 transition-all hover:rounded-3xl hover:bg-darken-50 hover:px-3 hover:shadow"

@@ -15,9 +15,9 @@ export default function Frame(props) {
             <div>
                 {/* Experimental flag */}
                 {props.data.experimental && (
-                    <div className="fixed bottom-0 z-50 mx-auto flex w-full justify-between bg-red-500 px-2 ">
-                        <div className="flex gap-2">
-                            <p className="font-header text-white">
+                    <div className="fixed bottom-0 z-50 mx-auto flex w-full justify-between bg-red-500 pl-2 ">
+                        <div className="flex w-full justify-stretch gap-2">
+                            <p className="flex-0 overflow-ellipsis text-nowrap border font-header text-white">
                                 Experimental features are active.
                             </p>
                             <Link
@@ -28,23 +28,21 @@ export default function Frame(props) {
                                     });
                                 }}
                                 to="/"
-                                className="font-header text-white underline"
+                                className="flex-1 text-nowrap font-header text-white underline"
                             >
                                 Disable
                             </Link>
                             <Link
                                 to="/trackers"
-                                className="font-header text-white underline"
+                                className="flex-1 text-nowrap font-header text-white underline"
                             >
                                 Go to trackers page
                             </Link>
-                        </div>
 
-                        <div className="flex gap-2">
-                            <p className="font-header text-white">
+                            <p className="flex-0 overflow-ellipsis text-nowrap border text-right font-header text-white">
                                 Session data:
                             </p>
-                            <p className="overflow-scroll text-nowrap font-header text-white">
+                            <p className="flex-0 scroll-px-20 overflow-scroll text-nowrap font-header text-white shadow-inner-xl scrollbar-hide">
                                 {props.data &&
                                     Object.values(props.data).toString()}
                             </p>

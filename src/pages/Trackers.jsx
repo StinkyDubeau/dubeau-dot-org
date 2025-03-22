@@ -78,7 +78,7 @@ export default function Trackers(props) {
                                 });
                             }}
                         >
-                            Start 'loading'...
+                            Start loading
                         </button>
                         <button
                             className="w-full rounded-xl  bg-lighten-800 p-2 text-darken-800 shadow-md transition-all hover:scale-105 hover:bg-lighten-900 hover:shadow-lg"
@@ -89,13 +89,13 @@ export default function Trackers(props) {
                                 });
                             }}
                         >
-                            Stop 'loading'...
+                            Stop loading
                         </button>
                     </div>
                     {props.data.loading && (
                         <textarea
-                            className="rounded-xl bg-darken-50  p-2"
-                            placeholder="Enter a loading message..."
+                            className=" rounded-xl border-none bg-darken-50 p-2 shadow-inner-xl shadow-darken-100"
+                            placeholder="Enter a loading message"
                             value={props.data.loading.text}
                             onChange={(e) => {
                                 props.setData({
@@ -107,7 +107,7 @@ export default function Trackers(props) {
                     )}
                     <div className="flex justify-center gap-2 text-darken-800">
                         <button
-                            className="w-full rounded-xl bg-green-500 p-2 font-semibold text-darken-800 shadow-md transition-all hover:scale-105 hover:bg-green-100 hover:shadow-lg"
+                            className="w-full rounded-xl bg-green-500 p-2 font-semibold text-darken-800 shadow-md transition-all hover:scale-105 hover:bg-green-400 hover:shadow-lg"
                             onClick={() => {
                                 props.setData({
                                     ...props.data,
@@ -118,7 +118,7 @@ export default function Trackers(props) {
                             Activate Experimental
                         </button>
                         <button
-                            className="w-full rounded-xl bg-lighten-800 p-2 text-darken-800 shadow-md transition-all hover:scale-105 hover:bg-lighten-900 hover:shadow-lg"
+                            className="w-full rounded-xl bg-red-500 p-2 font-bold text-lighten-700 shadow-md transition-all hover:scale-105 hover:bg-red-400 hover:shadow-lg"
                             onClick={() => {
                                 props.setData({
                                     ...props.data,
@@ -126,7 +126,7 @@ export default function Trackers(props) {
                                 });
                             }}
                         >
-                            Disable Experimental
+                            Deactivate Experimental
                         </button>
                     </div>
                     <div className="flex flex-col gap-2 rounded-xl bg-darken-50 p-4">
