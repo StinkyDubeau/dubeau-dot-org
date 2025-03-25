@@ -151,10 +151,7 @@ export default function Login(props) {
     }
 
     return (
-        <Frame
-            noNavbar
-            data={props.data}
-        >
+        <>
             {loggedIn ? (
                 <Chat
                     nick={nick}
@@ -163,6 +160,6 @@ export default function Login(props) {
             ) : (
                 createLogin()
             )}
-        </Frame>
+        </>
     );
 }

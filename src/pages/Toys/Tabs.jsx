@@ -196,31 +196,26 @@ export default function (props) {
 
     return (
         <>
-            <Frame
-                data={props.data}
-                noScroll
+            <div
+                id="container"
+                className="mx-2 my-4 flex flex-col gap-4"
             >
-                <div
-                    id="container"
-                    className="mx-2 my-4 flex flex-col gap-4"
-                >
-                    <p className="text-left font-header text-3xl text-darken-800">
-                        Guitar Tabs
+                <p className="text-left font-header text-3xl text-darken-800">
+                    Guitar Tabs
+                </p>
+                <p className="text-left font-header text-darken-600">
+                    This is my collection of tabs dating back to about 2016.
+                    Click a tab to go to its ultimate-guitar page.
+                </p>
+                {props.data.experimental && createSortControls()}
+                {Bookmarks ? (
+                    Bookmarks.children.map(createBookmark)
+                ) : (
+                    <p className="italic text-darken-600">
+                        Failed to load guitar tabs JSON.
                     </p>
-                    <p className="text-left font-header text-darken-600">
-                        This is my collection of tabs dating back to about 2016.
-                        Click a tab to go to its ultimate-guitar page.
-                    </p>
-                    {props.data.experimental && createSortControls()}
-                    {Bookmarks ? (
-                        Bookmarks.children.map(createBookmark)
-                    ) : (
-                        <p className="italic text-darken-600">
-                            Failed to load guitar tabs JSON.
-                        </p>
-                    )}
-                </div>
-            </Frame>
+                )}
+            </div>
         </>
     );
 }

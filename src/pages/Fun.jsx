@@ -22,7 +22,7 @@ export default function Fun(props) {
         }, [scrollYProgress]);
     }; //make sure to re-subscriobe when scrollYProgress changes
     return (
-        <Frame data={props.data}>
+        <>
             {/* 
             Social
             - P2P Chat
@@ -274,6 +274,6 @@ export default function Fun(props) {
                     </div>
                 </div>
             </div>
-        </Frame>
+        </>
     );
 }
