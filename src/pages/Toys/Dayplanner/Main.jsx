@@ -1,6 +1,7 @@
 import Frame from "../../../components/Frame";
-import { useState } from "react";
+import { useState, memo } from "react";
 import { v4 as uuidv4 } from "uuid";
+import { AnimatePresence, motion } from "framer-motion";
 
 // TODO:
 // Categories: Is a task "Learning", "Alone-time", "Self-care", "Chores"?
@@ -23,7 +24,7 @@ import { v4 as uuidv4 } from "uuid";
 // Use that package for doing relative time calculations.
 // - How much time is left in the day?
 
-export default function Dayplanner(props) {
+function Dayplanner(props) {
     // An array of all tasks for the day.
     const [dailyTasks, setDailyTasks] = useState([]);
     // An array of tasks that have been promoted to "weeklies".
@@ -163,7 +164,7 @@ export default function Dayplanner(props) {
         );
     }
 
-    function RenderTask({
+    const RenderTask = memo(function RenderTask({
         index,
         name,
         duration,
@@ -172,10 +173,20 @@ export default function Dayplanner(props) {
         colour,
         uuid,
     }) {
+        // TODO: Make the Task component gesture-friendly
+        // - Swipe left to delete
+        // - Swipe right to edit
+        // - Tap to show details
+        // - Long press to show options
+
         const [showDetails, setShowDetails] = useState(false);
 
         return (
-            <div className={`${colour} flex gap-6 rounded p-2 shadow`}>
+            <motion.div
+                initial={{ y: -10, opacity: 0.85 }}
+                animate={{ y: 0, opacity: 1 }}
+                className={`${colour} flex gap-6 rounded p-2 shadow`}
+            >
                 <div className="flex flex-col gap-2 text-darken-600">
                     <p className="text-xl">#{index + 1}</p>
                     <p className="text-left">{duration}min</p>
@@ -190,9 +201,9 @@ export default function Dayplanner(props) {
                         </p>
                     )}
                 </div>
-            </div>
+            </motion.div>
         );
-    }
+    });
 
     return (
         <>
@@ -211,9 +222,13 @@ export default function Dayplanner(props) {
                     </div>
 
                     {/* TASK FORM */}
-                    <RenderTaskForm />
+                    <AnimatePresence>
+                        <RenderTaskForm />
+                    </AnimatePresence>
                 </div>
             </Frame>
         </>
     );
 }
+
+export default memo(Dayplanner);
