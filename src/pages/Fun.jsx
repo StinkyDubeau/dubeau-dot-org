@@ -23,7 +23,12 @@ export default function Fun(props) {
     }, []);
 
     return (
-        <>
+        <motion.div
+            initial={{ opacity: 0.6, x: 100 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0.6, x: 100 }}
+            layout
+        >
             {/* 
             Social
             - P2P Chat
@@ -44,7 +49,7 @@ export default function Fun(props) {
             <div className="my-4 flex flex-wrap justify-center">
                 <motion.div
                     layoutId="ChatLoginPanel"
-                    className="m-4 w-full animate-gradient-x  rounded-2xl bg-gradient-to-bl from-orange-700 via-pink-500 to-yellow-400 bg-blend-lighten"
+                    className="m-4 w-full animate-gradient-x rounded-2xl bg-gradient-to-bl from-orange-700 via-pink-500 to-yellow-400 bg-blend-lighten"
                 >
                     <div className="m-5 ">
                         <motion.p
@@ -61,7 +66,7 @@ export default function Fun(props) {
                         </motion.p>
                     </div>
                     <motion.div
-                        layoutId=""
+                        layout
                         className="m-5 flex animate-gradient-x flex-wrap justify-center gap-4 rounded-2xl p-4 sm:gap-8"
                     >
                         <Link
@@ -74,7 +79,10 @@ export default function Fun(props) {
                         </Link>
                     </motion.div>
                 </motion.div>
-                <div className="m-4 w-full animate-gradient-x rounded-2xl bg-gradient-to-br from-blue-400 via-cyan-400 to-orange-300">
+                <motion.div
+                    layout
+                    className="m-4 w-full animate-gradient-x rounded-2xl bg-gradient-to-br from-blue-400 via-cyan-400 to-orange-300"
+                >
                     <div className="m-5">
                         <p className="text-left font-header text-5xl text-darken-600">
                             Game servers
@@ -139,9 +147,12 @@ export default function Fun(props) {
                             </>
                         )}
                     </div>
-                </div>
+                </motion.div>
 
-                <div className="m-4 w-full animate-gradient-x rounded-2xl bg-gradient-to-bl from-pink-700  via-purple-600 to-zinc-200 p-2">
+                <motion.div
+                    layout
+                    className="m-4 w-full animate-gradient-x rounded-2xl bg-gradient-to-bl from-pink-700  via-purple-600 to-zinc-200 p-2"
+                >
                     <div className="m-5">
                         <p className="text-left font-header text-5xl text-lighten-800">
                             Hobby
@@ -220,9 +231,12 @@ export default function Fun(props) {
                             </p>
                         </Link>
                     </div>
-                </div>
+                </motion.div>
 
-                <div className="m-4  w-full animate-gradient-x rounded-2xl bg-gradient-to-tl from-yellow-400 via-orange-400 to-zinc-200">
+                <motion.div
+                    layout
+                    className="m-4  w-full animate-gradient-x rounded-2xl bg-gradient-to-tl from-yellow-400 via-orange-400 to-zinc-200"
+                >
                     <div className="m-5">
                         <p className="text-left font-header text-5xl text-darken-600">
                             Astro sightings
@@ -273,8 +287,8 @@ export default function Fun(props) {
                             </p>
                         )}
                     </div>
-                </div>
+                </motion.div>
             </div>
-        </>
+        </motion.div>
     );
 }

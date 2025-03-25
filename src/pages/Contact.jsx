@@ -2,6 +2,7 @@ import Frame from "../components/Frame";
 import ContactForm from "../components/ContactForm";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
+import { motion } from "framer-motion";
 
 export default function (props) {
     // Ensure page always has navbar
@@ -13,7 +14,12 @@ export default function (props) {
     }, []);
 
     return (
-        <>
+        <motion.div
+            initial={{ opacity: 0.6, x: -100 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0.6, x: -100 }}
+            layout
+        >
             <div className="">
                 <div className="m-5 flex animate-gradient-x justify-center rounded-2xl bg-gradient-to-tl from-green-600 via-cyan-600 to-yellow-500 p-4 sm:gap-8">
                     <div className="flex flex-wrap justify-around gap-6 lg:gap-48">
@@ -120,6 +126,6 @@ export default function (props) {
                     </div>
                 </div>
             </div>
-        </>
+        </motion.div>
     );
 }
