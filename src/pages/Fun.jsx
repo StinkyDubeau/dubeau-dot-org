@@ -35,6 +35,11 @@ export default function Fun(props) {
             - Reading List
             */}
 
+            {/* Make a scrolling fullscreen view for the cards */}
+            {/* A zoomed out version with short summary cards that toggles into fullscreen versions when tapped */}
+            {/* The above things, done well, can be standardized for the entire site. Even including sub-pages on links. */}
+            {/* If Executed exceedingly well, this could even serve as a powerful UI foundation for the Idle game experiment at https://www.dubeau.org/idle */}
+
             <div className="my-4 flex flex-wrap justify-center">
                 <motion.div
                     layoutId="ChatLoginPanel"

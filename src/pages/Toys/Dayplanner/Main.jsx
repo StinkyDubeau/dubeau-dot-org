@@ -1,11 +1,13 @@
 import Frame from "../../../components/Frame";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import { d3 } from "d3-time";
 
 // TODO:
 // Categories: Is a task "Learning", "Alone-time", "Self-care", "Chores"?
 // Priority: Is a task "Urgent", "Important", "Normal", "Low"?
 // creationDate: How long will a task take? Choose from a list of time blocks
+// This page should load for any day; Past present or future.
 
 // Weekly tasks:
 // - Daily tasks that the user can promote to weekly recurring tasks:
@@ -23,17 +25,29 @@ import { v4 as uuidv4 } from "uuid";
 // - How much time is left in the day?
 
 export default function Dayplanner(props) {
+    // An array of all tasks for the day.
     const [dailyTasks, setDailyTasks] = useState([]);
+    // An array of tasks that have been promoted to "weeklies".
     const [weeklyTasks, setWeeklyTasks] = useState([]);
 
     // In minutes, how much time to dedicate to the day's tasks.
     const [dayDuration, setDayDuration] = useState(8 * 60);
+    // Metadata and statistics about the day.
     const [dayInformation, setDayInformation] = useState({
         startTime: new Date(),
         endTime: new Date(),
     });
 
     function RenderDailySummary() {
+        const totalTaskDuration = dailyTasks.reduce(
+            (sum, task) => sum + task.duration,
+            0,
+        );
+        const dayUtilization = (
+            (totalTaskDuration / dayDuration) *
+            100
+        ).toFixed(0);
+
         return (
             <>
                 <p>Today is {new Date().toDateString()}.</p>
@@ -41,7 +55,7 @@ export default function Dayplanner(props) {
                 <p>Shift end: {dayInformation.endTime.toString()}</p>
                 <p>There are {dailyTasks.length} tasks for today.</p>
                 <p>There are {dayDuration / 60} hours to fill today.</p>
-                <p>x% of your day is accounted for.</p>
+                <p>{dayUtilization}% of your day is accounted for.</p>
             </>
         );
     }
@@ -73,6 +87,8 @@ export default function Dayplanner(props) {
     }
 
     function RenderTaskForm() {
+        // TODO: Make this pop into a floating window when the screen is wide enough.
+
         // name, description, creationDate, colour, uuids
         const [name, setName] = useState("");
         const [duration, setDuration] = useState(0);
