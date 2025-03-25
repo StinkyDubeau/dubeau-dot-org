@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, memo } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import vagueTime from "vague-time";
 import Background from "./Components/Background";
@@ -7,7 +7,7 @@ import { v4 as uuidv4 } from "uuid";
 
 import Resource from "./Tiles/Resource";
 
-export default function Main(props) {
+function Main(props) {
     const [tiles, setTiles] = useState([]);
 
     return (
@@ -59,3 +59,5 @@ export default function Main(props) {
         </>
     );
 }
+
+export default memo(Main);

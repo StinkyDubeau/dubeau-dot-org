@@ -1,9 +1,9 @@
-import { useState, cloneElement } from "react";
+import { useState, cloneElement, memo } from "react";
 import { useLocation, useOutlet } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import defaultImg from "../../../../assets/coin.png";
 
-export default function Resource(props) {
+function Resource(props) {
     // The interface of a resource:
     // - name: string
     // - img: image file
@@ -102,3 +102,5 @@ export default function Resource(props) {
         </AnimatePresence>
     );
 }
+
+export default memo(Resource);

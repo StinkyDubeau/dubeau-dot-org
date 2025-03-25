@@ -24,6 +24,7 @@ import Beam from "./pages/Servers/BeamMP";
 
 // Pages: Fun
 import Widgets from "./pages/Toys/Widgets";
+import Countries from "./pages/Countries";
 
 // Assets
 import Data from "./assets/Data";
@@ -214,6 +215,15 @@ function App() {
                         path="/idle"
                         element={
                             <Idle
+                                data={data}
+                                setData={setData}
+                            />
+                        }
+                    />
+                    <Route
+                        path="/countries"
+                        element={
+                            <Countries
                                 data={data}
                                 setData={setData}
                             />

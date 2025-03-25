@@ -1,7 +1,6 @@
 import Frame from "../../../components/Frame";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { d3 } from "d3-time";
 
 // TODO:
 // Categories: Is a task "Learning", "Alone-time", "Self-care", "Chores"?
