@@ -26,9 +26,14 @@ export default function Navbar(props) {
     }
 
     return (
-        <div className="fixed z-40 mx-auto flex w-full flex-col justify-center overflow-clip bg-lighten-600 py-2 backdrop-blur-3xl transition-all">
+        <motion.div
+            initial={{ height: 0, padding: 0 }}
+            animate={{ height: "auto", padding: 2 }}
+            exit={{ height: 0, padding: 0 }}
+            className="fixed z-40 mx-auto flex w-full flex-col justify-center overflow-clip bg-lighten-600 backdrop-blur-3xl"
+        >
             <NavButtons />
             {props.data && createDataDependants()}
-        </div>
+        </motion.div>
     );
 }

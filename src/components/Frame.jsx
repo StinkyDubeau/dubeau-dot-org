@@ -72,7 +72,9 @@ export default function Frame(props) {
             {!props.data.noScroll && <ScrollToTop />}
 
             {/* Navbar */}
-            {!props.data.noNavbar && <Navbar data={props.data} />}
+            <AnimatePresence mode="wait">
+                {!props.data.noNavbar && <Navbar data={props.data} />}
+            </AnimatePresence>
 
             {/* Content */}
             <div

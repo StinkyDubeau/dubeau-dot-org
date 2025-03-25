@@ -11,16 +11,17 @@ import VanillaBanner from "../assets/dubeau-banner.png";
 import FactorioBanner from "../assets/factorio-banner.jpg";
 import KspBanner from "../assets/ksp-banner.jpg";
 import BeamBanner from "../assets/beam-banner.jpg";
+import { useEffect } from "react";
 
 export default function Fun(props) {
-    const FramerPostionHook = () => {
-        const { scrollYProgress } = useViewportScroll();
-        const [hookedYPostion, setHookedYPosition] = React.useState(0);
-        React.useEffect(() => {
-            // hook into the onChange, store the current value as state.
-            scrollYProgress.onChange((v) => setHookedYPosition(v));
-        }, [scrollYProgress]);
-    }; //make sure to re-subscriobe when scrollYProgress changes
+    // Ensure page always has navbar
+    useEffect(() => {
+        props.setData({
+            ...props.data,
+            noNavbar: false,
+        });
+    }, []);
+
     return (
         <>
             {/* 
