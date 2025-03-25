@@ -204,8 +204,9 @@ export default function (props) {
                     Guitar Tabs
                 </p>
                 <p className="text-left font-header text-darken-600">
-                    This is my collection of tabs dating back to about 2016.
-                    Click a tab to go to its ultimate-guitar page.
+                    This is my collection of tabs dating back to about 2016. I
+                    used to have a (very full) bookmarks folder -- now I have
+                    this.
                 </p>
                 {props.data.experimental && createSortControls()}
                 {Bookmarks ? (

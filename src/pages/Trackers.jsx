@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import Panel from "../components/Panel";
 
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 export default function Trackers(props) {
     // Function to input from JSON
@@ -21,7 +21,7 @@ export default function Trackers(props) {
     return (
         <div className="flex h-screen w-full flex-col justify-center pb-32">
             <motion.div
-                layoutId="Experimental"
+                layout
                 className="m-4 flex max-w-96 flex-col gap-2 rounded-2xl bg-lighten-900 p-4 text-left font-header text-darken-800"
             >
                 <h1 className="text-center text-3xl font-light">
@@ -88,22 +88,28 @@ export default function Trackers(props) {
                         Stop loading
                     </button>
                 </div>
-                {props.data.loading && (
-                    <textarea
-                        className=" rounded-xl border-none bg-darken-50 p-2 shadow-inner-xl shadow-darken-100"
-                        placeholder="Enter a loading message"
-                        value={props.data.loading.text}
-                        onChange={(e) => {
-                            props.setData({
-                                ...props.data,
-                                loading: { text: e.target.value },
-                            });
-                        }}
-                    ></textarea>
-                )}
+                <AnimatePresence mode="wait">
+                    {props.data.loading && (
+                        <motion.input
+                            initial={{ height: 0 }}
+                            animate={{ height: "auto" }}
+                            exit={{ height: 0 }}
+                            className="rounded-xl border-none bg-darken-50 p-2 shadow-inner-xl shadow-darken-100"
+                            placeholder="Enter a loading message"
+                            value={props.data.loading.text}
+                            onChange={(e) => {
+                                props.setData({
+                                    ...props.data,
+                                    loading: { text: e.target.value },
+                                });
+                            }}
+                        />
+                    )}
+                </AnimatePresence>
+
                 <div className="flex justify-center gap-2 text-darken-800">
                     <button
-                        className="w-full rounded-xl bg-green-500 p-2 font-semibold text-darken-800 shadow-md transition-all hover:scale-105 hover:bg-green-400 hover:shadow-lg"
+                        className="w-full rounded-xl bg-green-500 p-2 font-semibold text-darken-800 shadow-md transition-all hover:scale-105 hover:bg-green-400 hover:text-darken-700 hover:shadow-lg"
                         onClick={() => {
                             props.setData({
                                 ...props.data,
@@ -114,7 +120,7 @@ export default function Trackers(props) {
                         Activate Experimental
                     </button>
                     <button
-                        className="w-full rounded-xl bg-red-500 p-2 font-bold text-lighten-700 shadow-md transition-all hover:scale-105 hover:bg-red-400 hover:shadow-lg"
+                        className="w-full rounded-xl bg-red-500 p-2 font-bold text-lighten-800 shadow-md transition-all hover:scale-105 hover:bg-red-400 hover:text-lighten-900 hover:shadow-lg"
                         onClick={() => {
                             props.setData({
                                 ...props.data,
@@ -138,7 +144,14 @@ export default function Trackers(props) {
                         Local scope:
                         {data
                             ? Object.keys(data).map((key) => (
-                                  <li className="ml-4">
+                                  <li
+                                      className="ml-4"
+                                      onClick={() => {
+                                          const reducedData = data;
+                                          delete reducedData[key];
+                                          props.setData(reducedData);
+                                      }}
+                                  >
                                       {key.toString()}: {data[key]}
                                   </li>
                               ))

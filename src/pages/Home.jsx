@@ -4,8 +4,13 @@ import NavButtons from "../components/NavButtons";
 import { Link } from "react-router-dom";
 
 import { motion } from "framer-motion";
+import { useEffect } from "react";
 
 export default function Home(props) {
+    useEffect(() => {
+        props.data && props.setData({ ...props.data, noNavbar: true });
+    }, []);
+
     return (
         <motion.div layout>
             <div className="flex h-screen flex-col justify-center gap-4">

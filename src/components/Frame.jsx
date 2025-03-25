@@ -1,6 +1,6 @@
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import { useState, useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -24,19 +24,24 @@ export default function Frame(props) {
                             className="fixed bottom-0 z-50 mx-auto flex w-full justify-between bg-red-500 pl-2 "
                         >
                             <div className="flex w-full justify-stretch gap-2">
-                                <Link
-                                    to="/"
+                                <button
                                     className="flex-0 text-nowrap font-header text-white shadow transition-all hover:bg-red-600"
+                                    onClick={() =>
+                                        props.setData({
+                                            ...props.data,
+                                            experimental: false,
+                                        })
+                                    }
                                 >
                                     Click to disable experimental features.
-                                </Link>
+                                </button>
 
                                 <p className="flex-0 ml-auto overflow-ellipsis text-nowrap text-right font-header text-white max-sm:hidden">
                                     Session data:
                                 </p>
-                                <div className="flex-grow overflow-scroll text-nowrap px-2 font-header text-white shadow-inner-xl scrollbar-hide">
+                                <div className="flex-grow text-nowrap px-2 font-header text-white shadow-inner-xl">
                                     {props.data && (
-                                        <>
+                                        <ul className="max-h-6 overflow-scroll scrollbar-hide">
                                             {props.data
                                                 ? Object.keys(props.data).map(
                                                       (key) => (
@@ -49,7 +54,7 @@ export default function Frame(props) {
                                                       ),
                                                   )
                                                 : "None"}
-                                        </>
+                                        </ul>
                                     )}
                                 </div>
                             </div>
@@ -64,16 +69,16 @@ export default function Frame(props) {
         <div className="bg-darken-900">
             {/* Data Components */}
             {props.data && createDataDependants()}
-            {!props.noScroll && <ScrollToTop />}
+            {!props.data.noScroll && <ScrollToTop />}
 
             {/* Navbar */}
-            {!props.noNavbar && <Navbar data={props.data} />}
+            {!props.data.noNavbar && <Navbar data={props.data} />}
 
             {/* Content */}
             <div
-                className={`min-w-screen -z-30 h-max min-h-screen ${props.vignette === !null ? "shadow-inner-4xl" : "bg-lighten"}`}
+                className={`min-w-screen -z-30 h-max min-h-screen ${props.data.vignette === !null ? "shadow-inner-4xl" : "bg-lighten"}`}
             >
-                <div className={`m-auto ${!props.noNavbar && "pt-16"} `}>
+                <div className={`m-auto ${!props.data.noNavbar && "pt-16"} `}>
                     <div className="mx-auto max-w-screen-xl justify-center xs:flex">
                         <div className="flex flex-col">{props.children}</div>
                     </div>
@@ -81,7 +86,7 @@ export default function Frame(props) {
             </div>
 
             {/* Footer */}
-            {!props.noNavbar && <Footer data={props.data} />}
+            {!props.data.noNavbar && <Footer data={props.data} />}
         </div>
     );
 }
