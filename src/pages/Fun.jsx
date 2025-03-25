@@ -153,15 +153,6 @@ export default function Fun(props) {
                     <div className="bg-lighten-80 m-5 flex flex-wrap justify-center gap-2 rounded-xl max-sm:flex-col">
                         <Link
                             className="flex min-w-24 flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
-                            to="/fun/widgets"
-                        >
-                            <p className="p-2 font-header font-medium text-darken-800">
-                                📱 Widgets
-                            </p>
-                        </Link>
-
-                        <Link
-                            className="flex min-w-24 flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
                             to="/fun/tabs"
                         >
                             <p className="p-2 font-header font-medium text-darken-800">
@@ -170,6 +161,14 @@ export default function Fun(props) {
                         </Link>
                         {props.data.experimental && (
                             <div className="flex gap-2 max-sm:flex-col">
+                                <Link
+                                    className="flex min-w-24 flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
+                                    to="/fun/widgets"
+                                >
+                                    <p className="p-2 font-header font-medium text-darken-800">
+                                        📱 Widgets
+                                    </p>
+                                </Link>
                                 <Link
                                     className="flex min-w-24 flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
                                     to="/blog"

@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, memo } from "react";
 import Frame from "../../components/Frame";
 import { Link } from "react-router-dom";
 import vagueTime from "vague-time";
 import Checkbox from "../../components/Checkbox";
 
-export default function (props) {
+function Widgets(props) {
     // Widgets are:
     // - Rich: Strong design that's engagingly animated
     // - Connected: Backed by a secure connection to others
@@ -508,3 +508,5 @@ export default function (props) {
         </>
     );
 }
+
+export default memo(Widgets);
