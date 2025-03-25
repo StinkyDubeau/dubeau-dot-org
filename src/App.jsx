@@ -41,7 +41,7 @@ function App() {
         <>
             <Frame
                 data={data}
-                setDate={setData}
+                setData={setData}
             >
                 <Routes>
                     <Route

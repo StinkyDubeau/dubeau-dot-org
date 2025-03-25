@@ -34,10 +34,24 @@ export default function Frame(props) {
                                 <p className="flex-0 ml-auto overflow-ellipsis text-nowrap text-right font-header text-white max-sm:hidden">
                                     Session data:
                                 </p>
-                                <p className="flex-grow overflow-scroll text-nowrap px-2 font-header text-white shadow-inner-xl scrollbar-hide">
-                                    {props.data &&
-                                        Object.values(props.data).toString()}
-                                </p>
+                                <div className="flex-grow overflow-scroll text-nowrap px-2 font-header text-white shadow-inner-xl scrollbar-hide">
+                                    {props.data && (
+                                        <>
+                                            {props.data
+                                                ? Object.keys(props.data).map(
+                                                      (key) => (
+                                                          <li className="ml-4">
+                                                              {key.toString()}:{" "}
+                                                              {props.data[
+                                                                  key
+                                                              ].toString()}
+                                                          </li>
+                                                      ),
+                                                  )
+                                                : "None"}
+                                        </>
+                                    )}
+                                </div>
                             </div>
                         </motion.div>
                     )}

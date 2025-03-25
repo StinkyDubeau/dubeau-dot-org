@@ -47,7 +47,7 @@ export default function Trackers(props) {
                     <button
                         className="w-full rounded-xl bg-lighten-800 p-2 text-darken-800 shadow-md transition-all hover:scale-105 hover:bg-lighten-900 hover:shadow-lg"
                         onClick={() => {
-                            setData({ ...data, One: data.One + 1 });
+                            setData({ ...data, Count: data.Count + 1 });
                         }}
                     >
                         Add to page data
@@ -57,7 +57,7 @@ export default function Trackers(props) {
                         onClick={() => {
                             props.setData({
                                 ...props.data,
-                                One: props.data.One + 1,
+                                Count: props.data.Count + 1,
                             });
                         }}
                     >
