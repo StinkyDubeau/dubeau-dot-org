@@ -4,12 +4,20 @@ import Frame from "../../components/Frame";
 import Avatar from "./Avatar";
 import Markdown from "react-markdown";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 export default function Login(props) {
     const [loggedIn, setLoggedIn] = useState(props.loggedIn);
     const [roomID, setRoomID] = useState(null);
     const [nick, setNick] = useState("");
+
+    // Ensure page never has navbar
+    useEffect(() => {
+        props.setData({
+            ...props.data,
+            noNavbar: true,
+        });
+    }, []);
 
     const message = {
         from: {
@@ -22,7 +30,12 @@ export default function Login(props) {
 
     function createLogin(props) {
         return (
-            <div className="flex h-screen flex-col justify-center gap-8">
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="flex h-screen flex-col justify-center gap-8"
+            >
                 <div className="mb-12 flex max-w-screen-sm flex-col gap-8">
                     {/* Choose room */}
                     <motion.div
@@ -127,7 +140,7 @@ export default function Login(props) {
                         more experiments
                     </Link>
                 </div>
-            </div>
+            </motion.div>
         );
     }
 
@@ -151,7 +164,7 @@ export default function Login(props) {
     }
 
     return (
-        <>
+        <AnimatePresence mode="wait">
             {loggedIn ? (
                 <Chat
                     nick={nick}
@@ -160,6 +173,6 @@ export default function Login(props) {
             ) : (
                 createLogin()
             )}
-        </>
+        </AnimatePresence>
     );
 }

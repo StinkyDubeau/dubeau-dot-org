@@ -15,10 +15,11 @@ export default function (props) {
 
     return (
         <motion.div
-            initial={{ opacity: 0.6, x: -100 }}
+            initial={{ opacity: 0.6, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0.6, x: -100 }}
+            exit={{ opacity: 0.6, x: 50 }}
             layout
+            className="max-w-screen-lg"
         >
             <div className="">
                 <div className="m-5 flex animate-gradient-x justify-center rounded-2xl bg-gradient-to-tl from-green-600 via-cyan-600 to-yellow-500 p-4 sm:gap-8">

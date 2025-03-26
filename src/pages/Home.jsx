@@ -12,7 +12,11 @@ export default function Home(props) {
     }, []);
 
     return (
-        <motion.div layout>
+        <motion.div
+            layout
+            initial={{ x: -100 }}
+            animate={{ x: 0 }}
+        >
             <div className="flex h-screen flex-col justify-center gap-4">
                 <Panel className="max-sm:w-full">
                     <div className="flex flex-col justify-center py-8 sm:p-12">
