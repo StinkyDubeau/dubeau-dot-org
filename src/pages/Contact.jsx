@@ -10,6 +10,7 @@ export default function (props) {
         props.setData({
             ...props.data,
             noNavbar: false,
+            vignette: false,
         });
     }, []);
 

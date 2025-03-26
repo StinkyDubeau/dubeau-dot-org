@@ -19,6 +19,7 @@ export default function Fun(props) {
         props.setData({
             ...props.data,
             noNavbar: false,
+            vignette: false,
         });
     }, []);
 

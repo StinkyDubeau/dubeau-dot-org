@@ -10,10 +10,19 @@ import Resource from "./Tiles/Resource";
 function Main(props) {
     const [tiles, setTiles] = useState([]);
 
+    // Ensure page never has navbar
+    useEffect(() => {
+        props.setData({
+            ...props.data,
+            noNavbar: true,
+            vignette: false,
+        });
+    }, []);
+
     return (
         <>
             <Background />
-            <div className="flex h-screen w-screen flex-col gap-1 p-4">
+            <div className="flex z-20 h-screen w-screen flex-col gap-1 p-4">
                 {/* Status area */}
                 <div className="flex-0 flex flex-col gap-1">
                     <Resource

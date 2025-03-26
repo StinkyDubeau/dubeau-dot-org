@@ -78,7 +78,7 @@ export default function Frame(props) {
 
             {/* Content */}
             <div
-                className={`min-w-screen -z-30 h-max min-h-screen ${props.data.vignette === !null ? "shadow-inner-4xl" : "bg-lighten"}`}
+                className={`min-w-screen -z-50 h-max min-h-screen ${props.data.vignette === !null ? "shadow-inner-4xl" : "bg-lighten"}`}
             >
                 <div className={`m-auto ${!props.data.noNavbar && "pt-16"} `}>
                     <div className="mx-auto max-w-screen-xl justify-center xs:flex">

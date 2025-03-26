@@ -36,7 +36,7 @@ function Resource(props) {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{}}
                 onClick={() => setEnlarged(true)}
-                className="flex rounded-xl bg-darken-200 p-1"
+                className="flex rounded-xl bg-darken-200 p-1 text-lighten-800"
             >
                 <motion.img
                     initial={{ opacity: 0, x: -10 }}
@@ -47,6 +47,7 @@ function Resource(props) {
                 <motion.p
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1, scale: 1 }}
+                    className="px-1"
                 >
                     {name}: {count} {unit}
                 </motion.p>
@@ -60,7 +61,7 @@ function Resource(props) {
                 initial={{ height: 32 }}
                 animate={{ height: "auto" }}
                 exit={{ height: 32 }}
-                className="z-30 overflow-hidden rounded-xl bg-darken-200 bg-contain text-left"
+                className="z-30 overflow-hidden rounded-xl bg-darken-200 bg-contain text-left text-lighten-800"
             >
                 <motion.div
                     exit={{ x: -100 }}

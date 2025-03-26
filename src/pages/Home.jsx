@@ -8,7 +8,8 @@ import { useEffect } from "react";
 
 export default function Home(props) {
     useEffect(() => {
-        props.data && props.setData({ ...props.data, noNavbar: true });
+        props.data &&
+            props.setData({ ...props.data, vignette: false, noNavbar: true });
     }, []);
 
     return (

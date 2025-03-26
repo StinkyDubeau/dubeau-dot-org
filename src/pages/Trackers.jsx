@@ -1,5 +1,5 @@
 import Frame from "../components/Frame";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import Panel from "../components/Panel";
 
@@ -12,6 +12,15 @@ export default function Trackers(props) {
     //  Save JSON to DB
 
     const [data, setData] = useState(props.data);
+
+    // Apply vignette frame property
+    // Ensure page never has navbar
+    useEffect(() => {
+        props.setData({
+            ...props.data,
+            vignette: true,
+        });
+    }, []);
 
     data &&
         Object.values(data).map((key, index) => {
