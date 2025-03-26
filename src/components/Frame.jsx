@@ -41,7 +41,7 @@ export default function Frame(props) {
                                 </p>
                                 <div className="flex-grow text-nowrap px-2 font-header text-white shadow-inner-xl">
                                     {props.data && (
-                                        <ul className="max-h-6 overflow-scroll scrollbar-hide">
+                                        <ul className="max-h-6 flex flex-wrap overflow-scroll scrollbar-hide">
                                             {props.data
                                                 ? Object.keys(props.data).map(
                                                       (key) => (

@@ -38,7 +38,7 @@ function Main(props) {
                     />
                 </div>
                 {/* Fullscreen area */}
-                <motion.div className="h-full w-full flex-1 overflow-scroll rounded-2xl bg-darken-300 p-4 shadow-inner-3xl">
+                <motion.div className="rounded-2xlgi h-full w-full flex-1 overflow-scroll bg-darken-300 p-4 shadow-inner-3xl">
                     <div className="justify-stretch gap-2">
                         <p className="h-full w-full text-center text-3xl text-lighten-200">
                             Game Map
