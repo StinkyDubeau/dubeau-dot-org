@@ -36,7 +36,7 @@ export default function Login(props) {
                 exit={{ opacity: 0 }}
                 className="flex h-screen flex-col justify-center gap-8"
             >
-                <div className="mb-12 flex max-w-screen-sm flex-col gap-8">
+                <div className="mb-12 flex h-dvh max-w-screen-sm flex-col gap-8">
                     {/* Choose room */}
                     <motion.div
                         layoutId="ChatLoginPanel"
