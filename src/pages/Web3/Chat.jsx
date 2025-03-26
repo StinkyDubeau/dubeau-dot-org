@@ -8,6 +8,7 @@ import UsersList from "./UsersList";
 import NavButtons from "../../components/NavButtons";
 
 export default function Chat(props) {
+
     const nick = props.nick;
     const roomID = props.roomID || "global";
     const appID = "dubeau-dot-org";

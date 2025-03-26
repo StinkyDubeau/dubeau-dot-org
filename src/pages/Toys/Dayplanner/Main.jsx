@@ -207,26 +207,24 @@ function Dayplanner(props) {
 
     return (
         <>
-            <Frame data={props.data}>
-                {/* <UnderContruction heading="Dayplanner is under construction." /> */}
-                <div className="mt-8 flex flex-col justify-center gap-2">
-                    {/* TODAYS SUMMARY */}
-                    <RenderDailySummary />
+            {/* <UnderContruction heading="Dayplanner is under construction." /> */}
+            <div className="mt-8 flex flex-col justify-center gap-2">
+                {/* TODAYS SUMMARY */}
+                <RenderDailySummary />
 
-                    {/* TODAYS TASKS */}
-                    <div
-                        id="tasks-container"
-                        className="my-auto flex flex-col gap-2 rounded bg-lighten-800 p-2"
-                    >
-                        <RenderDailyTasks />
-                    </div>
-
-                    {/* TASK FORM */}
-                    <AnimatePresence>
-                        <RenderTaskForm />
-                    </AnimatePresence>
+                {/* TODAYS TASKS */}
+                <div
+                    id="tasks-container"
+                    className="my-auto flex flex-col gap-2 rounded bg-lighten-800 p-2"
+                >
+                    <RenderDailyTasks />
                 </div>
-            </Frame>
+
+                {/* TASK FORM */}
+                <AnimatePresence>
+                    <RenderTaskForm />
+                </AnimatePresence>
+            </div>
         </>
     );
 }

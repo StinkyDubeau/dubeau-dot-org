@@ -2,19 +2,26 @@ import { Link } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 
 export default function ServerCard(props) {
+    const scrollToTop = () => {
+        document.documentElement.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
+    };
+
     // TODO: Use motion.div layout="" to create smooth animations into the server pages
     // See https://motion.dev/docs/react-layout-animations
     return (
         <motion.div
             layoutId={props.img}
             whileHover={{ width: 200 }}
-            whileTap={{ y: -10 }}
+            onClick={scrollToTop}
             className={`${props.className} card h-52 w-44 overflow-hidden rounded-2xl bg-darken-900 shadow-lg`}
         >
             <Link to={props.to}>
                 <motion.img
                     id={props.img}
-                    className="absolute h-full object-cover brightness-90 shadow-xl"
+                    className="absolute h-full object-cover shadow-xl brightness-90"
                     src={props.img}
                 />
                 {/* Container */}

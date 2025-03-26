@@ -42,7 +42,6 @@ export default function Blog(props) {
 
     return (
         <>
-            <Frame data={props.data}>
                 <div className="mt-10">
                     <h1 className="mb-8 font-header text-3xl tracking-tighter text-darken-700 max-sm:text-5xl">
                         Blog is under construction.
@@ -64,7 +63,6 @@ export default function Blog(props) {
                         )}
                     </div>
                 </div>
-            </Frame>
         </>
     );
 }
