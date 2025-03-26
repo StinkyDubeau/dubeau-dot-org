@@ -1,5 +1,5 @@
 import { useState, useEffect, memo } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { animate, AnimatePresence, motion } from "framer-motion";
 import vagueTime from "vague-time";
 import Background from "./Components/Background";
 
@@ -22,7 +22,7 @@ function Main(props) {
     return (
         <>
             <Background />
-            <div className="flex z-20 h-screen w-screen flex-col gap-1 p-4">
+            <div className="z-20 flex h-screen w-screen flex-col gap-1 p-4">
                 {/* Status area */}
                 <div className="flex-0 flex flex-col gap-1">
                     <Resource
@@ -38,7 +38,7 @@ function Main(props) {
                     />
                 </div>
                 {/* Fullscreen area */}
-                <motion.div className="h-full w-full flex-1 rounded-2xl bg-darken-300 p-4 shadow-inner-3xl">
+                <motion.div className="h-full w-full flex-1 overflow-scroll rounded-2xl bg-darken-300 p-4 shadow-inner-3xl">
                     <div className="justify-stretch gap-2">
                         <p className="h-full w-full text-center text-3xl text-lighten-200">
                             Game Map
@@ -50,7 +50,9 @@ function Main(props) {
                             {tiles.map((tile, index) => (
                                 <motion.div
                                     key={tile}
-                                    exit={{ opacity: 1 }}
+                                    initial={{ opacity: 0, y: -10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: 10 }}
                                     layout
                                     onClick={() =>
                                         setTiles(
