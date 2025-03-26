@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, memo } from "react";
 import Frame from "../../components/Frame";
 import { Link } from "react-router-dom";
 import vagueTime from "vague-time";
 import Checkbox from "../../components/Checkbox";
 
-export default function (props) {
+function Widgets(props) {
     // Widgets are:
     // - Rich: Strong design that's engagingly animated
     // - Connected: Backed by a secure connection to others
@@ -461,50 +461,47 @@ export default function (props) {
 
     return (
         <>
-            <Frame
-                data={props.data}
-                noScroll
-            >
-                {/* Container */}
-                <div className="mx-auto my-4 flex max-w-[600px] flex-col justify-center gap-4 drop-shadow-lg max-sm:p-2">
-                    <div className="flex flex-col gap-2 rounded-2xl bg-lighten-800 p-4">
-                        <h1 className="w-full text-left font-header text-3xl font-light text-darken-800">
-                            Widgets
-                        </h1>
-                        <p className="text-justify font-header text-darken-600">
-                            ℹ️ These "widgets" demonstrate the 2024 Trifecta
-                            standard. Some widgets will be games, some will
-                            foster peer-to-peer experiences, and some will
-                            feature peripheral support. All user data is
-                            ephemeral unless otherwise stated. However, with
-                            your permission, some widget content may be stored
-                            as cookies. Like the rest of the site,{" "}
-                            <span className="italic">
-                                everything here is a work in progress
-                            </span>
-                            .
-                        </p>
-                        <Checkbox
-                            className="font-lighten font-header text-darken-600"
-                            body="Allow cookies: "
-                            checked={false}
-                            onChange={(e) => console.log(e)}
-                        />
-                        <Link
-                            to="/contact"
-                            className="font-header text-darken-600 underline"
-                        >
-                            Contact me directly for more information
-                        </Link>
-                    </div>
-                    {/* Voltage Widget */}
-                    {/* {createVoltageWidget()} */}
-                    {/* Cookie Widget */}
-                    {createCookieWidget()}
-                    {/* Counter Widget */}
-                    {createCounterWidget()}
+            {/* Container */}
+            <div className="mx-auto my-4 flex max-w-[600px] flex-col justify-center gap-4 drop-shadow-lg max-sm:p-2">
+                <div className="flex flex-col gap-2 rounded-2xl bg-lighten-800 p-4">
+                    <h1 className="w-full text-left font-header text-3xl font-light text-darken-800">
+                        Widgets
+                    </h1>
+                    <p className="text-justify font-header text-darken-600">
+                        ℹ️ These "widgets" demonstrate the 2024 Trifecta
+                        standard. Some widgets will be games, some will foster
+                        peer-to-peer experiences, and some will feature
+                        peripheral support. All user data is ephemeral unless
+                        otherwise stated. However, with your permission, some
+                        widget content may be stored as cookies. Like the rest
+                        of the site,{" "}
+                        <span className="italic">
+                            everything here is a work in progress
+                        </span>
+                        .
+                    </p>
+                    <Checkbox
+                        className="font-lighten font-header text-darken-600"
+                        body="Allow cookies: "
+                        checked={false}
+                        onChange={(e) => console.log(e)}
+                    />
+                    <Link
+                        to="/contact"
+                        className="font-header text-darken-600 underline"
+                    >
+                        Contact me directly for more information
+                    </Link>
                 </div>
-            </Frame>
+                {/* Voltage Widget */}
+                {/* {createVoltageWidget()} */}
+                {/* Cookie Widget */}
+                {createCookieWidget()}
+                {/* Counter Widget */}
+                {createCounterWidget()}
+            </div>
         </>
     );
 }
+
+export default memo(Widgets);

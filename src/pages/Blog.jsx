@@ -20,6 +20,7 @@ export default function Blog(props) {
                 setBlogPosts(data);
             } catch (error) {
                 console.error("Error fetching blog posts:", error);
+                setTimeout(fetchBlogPosts, 5000); // Retry after 5 seconds
             }
         }
 
@@ -41,17 +42,27 @@ export default function Blog(props) {
 
     return (
         <>
-            <Frame data={props.data}>
                 <div className="mt-10">
                     <h1 className="mb-8 font-header text-3xl tracking-tighter text-darken-700 max-sm:text-5xl">
                         Blog is under construction.
                     </h1>
 
                     <div className="flex flex-col gap-2">
-                        {blogPosts.map((post) => createBlogPost(post))}
+                        {blogPosts[0] ? (
+                            blogPosts.map((post) => createBlogPost(post))
+                        ) : (
+                            <div className="flex flex-col gap-6">
+                                <p className="text-darken-800">
+                                    Loading posts...
+                                </p>{" "}
+                                <span className="loading loading-spinner loading-lg mx-auto text-darken-800"></span>
+                                <p className="text-darken-800">
+                                    Is the server running at {url}?
+                                </p>
+                            </div>
+                        )}
                     </div>
                 </div>
-            </Frame>
         </>
     );
 }

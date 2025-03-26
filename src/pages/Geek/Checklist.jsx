@@ -370,27 +370,21 @@ export default function Checlist(props) {
 
     return (
         <>
-            <Frame
-                data={props.data}
-                noNavbar
-                vignette
-            >
-                <div className="min-h-[150vh] w-screen">
-                    {/* Logo */}
-                    <div className="flex h-16 justify-center sm:h-32">
-                        <img
-                            src="https://merchandising-assets.bestbuy.ca/bltc8653f66842bff7f/bltc645e37ea0b1a348/6183051594e50d5a63800f45/gs-logo.png"
-                            alt="Geek Squad Logo"
-                        />
-                    </div>
-                    <div className="m-5">
-                        <p className="text-3xl font-bold text-lighten-800 sm:text-left">
-                            Inspection Checklist
-                        </p>
-                    </div>
-                    {loggedIn ? createChecklist() : createLogin()}
+            <div className="min-h-[150vh] w-screen">
+                {/* Logo */}
+                <div className="flex h-16 justify-center sm:h-32">
+                    <img
+                        src="https://merchandising-assets.bestbuy.ca/bltc8653f66842bff7f/bltc645e37ea0b1a348/6183051594e50d5a63800f45/gs-logo.png"
+                        alt="Geek Squad Logo"
+                    />
                 </div>
-            </Frame>
+                <div className="m-5">
+                    <p className="text-3xl font-bold text-lighten-800 sm:text-left">
+                        Inspection Checklist
+                    </p>
+                </div>
+                {loggedIn ? createChecklist() : createLogin()}
+            </div>
             {loggedIn && createNavigation()}
         </>
     );

@@ -1,4 +1,3 @@
-import Frame from "../components/Frame";
 import { useState, useEffect } from "react";
 
 const astros = [];
@@ -111,62 +110,58 @@ export default function Astros(props) {
     }, [astro]);
 
     return (
-        <Frame data={props.data}>
-            <div className="">
-                <div className="my-4 flex flex-col justify-between gap-2">
-                    <p
-                        className="mb-3 font-header text-5xl text-darken-800 sm:text-left"
-                        onClick={() => {
-                            setDescription(null);
-                            setAstro(null);
-                        }}
-                    >
-                        Astros
-                    </p>
-                    {astro ? (
-                        <div className="z-10 flex gap-4 drop-shadow-xl">
-                            <button
-                                className="my-1 rounded-xl bg-lighten-600 p-2 font-header text-2xl text-darken-800 transition-all hover:bg-red-500 hover:text-lighten-800"
-                                onClick={() => {
-                                    setDescription(null);
-                                    setAstro(null);
-                                }}
-                            >
-                                Back to Gallery
-                            </button>
-                            <button
-                                className="my-1 rounded-xl bg-lighten-600 p-2 font-header text-2xl text-darken-800 transition-all hover:bg-red-500 hover:text-lighten-800"
-                                onClick={() => {
-                                    setDescription(null);
-                                    setAstro(
-                                        astros[
-                                            Math.floor(
-                                                Math.random() * astros.length,
-                                            )
-                                        ],
-                                    );
-                                }}
-                            >
-                                Random
-                            </button>
-                        </div>
-                    ) : (
-                        <div className="flex flex-col gap-6">
-                            <p className="text-darken-800">
-                                Loading sightings...
-                            </p>
-                            <span className="loading loading-spinner loading-lg mx-auto text-darken-800"></span>
-                        </div>
-                    )}
-                </div>
+        <div className="">
+            <div className="my-4 flex flex-col justify-between gap-2">
+                <p
+                    className="mb-3 font-header text-5xl text-darken-800 sm:text-left"
+                    onClick={() => {
+                        setDescription(null);
+                        setAstro(null);
+                    }}
+                >
+                    Astros
+                </p>
                 {astro ? (
-                    createModal(astro)
+                    <div className="z-10 flex gap-4 drop-shadow-xl">
+                        <button
+                            className="my-1 rounded-xl bg-lighten-600 p-2 font-header text-2xl text-darken-800 transition-all hover:bg-red-500 hover:text-lighten-800"
+                            onClick={() => {
+                                setDescription(null);
+                                setAstro(null);
+                            }}
+                        >
+                            Back to Gallery
+                        </button>
+                        <button
+                            className="my-1 rounded-xl bg-lighten-600 p-2 font-header text-2xl text-darken-800 transition-all hover:bg-red-500 hover:text-lighten-800"
+                            onClick={() => {
+                                setDescription(null);
+                                setAstro(
+                                    astros[
+                                        Math.floor(
+                                            Math.random() * astros.length,
+                                        )
+                                    ],
+                                );
+                            }}
+                        >
+                            Random
+                        </button>
+                    </div>
                 ) : (
-                    <div className="flex flex-wrap justify-around gap-3">
-                        {astros.map(createCard)}
+                    <div className="flex flex-col gap-6">
+                        <p className="text-darken-800">Loading sightings...</p>
+                        <span className="loading loading-spinner loading-lg mx-auto text-darken-800"></span>
                     </div>
                 )}
             </div>
-        </Frame>
+            {astro ? (
+                createModal(astro)
+            ) : (
+                <div className="flex flex-wrap justify-around gap-3">
+                    {astros.map(createCard)}
+                </div>
+            )}
+        </div>
     );
 }
