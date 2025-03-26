@@ -8,7 +8,6 @@ import UsersList from "./UsersList";
 import NavButtons from "../../components/NavButtons";
 
 export default function Chat(props) {
-
     const nick = props.nick;
     const roomID = props.roomID || "global";
     const appID = "dubeau-dot-org";
@@ -145,7 +144,7 @@ export default function Chat(props) {
     }
 
     return (
-        <div className="pt fixed left-0 top-0 h-dvh w-dvw p-2">
+        <div className="pt absolute inset-0 left-0 top-0 h-dvh w-dvw p-2">
             <div className="h-full w-full">
                 <div className="flex h-full flex-col justify-between gap-2">
                     <div className="flex-0 h-12 overflow-auto rounded-3xl bg-lighten-800 sm:hidden">
@@ -171,7 +170,7 @@ export default function Chat(props) {
                                     />
                                 </div>
                             </div>
-                            <div className="flex-1 overflow-scroll rounded-3xl bg-lighten-800 p-2 scrollbar-hide">
+                            <div className="flex-1 overflow-scroll rounded-3xl bg-lighten-800 p-2 scrollbar-hide max-xs:-ml-2">
                                 <MessageFeed messages={messages} />
                             </div>
                         </div>
