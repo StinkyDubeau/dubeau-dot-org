@@ -8,7 +8,6 @@ import UsersList from "./UsersList";
 import NavButtons from "../../components/NavButtons";
 
 export default function Chat(props) {
-
     const nick = props.nick;
     const roomID = props.roomID || "global";
     const appID = "dubeau-dot-org";
@@ -171,7 +170,7 @@ export default function Chat(props) {
                                     />
                                 </div>
                             </div>
-                            <div className="flex-1 overflow-scroll rounded-3xl bg-lighten-800 p-2 scrollbar-hide">
+                            <div className="flex-1 overflow-scroll rounded-3xl bg-lighten-800 p-2 scrollbar-hide max-xs:-ml-2">
                                 <MessageFeed messages={messages} />
                             </div>
                         </div>

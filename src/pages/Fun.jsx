@@ -48,7 +48,7 @@ export default function Fun(props) {
             {/* The above things, done well, can be standardized for the entire site. Even including sub-pages on links. */}
             {/* If Executed exceedingly well, this could even serve as a powerful UI foundation for the Idle game experiment at https://www.dubeau.org/idle */}
 
-            <div className="my-4 flex flex-wrap justify-center">
+            <div className="my-5 flex flex-wrap justify-center">
                 <motion.div
                     layoutId="ChatLoginPanel"
                     className="m-4 w-full animate-gradient-x rounded-2xl bg-gradient-to-bl from-orange-700 via-pink-500 to-yellow-400 bg-blend-lighten"
