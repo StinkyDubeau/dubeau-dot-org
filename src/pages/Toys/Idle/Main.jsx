@@ -8,12 +8,15 @@ import { v4 as uuidv4 } from "uuid";
 import Resource from "./Tiles/Resource";
 import OuterCard from "./Components/OuterCard";
 
+// TODO: Connect tile calculations with resource state. Exchange "power" for "lode" or "gold".
+
 function Main(props) {
     const [tileset, setTileset] = useState([]);
     const [totalPower, setTotalPower] = useState(0);
 
     // Calculate sum power of tileset[] every time a tile is added or removed.
     useEffect(() => {
+        // TODO: Verify integrity of tileset. Check for non-integer values, etc.
         console.table(tileset);
         // Reset before summing
         setTotalPower(0);
