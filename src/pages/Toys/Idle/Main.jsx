@@ -12,8 +12,9 @@ function Main(props) {
     const [tileset, setTileset] = useState([]);
     const [totalPower, setTotalPower] = useState(0);
 
-    // Calculate sum power of tiles[] every time a tile is added or removed.
+    // Calculate sum power of tileset[] every time a tile is added or removed.
     useEffect(() => {
+        console.table(tileset);
         // Reset before summing
         setTotalPower(0);
         tileset.forEach((tile) => {
@@ -37,7 +38,7 @@ function Main(props) {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 10 }}
                 layout
-                className="m-2 rounded-2xl bg-lighten-800 text-darken-800"
+                className="m-2 rounded-xl bg-lighten-800 text-darken-800"
                 onClick={() =>
                     // Remove this tile from the list if clicked
                     setTileset(tileset.filter((t) => t !== tile))
@@ -68,24 +69,73 @@ function Main(props) {
     }
 
     function CreateTilesetSummary({ tiles }) {
+        const [name, setName] = useState("");
+        const [power, setPower] = useState(0);
+
         return (
-            <div className="m-2 rounded-2xl bg-lighten-800 text-darken-800">
-                <p>{totalPower} watts</p>
+            <div className="m-2 rounded-xl bg-lighten-800 p-2 text-darken-800">
+                <p>
+                    {`${tileset.length} tile${tileset.length != 1 ? "s" : ""} totalling ${totalPower} watts.`}
+                </p>
+                <div className="flex flex-wrap gap-2">
+                    <input
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        placeholder="Tile name"
+                        className="w-full rounded-xl border-none bg-lighten-800 shadow-inner-xl shadow-darken-50"
+                    />
+                    <input
+                        value={power}
+                        type="number"
+                        onChange={(e) => setPower(parseFloat(e.target.value))}
+                        placeholder="Tile power (Can be negative)"
+                        className="w-full rounded-xl border-none bg-lighten-800 shadow-inner-xl shadow-darken-50"
+                    />
+                </div>
+                <div className="flex flex-wrap gap-2">
+                    <button
+                        className="w-full rounded-xl bg-lighten-800 p-2 shadow transition-all hover:scale-105 hover:shadow-lg"
+                        onClick={() => createDefinedTile(name, power)}
+                    >
+                        Make this tile
+                    </button>
+                    <button
+                        className="w-full rounded-xl bg-lighten-800 p-2 shadow transition-all hover:scale-105 hover:shadow-lg"
+                        onClick={() => createRandomTile()}
+                    >
+                        Make a random tile
+                    </button>
+                </div>
             </div>
         );
     }
 
     function createRandomTile() {
-        setTileset([
-            ...tileset,
-            {
-                name: "new-tile",
-                uuid: uuidv4(),
-                power: Math.random() * 100 - 50,
-            },
-        ]);
+        try {
+            createDefinedTile("random-tile", Math.random() * 100 - 50);
+            return 0;
+        } catch (error) {
+            console.log(error);
+            return 1;
+        }
+    }
 
-        return 0;
+    function createDefinedTile(name, power) {
+        try {
+            setTileset([
+                ...tileset,
+                {
+                    name: name,
+                    uuid: uuidv4(),
+                    power: power,
+                },
+            ]);
+
+            return 0;
+        } catch (error) {
+            console.log(error);
+            return 1;
+        }
     }
 
     return (
@@ -107,15 +157,12 @@ function Main(props) {
                     />
                 </div>
                 {/* Fullscreen area */}
-                <motion.div className="rounded-2xlgi h-full w-full flex-1 overflow-scroll bg-darken-300 p-4 shadow-inner-3xl">
+                <motion.div className="h-full w-full flex-1 overflow-scroll rounded-2xl bg-darken-300 p-4 shadow-inner-3xl">
                     <div className="justify-stretch gap-2">
                         <p className="h-full w-full text-center text-3xl text-lighten-200">
                             tilemap
                         </p>
                         <CreateTilesetSummary />
-                        <button onClick={() => createRandomTile()}>
-                            Make tile
-                        </button>
                         <CreateTileList tiles={tileset} />
                     </div>
                 </motion.div>
