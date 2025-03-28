@@ -6,9 +6,20 @@ import Background from "./Components/Background";
 import { v4 as uuidv4 } from "uuid";
 
 import Resource from "./Tiles/Resource";
+import OuterCard from "./Components/OuterCard";
 
 function Main(props) {
-    const [tiles, setTiles] = useState([]);
+    const [tileset, setTileset] = useState([]);
+    const [totalPower, setTotalPower] = useState(0);
+
+    // Calculate sum power of tiles[] every time a tile is added or removed.
+    useEffect(() => {
+        // Reset before summing
+        setTotalPower(0);
+        tileset.forEach((tile) => {
+            setTotalPower(totalPower + tile.power);
+        });
+    }, [tileset]);
 
     // Ensure page never has navbar
     useEffect(() => {
@@ -19,32 +30,62 @@ function Main(props) {
         });
     }, []);
 
-    const memoizedTile = memo(CreateOneTile, tiles);
-
-    function CreateOneTile(tile, index) {
+    const CreateOneTile = memo(function CreateOneTile({ tile, index }) {
         return (
             <motion.div
-                key={tile}
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 10 }}
                 layout
+                className="m-2 rounded-2xl bg-lighten-800 text-darken-800"
                 onClick={() =>
                     // Remove this tile from the list if clicked
-                    setTiles(tiles.filter((t) => t !== tile))
+                    setTileset(tileset.filter((t) => t !== tile))
                 }
             >
-                {index}: {tile}
+                {index}: {tile.name}, contributing {tile.power} <br />
+                {tile.uuid}
             </motion.div>
+        );
+    });
+
+    function CreateTileList({ tiles }) {
+        return (
+            <AnimatePresence
+                mode="wait"
+                className="flex flex-col gap-2"
+            >
+                {tiles[0] &&
+                    tiles.map((tile, index) => (
+                        <CreateOneTile
+                            key={tile.uuid}
+                            tile={tile}
+                            index={index}
+                        />
+                    ))}
+            </AnimatePresence>
         );
     }
 
-    function CreateTileList(props) {
+    function CreateTilesetSummary({ tiles }) {
         return (
-            <AnimatePresence mode="wait">
-                {props.tiles[0] && props.tiles.map(CreateOneTile)}
-            </AnimatePresence>
+            <div className="m-2 rounded-2xl bg-lighten-800 text-darken-800">
+                <p>{totalPower} watts</p>
+            </div>
         );
+    }
+
+    function createRandomTile() {
+        setTileset([
+            ...tileset,
+            {
+                name: "new-tile",
+                uuid: uuidv4(),
+                power: Math.random() * 100 - 50,
+            },
+        ]);
+
+        return 0;
     }
 
     return (
@@ -71,10 +112,11 @@ function Main(props) {
                         <p className="h-full w-full text-center text-3xl text-lighten-200">
                             tilemap
                         </p>
-                        <button onClick={() => setTiles([...tiles, uuidv4()])}>
+                        <CreateTilesetSummary />
+                        <button onClick={() => createRandomTile()}>
                             Make tile
                         </button>
-                        <CreateTileList tiles={tiles} />
+                        <CreateTileList tiles={tileset} />
                     </div>
                 </motion.div>
             </div>
