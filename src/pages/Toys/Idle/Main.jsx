@@ -19,6 +19,34 @@ function Main(props) {
         });
     }, []);
 
+    const memoizedTile = memo(CreateOneTile, tiles);
+
+    function CreateOneTile(tile, index) {
+        return (
+            <motion.div
+                key={tile}
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 10 }}
+                layout
+                onClick={() =>
+                    // Remove this tile from the list if clicked
+                    setTiles(tiles.filter((t) => t !== tile))
+                }
+            >
+                {index}: {tile}
+            </motion.div>
+        );
+    }
+
+    function CreateTileList(props) {
+        return (
+            <AnimatePresence mode="wait">
+                {props.tiles[0] && props.tiles.map(CreateOneTile)}
+            </AnimatePresence>
+        );
+    }
+
     return (
         <>
             <Background />
@@ -41,29 +69,12 @@ function Main(props) {
                 <motion.div className="rounded-2xlgi h-full w-full flex-1 overflow-scroll bg-darken-300 p-4 shadow-inner-3xl">
                     <div className="justify-stretch gap-2">
                         <p className="h-full w-full text-center text-3xl text-lighten-200">
-                            Game Map
+                            tilemap
                         </p>
                         <button onClick={() => setTiles([...tiles, uuidv4()])}>
                             Make tile
                         </button>
-                        <AnimatePresence mode="wait">
-                            {tiles.map((tile, index) => (
-                                <motion.div
-                                    key={tile}
-                                    initial={{ opacity: 0, y: -10 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    exit={{ opacity: 0, y: 10 }}
-                                    layout
-                                    onClick={() =>
-                                        setTiles(
-                                            tiles.filter((t) => t !== tile),
-                                        )
-                                    }
-                                >
-                                    {index}: {tile}
-                                </motion.div>
-                            ))}
-                        </AnimatePresence>
+                        <CreateTileList tiles={tiles} />
                     </div>
                 </motion.div>
             </div>
