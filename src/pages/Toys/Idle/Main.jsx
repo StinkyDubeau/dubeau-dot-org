@@ -18,20 +18,20 @@ function Main(props) {
     // Calculate sum power of tileset[] every time a tile is added or removed.
     useEffect(() => {
         // TODO: Verify integrity of tileset. Check for non-integer values, etc.
-        console.table(tileset);
-        // Reset before summing
-        setTotalPower(0);
+        // console.table(tileset);
+        var count = 0;
         if (tileset.length > 1) {
             tileset.forEach((tile) => {
-                setTotalPower(totalPower + tile.power);
+                count = count + tile.power;
             });
         } else if (tileset.length === 1) {
-            setTotalPower(tileset[0].power);
+            count = tileset[0].power;
         } else {
-            setTotalPower(0);
+            count = 0;
             console.log("There are no tiles to calculate!");
         }
-    }, [tileset]);
+        setTotalPower(count);
+    }, [tileset.length]);
 
     // Ensure page never has navbar
     useEffect(() => {
