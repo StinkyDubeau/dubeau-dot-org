@@ -20,9 +20,16 @@ function Main(props) {
         console.table(tileset);
         // Reset before summing
         setTotalPower(0);
-        tileset.forEach((tile) => {
-            setTotalPower(totalPower + tile.power);
-        });
+        if (tileset.length > 1) {
+            tileset.forEach((tile) => {
+                setTotalPower(totalPower + tile.power);
+            });
+        } else if (tileset.length === 1) {
+            setTotalPower(tileset[0].power);
+        } else {
+            setTotalPower(0);
+            console.log("There are no tiles to calculate!");
+        }
     }, [tileset]);
 
     // Ensure page never has navbar
@@ -34,13 +41,13 @@ function Main(props) {
         });
     }, []);
 
-    const CreateOneTile = memo(function CreateOneTile({ tile, index }) {
+    function CreateOneTile({ tile, index }) {
         return (
             <motion.div
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 10 }}
-                layout
+                layoutId={tile.uuid}
                 className="m-2 rounded-xl bg-lighten-800 text-darken-800"
                 onClick={() =>
                     // Remove this tile from the list if clicked
@@ -51,7 +58,7 @@ function Main(props) {
                 {tile.uuid}
             </motion.div>
         );
-    });
+    }
 
     function CreateTileList({ tiles }) {
         return (
@@ -174,4 +181,4 @@ function Main(props) {
     );
 }
 
-export default memo(Main);
+export default Main;
