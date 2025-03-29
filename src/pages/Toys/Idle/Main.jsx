@@ -2,13 +2,14 @@ import { useState, useEffect, memo } from "react";
 import { animate, AnimatePresence, motion } from "framer-motion";
 import vagueTime from "vague-time";
 import Background from "./Components/Background";
+import tiles from "./Tiles/Tiles.json";
 
 import { v4 as uuidv4 } from "uuid";
 
 import Resource from "./Tiles/Resource";
-import OuterCard from "./Components/OuterCard";
 
 // TODO: Connect tile calculations with resource state. Exchange "power" for "lode" or "gold".
+// TODO: Refactor tile creation and deletion into dedicated functions. This will make connecting external scripts into the main tile handler script much easier.
 
 function Main(props) {
     const [tileset, setTileset] = useState([]);
@@ -120,6 +121,39 @@ function Main(props) {
         );
     }
 
+    function CreateTileShop({ tiles }) {
+        function CreateTileShopShelf(tile) {
+            return (
+                // Add tile to current tileset on press
+                <div className="flex gap-2">
+                    <p>
+                        {tile.name}, {tile.power}
+                    </p>
+                    <button onClick={() => setTileset({ ...tileset, tile })}>
+                        Buy
+                    </button>
+                </div>
+            );
+        }
+
+        return (
+            <div className="m-2 rounded-xl bg-lighten-800 p-2 text-darken-800">
+                <div className="flex flex-col gap-2">
+                    {tiles[0] ? (
+                        tiles.map(CreateTileShopShelf)
+                    ) : (
+                        <p className="text-darken-800">
+                            Failed to load tile shop.{" "}
+                            <span className="italic">
+                                Because object.prototype.map doesn't exist. ;~)
+                            </span>
+                        </p>
+                    )}
+                </div>
+            </div>
+        );
+    }
+
     function createRandomTile() {
         try {
             createDefinedTile("random-tile", Math.random() * 100 - 50);
@@ -173,6 +207,7 @@ function Main(props) {
                             tilemap
                         </p>
                         <CreateTilesetSummary />
+                        <CreateTileShop tiles={tiles} />
                         <CreateTileList tiles={tileset} />
                     </div>
                 </motion.div>

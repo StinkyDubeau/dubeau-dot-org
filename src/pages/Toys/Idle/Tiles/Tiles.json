@@ -1,0 +1,18 @@
+{
+    "100w Solar Panel": {
+        "name": "100 watt solar panel",
+        "power": 100
+    },
+    "5w Light Bulb": {
+        "name": "5 watt light bulb",
+        "power": -5
+    },
+    "750w Space Heater": {
+        "name": "750 watt space heater",
+        "power": -750
+    },
+    "1800w Gasoline Generator": {
+        "name": "1800 watt gasoline generator",
+        "power": 1800
+    }
+}
