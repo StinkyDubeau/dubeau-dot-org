@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Frame from "./components/Frame";
 
 // Functions
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 // Pages
 import Home from "./pages/Home";
@@ -37,6 +37,27 @@ import { AnimatePresence } from "framer-motion";
 
 function App() {
     const [data, setData] = useState(Data);
+
+    // T`oggle experimental features
+    useEffect(() => {
+        const handleKeyPress = (data) => {
+            if (data.key === "`") {
+                setData((prevData) => ({
+                    ...prevData,
+                    experimental: data.experimental == true ? false : true,
+                }));
+
+                console.log("Toggled experimental features");
+                console.log(data.experimental);
+            }
+        };
+
+        window.addEventListener("keydown", handleKeyPress);
+
+        return () => {
+            window.removeEventListener("keydown", handleKeyPress);
+        };
+    }, []);
 
     return (
         <>
