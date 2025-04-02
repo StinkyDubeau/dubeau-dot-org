@@ -1,5 +1,5 @@
 import Frame from "../../../components/Frame";
-import { useState, memo } from "react";
+import { useState, useEffect, memo } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { AnimatePresence, motion } from "framer-motion";
 import { DateTime } from "luxon";
@@ -9,6 +9,7 @@ import { DateTime } from "luxon";
 // Priority: Is a task "Urgent", "Important", "Normal", "Low"?
 // creationDate: How long will a task take? Choose from a list of time blocks
 // This page should load for any day; Past present or future.
+// Change from Js Date to Luxon DateTime.
 
 // Weekly tasks:
 // - Daily tasks that the user can promote to weekly recurring tasks:
@@ -37,22 +38,29 @@ function Dayplanner(props) {
         startTime: new Date(), // The start time of the day, used to calculate shift finish time.
     });
 
-    function RenderDailySummary() {
+    // Update values of day information whenever tasks change.
+    const updateDayInformation = useEffect(() => {
         const totalTaskDuration = dailyTasks.reduce(
             (sum, task) => sum + task.duration,
             0,
         );
 
-        const dayUtilization = (
-            (totalTaskDuration / dayInformation.dayDuration) *
-            100
-        ).toFixed(0);
+        setDayInformation({
+            ...dayInformation,
 
+            utilization: (
+                (totalTaskDuration / dayInformation.dayDuration) *
+                100
+            ).toFixed(0),
+        });
+    }, [dailyTasks]);
+
+    function RenderDailySummary() {
         return (
-            <>
-                <p>Viewing: {new Date().toDateString()}.</p>
+            <div className="text-left text-xl">
+                <p>Viewing date: {new Date().toDateString()}.</p>
                 <p>
-                    Shift started at{" "}
+                    {dayInformation.dayDuration / 60} hour shift starts at{" "}
                     {dayInformation.startTime.toLocaleTimeString()} and ends at{" "}
                     {DateTime.fromJSDate(dayInformation.startTime)
                         .plus({
@@ -60,13 +68,7 @@ function Dayplanner(props) {
                         })
                         .toFormat("t")}
                 </p>
-                <p>There are {dailyTasks.length} tasks for today.</p>
-                <p>
-                    There are {dayInformation.dayDuration / 60} hours to fill
-                    today.
-                </p>
-                <p>{dayUtilization}% of your day is accounted for.</p>
-            </>
+            </div>
         );
     }
 
@@ -76,6 +78,14 @@ function Dayplanner(props) {
 
         return (
             <>
+                <div
+                    id="tasks-header"
+                    className="flex justify-between gap-2"
+                >
+                    <p>{dailyTasks.length} task for today</p>
+                    <p>{dayInformation.utilization}% utilization</p>
+                </div>
+
                 {dailyTasks.length === 0 ? (
                     <p>There are no tasks for today.</p>
                 ) : (
