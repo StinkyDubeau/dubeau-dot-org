@@ -2,6 +2,7 @@ import Frame from "../../../components/Frame";
 import { useState, memo } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { AnimatePresence, motion } from "framer-motion";
+import { DateTime } from "luxon";
 
 // TODO:
 // Categories: Is a task "Learning", "Alone-time", "Self-care", "Chores"?
@@ -30,12 +31,10 @@ function Dayplanner(props) {
     // An array of tasks that have been promoted to "weeklies".
     const [weeklyTasks, setWeeklyTasks] = useState([]);
 
-    // In minutes, how much time to dedicate to the day's tasks.
-    const [dayDuration, setDayDuration] = useState(8 * 60);
     // Metadata and statistics about the day.
     const [dayInformation, setDayInformation] = useState({
-        startTime: new Date(),
-        endTime: new Date(),
+        dayDuration: 8 * 60, // In minutes, the duration of the day.
+        startTime: new Date(), // The start time of the day, used to calculate shift finish time.
     });
 
     function RenderDailySummary() {
@@ -43,18 +42,29 @@ function Dayplanner(props) {
             (sum, task) => sum + task.duration,
             0,
         );
+
         const dayUtilization = (
-            (totalTaskDuration / dayDuration) *
+            (totalTaskDuration / dayInformation.dayDuration) *
             100
         ).toFixed(0);
 
         return (
             <>
-                <p>Today is {new Date().toDateString()}.</p>
-                <p>Shift start: {dayInformation.startTime.toString()}</p>
-                <p>Shift end: {dayInformation.endTime.toString()}</p>
+                <p>Viewing: {new Date().toDateString()}.</p>
+                <p>
+                    Shift started at{" "}
+                    {dayInformation.startTime.toLocaleTimeString()} and ends at{" "}
+                    {DateTime.fromJSDate(dayInformation.startTime)
+                        .plus({
+                            minutes: dayInformation.dayDuration,
+                        })
+                        .toFormat("t")}
+                </p>
                 <p>There are {dailyTasks.length} tasks for today.</p>
-                <p>There are {dayDuration / 60} hours to fill today.</p>
+                <p>
+                    There are {dayInformation.dayDuration / 60} hours to fill
+                    today.
+                </p>
                 <p>{dayUtilization}% of your day is accounted for.</p>
             </>
         );
