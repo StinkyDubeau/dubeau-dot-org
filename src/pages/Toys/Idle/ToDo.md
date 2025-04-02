@@ -19,3 +19,31 @@
 1. State / UX to be in a logical state before starting this step.
 2.
 3.
+
+## Interface of a Tile
+
+- Id: a simple integer reference to a specific tile
+
+```js
+//eg "1 meter solar panel"
+tile: {
+    id: 0001,
+
+    // tile only outputs if all inputs are true
+    output: {
+
+        power: 100; //watts
+        heat: 100; //watts
+    }
+    input: {
+        sunlight: true;
+        coal:
+    }
+}
+```
+
+Disable a solar panel by blocking its light source
+`setTile({...tile, tile.input.sunlight: false})`
+
+Disable a generator from lack of fuel (Note: Usage of inline expression)
+`setTile({...tile, tile.input.fuel: system.levels.fuel > 0 ? true : false})

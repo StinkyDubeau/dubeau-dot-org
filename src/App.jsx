@@ -38,13 +38,13 @@ import { AnimatePresence } from "framer-motion";
 function App() {
     const [data, setData] = useState(Data);
 
-    // T`oggle experimental features
+    // ` key | Toggle experimental features
     useEffect(() => {
         const handleKeyPress = (data) => {
             if (data.key === "`") {
-                setData((prevData) => ({
-                    ...prevData,
-                    experimental: data.experimental == true ? false : true,
+                setData((data) => ({
+                    ...data,
+                    experimental: true,
                 }));
 
                 console.log("Toggled experimental features");
