@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="MCS_z0NT8EB62XqtJKAN" name="Page-1">
-        <mxGraphModel dx="1070" dy="843" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="1223" dy="963" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -103,7 +103,7 @@
                 <mxCell id="23" value="Scale" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
                     <mxGeometry x="40" y="200" width="80" height="40" as="geometry"/>
                 </mxCell>
-                <mxCell id="42" value="&quot;Tech tree&quot;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                <mxCell id="42" value="&lt;b&gt;&lt;i&gt;&quot;Tech tree&quot;&lt;/i&gt;&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
                     <mxGeometry x="1200" y="40" width="160" height="80" as="geometry"/>
                 </mxCell>
                 <mxCell id="48" value="Resources" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
@@ -158,8 +158,8 @@
                 <mxCell id="66" value="Illumination" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
                     <mxGeometry x="1200" y="160" width="160" height="80" as="geometry"/>
                 </mxCell>
-                <mxCell id="67" value="Candle" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#a20025;strokeColor=#6F0000;fontColor=#ffffff;" vertex="1" parent="1">
-                    <mxGeometry x="1200" y="240" width="320" height="80" as="geometry"/>
+                <mxCell id="67" value="Consumes external fuels" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#a20025;strokeColor=#6F0000;fontColor=#ffffff;" vertex="1" parent="1">
+                    <mxGeometry x="1360" y="40" width="160" height="20" as="geometry"/>
                 </mxCell>
                 <mxCell id="68" value="Torch" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#a20025;strokeColor=#6F0000;fontColor=#ffffff;" vertex="1" parent="1">
                     <mxGeometry x="1200" y="320" width="320" height="80" as="geometry"/>
@@ -199,6 +199,54 @@
                 </mxCell>
                 <mxCell id="80" value="Commercial Steam Boiler" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#a20025;strokeColor=#6F0000;fontColor=#ffffff;" vertex="1" parent="1">
                     <mxGeometry x="1360" y="560" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="81" value="Renewable Generation" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="1040" y="160" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="82" value="Nonrenewable Generation" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="880" y="160" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="83" value="Hamster Wheel" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#008a00;strokeColor=#005700;fontColor=#ffffff;" vertex="1" parent="1">
+                    <mxGeometry x="1040" y="320" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="84" value="Consumes electricity" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d80073;strokeColor=#A50040;fontColor=#ffffff;" vertex="1" parent="1">
+                    <mxGeometry x="1360" y="60" width="160" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="85" value="Generates renewably" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#008a00;strokeColor=#005700;fontColor=#ffffff;" vertex="1" parent="1">
+                    <mxGeometry x="1360" y="80" width="160" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="86" value="Solar Panel" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#008a00;strokeColor=#005700;fontColor=#ffffff;" vertex="1" parent="1">
+                    <mxGeometry x="1040" y="400" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="87" value="Household Generator" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1ba1e2;strokeColor=#006EAF;fontColor=#ffffff;" vertex="1" parent="1">
+                    <mxGeometry x="880" y="240" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="88" value="Generates nonrenewably" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1ba1e2;strokeColor=#006EAF;fontColor=#ffffff;" vertex="1" parent="1">
+                    <mxGeometry x="1360" y="100" width="160" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="89" value="Hand-crank dynamo" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#008a00;strokeColor=#005700;fontColor=#ffffff;" vertex="1" parent="1">
+                    <mxGeometry x="1040" y="240" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="90" value="Windmill" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#008a00;strokeColor=#005700;fontColor=#ffffff;" vertex="1" parent="1">
+                    <mxGeometry x="1040" y="480" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="91" value="Coal Plant" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1ba1e2;strokeColor=#006EAF;fontColor=#ffffff;" vertex="1" parent="1">
+                    <mxGeometry x="880" y="400" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="92" value="Commecial Generator" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1ba1e2;strokeColor=#006EAF;fontColor=#ffffff;" vertex="1" parent="1">
+                    <mxGeometry x="880" y="320" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="93" value="Gas Plant" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1ba1e2;strokeColor=#006EAF;fontColor=#ffffff;" vertex="1" parent="1">
+                    <mxGeometry x="880" y="480" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="94" value="Nuclear plant" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1ba1e2;strokeColor=#006EAF;fontColor=#ffffff;" vertex="1" parent="1">
+                    <mxGeometry x="880" y="560" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="95" value="&lt;b&gt;Resources&lt;/b&gt;&lt;div&gt;&lt;b&gt;(Coal, Gas, Nuclear Fuel)&lt;/b&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="640" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="97" style="edgeStyle=none;html=1;exitX=0;exitY=0;exitDx=0;exitDy=0;entryX=0.25;entryY=0.144;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="63" target="63">
+                    <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>

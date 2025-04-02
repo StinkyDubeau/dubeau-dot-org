@@ -20,6 +20,16 @@
 2.
 3.
 
+## Component combination
+
+1. Components can be combined with their peers, or even with different components, to create new things.
+    - Drag a hamster wheel atop another, and do it again 5 times, to find yourself with a "hamster half dozen"
+    - Combined components are easier to manage, and have summarized inputs/outputs.
+    - Slowly combining small components into bigger systems will be the direct growth motive of the game.
+    - Parts are slowly upgraded until, when their demands are met, they evolve into a new tile.
+    - Again. One hamster tile, plus five more, equals a "Hamster Half Dozen", which has its own traits seperate from the individual rodents.
+2.
+
 ## Interface of a Tile
 
 - Id: a simple integer reference to a specific tile
