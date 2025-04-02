@@ -82,12 +82,15 @@ function Dayplanner(props) {
                     id="tasks-header"
                     className="flex justify-between gap-2"
                 >
-                    <p>{dailyTasks.length} task for today</p>
+                    <p>
+                        {dailyTasks.length} task{dailyTasks.length !== 1 && "s"}{" "}
+                        for today
+                    </p>
                     <p>{dayInformation.utilization}% utilization</p>
                 </div>
 
                 {dailyTasks.length === 0 ? (
-                    <p>There are no tasks for today.</p>
+                    <p className="text-darken-600">Tasks will display here.</p>
                 ) : (
                     dailyTasks.map((task, index) => (
                         <RenderTask
