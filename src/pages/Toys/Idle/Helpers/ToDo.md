@@ -23,10 +23,10 @@
 ## Component combination
 
 1. Components can be combined with their peers, or even with different components, to create new things.
-    - Drag a hamster wheel atop another, and do it again 5 times, to find yourself with a "hamster half dozen"
+    - Drag a hamster wheel atop another, do it again 5 times, and find yourself with a "hamster half dozen"
     - Combined components are easier to manage, and have summarized inputs/outputs.
     - Slowly combining small components into bigger systems will be the direct growth motive of the game.
-    - Parts are slowly upgraded until, when their demands are met, they evolve into a new tile.
+    - Tiles are slowly upgraded until their demands are met and they evolve into a new tile.
     - Again. One hamster tile, plus five more, equals a "Hamster Half Dozen", which has its own traits seperate from the individual rodents.
 2.
 
@@ -51,7 +51,7 @@ tile: {
 ```
 
 Disable a solar panel by blocking its light source
-`setTile({...tile, tile.input.sunlight: false})`
+`setTile({...tile, tile.input.sunlight: false});`
 
 Disable a generator from lack of fuel (Note: Usage of inline expression)
-`setTile({ ...tile, tile.input.fuel: (system.levels.fuel > 0 ? true : false) })`
+`setTile({ ...tile, tile.input.fuel: (system.levels.fuel > 0 ? true : false) });`

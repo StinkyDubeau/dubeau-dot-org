@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="MCS_z0NT8EB62XqtJKAN" name="Page-1">
-        <mxGraphModel dx="1223" dy="963" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="690" dy="457" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -121,7 +121,7 @@
                 <mxCell id="55" value="Earn money" style="edgeStyle=none;html=1;" edge="1" parent="1" source="53" target="54">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="53" value="Sell power" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                <mxCell id="53" value="Sell&lt;div&gt;Power&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
                     <mxGeometry x="420" y="460" width="80" height="80" as="geometry"/>
                 </mxCell>
                 <mxCell id="57" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="54" target="56">
@@ -140,7 +140,7 @@
                         <mxPoint x="1" y="-16" as="offset"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="54" value="Build more luxuries" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                <mxCell id="54" value="Build&lt;div&gt;Luxuries&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
                     <mxGeometry x="600" y="460" width="80" height="80" as="geometry"/>
                 </mxCell>
                 <mxCell id="59" value="induce demand" style="edgeStyle=none;html=1;" edge="1" parent="1" source="56" target="53">
@@ -149,7 +149,7 @@
                         <mxPoint as="offset"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="56" value="Generate power" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                <mxCell id="56" value="Generate&lt;div&gt;Power&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
                     <mxGeometry x="420" y="620" width="80" height="80" as="geometry"/>
                 </mxCell>
                 <mxCell id="63" value="Secure&lt;div&gt;Resources&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
@@ -244,9 +244,6 @@
                 </mxCell>
                 <mxCell id="95" value="&lt;b&gt;Resources&lt;/b&gt;&lt;div&gt;&lt;b&gt;(Coal, Gas, Nuclear Fuel)&lt;/b&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
                     <mxGeometry x="40" y="640" width="160" height="80" as="geometry"/>
-                </mxCell>
-                <mxCell id="97" style="edgeStyle=none;html=1;exitX=0;exitY=0;exitDx=0;exitDy=0;entryX=0.25;entryY=0.144;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="63" target="63">
-                    <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
