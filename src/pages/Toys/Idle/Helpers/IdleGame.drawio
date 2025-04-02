@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="MCS_z0NT8EB62XqtJKAN" name="Page-1">
-        <mxGraphModel dx="692" dy="321" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="1070" dy="843" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -103,29 +103,8 @@
                 <mxCell id="23" value="Scale" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
                     <mxGeometry x="40" y="200" width="80" height="40" as="geometry"/>
                 </mxCell>
-                <mxCell id="38" value="yes" style="edgeStyle=none;html=1;" edge="1" parent="1" source="36" target="37">
-                    <mxGeometry relative="1" as="geometry"/>
-                </mxCell>
-                <mxCell id="41" value="no" style="edgeStyle=none;html=1;" edge="1" parent="1" source="36" target="40">
-                    <mxGeometry relative="1" as="geometry"/>
-                </mxCell>
-                <mxCell id="36" value="Need&lt;div&gt;Power?&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-                    <mxGeometry x="320" y="520" width="80" height="80" as="geometry"/>
-                </mxCell>
-                <mxCell id="37" value="Build&lt;div&gt;Gens&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-                    <mxGeometry x="320" y="680" width="80" height="80" as="geometry"/>
-                </mxCell>
-                <mxCell id="40" value="Build&lt;div&gt;Cash&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-                    <mxGeometry x="480" y="520" width="80" height="80" as="geometry"/>
-                </mxCell>
                 <mxCell id="42" value="&quot;Tech tree&quot;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
                     <mxGeometry x="1200" y="40" width="160" height="80" as="geometry"/>
-                </mxCell>
-                <mxCell id="45" value="Incandescent Light Bulb&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;i: 40 watts&lt;/div&gt;&lt;div&gt;o: light&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-                    <mxGeometry x="1040" y="160" width="160" height="120" as="geometry"/>
-                </mxCell>
-                <mxCell id="47" value="1 meter Solar Panel&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;i: sunlight&lt;/div&gt;&lt;div&gt;o: sunlight * 100&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-                    <mxGeometry x="1200" y="160" width="160" height="120" as="geometry"/>
                 </mxCell>
                 <mxCell id="48" value="Resources" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
                     <mxGeometry x="40" y="320" width="160" height="80" as="geometry"/>
@@ -138,6 +117,88 @@
                 </mxCell>
                 <mxCell id="52" value="&lt;b&gt;Greatness&lt;/b&gt;&lt;div&gt;How advanced is your network?&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
                     <mxGeometry x="40" y="560" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="55" value="Earn money" style="edgeStyle=none;html=1;" edge="1" parent="1" source="53" target="54">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="53" value="Sell power" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="420" y="460" width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="57" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="54" target="56">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="60" value="exhaust power" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="57">
+                    <mxGeometry x="-0.1556" y="-3" relative="1" as="geometry">
+                        <mxPoint x="-2" y="10" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="64" style="edgeStyle=none;html=1;" edge="1" parent="1" source="54" target="63">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="65" value="exhaust resources" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="64">
+                    <mxGeometry x="-0.0837" y="-1" relative="1" as="geometry">
+                        <mxPoint x="1" y="-16" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="54" value="Build more luxuries" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="600" y="460" width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="59" value="induce demand" style="edgeStyle=none;html=1;" edge="1" parent="1" source="56" target="53">
+                    <mxGeometry x="-0.25" relative="1" as="geometry">
+                        <mxPoint x="470" y="680" as="targetPoint"/>
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="56" value="Generate power" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="420" y="620" width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="63" value="Secure&lt;div&gt;Resources&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="600" y="620" width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="66" value="Illumination" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="1200" y="160" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="67" value="Candle" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#a20025;strokeColor=#6F0000;fontColor=#ffffff;" vertex="1" parent="1">
+                    <mxGeometry x="1200" y="240" width="320" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="68" value="Torch" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#a20025;strokeColor=#6F0000;fontColor=#ffffff;" vertex="1" parent="1">
+                    <mxGeometry x="1200" y="320" width="320" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="69" value="Fire" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#a20025;strokeColor=#6F0000;fontColor=#ffffff;" vertex="1" parent="1">
+                    <mxGeometry x="1200" y="400" width="320" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="70" value="Household Lightbulb" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d80073;strokeColor=#A50040;fontColor=#ffffff;" vertex="1" parent="1">
+                    <mxGeometry x="1200" y="480" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="71" value="Construction Lamp" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d80073;strokeColor=#A50040;fontColor=#ffffff;" vertex="1" parent="1">
+                    <mxGeometry x="1200" y="560" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="72" value="Search light" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d80073;strokeColor=#A50040;fontColor=#ffffff;" vertex="1" parent="1">
+                    <mxGeometry x="1200" y="720" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="73" value="Event Lighting" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d80073;strokeColor=#A50040;fontColor=#ffffff;" vertex="1" parent="1">
+                    <mxGeometry x="1200" y="640" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="74" value="Heating" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="1360" y="160" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="75" value="Forced Air Resistive Heater" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d80073;strokeColor=#A50040;fontColor=#ffffff;" vertex="1" parent="1">
+                    <mxGeometry x="1360" y="720" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="76" value="Heat Pump" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d80073;strokeColor=#A50040;fontColor=#ffffff;" vertex="1" parent="1">
+                    <mxGeometry x="1360" y="800" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="77" value="Household Woodstove" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#a20025;strokeColor=#6F0000;fontColor=#ffffff;" vertex="1" parent="1">
+                    <mxGeometry x="1360" y="480" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="78" style="edgeStyle=none;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0.969;entryY=0.625;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="68" target="68">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="79" value="Commercial Gas Furnace" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#a20025;strokeColor=#6F0000;fontColor=#ffffff;" vertex="1" parent="1">
+                    <mxGeometry x="1360" y="640" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="80" value="Commercial Steam Boiler" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#a20025;strokeColor=#6F0000;fontColor=#ffffff;" vertex="1" parent="1">
+                    <mxGeometry x="1360" y="560" width="160" height="80" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
