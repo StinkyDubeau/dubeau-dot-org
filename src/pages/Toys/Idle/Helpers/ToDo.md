@@ -16,7 +16,7 @@
 
 ## WORLD BUILDING and RESOURCE CALCULATION
 
-1. State / UX to be in a logical state before starting this step.
+1. **State challenges and user experience** should be prioritized over starting this step.
 2.
 3.
 
@@ -31,13 +31,11 @@ tile: {
 
     // tile only outputs if all inputs are true
     output: {
-
         power: 100; //watts
         heat: 100; //watts
     }
     input: {
         sunlight: true;
-        coal:
     }
 }
 ```
@@ -46,4 +44,4 @@ Disable a solar panel by blocking its light source
 `setTile({...tile, tile.input.sunlight: false})`
 
 Disable a generator from lack of fuel (Note: Usage of inline expression)
-`setTile({...tile, tile.input.fuel: system.levels.fuel > 0 ? true : false})
+`setTile({ ...tile, tile.input.fuel: (system.levels.fuel > 0 ? true : false) })`

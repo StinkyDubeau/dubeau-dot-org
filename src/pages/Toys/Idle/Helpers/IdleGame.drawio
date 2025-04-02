@@ -1,0 +1,145 @@
+<mxfile host="65bd71144e">
+    <diagram id="MCS_z0NT8EB62XqtJKAN" name="Page-1">
+        <mxGraphModel dx="692" dy="321" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="Idle Game" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="360" y="10" width="120" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" style="edgeStyle=none;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="3" target="17">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="760" y="300"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="3" value="Timescale" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="720" y="120" width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="Resources" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="240" y="120" width="240" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="31" style="edgeStyle=none;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" target="12">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="470" y="220" as="sourcePoint"/>
+                        <Array as="points">
+                            <mxPoint x="500" y="220"/>
+                            <mxPoint x="500" y="100"/>
+                            <mxPoint x="700" y="100"/>
+                            <mxPoint x="700" y="260"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="6" value="Scarcity" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="360" y="200" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="Components" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="520" y="120" width="150" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="Generation" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="520" y="200" width="150" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="33" style="edgeStyle=none;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;fillColor=#60a917;strokeColor=#2D7600;" edge="1" parent="1" source="10" target="17">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="430" y="350"/>
+                            <mxPoint x="610" y="350"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="10" value="Power" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="380" y="240" width="100" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="Money" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="280" y="240" width="100" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="Consumption" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="590" y="240" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" style="edgeStyle=none;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="13" target="11">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="360" y="290" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="500" y="260"/>
+                            <mxPoint x="500" y="320"/>
+                            <mxPoint x="360" y="320"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="13" value="Excess" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="520" y="240" width="70" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="32" style="edgeStyle=none;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;fillColor=#a20025;strokeColor=#6F0000;" edge="1" parent="1" source="14" target="22">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="170" y="260"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="14" value="Waste" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="240" y="240" width="40" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="Economy" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="240" y="200" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="Inputs and Outputs" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="520" y="280" width="70" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="Rates" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="590" y="280" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="21" value="Goals" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="120" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="34" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="22">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="240" y="220" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="22" value="Effeciency" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="120" y="200" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="23" value="Scale" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="200" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="38" value="yes" style="edgeStyle=none;html=1;" edge="1" parent="1" source="36" target="37">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="41" value="no" style="edgeStyle=none;html=1;" edge="1" parent="1" source="36" target="40">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="36" value="Need&lt;div&gt;Power?&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="320" y="520" width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="37" value="Build&lt;div&gt;Gens&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="320" y="680" width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="40" value="Build&lt;div&gt;Cash&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="480" y="520" width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="42" value="&quot;Tech tree&quot;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="1200" y="40" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="45" value="Incandescent Light Bulb&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;i: 40 watts&lt;/div&gt;&lt;div&gt;o: light&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="1040" y="160" width="160" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="47" value="1 meter Solar Panel&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;i: sunlight&lt;/div&gt;&lt;div&gt;o: sunlight * 100&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="1200" y="160" width="160" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="48" value="Resources" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="320" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="49" value="&lt;b&gt;Gold&lt;/b&gt;&lt;div&gt;Buy and sell products to earn capital.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="400" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="50" value="&lt;b&gt;&lt;font&gt;Population&lt;/font&gt;&lt;/b&gt;&lt;div&gt;&lt;font&gt;Your people expect a baseline power input for lighting, cooking, etc.&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="480" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="52" value="&lt;b&gt;Greatness&lt;/b&gt;&lt;div&gt;How advanced is your network?&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="560" width="160" height="80" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
