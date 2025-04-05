@@ -1,13 +1,15 @@
 import Frame from "../../../components/Frame";
-import { useState, memo } from "react";
+import { useState, useEffect, memo } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { AnimatePresence, motion } from "framer-motion";
+import { DateTime } from "luxon";
 
 // TODO:
 // Categories: Is a task "Learning", "Alone-time", "Self-care", "Chores"?
 // Priority: Is a task "Urgent", "Important", "Normal", "Low"?
 // creationDate: How long will a task take? Choose from a list of time blocks
 // This page should load for any day; Past present or future.
+// Change from Js Date to Luxon DateTime.
 
 // Weekly tasks:
 // - Daily tasks that the user can promote to weekly recurring tasks:
@@ -30,33 +32,43 @@ function Dayplanner(props) {
     // An array of tasks that have been promoted to "weeklies".
     const [weeklyTasks, setWeeklyTasks] = useState([]);
 
-    // In minutes, how much time to dedicate to the day's tasks.
-    const [dayDuration, setDayDuration] = useState(8 * 60);
     // Metadata and statistics about the day.
     const [dayInformation, setDayInformation] = useState({
-        startTime: new Date(),
-        endTime: new Date(),
+        dayDuration: 8 * 60, // In minutes, the duration of the day.
+        startTime: new Date(), // The start time of the day, used to calculate shift finish time.
     });
 
-    function RenderDailySummary() {
+    // Update values of day information whenever tasks change.
+    const updateDayInformation = useEffect(() => {
         const totalTaskDuration = dailyTasks.reduce(
             (sum, task) => sum + task.duration,
             0,
         );
-        const dayUtilization = (
-            (totalTaskDuration / dayDuration) *
-            100
-        ).toFixed(0);
 
+        setDayInformation({
+            ...dayInformation,
+
+            utilization: (
+                (totalTaskDuration / dayInformation.dayDuration) *
+                100
+            ).toFixed(0),
+        });
+    }, [dailyTasks]);
+
+    function RenderDailySummary() {
         return (
-            <>
-                <p>Today is {new Date().toDateString()}.</p>
-                <p>Shift start: {dayInformation.startTime.toString()}</p>
-                <p>Shift end: {dayInformation.endTime.toString()}</p>
-                <p>There are {dailyTasks.length} tasks for today.</p>
-                <p>There are {dayDuration / 60} hours to fill today.</p>
-                <p>{dayUtilization}% of your day is accounted for.</p>
-            </>
+            <div className="text-left text-xl">
+                <p>Viewing date: {new Date().toDateString()}.</p>
+                <p>
+                    {dayInformation.dayDuration / 60} hour shift starts at{" "}
+                    {dayInformation.startTime.toLocaleTimeString()} and ends at{" "}
+                    {DateTime.fromJSDate(dayInformation.startTime)
+                        .plus({
+                            minutes: dayInformation.dayDuration,
+                        })
+                        .toFormat("t")}
+                </p>
+            </div>
         );
     }
 
@@ -66,8 +78,19 @@ function Dayplanner(props) {
 
         return (
             <>
+                <div
+                    id="tasks-header"
+                    className="flex justify-between gap-2"
+                >
+                    <p>
+                        {dailyTasks.length} task{dailyTasks.length !== 1 && "s"}{" "}
+                        for today
+                    </p>
+                    <p>{dayInformation.utilization}% utilization</p>
+                </div>
+
                 {dailyTasks.length === 0 ? (
-                    <p>There are no tasks for today.</p>
+                    <p className="text-darken-600">Tasks will display here.</p>
                 ) : (
                     dailyTasks.map((task, index) => (
                         <RenderTask

@@ -1,9 +1,9 @@
-import { useState, cloneElement, memo } from "react";
-import { useLocation, useOutlet } from "react-router-dom";
+import { useState, cloneElement, memo, useEffect } from "react";
+import { useFetcher, useLocation, useOutlet } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import defaultImg from "../../../../assets/coin.png";
 
-function Resource(props) {
+function Resource({ count, name, description, unit, img }) {
     // The interface of a resource:
     // - name: string
     // - img: image file
@@ -12,22 +12,12 @@ function Resource(props) {
     // - unit: string
     // - enlarged: boolean
 
+    !img && (img = defaultImg);
+
     const { pathname } = useLocation();
     const element = useOutlet();
 
-    const [name, setName] = useState(props.name ? props.name : "Resource");
-    const [img, setImg] = useState(props.img ? props.img : defaultImg);
-    const [count, setCount] = useState(props.count ? props.count : 0);
-    const [description, setDescription] = useState(
-        props.description
-            ? props.description
-            : "There is no description for this resource.",
-    );
-    const [unit, setUnit] = useState(props.unit ? props.unit : "");
-
-    const [enlarged, setEnlarged] = useState(
-        props.englarged ? props.enlarged : false,
-    );
+    const [enlarged, setEnlarged] = useState(false);
 
     function CreateThumbnail() {
         return (
@@ -49,7 +39,8 @@ function Resource(props) {
                     animate={{ opacity: 1, scale: 1 }}
                     className="px-1"
                 >
-                    {name}: {count} {unit}
+                    {name}: {count}
+                    {unit}
                 </motion.p>
             </motion.button>
         );
