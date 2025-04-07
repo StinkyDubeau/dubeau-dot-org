@@ -4,7 +4,7 @@ import Frame from "./components/Frame";
 
 // Functions
 import { useState, useEffect } from "react";
-import { MotionGlobalConfig } from "framer-motion";
+import { MotionGlobalConfig, useReducedMotion } from "framer-motion";
 
 // Pages
 import Home from "./pages/Home";
@@ -34,17 +34,28 @@ import Gallery from "./pages/Toys/Gallery";
 import Dayplanner from "./pages/Toys/Dayplanner/Main";
 import Idle from "./pages/Toys/Idle/Main";
 import { AnimatePresence } from "framer-motion";
+import { pre } from "framer-motion/client";
 
 function App() {
     const [data, setData] = useState(Data);
+    const prefersReducedMotion = useReducedMotion();
 
-    // Change Accessbility Settings
+    // Apply accessbility settings when they are changed
     useEffect(() => {
         MotionGlobalConfig.skipAnimations = data.accessibility.reduceMotion;
     }, [data.accessibility]);
 
-    // ` key | Toggle experimental features
     useEffect(() => {
+        // Apply accessbility settings inherited from browser
+        setData((data) => ({
+            ...data,
+            accessibility: {
+                ...data.accessibility,
+                reduceMotion: prefersReducedMotion,
+            },
+        }));
+
+        // ` key | Toggle experimental features
         const handleKeyPress = (data) => {
             if (data.key === "`") {
                 setData((data) => ({
