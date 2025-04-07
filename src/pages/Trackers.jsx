@@ -151,6 +151,9 @@ export default function Trackers(props) {
 
                     <ul className="">
                         Local scope:
+                        <p className="text-sm">
+                            Click on an entry to delete it.
+                        </p>
                         {data
                             ? Object.keys(data).map((key) => (
                                   <li
