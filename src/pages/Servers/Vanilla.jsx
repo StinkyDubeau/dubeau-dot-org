@@ -1,7 +1,7 @@
 import Panel from "../../components/Panel";
 import Frame from "../../components/Frame";
 import Button from "../../components/Button";
-import PackImg from "../../assets/dubeau-banner.png";
+import PackImg from "../../assets/dubeau-banner.webp";
 import { Link } from "react-router-dom";
 import wl from "../../assets/whitelist.json";
 import Marquee from "react-fast-marquee";
@@ -73,6 +73,7 @@ export default function fun(props) {
                     id="vanilla"
                     className="top-0 z-0 flex-1 rounded-3xl object-cover max-sm:absolute max-sm:h-full max-sm:brightness-75 sm:w-96"
                     src={PackImg}
+                    alt="The image features a screenshot of a Minecraft town at nighttime."
                 />
             </motion.div>
 

@@ -140,6 +140,11 @@ export default function Trackers(props) {
                         Deactivate Experimental
                     </button>
                 </div>
+                <p>
+                    You can also press the{" "}
+                    <span className="rounded bg-darken-50">`</span> key to
+                    toggle experimental features.
+                </p>
                 <div className="flex flex-col gap-2 rounded-xl bg-darken-50 p-4">
                     <p className="m-auto font-header">Site flags and data</p>
                     <div>
@@ -151,6 +156,9 @@ export default function Trackers(props) {
 
                     <ul className="">
                         Local scope:
+                        <p className="text-sm">
+                            Click on an entry to delete it.
+                        </p>
                         {data
                             ? Object.keys(data).map((key) => (
                                   <li
@@ -161,7 +169,7 @@ export default function Trackers(props) {
                                           props.setData(reducedData);
                                       }}
                                   >
-                                      {key.toString()}: {data[key]}
+                                      {key.toString()}: {data[key].toString()}
                                   </li>
                               ))
                             : "None"}

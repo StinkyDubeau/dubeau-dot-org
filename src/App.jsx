@@ -4,6 +4,7 @@ import Frame from "./components/Frame";
 
 // Functions
 import { useState, useEffect } from "react";
+import { MotionGlobalConfig, useReducedMotion } from "framer-motion";
 
 // Pages
 import Home from "./pages/Home";
@@ -14,6 +15,9 @@ import Geek from "./pages/Geek/Lunches";
 import Chat from "./pages/Web3/Login";
 import Astros from "./pages/Astros";
 import Trackers from "./pages/Trackers";
+import Accessibility from "./pages/Accessibility";
+import Widgets from "./pages/Toys/Widgets";
+import Countries from "./pages/Countries";
 
 // Pages: Game Servers
 import Vanilla from "./pages/Servers/Vanilla";
@@ -22,10 +26,6 @@ import BetterThanWolves from "./pages/Servers/BetterThanWolves";
 import Factorio from "./pages/Servers/Factorio";
 import KSP from "./pages/Servers/KSP";
 import Beam from "./pages/Servers/BeamMP";
-
-// Pages: Fun
-import Widgets from "./pages/Toys/Widgets";
-import Countries from "./pages/Countries";
 
 // Assets
 import Data from "./assets/Data";
@@ -37,14 +37,29 @@ import { AnimatePresence } from "framer-motion";
 
 function App() {
     const [data, setData] = useState(Data);
+    const prefersReducedMotion = useReducedMotion();
 
-    // ` key | Toggle experimental features
+    // Apply accessbility settings when they are changed
     useEffect(() => {
+        MotionGlobalConfig.skipAnimations = data.accessibility.reduceMotion;
+    }, [data.accessibility]);
+
+    useEffect(() => {
+        // Apply accessbility settings inherited from browser
+        setData((data) => ({
+            ...data,
+            accessibility: {
+                ...data.accessibility,
+                reduceMotion: prefersReducedMotion,
+            },
+        }));
+
+        // ` key | Toggle experimental features
         const handleKeyPress = (data) => {
             if (data.key === "`") {
                 setData((data) => ({
                     ...data,
-                    experimental: true,
+                    experimental: !data.experimental,
                 }));
 
                 console.log("Toggled experimental features");
@@ -251,6 +266,15 @@ function App() {
                             path="/countries"
                             element={
                                 <Countries
+                                    data={data}
+                                    setData={setData}
+                                />
+                            }
+                        />
+                        <Route
+                            path="/accessibility"
+                            element={
+                                <Accessibility
                                     data={data}
                                     setData={setData}
                                 />

@@ -1,7 +1,7 @@
 import Panel from "../../components/Panel";
 import Frame from "../../components/Frame";
 import Button from "../../components/Button";
-import PackImg from "../../assets/modded-banner.png";
+import PackImg from "../../assets/modded-banner.webp";
 import { Link } from "react-router-dom";
 import wl from "../../assets/whitelist.json";
 import Marquee from "react-fast-marquee";
@@ -72,6 +72,7 @@ export default function fun(props) {
                 <img
                     className="top-0 z-0 flex-1 rounded-3xl object-cover max-sm:absolute max-sm:h-full max-sm:w-full max-sm:brightness-75 sm:w-96"
                     src={PackImg}
+                    alt="The icon for Modded Minecraft's Server page. The image features a gameplay screenshot of a small factory with lots of machinery and parts."
                 />
             </div>
 

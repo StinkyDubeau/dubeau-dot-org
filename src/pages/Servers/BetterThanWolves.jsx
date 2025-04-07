@@ -58,6 +58,7 @@ export default function fun(props) {
                 <img
                     className="top-0 z-0 flex-1 rounded-3xl object-cover max-sm:absolute max-sm:h-full max-sm:w-full max-sm:brightness-75 sm:w-96"
                     src={PackImg}
+                    alt="The icon for Better than Wolves's Server page. The image features an old-school Minecraft gameplay screenshot of a grassy hill."
                 />
             </div>
 

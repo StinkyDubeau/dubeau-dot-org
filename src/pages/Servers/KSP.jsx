@@ -1,7 +1,7 @@
 import Panel from "../../components/Panel";
 import Frame from "../../components/Frame";
 import Button from "../../components/Button";
-import PackImg from "../../assets/ksp-banner.jpg";
+import PackImg from "../../assets/ksp-banner.webp";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Marquee from "react-fast-marquee";
@@ -31,6 +31,7 @@ export default function fun(props) {
                     <img
                         className="max-w-96 flex-1 rounded-3xl object-cover max-sm:max-w-full"
                         src={PackImg}
+                        alt="The icon for Kerbal Space Program's Server page. The image features a rocketship flying near Mars."
                     />
                 </div>
 

@@ -5,12 +5,12 @@ import { Link } from "react-router-dom";
 import ServerCard from "../components/ServerCard";
 import { AnimatePresence, motion } from "framer-motion";
 
-import ModdedBanner from "../assets/modded-banner.png";
+import ModdedBanner from "../assets/modded-banner.webp";
 import BetaBanner from "../assets/beta-banner.webp";
-import VanillaBanner from "../assets/dubeau-banner.png";
-import FactorioBanner from "../assets/factorio-banner.jpg";
-import KspBanner from "../assets/ksp-banner.jpg";
-import BeamBanner from "../assets/beam-banner.jpg";
+import VanillaBanner from "../assets/dubeau-banner.webp";
+import FactorioBanner from "../assets/factorio-banner.webp";
+import KspBanner from "../assets/ksp-banner.webp";
+import BeamBanner from "../assets/beam-banner.webp";
 import { useEffect } from "react";
 
 export default function Fun(props) {
@@ -107,6 +107,7 @@ export default function Fun(props) {
                                 img={VanillaBanner}
                                 // to="/vanilla"
                                 to="/servers/vanilla"
+                                alt="The icon for Vanilla Minecraft's Server page. The image features a screenshot of a Minecraft town at nighttime."
                             />
                         </AnimatePresence>
                         <ServerCard
@@ -115,18 +116,21 @@ export default function Fun(props) {
                             img={ModdedBanner}
                             to="/servers/modded"
                             announcement="pre-release"
+                            alt="The icon for Modded Minecraft's Server page. The image features a gameplay screenshot of a small factory with lots of machinery and parts."
                         />
                         <ServerCard
                             title="Better Than Wolves"
                             subtitle="Modded 1.5.2"
                             img={BetaBanner}
                             to="/servers/btw"
+                            alt="The icon for Better than Wolves's Server page. The image features an old-school Minecraft gameplay screenshot of a grassy hill."
                         />
                         <ServerCard
                             title="Factorio"
                             subtitle="Modded 2.0"
                             img={FactorioBanner}
                             to="/servers/factorio"
+                            alt="The icon for Factorio's Server page. The image features a gameplay screenshot of a small factory."
                         />
                         {props.data.experimental && (
                             // In-progress server pages.
@@ -136,12 +140,14 @@ export default function Fun(props) {
                                     subtitle="BeamMP Events"
                                     img={BeamBanner}
                                     to="/servers/beam"
+                                    alt="The icon for BeamNG's Server page. The image features a rally car jumping over a dirt hill."
                                 />
                                 <ServerCard
                                     title="DMP"
                                     subtitle="Kerbal Space Program"
                                     img={KspBanner}
                                     to="/servers/ksp"
+                                    alt="The icon for Kerbal Space Program's Server page. The image features a rocketship flying near Mars."
                                 />
                             </>
                         )}
@@ -210,6 +216,14 @@ export default function Fun(props) {
                                 >
                                     <p className="p-2 font-header font-medium text-darken-800">
                                         ♾️ Idle Game
+                                    </p>
+                                </Link>
+                                <Link
+                                    className="flex min-w-24 flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
+                                    to="/countries"
+                                >
+                                    <p className="p-2 font-header font-medium text-darken-800">
+                                        🌏 Countries Quiz
                                     </p>
                                 </Link>
                             </div>
