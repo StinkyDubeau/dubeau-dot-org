@@ -43,7 +43,7 @@ export default function Accessibility(props) {
                         }}
                         className="h-5 w-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
                     />
-                    Reduce Motion
+                    Reduce Motion*
                 </label>
                 <p className="text-sm">
                     Disables page transitions and many component animations.
@@ -90,6 +90,10 @@ export default function Accessibility(props) {
                 <div className="flex flex-col gap-2">
                     <ReduceMotion />
                     <DisableAll />
+                    <p>
+                        * These settings can also be controlled by your device
+                        preferences
+                    </p>
                 </div>
             </div>
             <div className="mx-4 flex max-w-96 flex-col gap-2 rounded-2xl bg-lighten-900 p-4 text-left font-header text-darken-800">

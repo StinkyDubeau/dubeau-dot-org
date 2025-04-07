@@ -16,12 +16,12 @@ export default function ServerCard(props) {
             layoutId={props.img}
             whileHover={{ width: 200 }}
             onClick={scrollToTop}
-            className={`${props.className} card h-52 w-44 overflow-hidden rounded-2xl bg-darken-900 shadow-lg`}
+            className={`${props.className} card h-52 overflow-hidden rounded-2xl bg-black shadow-lg max-md:w-full md:w-44`}
         >
             <Link to={props.to}>
                 <motion.img
                     id={props.img}
-                    className="absolute h-full object-cover shadow-xl brightness-90"
+                    className="absolute h-full object-cover w-full shadow-xl brightness-90"
                     src={props.img}
                 />
                 {/* Container */}
