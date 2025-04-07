@@ -5,12 +5,12 @@ import { Link } from "react-router-dom";
 import ServerCard from "../components/ServerCard";
 import { AnimatePresence, motion } from "framer-motion";
 
-import ModdedBanner from "../assets/modded-banner.png";
+import ModdedBanner from "../assets/modded-banner.webp";
 import BetaBanner from "../assets/beta-banner.webp";
-import VanillaBanner from "../assets/dubeau-banner.png";
-import FactorioBanner from "../assets/factorio-banner.jpg";
-import KspBanner from "../assets/ksp-banner.jpg";
-import BeamBanner from "../assets/beam-banner.jpg";
+import VanillaBanner from "../assets/dubeau-banner.webp";
+import FactorioBanner from "../assets/factorio-banner.webp";
+import KspBanner from "../assets/ksp-banner.webp";
+import BeamBanner from "../assets/beam-banner.webp";
 import { useEffect } from "react";
 
 export default function Fun(props) {

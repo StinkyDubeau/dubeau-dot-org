@@ -1,7 +1,7 @@
 import Panel from "../../components/Panel";
 import Frame from "../../components/Frame";
 import Button from "../../components/Button";
-import PackImg from "../../assets/modded-banner.png";
+import PackImg from "../../assets/modded-banner.webp";
 import { Link } from "react-router-dom";
 import wl from "../../assets/whitelist.json";
 import Marquee from "react-fast-marquee";

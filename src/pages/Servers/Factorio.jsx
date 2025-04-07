@@ -1,7 +1,7 @@
 import Panel from "../../components/Panel";
 import Frame from "../../components/Frame";
 import Button from "../../components/Button";
-import PackImg from "../../assets/factorio-banner.jpg";
+import PackImg from "../../assets/factorio-banner.webp";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 

@@ -81,8 +81,8 @@ export default function Accessibility(props) {
     }
 
     return (
-        <div className="flex w-full flex-col justify-center pb-32">
-            <div className="m-4 flex max-w-96 flex-col gap-2 rounded-2xl bg-lighten-900 p-4 text-left font-header text-darken-800">
+        <div className="mt-4 flex w-full flex-col justify-center gap-4 pb-32">
+            <div className="mx-4 flex max-w-96 flex-col gap-2 rounded-2xl bg-lighten-900 p-4 text-left font-header text-darken-800">
                 <h1 className="text-left text-3xl font-light">
                     Accessibility Settings
                 </h1>
@@ -92,7 +92,7 @@ export default function Accessibility(props) {
                     <DisableAll />
                 </div>
             </div>
-            <div className="m-4 flex max-w-96 flex-col gap-2 rounded-2xl bg-lighten-900 p-4 text-left font-header text-darken-800">
+            <div className="mx-4 flex max-w-96 flex-col gap-2 rounded-2xl bg-lighten-900 p-4 text-left font-header text-darken-800">
                 <h1 className="text-left text-3xl font-light">Report issues</h1>
 
                 <p>
@@ -106,7 +106,7 @@ export default function Accessibility(props) {
 
             <Link
                 to="/"
-                className="m-4 flex max-w-96 flex-col gap-2 rounded-2xl bg-lighten-900 p-4 text-left font-header text-darken-800"
+                className="mx-4 flex max-w-96 flex-col gap-2 rounded-2xl bg-lighten-900 p-4 text-left font-header text-darken-800"
             >
                 <h1 className="text-left text-3xl font-light underline">
                     Back to home

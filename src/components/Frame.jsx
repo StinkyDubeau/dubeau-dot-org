@@ -41,7 +41,7 @@ export default function Frame(props) {
                                 </p>
                                 <div className="flex-grow text-nowrap px-2 font-header text-white shadow-inner-xl">
                                     {props.data && (
-                                        <ul className="max-h-6 flex flex-wrap overflow-scroll scrollbar-hide">
+                                        <ul className="flex max-h-6 flex-wrap overflow-scroll scrollbar-hide">
                                             {props.data
                                                 ? Object.keys(props.data).map(
                                                       (key) => (
@@ -78,7 +78,7 @@ export default function Frame(props) {
 
             {/* Content */}
             <div
-                className={`min-w-screen -z-50 h-max min-h-screen ${props.data.vignette === !null ? "shadow-inner-4xl" : "bg-lighten"}`}
+                className={`min-w-screen -z-50 h-max min-h-screen ${props.data.vignette === true ? "bg-darken shadow-inner-4xl" : "bg-lighten"}`}
             >
                 <div className={`m-auto ${!props.data.noNavbar && "pt-16"} `}>
                     <div className="mx-auto max-w-screen-xl justify-center xs:flex">
