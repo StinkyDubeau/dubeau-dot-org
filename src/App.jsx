@@ -16,6 +16,8 @@ import Chat from "./pages/Web3/Login";
 import Astros from "./pages/Astros";
 import Trackers from "./pages/Trackers";
 import Accessibility from "./pages/Accessibility";
+import Widgets from "./pages/Toys/Widgets";
+import Countries from "./pages/Countries";
 
 // Pages: Game Servers
 import Vanilla from "./pages/Servers/Vanilla";
@@ -24,10 +26,6 @@ import BetterThanWolves from "./pages/Servers/BetterThanWolves";
 import Factorio from "./pages/Servers/Factorio";
 import KSP from "./pages/Servers/KSP";
 import Beam from "./pages/Servers/BeamMP";
-
-// Pages: Fun
-import Widgets from "./pages/Toys/Widgets";
-import Countries from "./pages/Countries";
 
 // Assets
 import Data from "./assets/Data";
