@@ -45,7 +45,10 @@ export default function Frame(props) {
                                             {props.data
                                                 ? Object.keys(props.data).map(
                                                       (key) => (
-                                                          <li className="ml-4">
+                                                          <li
+                                                              key={key}
+                                                              className="ml-4"
+                                                          >
                                                               {key.toString()}:{" "}
                                                               {props.data[
                                                                   key
