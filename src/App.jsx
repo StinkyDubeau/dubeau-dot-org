@@ -4,6 +4,7 @@ import Frame from "./components/Frame";
 
 // Functions
 import { useState, useEffect } from "react";
+import { MotionGlobalConfig } from "framer-motion";
 
 // Pages
 import Home from "./pages/Home";
@@ -14,6 +15,7 @@ import Geek from "./pages/Geek/Lunches";
 import Chat from "./pages/Web3/Login";
 import Astros from "./pages/Astros";
 import Trackers from "./pages/Trackers";
+import Accessibility from "./pages/Accessibility";
 
 // Pages: Game Servers
 import Vanilla from "./pages/Servers/Vanilla";
@@ -38,13 +40,18 @@ import { AnimatePresence } from "framer-motion";
 function App() {
     const [data, setData] = useState(Data);
 
+    // Change Accessbility Settings
+    useEffect(() => {
+        MotionGlobalConfig.skipAnimations = data.accessibility.reduceMotion;
+    }, [data.accessibility]);
+
     // ` key | Toggle experimental features
     useEffect(() => {
         const handleKeyPress = (data) => {
             if (data.key === "`") {
                 setData((data) => ({
                     ...data,
-                    experimental: true,
+                    experimental: !data.experimental,
                 }));
 
                 console.log("Toggled experimental features");
@@ -251,6 +258,15 @@ function App() {
                             path="/countries"
                             element={
                                 <Countries
+                                    data={data}
+                                    setData={setData}
+                                />
+                            }
+                        />
+                        <Route
+                            path="/accessibility"
+                            element={
+                                <Accessibility
                                     data={data}
                                     setData={setData}
                                 />

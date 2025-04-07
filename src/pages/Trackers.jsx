@@ -161,7 +161,7 @@ export default function Trackers(props) {
                                           props.setData(reducedData);
                                       }}
                                   >
-                                      {key.toString()}: {data[key]}
+                                      {key.toString()}: {data[key].toString()}
                                   </li>
                               ))
                             : "None"}
