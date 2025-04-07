@@ -73,6 +73,7 @@ export default function fun(props) {
                     id="vanilla"
                     className="top-0 z-0 flex-1 rounded-3xl object-cover max-sm:absolute max-sm:h-full max-sm:brightness-75 sm:w-96"
                     src={PackImg}
+                    alt="The image features a screenshot of a Minecraft town at nighttime."
                 />
             </motion.div>
 

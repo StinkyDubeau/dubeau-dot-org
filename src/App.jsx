@@ -34,7 +34,6 @@ import Gallery from "./pages/Toys/Gallery";
 import Dayplanner from "./pages/Toys/Dayplanner/Main";
 import Idle from "./pages/Toys/Idle/Main";
 import { AnimatePresence } from "framer-motion";
-import { pre } from "framer-motion/client";
 
 function App() {
     const [data, setData] = useState(Data);

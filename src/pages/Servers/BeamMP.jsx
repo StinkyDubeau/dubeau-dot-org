@@ -41,6 +41,7 @@ export default function fun(props) {
                     id="beam"
                     className="top-0 z-0 flex-1 rounded-3xl object-cover max-sm:absolute max-sm:h-full max-sm:brightness-75 sm:w-96"
                     src={PackImg}
+                    alt="The icon for BeamNG's Server page. The image features a rally car jumping over a dirt hill."
                 />
             </div>
 

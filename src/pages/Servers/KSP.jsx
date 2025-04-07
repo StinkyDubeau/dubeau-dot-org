@@ -31,6 +31,7 @@ export default function fun(props) {
                     <img
                         className="max-w-96 flex-1 rounded-3xl object-cover max-sm:max-w-full"
                         src={PackImg}
+                        alt="The icon for Kerbal Space Program's Server page. The image features a rocketship flying near Mars."
                     />
                 </div>
 

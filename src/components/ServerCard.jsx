@@ -23,6 +23,7 @@ export default function ServerCard(props) {
                     id={props.img}
                     className="absolute h-full w-full object-cover shadow-xl brightness-90"
                     src={props.img}
+                    alt={props.alt}
                 />
                 {/* Container */}
                 <div className="z-25 m-2 flex h-48 flex-col justify-center gap-2 rounded-lg drop-shadow">
