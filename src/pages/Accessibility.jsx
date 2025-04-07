@@ -73,7 +73,7 @@ export default function Accessibility(props) {
                 </label>
                 <p className="text-sm">
                     Turns off all accessibility settings. This may fix problems
-                    with experiemntal features.
+                    with experimental features.
                 </p>
                 <hr />
             </>
