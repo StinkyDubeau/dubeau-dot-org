@@ -101,56 +101,57 @@ export default function Fun(props) {
                     <div className="my-5 flex flex-wrap justify-evenly gap-4 rounded-2xl px-6 py-4 sm:gap-8">
                         <AnimatePresence>
                             <ServerCard
+                                title="Neobeau"
+                                subtitle="Modded Minecraft"
+                                img={ModdedBanner}
+                                to="/servers/modded"
+                                announcement="new modpack!"
+                                alt="The icon for Modded Minecraft's Server page. The image features a gameplay screenshot of a small factory with lots of machinery and parts."
+                            />
+                            <ServerCard
                                 id="vanilla"
-                                title="Vanilla"
-                                subtitle="Minecraft 1.21"
+                                title="Minecraft"
+                                subtitle="Vanilla 1.21.1"
                                 img={VanillaBanner}
                                 // to="/vanilla"
+                                announcement="world reset soon!"
                                 to="/servers/vanilla"
                                 alt="The icon for Vanilla Minecraft's Server page. The image features a screenshot of a Minecraft town at nighttime."
                             />
+                            <ServerCard
+                                title="Better Than Wolves"
+                                subtitle="Modded 1.5.2"
+                                img={BetaBanner}
+                                to="/servers/btw"
+                                alt="The icon for Better than Wolves's Server page. The image features an old-school Minecraft gameplay screenshot of a grassy hill."
+                            />
+                            <ServerCard
+                                title="Factorio"
+                                subtitle="Modded 2.0"
+                                img={FactorioBanner}
+                                to="/servers/factorio"
+                                alt="The icon for Factorio's Server page. The image features a gameplay screenshot of a small factory."
+                            />
+                            {props.data.experimental && (
+                                // In-progress server pages.
+                                <>
+                                    <ServerCard
+                                        title="BeamNG"
+                                        subtitle="BeamMP Events"
+                                        img={BeamBanner}
+                                        to="/servers/beam"
+                                        alt="The icon for BeamNG's Server page. The image features a rally car jumping over a dirt hill."
+                                    />
+                                    <ServerCard
+                                        title="DMP"
+                                        subtitle="Kerbal Space Program"
+                                        img={KspBanner}
+                                        to="/servers/ksp"
+                                        alt="The icon for Kerbal Space Program's Server page. The image features a rocketship flying near Mars."
+                                    />
+                                </>
+                            )}
                         </AnimatePresence>
-                        <ServerCard
-                            title="Modded"
-                            subtitle="Fabric 1.20"
-                            img={ModdedBanner}
-                            to="/servers/modded"
-                            announcement="pre-release"
-                            alt="The icon for Modded Minecraft's Server page. The image features a gameplay screenshot of a small factory with lots of machinery and parts."
-                        />
-                        <ServerCard
-                            title="Better Than Wolves"
-                            subtitle="Modded 1.5.2"
-                            img={BetaBanner}
-                            to="/servers/btw"
-                            alt="The icon for Better than Wolves's Server page. The image features an old-school Minecraft gameplay screenshot of a grassy hill."
-                        />
-                        <ServerCard
-                            title="Factorio"
-                            subtitle="Modded 2.0"
-                            img={FactorioBanner}
-                            to="/servers/factorio"
-                            alt="The icon for Factorio's Server page. The image features a gameplay screenshot of a small factory."
-                        />
-                        {props.data.experimental && (
-                            // In-progress server pages.
-                            <>
-                                <ServerCard
-                                    title="BeamNG"
-                                    subtitle="BeamMP Events"
-                                    img={BeamBanner}
-                                    to="/servers/beam"
-                                    alt="The icon for BeamNG's Server page. The image features a rally car jumping over a dirt hill."
-                                />
-                                <ServerCard
-                                    title="DMP"
-                                    subtitle="Kerbal Space Program"
-                                    img={KspBanner}
-                                    to="/servers/ksp"
-                                    alt="The icon for Kerbal Space Program's Server page. The image features a rocketship flying near Mars."
-                                />
-                            </>
-                        )}
                     </div>
                 </div>
 

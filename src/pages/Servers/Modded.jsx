@@ -11,12 +11,16 @@ import Markdown from "react-markdown";
 export default function fun(props) {
     const whitelist = wl;
     const addr = "mc.dubeau.org:25569";
-    const name = "Modded";
-    const desc = "A whitelisted Create and Pixelmon server ⚙️🐿️";
+    const name = "Neobeau";
+    const desc = "Vanilla-ish modded minecraft";
 
     function createUser(user) {
         return (
-            <div className="scale-100 text-darken-10 transition-all hover:scale-110 hover:text-darken-800">
+            <div className="flex scale-100 flex-col gap-2 text-darken-10 transition-all hover:text-darken-800">
+                <img
+                    className="m-auto aspect-auto max-h-48 w-min drop-shadow"
+                    src={`https://crafatar.com/renders/body/${user.uuid}`}
+                />
                 <p className="font-header text-lg font-light text-darken-800">
                     {user.name}
                 </p>
@@ -34,14 +38,14 @@ export default function fun(props) {
                 <div className="flex-0  z-10 flex max-w-full justify-center max-sm:h-full">
                     <div className="my-auto flex h-fit flex-col justify-center gap-12 align-middle">
                         <div className="flex flex-col gap-2">
-                            <p className="text-left font-header text-5xl text-darken-700 max-md:text-center max-sm:text-lighten-800">
+                            <p className="text-left font-header text-5xl text-darken-700 max-md:text-center max-sm:text-lighten-700">
                                 {name}
                             </p>
-                            <p className="max-sm:h-shrink text-left text-xl font-light text-darken-700 max-md:text-center max-sm:text-lighten-800">
+                            <p className="max-sm:h-shrink text-left text-xl font-light text-darken-700 max-md:text-center max-sm:text-lighten-700">
                                 {desc}
                             </p>
                             <button
-                                className="max-sm:h-shrink flex gap-2 text-nowrap text-left text-xl font-light text-darken-700 max-md:text-center max-sm:mx-auto max-sm:text-lighten-800"
+                                className="max-sm:h-shrink mt-2 flex gap-2 text-nowrap text-left text-xl font-light text-darken-700 max-md:text-center max-sm:mx-auto max-sm:text-lighten-700"
                                 onClick={() => {
                                     navigator.clipboard.writeText(addr);
                                 }}
@@ -76,6 +80,21 @@ export default function fun(props) {
                 />
             </div>
 
+            <div className="flex flex-col gap-2 rounded-3xl bg-lighten-800 p-4">
+                <p className="text-left font-header text-2xl text-darken-800">
+                    ℹ️ Modded migration update
+                </p>
+                <p className="mb-4 text-left font-header text-xl text-darken-600">
+                    April 8th, 2025
+                </p>
+                <Markdown className="text-left font-header text-xl text-darken-800">
+                    The vanilla world file is soon to be migrated! We are
+                    currently testing the neobeau modpack to ensure stability.
+                    There will be a news post in discord when everything is
+                    ready to go.
+                </Markdown>
+            </div>
+
             <div className="flex flex-grow justify-between gap-6 max-sm:flex-wrap">
                 {/* Warnings */}
 
@@ -99,7 +118,7 @@ export default function fun(props) {
                         <p className="text-left font-header text-darken-800">
                             This server is currently in pre-release. The world
                             file is temporary, and all users have been granted{" "}
-                            <span className="rounded-lg bg-blue-600 p-1 font-header font-light text-lighten-800 shadow">
+                            <span className="rounded-lg bg-darken-50 p-1 font-header font-light text-darken-900 shadow">
                                 moderator
                             </span>{" "}
                             status.
@@ -124,9 +143,9 @@ export default function fun(props) {
                             <path d="M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m0 5.996V14H3s-1 0-1-1 1-4 6-4q.845.002 1.544.107a4.5 4.5 0 0 0-.803.918A11 11 0 0 0 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664zM9 13a1 1 0 0 1 1-1v-1a2 2 0 1 1 4 0v1a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1zm3-3a1 1 0 0 0-1 1v1h2v-1a1 1 0 0 0-1-1" />
                         </svg>
                         <p className="text-left font-header text-darken-800">
-                            At release, only whitelisted players will be allowed
-                            to access this server. Message an{" "}
-                            <span className="rounded-lg bg-blue-600 p-1 font-header font-light text-lighten-800 shadow">
+                            Only whitelisted players are allowed to join this
+                            server. Message an{" "}
+                            <span className="rounded-lg bg-darken-50 p-1 font-header font-light text-darken-900 shadow">
                                 admin
                             </span>{" "}
                             on discord if you haven't already been whitelisted.
@@ -135,94 +154,66 @@ export default function fun(props) {
                 </div>
             </div>
 
-            <div className="flex flex-col gap-2 rounded-3xl bg-lighten-800 p-4">
-                <p className="text-left font-header text-2xl text-darken-800">
-                    ℹ️ Modded migration update
-                </p>
-                <p className="mb-4 text-left font-header text-xl text-darken-600">
-                    December 13th, 2024
-                </p>
-                <Markdown className="text-left font-header text-xl text-darken-800">
-                    Migrating the Vanilla 1.21 world to a modded server is
-                    currently impossible due to issues with downgrading to 1.20.
-                    So, we'll wait for Create to update instead.
-                </Markdown>
-            </div>
-
-            <div className="flex flex-col gap-4 rounded-3xl bg-lighten-800 p-4">
+            <div className="flex flex-col gap-6 rounded-3xl bg-lighten-800 p-4">
                 <p className="text-left font-header text-3xl text-darken-800">
                     How to join
                 </p>
 
-                <p className="text-left font-header text-xl text-darken-800">
-                    1. Download the MultiMC launcher for your system:
-                </p>
-
-                <div className="justify-left flex gap-4 font-header text-darken-800 underline">
-                    <Link
-                        className=" scale-100 transition-all hover:scale-110"
-                        to="https://files.multimc.org/downloads/mmc-develop-win32.zip"
-                    >
-                        Windows
-                    </Link>
-                    <Link
-                        className=" scale-100 transition-all hover:scale-110"
-                        to="https://files.multimc.org/downloads/multimc_1.6-1.deb"
-                    >
-                        Debian/Ubuntu
-                    </Link>
-                    <Link
-                        className=" scale-100 transition-all hover:scale-110"
-                        to="https://github.com/MultiMC/multimc-pkgbuild"
-                    >
-                        Arch
-                    </Link>
-                    <Link
-                        className=" scale-100 transition-all hover:scale-110"
-                        to="https://files.multimc.org/downloads/mmc-develop-osx64.tar.gz"
-                    >
-                        MacOS
-                    </Link>
+                <div className="">
+                    <p className="text-left font-header text-xl text-darken-800">
+                        1. Download and install Prism Launcher:
+                    </p>
+                    <div className="justify-left ml-8 flex gap-4 font-header text-darken-800 underline">
+                        <Link
+                            className=" scale-100 transition-all hover:scale-110"
+                            to="https://prismlauncher.org/download/windows/"
+                        >
+                            Windows
+                        </Link>
+                        <Link
+                            className=" scale-100 transition-all hover:scale-110"
+                            to="https://prismlauncher.org/download/"
+                        >
+                            Linux
+                        </Link>
+                        <Link
+                            className=" scale-100 transition-all hover:scale-110"
+                            to="https://prismlauncher.org/download/mac/"
+                        >
+                            MacOS
+                        </Link>
+                    </div>
                 </div>
                 <p className="text-left font-header text-xl text-darken-800">
-                    2. Download our official MultiMC instance
+                    2. Open Prism Launcher and sign in. Click "Accounts",
+                    "Manage Accounts", and "Add Microsoft".
                 </p>
-                <div className="justify-left flex gap-4 font-header text-darken-800 underline">
-                    <Link
-                        className=" scale-100 transition-all hover:scale-110"
-                        to="https://cdn.modrinth.com/data/TK1lQFH6/versions/PXU2pZT5/Create%20%26%20Explore%20-%20pre2.1.0.mrpack"
-                    >
-                        dubeau.org modpack v0.1
-                    </Link>
+                <div>
+                    <p className="text-left font-header text-xl text-darken-800">
+                        3. Download the latest Neobeau modpack ZIP file, and
+                        drag it into Prism Launcher to import it.
+                    </p>
+                    <div className="justify-left ml-8 flex gap-4 font-header text-darken-800 underline">
+                        <Link
+                            className=" scale-100 transition-all hover:scale-110"
+                            to="https://cdn.modrinth.com/data/TK1lQFH6/versions/PXU2pZT5/Create%20%26%20Explore%20-%20pre2.1.0.mrpack"
+                        >
+                            Neobeau v0.2
+                        </Link>
+                    </div>
                 </div>
                 <p className="text-left font-header text-xl text-darken-800">
-                    3. Connect your Microsoft account by clicking "Manage
-                    Accounts" in the top-right corner of MultiMC
+                    4. Double click Neobeau to launch the modpack. It may take
+                    several minutes to launch the first time.
                 </p>
                 <p className="text-left font-header text-xl text-darken-800">
-                    4. Click "Add instance", and then import the ZIP folder you
-                    downloaded in step 2
-                </p>
-                <p className="text-left font-header text-xl text-darken-800">
-                    5. Launch the new instance and connect to{" "}
-                    <span className="rounded-lg bg-blue-600 p-1 font-header font-light text-blue-600 text-lighten-800 shadow">
-                        mc.dubeau.org:25569
-                    </span>
-                </p>
-                <p className="text-left font-header text-xl font-light text-darken-800">
-                    6. <span className="underline">Optional</span>: For the best
-                    experience, temporarily set your render distance to 32
-                    chunks and do some exploring. All terrain that you generate
-                    will stay within your render distance even if you set your
-                    render distance to something low. 16 chunks if a good place
-                    to start.
-                </p>
-                <p className="text-left font-header text-xl text-darken-800">
-                    7. Have fun and be cool! Follow posted signs for general
-                    rules
+                    5. Have fun and be cool! Follow posted signs for general
+                    rules. Message an admin on discord if you need help
+                    connecting.
                 </p>
             </div>
 
+            {/* EXTRA INFORMATION */}
             <div className="flex flex-col gap-2 rounded-3xl bg-lighten-800 p-4">
                 <p className="text-left font-header text-3xl text-darken-800">
                     Extra information
@@ -242,7 +233,7 @@ export default function fun(props) {
 
                     <p className="text-left font-header text-xl text-darken-800">
                         There are currently{" "}
-                        <span className="rounded-lg bg-blue-600 p-1 font-header font-light text-blue-600 text-lighten-800 shadow">
+                        <span className="rounded-lg bg-darken-50 p-1 font-header font-light text-blue-600 text-darken-900 shadow">
                             {whitelist.length}
                         </span>{" "}
                         players whitelisted.
@@ -263,7 +254,7 @@ export default function fun(props) {
 
                     <p className="text-left font-header text-xl text-darken-800">
                         World Seed{" "}
-                        <span className="rounded-lg bg-blue-600 p-1 font-header font-light text-blue-600 text-lighten-800 shadow">
+                        <span className="rounded-lg bg-darken-50 p-1 font-header font-light text-blue-600 text-darken-900 shadow">
                             -3185478975619901032
                         </span>
                     </p>
@@ -283,7 +274,7 @@ export default function fun(props) {
 
                     <p className="text-left font-header text-xl text-darken-800">
                         Spawn Generation{" "}
-                        <span className="rounded-lg bg-blue-600 p-1 font-header font-light text-blue-600 text-lighten-800 shadow">
+                        <span className="rounded-lg bg-darken-50 p-1 font-header font-light text-blue-600 text-darken-900 shadow">
                             Vanilla 1.20.4
                         </span>
                     </p>
@@ -302,8 +293,8 @@ export default function fun(props) {
                     </svg>
                     <p className="text-left font-header text-xl text-darken-800">
                         Render distance{" "}
-                        <span className="rounded-lg bg-blue-600 p-1 font-header font-light text-blue-600 text-lighten-800 shadow">
-                            24 chunks
+                        <span className="rounded-lg bg-darken-50 p-1 font-header font-light text-blue-600 text-darken-900 shadow">
+                            16 chunks
                         </span>
                     </p>
                 </div>
@@ -323,7 +314,7 @@ export default function fun(props) {
 
                     <p className="text-left font-header text-xl text-darken-800">
                         Simulation distance{" "}
-                        <span className="rounded-lg bg-blue-600 p-1 font-header font-light text-blue-600 text-lighten-800 shadow">
+                        <span className="rounded-lg bg-darken-50 p-1 font-header font-light text-blue-600 text-darken-900 shadow">
                             16 chunks
                         </span>
                     </p>
@@ -334,8 +325,8 @@ export default function fun(props) {
                     <div className="flex w-full justify-center">
                         <div className="flex w-12 flex-1 justify-center text-center">
                             <Marquee
-                                speed="150"
-                                className="mt-6 w-full overflow-clip"
+                                speed={150}
+                                className="mt-6 w-full overflow-hidden"
                             >
                                 {whitelist.map(createUser)}
                             </Marquee>
@@ -344,7 +335,7 @@ export default function fun(props) {
                 </p>
             </div>
             <p className="mb-6 text-xl font-light text-darken-700 max-md:text-center">
-                Last updated January 4th, 2025
+                Last updated April 8th, 2025
             </p>
         </motion.div>
     );
