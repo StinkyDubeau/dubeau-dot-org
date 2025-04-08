@@ -44,6 +44,10 @@ export default function UsersList(props) {
                                 Looking for others...
                             </p>
                             <progress className="progress my-auto border-lighten-800 bg-darken-400 fill-lighten-800 text-lighten-800"></progress>
+                            <p className="mx-auto italic text-darken-600 max-sm:hidden sm:visible">
+                                You cannot connect to peers on the same network
+                                as yourself.
+                            </p>
                         </div>
                     )}
                 </ul>

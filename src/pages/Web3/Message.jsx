@@ -34,7 +34,7 @@ export default function createMessage(message, index) {
             className="justify-left flex-0 flex justify-between gap-2 overflow-y-auto overflow-x-scroll rounded-3xl bg-darken-50 px-4 py-2 scrollbar-hide"
         >
             {message.from.nick && (
-                <div className="my-auto flex max-h-8">
+                <div className="mt-0.5 flex max-h-8">
                     <div className="flex flex-col justify-center overflow-hidden">
                         <Avatar nick={message.from.nick} />
                     </div>
@@ -48,10 +48,8 @@ export default function createMessage(message, index) {
 
             <div className="my-auto max-h-96 flex-1 overflow-x-scroll text-left text-lg text-darken-800 scrollbar-hide max-sm:text-sm">
                 <div className="flex gap-1 max-sm:text-sm xl:hidden">
-                    <p className="text-darken-800">
-                        {/* Only shows on SM-LG screens */}
-                        {message.from.nick}{" "}
-                    </p>
+                    {/* Only shows on SM-LG screens */}
+                    <p className="text-darken-800">{message.from.nick} </p>
                     <p className="text-darken-400">
                         at {message.timestamp.toLocaleString()}
                     </p>

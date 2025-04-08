@@ -14,8 +14,12 @@ export default function fun(props) {
 
     function createUser(user) {
         return (
-            <div className="scale-100 text-darken-10 transition-all hover:scale-110 hover:text-darken-800">
-                <p className="font-header text-lg text-darken-800">
+            <div className="flex scale-100 flex-col gap-2 text-darken-10 transition-all hover:text-darken-800">
+                <img
+                    className="m-auto aspect-auto max-h-48 w-min drop-shadow"
+                    src={`https://crafatar.com/renders/body/${user.uuid}`}
+                />
+                <p className="font-header text-lg font-light text-darken-800">
                     {user.name}
                 </p>
                 <p className="font-header text-xs font-light">{user.uuid}</p>
@@ -82,23 +86,13 @@ export default function fun(props) {
                     ℹ️ Modded migration update
                 </p>
                 <p className="mb-4 text-left font-header text-xl text-darken-600">
-                    January 4th, 2025
+                    April 8th, 2025
                 </p>
-                <p className="text-left font-header text-xl text-darken-600">
-                    What:
-                </p>
-                <Markdown className="ml-4 text-left font-header text-xl text-darken-800">
+                <Markdown className="text-left font-header text-xl text-darken-800">
                     This world is still running on Vanilla 1.21.1, and it will
-                    remain that way until Create 1.21 is released. Anything you
-                    build today __will__ be migrated into the Create server.
-                </Markdown>
-                <p className="mt-4 text-left font-header text-xl text-darken-600">
-                    Why:
-                </p>
-                <Markdown className="ml-4 text-left font-header text-xl text-darken-800">
-                    Migrating the world to a modded server is currently
-                    impossible due to issues with downgrading to 1.20. So, we'll
-                    wait for Create to update instead.
+                    remain that way until Neobeau is released. Anything you
+                    build today __will__ be migrated into the Neobeau server.
+                    Stayed tuned on discord for more release information.
                 </Markdown>
             </div>
 
@@ -390,7 +384,7 @@ export default function fun(props) {
                 </div>
             </div>
             <p className="mb-6 text-xl font-light text-darken-700 max-md:text-center">
-                Last updated December 13th, 2024
+                Last updated April 8th, 2025
             </p>
         </motion.div>
     );
