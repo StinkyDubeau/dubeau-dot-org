@@ -196,7 +196,7 @@ export default function fun(props) {
                     <div className="justify-left ml-8 flex gap-4 font-header text-darken-800 underline">
                         <Link
                             className=" scale-100 transition-all hover:scale-110"
-                            to="https://cdn.modrinth.com/data/TK1lQFH6/versions/PXU2pZT5/Create%20%26%20Explore%20-%20pre2.1.0.mrpack"
+                            to="http://files.dubeau.org/neobeau%20v02.zip"
                         >
                             Neobeau v0.2
                         </Link>
@@ -208,7 +208,7 @@ export default function fun(props) {
                 </p>
                 <p className="text-left font-header text-xl text-darken-800">
                     5. Have fun and be cool! Follow posted signs for general
-                    rules. Message an admin on discord if you need help
+                    rules.essage an admin on discord if you need help
                     connecting.
                 </p>
             </div>
