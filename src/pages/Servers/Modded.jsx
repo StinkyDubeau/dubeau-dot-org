@@ -164,24 +164,30 @@ export default function fun(props) {
                         1. Download and install Prism Launcher:
                     </p>
                     <div className="justify-left ml-8 flex gap-4 font-header text-darken-800 underline">
-                        <Link
+                        <a
                             className=" scale-100 transition-all hover:scale-110"
-                            to="https://prismlauncher.org/download/windows/"
+                            href="https://prismlauncher.org/download/windows/"
+                            target="_blank"
+                            rel="noopener noreferrer"
                         >
                             Windows
-                        </Link>
-                        <Link
+                        </a>
+                        <a
                             className=" scale-100 transition-all hover:scale-110"
-                            to="https://prismlauncher.org/download/"
+                            href="https://prismlauncher.org/download/"
+                            target="_blank"
+                            rel="noopener noreferrer"
                         >
                             Linux
-                        </Link>
-                        <Link
+                        </a>
+                        <a
                             className=" scale-100 transition-all hover:scale-110"
-                            to="https://prismlauncher.org/download/mac/"
+                            href="https://prismlauncher.org/download/mac/"
+                            target="_blank"
+                            rel="noopener noreferrer"
                         >
                             MacOS
-                        </Link>
+                        </a>
                     </div>
                 </div>
                 <p className="text-left font-header text-xl text-darken-800">
@@ -194,12 +200,14 @@ export default function fun(props) {
                         drag it into Prism Launcher to import it.
                     </p>
                     <div className="justify-left ml-8 flex gap-4 font-header text-darken-800 underline">
-                        <Link
+                        <a
                             className=" scale-100 transition-all hover:scale-110"
-                            to="http://files.dubeau.org/neobeau%20v02.zip"
+                            href="http://files.dubeau.org/neobeau%20v02.zip"
+                            target="_blank"
+                            rel="noopener noreferrer"
                         >
                             Neobeau v0.2
-                        </Link>
+                        </a>
                     </div>
                 </div>
                 <p className="text-left font-header text-xl text-darken-800">
