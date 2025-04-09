@@ -69,7 +69,7 @@ export default function Frame(props) {
     }
 
     return (
-        <div className="bg-darken-900">
+        <div className="bg-lighten-800">
             {/* Data Components */}
             {props.data && createDataDependants()}
             {!props.data.noScroll && <ScrollToTop />}
