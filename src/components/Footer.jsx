@@ -20,13 +20,20 @@ export default function Navbar(props) {
 
     return (
         <div
-            className={`z-40 mx-auto flex w-full justify-center bg-lighten-900 p-2 ${props.data.experimental && "pb-8"} backdrop-blur-3xl transition-all`}
+            className={`z-40 mx-auto flex justify-center gap-2 bg-lighten-900 p-2 ${props.data.experimental && "pb-8"} backdrop-blur-3xl transition-all`}
         >
             <Link
                 to="/contact"
-                className="font-header text-darken-800"
+                className="m-2 rounded-2xl px-3 py-2 text-darken-800 underline transition-all hover:bg-lighten-900 hover:shadow-lg"
             >
-                Jake Dubeau 🇨🇦 2025
+                Made by Jake 🇨🇦 2025
+            </Link>
+            <hr className=" border-darken-100" />
+            <Link
+                to="/accessibility"
+                className="m-2 rounded-2xl px-3 py-2 text-darken-800 underline transition-all hover:bg-lighten-900 hover:shadow-lg"
+            >
+                Accessibility Settings
             </Link>
         </div>
     );

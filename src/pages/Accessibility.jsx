@@ -104,7 +104,10 @@ export default function Accessibility(props) {
                     more accessibility features:
                 </p>
                 <div className="m-auto">
-                    <ContactForm />
+                    <ContactForm
+                        data={props.data}
+                        setData={props.setData}
+                    />
                 </div>
             </div>
 
