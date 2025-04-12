@@ -50,20 +50,14 @@ export default function Fun(props) {
 
             <div className="my-5 flex flex-wrap justify-center">
                 <motion.div
-                    layoutId="ChatLoginPanel"
+                    layoutId="ChatGradientBackground"
                     className="m-4 w-full animate-gradient-x rounded-2xl bg-gradient-to-bl from-orange-700 via-pink-500 to-yellow-400 bg-blend-lighten"
                 >
                     <div className="m-5 ">
-                        <motion.p
-                            layoutId="ChatLoginTitle"
-                            className="text-left font-header text-5xl text-lighten-800"
-                        >
+                        <motion.p className="text-left font-header text-5xl text-lighten-800">
                             Peer-to-peer chatrooms
                         </motion.p>
-                        <motion.p
-                            layoutId="ChatLoginSubtitle"
-                            className="text-left text-lg text-lighten-800"
-                        >
+                        <motion.p className="text-left text-lg text-lighten-800">
                             Serverless and ephemeral chat.
                         </motion.p>
                     </div>
@@ -72,11 +66,11 @@ export default function Fun(props) {
                         className="m-5 flex animate-gradient-x flex-wrap justify-center gap-4 rounded-2xl p-4 sm:gap-8"
                     >
                         <Link
-                            className="flex aspect-square flex-col justify-center rounded-xl border-none border-x-darken-50 border-b-darken-100 border-t-lighten-100 bg-darken-300 p-2 shadow-md backdrop-blur-md transition-all hover:scale-105 hover:shadow-lg"
+                            className="flex min-w-24 flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
                             to="/chat"
                         >
-                            <p className="font-header text-2xl text-lighten-800 shadow-lighten-800 drop-shadow">
-                                Connect
+                            <p className="p-2 font-header font-medium text-darken-800">
+                                ⌨️ Connect
                             </p>
                         </Link>
                     </motion.div>
