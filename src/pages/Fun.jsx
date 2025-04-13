@@ -1,6 +1,3 @@
-import Panel from "../components/Panel";
-import Frame from "../components/Frame";
-import Button from "../components/Button";
 import { Link } from "react-router-dom";
 import ServerCard from "../components/ServerCard";
 import { AnimatePresence, motion } from "framer-motion";
@@ -29,7 +26,7 @@ export default function Fun(props) {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0.6, x: -50 }}
             layout
-            className="max-w-screen-lg"
+            className="w-svw max-w-screen-lg"
         >
             {/* 
             Social
@@ -48,10 +45,11 @@ export default function Fun(props) {
             {/* The above things, done well, can be standardized for the entire site. Even including sub-pages on links. */}
             {/* If Executed exceedingly well, this could even serve as a powerful UI foundation for the Idle game experiment at https://www.dubeau.org/idle */}
 
-            <div className="my-5 flex flex-wrap justify-center">
+            <div className="my-5 flex w-full flex-col justify-center gap-8 px-2">
+                {/* P2P CHAT */}
                 <motion.div
                     layoutId="ChatGradientBackground"
-                    className="m-4 w-full animate-gradient-x rounded-2xl bg-gradient-to-bl from-orange-700 via-pink-500 to-yellow-400 bg-blend-lighten"
+                    className="w-full animate-gradient-x rounded-2xl bg-gradient-to-bl from-orange-700 via-pink-500 to-yellow-400 bg-blend-lighten"
                 >
                     <div className="m-5 ">
                         <motion.p className="text-left font-header text-5xl text-lighten-800">
@@ -75,7 +73,9 @@ export default function Fun(props) {
                         </Link>
                     </motion.div>
                 </motion.div>
-                <div className="m-4 w-full animate-gradient-x rounded-2xl bg-gradient-to-br from-blue-400 via-cyan-400 to-orange-300">
+
+                {/* GAME SERVERS */}
+                <div className="w-full animate-gradient-x rounded-2xl bg-gradient-to-br from-blue-400 via-cyan-400 to-orange-300">
                     <div className="m-5">
                         <p className="text-left font-header text-5xl text-darken-600">
                             Game servers
@@ -149,9 +149,10 @@ export default function Fun(props) {
                     </div>
                 </div>
 
+                {/* HOBBY */}
                 <motion.div
                     layout
-                    className="m-4 w-full animate-gradient-x rounded-2xl bg-gradient-to-bl from-pink-700  via-purple-600 to-zinc-200 p-2"
+                    className="w-full animate-gradient-x rounded-2xl bg-gradient-to-bl from-pink-700  via-purple-600 to-zinc-200 p-2"
                 >
                     <div className="m-5">
                         <p className="text-left font-header text-5xl text-lighten-800">
@@ -241,9 +242,10 @@ export default function Fun(props) {
                     </div>
                 </motion.div>
 
+                {/* ASTRO SIGHTINGS */}
                 <motion.div
                     layout
-                    className="m-4  w-full animate-gradient-x rounded-2xl bg-gradient-to-tl from-yellow-400 via-orange-400 to-zinc-200"
+                    className="w-full animate-gradient-x rounded-2xl bg-gradient-to-tl from-yellow-400 via-orange-400 to-zinc-200"
                 >
                     <div className="m-5">
                         <p className="text-left font-header text-5xl text-darken-600">

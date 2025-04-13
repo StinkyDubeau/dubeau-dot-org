@@ -1,4 +1,3 @@
-import Frame from "../components/Frame";
 import ContactForm from "../components/ContactForm";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
@@ -20,9 +19,9 @@ export default function (props) {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0.6, x: 50 }}
             layout
-            className="max-w-screen-lg"
+            className="w-svw max-w-screen-lg"
         >
-            <div className="flex flex-col justify-stretch gap-4">
+            <div className="my-5 flex w-full flex-col justify-center gap-4 px-2">
                 {/* JAKE SITE OWNER */}
                 <div className="flex animate-gradient-x justify-center rounded-2xl bg-gradient-to-tl from-pink-600 via-purple-500 to-blue-400 p-4 sm:gap-8">
                     <div className="flex flex-wrap justify-around gap-6 lg:gap-48">
@@ -83,6 +82,7 @@ export default function (props) {
                         </div>
                     </div>
                 </div>
+
                 {/* CONTACT OR REPORT MODERATION ISSUES */}
                 <div className="flex flex-grow animate-gradient-x justify-center rounded-2xl bg-gradient-to-tr from-red-300 via-yellow-200 to-purple-200 p-4 sm:gap-8">
                     <div className="flex flex-wrap justify-around gap-6 lg:gap-48">
@@ -100,6 +100,7 @@ export default function (props) {
                         />
                     </div>
                 </div>
+
                 {/* JOIN SOCIALS */}
                 <div className="flex flex-grow animate-gradient-x justify-center rounded-2xl bg-gradient-to-tl from-slate-500 via-zinc-500 to-gray-400 p-4 sm:gap-8">
                     <div className="flex flex-wrap justify-around gap-6 lg:gap-48">
