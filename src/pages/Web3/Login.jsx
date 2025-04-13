@@ -39,15 +39,15 @@ export default function Login(props) {
                 <div className="mb-12 flex max-w-screen-sm flex-col justify-center gap-8 max-xs:pt-[50%]">
                     {/* Choose room */}
                     <motion.div
-                        layoutId="ChatLoginPanel"
+                        layoutId="ChatGradientBackground"
                         className="m-auto mt-3 flex w-full animate-gradient-y flex-col justify-center gap-2 rounded-3xl bg-gradient-to-bl from-orange-700 via-pink-500 to-yellow-400 p-5 transition-colors max-sm:max-w-xs"
                     >
-                        <motion.p className="m-auto font-header text-5xl font-extralight text-lighten-900">
+                        <p className="m-auto font-header text-5xl font-extralight text-lighten-900">
                             p2p chat
-                        </motion.p>
-                        <motion.p className="font-header text-xl font-medium text-lighten-700">
+                        </p>
+                        <p className="font-header text-xl font-medium text-lighten-700">
                             Choose a room
-                        </motion.p>
+                        </p>
                         <motion.div className="flex justify-center gap-2">
                             {createRoomButton("A")}
                             {createRoomButton("B")}

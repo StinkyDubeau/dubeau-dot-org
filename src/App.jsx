@@ -182,6 +182,15 @@ function App() {
                             }
                         />
                         <Route
+                            path="/neobeau"
+                            element={
+                                <Modded
+                                    data={data}
+                                    setData={setData}
+                                />
+                            }
+                        />
+                        <Route
                             path="/servers/btw"
                             element={
                                 <BetterThanWolves

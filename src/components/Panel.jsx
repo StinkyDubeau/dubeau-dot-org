@@ -9,7 +9,7 @@ export default function Panel(props) {
                 className={
                     props.className
                         ? props.className
-                        : `rounded-3xl bg-lighten-900 p-2 shadow-lg`
+                        : `w-full rounded-3xl bg-lighten-600 p-2 shadow-lg backdrop-blur-3xl`
                 }
             >
                 {props.children}

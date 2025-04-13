@@ -26,6 +26,15 @@ import { DateTime } from "luxon";
 // Use that package for doing relative time calculations.
 // - How much time is left in the day?
 
+// TODO: App structure:
+// - Create onboarding process <-> animated wizard
+// - Page generates a wizard from a simple .json input. Keys values will prompt the user for input,
+
+// createWizardFromChildrenCards() {
+//     function
+//     return child
+// }
+
 function Dayplanner(props) {
     // An array of all tasks for the day.
     const [dailyTasks, setDailyTasks] = useState([]);

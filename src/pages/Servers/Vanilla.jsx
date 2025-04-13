@@ -83,16 +83,16 @@ export default function fun(props) {
 
             <div className="flex flex-col gap-2 rounded-3xl bg-lighten-800 p-4">
                 <p className="text-left font-header text-2xl text-darken-800">
-                    ℹ️ Modded migration update
+                    ℹ️ World Reset Update
                 </p>
                 <p className="mb-4 text-left font-header text-xl text-darken-600">
-                    April 8th, 2025
+                    April 13th, 2025
                 </p>
                 <Markdown className="text-left font-header text-xl text-darken-800">
-                    This world is still running on Vanilla 1.21.1, and it will
-                    remain that way until Neobeau is released. Anything you
-                    build today __will__ be migrated into the Neobeau server.
-                    Stayed tuned on discord for more release information.
+                    Today the old dubeau.org vanilla world has been transferred
+                    to the modded server! The vanilla server goes on, with a new
+                    world that has been created today. MCMMO stats have been
+                    preserved, but everything else has been freshly reset.
                 </Markdown>
             </div>
 
@@ -143,7 +143,7 @@ export default function fun(props) {
                 </div>
 
                 <p className="text-left font-header text-xl text-darken-800">
-                    1. Download and launch Minecraft Java Edition version 1.21.1
+                    1. Download and launch Minecraft Java Edition version 1.21.5
                 </p>
                 <p className="text-left font-header text-xl text-darken-800">
                     2. Connect to{" "}
@@ -306,7 +306,7 @@ export default function fun(props) {
                     <p className="text-left font-header text-xl text-darken-800">
                         Spawn Generation{" "}
                         <span className="rounded-lg bg-blue-600 p-1 font-header font-light text-blue-600 text-lighten-800 shadow">
-                            Vanilla 1.20.4
+                            Vanilla 1.21.5
                         </span>
                     </p>
                 </div>
@@ -384,7 +384,7 @@ export default function fun(props) {
                 </div>
             </div>
             <p className="mb-6 text-xl font-light text-darken-700 max-md:text-center">
-                Last updated April 8th, 2025
+                Last updated April 13th, 2025
             </p>
         </motion.div>
     );
