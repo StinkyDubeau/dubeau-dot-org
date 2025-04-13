@@ -21,7 +21,7 @@ export default function (props) {
             layout
             className="w-svw max-w-screen-lg"
         >
-            <div className="my-5 flex w-full flex-col justify-center gap-4 px-2">
+            <div className="my-5 flex w-full flex-col justify-center gap-8 px-2">
                 {/* JAKE SITE OWNER */}
                 <div className="flex animate-gradient-x justify-center rounded-2xl bg-gradient-to-tl from-pink-600 via-purple-500 to-blue-400 p-4 sm:gap-8">
                     <div className="flex flex-wrap justify-around gap-6 lg:gap-48">

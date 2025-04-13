@@ -1,8 +1,4 @@
-import Panel from "../../components/Panel";
-import Frame from "../../components/Frame";
-import Button from "../../components/Button";
 import PackImg from "../../assets/modded-banner.webp";
-import { Link } from "react-router-dom";
 import wl from "../../assets/whitelist.json";
 import Marquee from "react-fast-marquee";
 import { motion } from "framer-motion";
@@ -12,7 +8,7 @@ export default function fun(props) {
     const whitelist = wl;
     const addr = "mc.dubeau.org:25569";
     const name = "Neobeau";
-    const desc = "Vanilla-ish modded minecraft";
+    const desc = "Vanilla-ish Minecraft Neoforge Server";
 
     function createUser(user) {
         return (
@@ -80,77 +76,33 @@ export default function fun(props) {
                 />
             </div>
 
-            <div className="flex flex-col gap-2 rounded-3xl bg-lighten-800 p-4">
-                <p className="text-left font-header text-2xl text-darken-800">
-                    ℹ️ Modded migration update
-                </p>
-                <p className="mb-4 text-left font-header text-xl text-darken-600">
-                    April 8th, 2025
-                </p>
-                <Markdown className="text-left font-header text-xl text-darken-800">
-                    The vanilla world file is soon to be migrated! We are
-                    currently testing the neobeau modpack to ensure stability.
-                    There will be a news post in discord when everything is
-                    ready to go.
-                </Markdown>
-            </div>
-
-            <div className="flex flex-grow justify-between gap-6 max-sm:flex-wrap">
-                {/* Warnings */}
-
-                <div className="flex flex-col gap-4 rounded-3xl bg-lighten-800 p-4">
-                    {/* Pre-release warning */}
-                    <div
-                        id="container"
-                        className="flex gap-4"
-                    >
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="48"
-                            height="48"
-                            fill="text-darken-700"
-                            className="bi bi-exclamation-diamond h-full w-1/4 max-w-12"
-                            viewBox="0 0 16 16"
-                        >
-                            <path d="M6.95.435c.58-.58 1.52-.58 2.1 0l6.515 6.516c.58.58.58 1.519 0 2.098L9.05 15.565c-.58.58-1.519.58-2.098 0L.435 9.05a1.48 1.48 0 0 1 0-2.098zm1.4.7a.495.495 0 0 0-.7 0L1.134 7.65a.495.495 0 0 0 0 .7l6.516 6.516a.495.495 0 0 0 .7 0l6.516-6.516a.495.495 0 0 0 0-.7L8.35 1.134z" />
-                            <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z" />
-                        </svg>
-                        <p className="text-left font-header text-darken-800">
-                            This server is currently in pre-release. The world
-                            file is temporary, and all users have been granted{" "}
-                            <span className="rounded-lg bg-darken-50 p-1 font-header font-light text-darken-900 shadow">
-                                moderator
-                            </span>{" "}
-                            status.
-                        </p>
-                    </div>
+            <div className="flex flex-grow justify-between gap-6 max-md:flex-wrap">
+                {/* Updates */}
+                <div className="flex flex-col gap-2 rounded-3xl bg-lighten-800 p-4">
+                    <p className="text-left font-header text-2xl text-darken-800">
+                        ℹ️ Modded migration update
+                    </p>
+                    <p className="mb-4 text-left font-header text-xl text-darken-600">
+                        April 13th, 2025
+                    </p>
+                    <Markdown className="text-left font-header text-xl text-darken-800">
+                        Today marks the end of playtesting! The server is
+                        officially live, with a permanent world-file in place.
+                    </Markdown>
                 </div>
 
-                <div className="flex flex-col gap-4 rounded-3xl bg-lighten-800 p-4">
-                    {/* Whitelist warning */}
-                    <div
-                        id="container"
-                        className="flex gap-4"
-                    >
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="48"
-                            height="48"
-                            fill="text-darken-700"
-                            className="bi bi-person-lock h-full w-1/4 max-w-12"
-                            viewBox="0 0 16 16"
-                        >
-                            <path d="M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m0 5.996V14H3s-1 0-1-1 1-4 6-4q.845.002 1.544.107a4.5 4.5 0 0 0-.803.918A11 11 0 0 0 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664zM9 13a1 1 0 0 1 1-1v-1a2 2 0 1 1 4 0v1a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1zm3-3a1 1 0 0 0-1 1v1h2v-1a1 1 0 0 0-1-1" />
-                        </svg>
-                        <p className="text-left font-header text-darken-800">
-                            Only whitelisted players are allowed to join this
-                            server. Message an{" "}
-                            <span className="rounded-lg bg-darken-50 p-1 font-header font-light text-darken-900 shadow">
-                                admin
-                            </span>{" "}
-                            on discord if you haven't already been whitelisted.
-                        </p>
-                    </div>
+                {/* Whitelist warning */}
+                <div className="flex flex-col gap-2 rounded-3xl bg-lighten-800 p-4">
+                    <p className="text-left font-header text-2xl text-darken-800">
+                        📋 Whitelisted Server
+                    </p>
+                    <p className="text-left font-header text-xl text-darken-800">
+                        This server is only open to registered users. Message an{" "}
+                        <span className="rounded-lg bg-darken-50 p-1 font-header font-light text-darken-900 shadow">
+                            admin
+                        </span>{" "}
+                        on discord if you have not been whitelisted.
+                    </p>
                 </div>
             </div>
 
@@ -197,7 +149,7 @@ export default function fun(props) {
                 <div>
                     <p className="text-left font-header text-xl text-darken-800">
                         3. Download the latest Neobeau modpack ZIP file, and
-                        drag it into Prism Launcher to import it.
+                        drag it into Prism Launcher to import it:
                     </p>
                     <div className="justify-left ml-8 flex gap-4 font-header text-darken-800 underline">
                         <a
@@ -216,8 +168,11 @@ export default function fun(props) {
                 </p>
                 <p className="text-left font-header text-xl text-darken-800">
                     5. Have fun and be cool! Follow posted signs for general
-                    rules.essage an admin on discord if you need help
-                    connecting.
+                    rules. Message an{" "}
+                    <span className="rounded-lg bg-darken-50 p-1 font-header font-light text-darken-900 shadow">
+                        admin
+                    </span>{" "}
+                    on discord if you need help connecting.
                 </p>
             </div>
 
@@ -343,7 +298,7 @@ export default function fun(props) {
                 </p>
             </div>
             <p className="mb-6 text-xl font-light text-darken-700 max-md:text-center">
-                Last updated April 8th, 2025
+                Last updated April 13th, 2025
             </p>
         </motion.div>
     );

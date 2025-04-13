@@ -105,10 +105,9 @@ export default function Fun(props) {
                             <ServerCard
                                 id="vanilla"
                                 title="Minecraft"
-                                subtitle="Vanilla 1.21.1"
+                                subtitle="Vanilla 1.21.5"
                                 img={VanillaBanner}
-                                // to="/vanilla"
-                                announcement="world reset soon!"
+                                // announcement="new version!"
                                 to="/servers/vanilla"
                                 alt="The icon for Vanilla Minecraft's Server page. The image features a screenshot of a Minecraft town at nighttime."
                             />
