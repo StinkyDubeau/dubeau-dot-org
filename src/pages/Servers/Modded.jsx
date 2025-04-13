@@ -88,6 +88,8 @@ export default function fun(props) {
                     <Markdown className="text-left font-header text-xl text-darken-800">
                         Today marks the end of playtesting! The server is
                         officially live, with a permanent world-file in place.
+                        The overworld has been migrated from the previous
+                        Vanilla server!
                     </Markdown>
                 </div>
 
