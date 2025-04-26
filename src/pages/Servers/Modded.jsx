@@ -107,6 +107,9 @@ export default function fun(props) {
                         1 player sleep
                     </li>
                     <li className="ml-4 text-left font-header text-xl text-darken-800">
+                        Controller and steamdeck support
+                    </li>
+                    <li className="ml-4 text-left font-header text-xl text-darken-800">
                         Dynamic lights: Hold a torch in your hand to see in the
                         dark.
                     </li>
