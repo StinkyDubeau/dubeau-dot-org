@@ -94,17 +94,20 @@ export default function fun(props) {
                 {/* Updates */}
                 <div className="flex w-full flex-col gap-2 rounded-3xl bg-lighten-800 p-4">
                     <p className="text-left font-header text-2xl text-darken-800">
-                        Update v0.3 Release
+                        ℹ️ Update v0.3
                     </p>
                     <p className="mb-4 text-left  font-header text-xl text-darken-600">
                         April 26th, 2025
                     </p>
 
                     <Markdown className="text-left font-header text-xl font-bold text-darken-800">
-                        Notable features:
+                        Notable Features:
                     </Markdown>
                     <li className="ml-4 text-left font-header text-xl text-darken-800">
                         1 player sleep
+                    </li>
+                    <li className="ml-4 text-left font-header text-xl text-darken-800">
+                        Controller and steamdeck support
                     </li>
                     <li className="ml-4 text-left font-header text-xl text-darken-800">
                         Dynamic lights: Hold a torch in your hand to see in the
@@ -345,7 +348,7 @@ export default function fun(props) {
                 </p>
             </div>
             <p className="mb-6 text-xl font-light text-darken-700 max-md:text-center">
-                Last updated April 13th, 2025
+                Last updated April 26th, 2025
             </p>
         </motion.div>
     );
