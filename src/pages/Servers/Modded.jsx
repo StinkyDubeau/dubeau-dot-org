@@ -76,25 +76,9 @@ export default function fun(props) {
                 />
             </div>
 
-            <div className="flex flex-grow justify-between gap-6 max-md:flex-wrap">
-                {/* Updates */}
-                <div className="flex flex-col gap-2 rounded-3xl bg-lighten-800 p-4">
-                    <p className="text-left font-header text-2xl text-darken-800">
-                        ℹ️ Modded migration update
-                    </p>
-                    <p className="mb-4 text-left font-header text-xl text-darken-600">
-                        April 13th, 2025
-                    </p>
-                    <Markdown className="text-left font-header text-xl text-darken-800">
-                        Today marks the end of playtesting! The server is
-                        officially live, with a permanent world-file in place.
-                        The overworld has been migrated from the previous
-                        Vanilla server!
-                    </Markdown>
-                </div>
-
+            <div className="flex w-full flex-grow flex-wrap justify-between gap-6">
                 {/* Whitelist warning */}
-                <div className="flex flex-col gap-2 rounded-3xl bg-lighten-800 p-4">
+                <div className="flex w-full flex-col gap-2 rounded-3xl bg-lighten-800 p-4">
                     <p className="text-left font-header text-2xl text-darken-800">
                         📋 Whitelisted Server
                     </p>
@@ -105,6 +89,67 @@ export default function fun(props) {
                         </span>{" "}
                         on discord if you have not been whitelisted.
                     </p>
+                </div>
+
+                {/* Updates */}
+                <div className="flex w-full flex-col gap-2 rounded-3xl bg-lighten-800 p-4">
+                    <p className="text-left font-header text-2xl text-darken-800">
+                        Update v0.3 Release
+                    </p>
+                    <p className="mb-4 text-left  font-header text-xl text-darken-600">
+                        April 26th, 2025
+                    </p>
+
+                    <Markdown className="text-left font-header text-xl font-bold text-darken-800">
+                        Notable features:
+                    </Markdown>
+                    <li className="ml-4 text-left font-header text-xl text-darken-800">
+                        1 player sleep
+                    </li>
+                    <li className="ml-4 text-left font-header text-xl text-darken-800">
+                        Dynamic lights: Hold a torch in your hand to see in the
+                        dark.
+                    </li>
+                    <li className="ml-4 text-left font-header text-xl text-darken-800">
+                        Minimap: Press the{" "}
+                        <span className="rounded-lg bg-darken-50 p-1 font-header font-light text-darken-900 shadow">
+                            ~
+                        </span>{" "}
+                        key to toggle on and off.{" "}
+                        <span className="rounded-lg bg-darken-50 p-1 font-header font-light text-darken-900 shadow">
+                            [
+                        </span>{" "}
+                        and{" "}
+                        <span className="rounded-lg bg-darken-50 p-1 font-header font-light text-darken-900 shadow">
+                            ]
+                        </span>{" "}
+                        to adjust zoom.
+                    </li>
+
+                    <li className="ml-4 text-left font-header text-xl text-darken-800">
+                        Freecam: Press{" "}
+                        <span className="rounded-lg bg-darken-50 p-1 font-header font-light text-darken-900 shadow">
+                            F4
+                        </span>{" "}
+                        for an out-of-body experience.
+                    </li>
+                    <Markdown className="mt-4 text-left font-header text-xl font-bold text-darken-800">
+                        Notable Exclusions:
+                    </Markdown>
+                    <li className="ml-4 text-left font-header text-xl text-darken-800">
+                        Create Steam & Rails: Awaiting update to support create
+                        v6.0.
+                    </li>
+                    <div className="justify-left mt-4 flex gap-4 font-header text-darken-800 underline">
+                        <a
+                            className=" scale-100 transition-all hover:scale-110"
+                            href="http://files.dubeau.org/neobeau%20v03.zip"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Download Neobeau v0.3
+                        </a>
+                    </div>
                 </div>
             </div>
 
@@ -156,11 +201,11 @@ export default function fun(props) {
                     <div className="justify-left ml-8 flex gap-4 font-header text-darken-800 underline">
                         <a
                             className=" scale-100 transition-all hover:scale-110"
-                            href="http://files.dubeau.org/neobeau%20v02.zip"
+                            href="http://files.dubeau.org/neobeau%20v03.zip"
                             target="_blank"
                             rel="noopener noreferrer"
                         >
-                            Neobeau v0.2
+                            Download Neobeau v0.3
                         </a>
                     </div>
                 </div>
