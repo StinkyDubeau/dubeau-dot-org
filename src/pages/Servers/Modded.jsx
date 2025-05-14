@@ -1,6 +1,5 @@
 import PackImg from "../../assets/modded-banner.webp";
 import wl from "../../assets/whitelist.json";
-import Marquee from "react-fast-marquee";
 import { motion } from "framer-motion";
 import Markdown from "react-markdown";
 
@@ -10,9 +9,17 @@ export default function fun(props) {
     const name = "Neobeau";
     const desc = "Vanilla-ish Minecraft Neoforge Server";
 
+    function Marquee({ className, speed, children }) {
+        return (
+            <div className="modal-scroll flex gap-2 overflow-x-scroll">
+                {children}
+            </div>
+        );
+    }
+
     function createUser(user) {
         return (
-            <div className="flex scale-100 flex-col gap-2 text-darken-10 transition-all hover:text-darken-800">
+            <div className="flex h-full scale-100 flex-col gap-2 text-darken-10 transition-all hover:text-darken-800">
                 <img
                     className="m-auto aspect-auto max-h-48 w-min drop-shadow"
                     src={`https://crafatar.com/renders/body/${user.uuid}`}
@@ -20,7 +27,9 @@ export default function fun(props) {
                 <p className="font-header text-lg font-light text-darken-800">
                     {user.name}
                 </p>
-                <p className="font-header text-xs font-light">{user.uuid}</p>
+                <p className="text-nowrap font-header text-xs font-light">
+                    {user.uuid}
+                </p>
             </div>
         );
     }
