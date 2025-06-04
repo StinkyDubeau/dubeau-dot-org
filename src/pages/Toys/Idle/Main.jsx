@@ -14,6 +14,7 @@ import Resource from "./Tiles/Resource";
 function Main(props) {
     const [tileset, setTileset] = useState([]);
     const [totalPower, setTotalPower] = useState(0);
+    const [zoomScale, setZoomScale] = useState(1);
 
     // Calculate sum power of tileset[] every time a tile is added or removed.
     useEffect(() => {
@@ -42,7 +43,39 @@ function Main(props) {
         });
     }, []);
 
+    function CreateTileRegion({ tiles }) {
+        function CreateOneTile({ tile, index }) {
+            return (
+                <div
+                    className={`w-[${zoomScale}px] rounded-xl bg-lighten-800 shadow transition-all`}
+                >
+                    {" "}
+                    {tile.power > 0 && "+"}
+                    {tile.power} <br />
+                    {tile.uuid}
+                </div>
+            );
+        }
+
+        return (
+            <div className="m-2 flex flex-wrap gap-2 rounded-xl bg-lighten-800 p-2 text-darken-800">
+                <AnimatePresence mode="wait">
+                    {tiles[0] &&
+                        tiles.map((tile, index) => (
+                            <CreateOneTile
+                                key={tile.uuid}
+                                tile={tile}
+                                index={index}
+                            />
+                        ))}
+                </AnimatePresence>
+            </div>
+        );
+    }
+
     function CreateTileList({ tiles }) {
+        const [minimized, setMinimized] = useState(true);
+
         function CreateOneTile({ tile, index }) {
             return (
                 <motion.button
@@ -62,27 +95,35 @@ function Main(props) {
             );
         }
         return (
-            <div className="m-2 rounded-xl bg-lighten-800 p-2 text-darken-800">
-                <p className="h-full w-full text-left text-3xl">
-                    Tileset Summary
-                </p>
-                <p className="h-full w-full text-left">
-                    Click a tile to remove it.
-                </p>
-                <AnimatePresence
-                    mode="wait"
-                    className="flex flex-col gap-2"
+            <motion.div className="m-2 rounded-xl bg-lighten-800 p-2 text-darken-800">
+                <button
+                    onClick={() => setMinimized(!minimized)}
+                    className="h-full w-full text-left text-3xl"
                 >
-                    {tiles[0] &&
-                        tiles.map((tile, index) => (
-                            <CreateOneTile
-                                key={tile.uuid}
-                                tile={tile}
-                                index={index}
-                            />
-                        ))}
-                </AnimatePresence>
-            </div>
+                    {minimized ? "→" : "↓"} Tileset List
+                </button>
+                {/* Minimizable Section */}
+                {!minimized && (
+                    <div>
+                        <p className="h-full w-full text-left">
+                            Click a tile to remove it.
+                        </p>
+                        <AnimatePresence
+                            mode="wait"
+                            className="flex flex-col gap-2"
+                        >
+                            {tiles[0] &&
+                                tiles.map((tile, index) => (
+                                    <CreateOneTile
+                                        key={tile.uuid}
+                                        tile={tile}
+                                        index={index}
+                                    />
+                                ))}
+                        </AnimatePresence>
+                    </div>
+                )}
+            </motion.div>
         );
     }
 
@@ -98,6 +139,18 @@ function Main(props) {
                 <p>
                     {`${tileset.length} tile${tileset.length != 1 ? "s" : ""} totalling ${totalPower} watts.`}
                 </p>
+                <div className="flex gap-2">
+                    <p>Zoom scale:</p>
+                    <input
+                        type="range"
+                        min={0}
+                        max={5}
+                        value={zoomScale}
+                        className="range"
+                        onChange={(e) => setZoomScale(e.target.value)}
+                    />
+                </div>
+
                 <div className="flex flex-wrap gap-2">
                     <input
                         value={name}
@@ -217,6 +270,7 @@ function Main(props) {
                         <CreateTilesetSummary />
                         <CreateTileShop tiles={tiles} />
                         <CreateTileList tiles={tileset} />
+                        <CreateTileRegion tiles={tileset} />
                     </div>
                 </motion.div>
             </div>
