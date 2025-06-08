@@ -14,6 +14,16 @@ export default function Lunches(props) {
     const data = geekData();
     console.log(data);
 
+    // Apply vignette frame property
+    // Ensure page never has navbar
+    useEffect(() => {
+        props.setData({
+            ...props.data,
+            noNavbar: true,
+            vignette: true,
+        });
+    }, []);
+
     const [submission, setSubmission] = useState({
         date: new Date(),
         days: [
@@ -265,17 +275,34 @@ export default function Lunches(props) {
             <button
                 onClick={logOut}
                 // Hide button if there's no username
-                className={`h-full p-2 ${!username && "hidden"}`}
+                className={`flex h-full p-2 ${!username && "hidden"}`}
             >
-                {username && username.toString()}
+                Log out
             </button>
         );
     }
 
     function createNavigation() {
         return (
-            <div className="fixed bottom-0 left-0 z-50 h-16 w-screen min-w-36 bg-center sm:left-1.5 sm:top-1 sm:w-auto">
-                <div className="bg-lighten-400 backdrop-blur-xl max-sm:rounded-t-xl sm:rounded-xl">
+            <div className="fixed left-0 top-0 z-50 h-16 w-screen min-w-36 bg-center sm:left-1.5 sm:top-1 sm:w-auto">
+                <div className="flex gap-2 bg-lighten-400 shadow-xl backdrop-blur-xl max-sm:rounded-b-xl sm:rounded-xl">
+                    <div
+                        id="logo"
+                        className="flex max-h-16 justify-center"
+                    >
+                        <img
+                            src="https://merchandising-assets.bestbuy.ca/bltc8653f66842bff7f/bltc645e37ea0b1a348/6183051594e50d5a63800f45/gs-logo.png"
+                            alt="Geek Squad Logo"
+                        />
+                    </div>
+                    <div
+                        id="header"
+                        className="m-5"
+                    >
+                        <p className="text-3xl font-bold text-darken-800 sm:text-left">
+                            Lunch Edit for {username}
+                        </p>
+                    </div>
                     {createLoginButton()}
                     {agent && <p className="text-darken-800">{agent.name}</p>}
                 </div>
@@ -285,19 +312,7 @@ export default function Lunches(props) {
 
     return (
         <>
-            <div className="min-h-[150vh] w-screen">
-                {/* Logo */}
-                <div className="flex h-16 justify-center sm:h-32">
-                    <img
-                        src="https://merchandising-assets.bestbuy.ca/bltc8653f66842bff7f/bltc645e37ea0b1a348/6183051594e50d5a63800f45/gs-logo.png"
-                        alt="Geek Squad Logo"
-                    />
-                </div>
-                <div className="m-5">
-                    <p className="text-3xl font-bold text-lighten-800 sm:text-left">
-                        Lunch Edit
-                    </p>
-                </div>
+            <div className="min-h-screen w-screen">
                 {loggedIn ? createEntryPage() : createLoginPage()}
             </div>
             {loggedIn && createNavigation()}

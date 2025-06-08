@@ -17,7 +17,7 @@ import Astros from "./pages/Astros";
 import Trackers from "./pages/Trackers";
 import Accessibility from "./pages/Accessibility";
 import Widgets from "./pages/Toys/Widgets";
-import Countries from "./pages/Countries";
+import Countries from "./pages/Servers/Countries/Countries";
 
 // Pages: Game Servers
 import Vanilla from "./pages/Servers/Vanilla";
