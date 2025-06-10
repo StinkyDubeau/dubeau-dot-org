@@ -2,6 +2,7 @@ import Frame from "../../components/Frame";
 import { Link } from "react-router-dom";
 import React, { useState, useContext, useEffect, useRef } from "react";
 import geekData from "./GeekData";
+import Checkbox from "../../components/Checkbox";
 
 const RealmAppContext = React.createContext(null);
 
@@ -138,9 +139,9 @@ export default function Lunches(props) {
                 className="flex gap-2"
                 key={`${index}${dayName}`}
             >
-                {isToday && (
+                {/* {isToday && (
                     <p className="my-auto font-header text-xl">{">"}</p>
-                )}
+                )} */}
                 <div
                     className={`flex h-20 flex-col justify-center gap-2 rounded-lg p-2 ${isToday && "bg-darken-50 shadow"}`}
                 >
@@ -177,9 +178,9 @@ export default function Lunches(props) {
                         />
                     </div>
                 </div>
-                {isToday && (
+                {/* {isToday && (
                     <p className="my-auto font-header text-xl">{"<"}</p>
-                )}
+                )} */}
             </div>
         );
     }
@@ -198,7 +199,7 @@ export default function Lunches(props) {
                                 onClick={autoFill}
                                 className="w-72 rounded-2xl bg-lighten-900 p-4 font-bold text-darken-700 shadow-xl transition-all hover:scale-105"
                             >
-                                {">"}Autofill
+                                Autofill
                             </button>
                         </div>
 
@@ -250,9 +251,7 @@ export default function Lunches(props) {
                             </button>
                         </div>
                         <p className="m-2 w-72 font-bold text-darken-600">
-                            Your account will stay logged in for 60 days. Click
-                            on your <span className="underline">username</span>{" "}
-                            to log out.
+                            Your account will stay logged in for up to 60 days.
                         </p>
                     </form>
                 </div>
@@ -275,7 +274,7 @@ export default function Lunches(props) {
             <button
                 onClick={logOut}
                 // Hide button if there's no username
-                className={`flex h-full p-2 ${!username && "hidden"}`}
+                className={`flex font-header font-bold flex-col justify-center m-2 bg-lighten-800 rounded-xl h-stretch p-2 ${!username && "hidden"}`}
             >
                 Log out
             </button>
@@ -284,13 +283,14 @@ export default function Lunches(props) {
 
     function createNavigation() {
         return (
-            <div className="fixed left-0 top-0 z-50 h-16 w-screen min-w-36 bg-center sm:left-1.5 sm:top-1 sm:w-auto">
-                <div className="flex gap-2 bg-lighten-400 shadow-xl backdrop-blur-xl max-sm:rounded-b-xl sm:rounded-xl">
+            <div className="fixed left-0 top-0 z-50 max-h-16 w-screen min-w-36 bg-center sm:left-1.5 sm:top-1 sm:w-auto">
+                <div className="flex justify-around gap-2 bg-lighten-400 shadow-xl backdrop-blur-xl max-sm:rounded-b-xl sm:rounded-xl">
                     <div
                         id="logo"
-                        className="flex max-h-16 justify-center"
+                        className="h-stretch flex flex-col justify-center"
                     >
                         <img
+                            className="max-h-8"
                             src="https://merchandising-assets.bestbuy.ca/bltc8653f66842bff7f/bltc645e37ea0b1a348/6183051594e50d5a63800f45/gs-logo.png"
                             alt="Geek Squad Logo"
                         />
@@ -300,11 +300,10 @@ export default function Lunches(props) {
                         className="m-5"
                     >
                         <p className="text-3xl font-bold text-darken-800 sm:text-left">
-                            Lunch Edit for {username}
+                            Lunch Edit for {agent ? agent.name : username}
                         </p>
                     </div>
                     {createLoginButton()}
-                    {agent && <p className="text-darken-800">{agent.name}</p>}
                 </div>
             </div>
         );
@@ -312,7 +311,7 @@ export default function Lunches(props) {
 
     return (
         <>
-            <div className="min-h-screen w-screen">
+            <div className="min-h-screen w-screen max-sm:mt-32">
                 {loggedIn ? createEntryPage() : createLoginPage()}
             </div>
             {loggedIn && createNavigation()}
