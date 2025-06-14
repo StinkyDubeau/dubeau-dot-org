@@ -130,54 +130,54 @@ export default function Lunches(props) {
         setLoggedIn(true);
     }
 
+    function handleSubmit() {
+        console.log("Handle submit");
+        console.log(submission);
+    }
+
     function createDayEntry(day, index) {
         const dayName = Object.keys(day).toString();
         const isToday = day === submission.days[new Date().getDay()];
         const submissionDay = submission.days[index][dayName];
-        const setSubmissionDay = (submissionDay) => setSubmission({});
         return (
             <div
-                className="flex gap-2"
                 key={`${index}${dayName}`}
+                className="flex justify-center gap-2 p-1 max-md:flex-col"
             >
-                <div
-                    className={`flex h-20 flex-col justify-center gap-2 rounded-lg p-2 ${isToday && "bg-darken-50 shadow"}`}
-                >
-                    <p className="flex-0 w-full text-left font-bold text-darken-800">
-                        {dayName}
-                    </p>
+                {/* DayName */}
+                <p className="flex-0 w-full text-left font-bold text-darken-800">
+                    {dayName}{" "}
+                    <span className="font-normal">{isToday && "(today)"}</span>
+                </p>
+                {/* Punches */}
+                <div className="flex gap-2">
+                    {/* Punch out */}
+                    <p className="my-auto text-xs text-darken-800">out</p>
                     <input
-                        className="w-full rounded text-darken-800"
-                        placeholder="Notes"
-                        value={submissionDay.note}
-                        onChange={setSubmission}
+                        className="w-full min-w-24 flex-1 rounded border-none bg-darken-50 shadow-inner"
+                        onChange={(e) => {
+                            console.log(e.target.value);
+                        }}
+                        // type="time"
+                        value={submissionDay.out}
                     />
-                    <div className="flex gap-2">
-                        {/* Punch out */}
-                        <p className="my-auto text-xs text-darken-800">out</p>
-                        <input
-                            className="w-full flex-1 rounded bg-lighten-800"
-                            onChange={(e) => {
-                                console.log(e.target.value);
-                            }}
-                            // type="time"
-                            value={submissionDay.out}
-                        />{" "}
-                        {/* Punch in */}
-                        <p className="my-auto text-xs text-darken-800">in</p>
-                        <input
-                            className="w-full min-w-24 flex-1 rounded bg-lighten-800"
-                            onChange={(e) => {
-                                console.log(typeof e.target.value);
-                            }}
-                            // type="time"
-                            value={submissionDay.in}
-                        />
-                    </div>
+                    {/* Punch in */}
+                    <p className="my-auto text-xs text-darken-800">in</p>
+                    <input
+                        className="w-full min-w-24 flex-1 rounded border-none bg-darken-50 shadow-inner"
+                        onChange={(e) => {
+                            console.log(e.target.value);
+                        }}
+                        // type="time"
+                        value={submissionDay.in}
+                    />
                 </div>
-                {/* {isToday && (
-                    <p className="my-auto font-header text-xl">{"<"}</p>
-                )} */}
+                {/* Notes */}
+                <input
+                    className="flex-0 w-full rounded border-none bg-darken-50 text-darken-800 shadow-inner"
+                    placeholder="Notes"
+                    value={submissionDay.note}
+                />
             </div>
         );
     }
@@ -186,47 +186,29 @@ export default function Lunches(props) {
         return (
             <div>
                 {/* Gradient bg */}
-                <div className="m-5 flex animate-gradient-x justify-center rounded-3xl bg-gradient-to-tl from-orange-600 via-orange-500 to-yellow-500 p-4 sm:gap-8">
-                    <div className="flex flex-wrap justify-around gap-2 lg:gap-48">
-                        <div className="flex flex-col gap-4">
-                            <p className="text-3xl font-bold text-zinc-800">
-                                {submission.date.toDateString()}
-                            </p>
-                            <button
-                                onClick={autoFill}
-                                className="w-72 rounded-2xl bg-lighten-900 p-4 font-bold text-darken-700 shadow-xl transition-all hover:scale-105"
-                            >
-                                Autofill
-                            </button>
-                        </div>
+                <div className="m-5 flex animate-gradient-x flex-col justify-center gap-2 rounded-3xl bg-gradient-to-tl from-orange-600 via-orange-500 to-yellow-500 p-4 sm:gap-4">
+                    <p className="text-3xl font-bold text-zinc-800">
+                        {submission.date.toDateString()}
+                    </p>
 
-                        <div className="flex flex-col gap-2">
-                            <div className="w-72 rounded-2xl bg-lighten-900 p-4 shadow-xl">
-                                {submission.days.map(createDayEntry)}
-                            </div>
-
-                            <button
-                                className="w-72 rounded-2xl bg-lighten-900 p-4 font-bold text-darken-700 shadow-xl transition-all hover:scale-105"
-                                onClick={handleSubmit}
-                            >
-                                Submit
-                            </button>
-                        </div>
+                    <div className="flex flex-col gap-2 rounded-2xl bg-lighten-900 p-4 shadow-xl">
+                        {submission.days.map(createDayEntry)}
+                    </div>
+                    <div className="flex justify-stretch gap-2 rounded-2xl bg-lighten-900 p-4 shadow-xl">
+                        <button
+                            onClick={autoFill}
+                            className="h-12 flex-1 rounded-full bg-darken-50 font-bold text-darken-700 shadow-lg transition-all hover:bg-darken-100"
+                        >
+                            Autofill
+                        </button>
+                        <button
+                            className="h-12 flex-1 rounded-full bg-darken-50 font-bold text-darken-700 shadow-lg transition-all hover:bg-darken-100"
+                            onClick={handleSubmit}
+                        >
+                            Submit
+                        </button>
                     </div>
                 </div>
-            </div>
-        );
-    }
-
-    function handleSubmit() {
-        console.log("Handle submit");
-        console.log(submission);
-    }
-
-    function createOrangeBackground({ children }) {
-        return (
-            <div className="m-5 flex animate-gradient-x justify-center rounded-3xl bg-gradient-to-tl from-orange-600 via-orange-500 to-yellow-500 p-4 sm:gap-8">
-                {children}
             </div>
         );
     }
@@ -279,7 +261,7 @@ export default function Lunches(props) {
             <button
                 onClick={logOut}
                 // Hide button if there's no username
-                className={`h-stretch m-2 flex flex-col justify-center rounded-xl bg-lighten-800 p-2 font-header font-bold ${!username && "hidden"}`}
+                className="rounded-2xl bg-lighten-900 p-4 font-bold text-darken-700 shadow-xl transition-all hover:scale-105"
             >
                 Log out
             </button>
