@@ -2,12 +2,12 @@ export default function geekData() {
     return [
         {
             id: "928",
-            vans: ["022", "091", "125", "137", "163", "427", "449"],
+            vans: ["091", "125", "137", "163", "427", "449"],
             agents: [
                 {
                     username: "jadubeau",
                     name: "Jacob Dubeau",
-                    van: "427",
+                    van: "449",
                     days: [
                         { sunday: { out: "", in: "", note: "OFF" } },
                         { monday: { out: "12:30", in: "1:00", note: "" } },

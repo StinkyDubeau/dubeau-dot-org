@@ -12,18 +12,6 @@ export default function Lunches(props) {
     const [agent, setAgent] = useState(null);
     const [username, setUsername] = useState(undefined);
     const [loggedIn, setLoggedIn] = useState(false);
-    const data = geekData();
-    console.log(data);
-
-    // Apply vignette frame property
-    // Ensure page never has navbar
-    useEffect(() => {
-        props.setData({
-            ...props.data,
-            noNavbar: true,
-            vignette: true,
-        });
-    }, []);
 
     const [submission, setSubmission] = useState({
         date: new Date(),
@@ -37,6 +25,18 @@ export default function Lunches(props) {
             { saturday: { in: "", out: "", note: "" } },
         ],
     });
+    const data = geekData();
+    console.log(data);
+
+    // Apply vignette frame property
+    // Ensure page never has navbar
+    useEffect(() => {
+        props.setData({
+            ...props.data,
+            noNavbar: true,
+            vignette: true,
+        });
+    }, []);
 
     async function autoFill() {
         data.forEach((store) => {
@@ -134,27 +134,24 @@ export default function Lunches(props) {
         const dayName = Object.keys(day).toString();
         const isToday = day === submission.days[new Date().getDay()];
         const submissionDay = submission.days[index][dayName];
+        const setSubmissionDay = (submissionDay) => setSubmission({});
         return (
             <div
                 className="flex gap-2"
                 key={`${index}${dayName}`}
             >
-                {/* {isToday && (
-                    <p className="my-auto font-header text-xl">{">"}</p>
-                )} */}
                 <div
                     className={`flex h-20 flex-col justify-center gap-2 rounded-lg p-2 ${isToday && "bg-darken-50 shadow"}`}
                 >
-                    <div className="flex w-full gap-2">
-                        <p className="flex-0 w-full text-left text-darken-800">
-                            {dayName}
-                        </p>
-                        <input
-                            className="w-full rounded text-darken-800"
-                            placeholder="Notes"
-                            value={submissionDay.note}
-                        />
-                    </div>
+                    <p className="flex-0 w-full text-left font-bold text-darken-800">
+                        {dayName}
+                    </p>
+                    <input
+                        className="w-full rounded text-darken-800"
+                        placeholder="Notes"
+                        value={submissionDay.note}
+                        onChange={setSubmission}
+                    />
                     <div className="flex gap-2">
                         {/* Punch out */}
                         <p className="my-auto text-xs text-darken-800">out</p>
@@ -226,6 +223,14 @@ export default function Lunches(props) {
         console.log(submission);
     }
 
+    function createOrangeBackground({ children }) {
+        return (
+            <div className="m-5 flex animate-gradient-x justify-center rounded-3xl bg-gradient-to-tl from-orange-600 via-orange-500 to-yellow-500 p-4 sm:gap-8">
+                {children}
+            </div>
+        );
+    }
+
     function createLoginPage() {
         return (
             <div>
@@ -269,12 +274,12 @@ export default function Lunches(props) {
         );
     }
 
-    function createLoginButton() {
+    function createLogoutButton() {
         return (
             <button
                 onClick={logOut}
                 // Hide button if there's no username
-                className={`flex font-header font-bold flex-col justify-center m-2 bg-lighten-800 rounded-xl h-stretch p-2 ${!username && "hidden"}`}
+                className={`h-stretch m-2 flex flex-col justify-center rounded-xl bg-lighten-800 p-2 font-header font-bold ${!username && "hidden"}`}
             >
                 Log out
             </button>
@@ -303,7 +308,7 @@ export default function Lunches(props) {
                             Lunch Edit for {agent ? agent.name : username}
                         </p>
                     </div>
-                    {createLoginButton()}
+                    {createLogoutButton()}
                 </div>
             </div>
         );
