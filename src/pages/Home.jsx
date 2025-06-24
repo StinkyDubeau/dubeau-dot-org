@@ -18,7 +18,8 @@ export default function Home(props) {
                 layout
                 initial={{ x: -100 }}
                 animate={{ x: 0 }}
-                className="flex h-screen flex-col justify-center gap-4"
+                className="flex h-screen flex-col justify-center gap-4 bg-red-400"
+                id="page-container"
             >
                 <Panel className="max-sm:w-full">
                     <div className="flex flex-col justify-center py-8 sm:p-12">
@@ -30,7 +31,9 @@ export default function Home(props) {
                         </p>
                     </div>
                 </Panel>
-                <div className="flex justify-center gap-2">
+                <div
+                    className="flex justify-center gap-2"
+                >
                     <Panel className="">
                         <div className="m-2 flex h-16 justify-center p-1">
                             <Link
