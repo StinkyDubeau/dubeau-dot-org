@@ -261,7 +261,7 @@ export default function Lunches(props) {
             <button
                 onClick={logOut}
                 // Hide button if there's no username
-                className="rounded-2xl bg-lighten-900 p-4 font-bold text-darken-700 shadow-xl transition-all hover:scale-105"
+                className="text-nowrap rounded-2xl bg-lighten-900 p-4 font-bold text-darken-700 shadow-xl transition-all hover:scale-105"
             >
                 Log out
             </button>
@@ -270,7 +270,7 @@ export default function Lunches(props) {
 
     function createNavigation() {
         return (
-            <div className="fixed left-0 top-0 z-50 max-h-16 w-screen min-w-36 bg-center sm:left-1.5 sm:top-1 sm:w-auto">
+            <div className="fixed left-0 top-0 z-50 max-h-16 w-screen min-w-36 bg-center">
                 <div className="flex justify-around gap-2 bg-lighten-400 shadow-xl backdrop-blur-xl max-sm:rounded-b-xl sm:rounded-xl">
                     <div
                         id="logo"
@@ -298,7 +298,7 @@ export default function Lunches(props) {
 
     return (
         <>
-            <div className="min-h-screen w-screen max-sm:mt-32">
+            <div className="mt-24 min-h-screen w-screen">
                 {loggedIn ? createEntryPage() : createLoginPage()}
             </div>
             {loggedIn && createNavigation()}
