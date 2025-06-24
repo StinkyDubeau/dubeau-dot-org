@@ -18,7 +18,7 @@ export default function Home(props) {
                 layout
                 initial={{ x: -100 }}
                 animate={{ x: 0 }}
-                className="flex h-screen flex-col justify-center gap-4 bg-red-400"
+                className="flex h-screen flex-col justify-center gap-4 border border-red-400"
                 id="page-container"
             >
                 <Panel className="max-sm:w-full">
@@ -31,22 +31,21 @@ export default function Home(props) {
                         </p>
                     </div>
                 </Panel>
-                <div
-                    className="flex justify-center gap-2"
-                >
+                <div className="flex justify-center gap-2">
                     <Panel className="">
-                        <div className="m-2 flex h-16 justify-center p-1">
+                        <div className="m-2 flex gap-3 h-16 justify-center p-1">
                             <Link
-                                className="m-1 rounded-full p-1 font-header text-2xl text-darken-700 transition-all hover:bg-lighten-900 hover:px-3 hover:shadow-lg"
+                                className="m-auto flex h-full w-full flex-col justify-center rounded-full font-header text-2xl text-darken-700 transition-all hover:bg-lighten-900 hover:px-3 hover:shadow-lg"
                                 to="/chat"
                             >
-                                <p className="mt-0.5 text-nowrap">p2p chat</p>
+                                <p className="">p2p chat</p>
                             </Link>
                             <NavButtons noHome />
                         </div>
                     </Panel>
                 </div>
             </motion.div>
+
             {/* Accessibility settings */}
             <Link
                 to="/accessibility"
