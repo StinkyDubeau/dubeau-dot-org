@@ -459,6 +459,33 @@ function Widgets(props) {
         );
     }
 
+    function createComponentsWidget() {
+        function roundButton() {
+            return (
+                <Link
+                    to="/fun/chat"
+                    className="m-auto flex flex-col justify-center rounded-full bg-lighten-600 shadow"
+                >
+                    <p className="m-1 rounded-full px-12 py-2 text-darken-900 transition-all hover:mx-8 hover:bg-lighten-900 hover:px-2 hover:text-darken-800 hover:shadow-sm">
+                        Button
+                    </p>
+                </Link>
+            );
+        }
+
+        return (
+            <div className=" flex flex-col overflow-clip rounded-3xl bg-lighten-600 p-6 text-xl text-darken-800">
+                <div
+                    id="main-container"
+                    className="flex h-full flex-col justify-center"
+                >
+                    <p>Hello!</p>
+                    {roundButton()}
+                </div>
+            </div>
+        );
+    }
+
     return (
         <>
             {/* Container */}
@@ -495,6 +522,8 @@ function Widgets(props) {
                 </div>
                 {/* Voltage Widget */}
                 {/* {createVoltageWidget()} */}
+                {/* Components Widget */}
+                {createComponentsWidget()}
                 {/* Cookie Widget */}
                 {createCookieWidget()}
                 {/* Counter Widget */}
