@@ -496,6 +496,7 @@ function Widgets(props) {
                 initial={{}}
                 animate={
                     isDragging && {
+                        position: "fixed",
                         top: yPos,
                         left: xPos,
                     }
@@ -553,13 +554,9 @@ function Widgets(props) {
                         Widgets
                     </h1>
                     <p className="text-justify font-header text-darken-600">
-                        ℹ️ These "widgets" demonstrate the 2024 Trifecta
-                        standard. Some widgets will be games, some will foster
-                        peer-to-peer experiences, and some will feature
-                        peripheral support. All user data is ephemeral unless
-                        otherwise stated. However, with your permission, some
-                        widget content may be stored as cookies. Like the rest
-                        of the site,{" "}
+                        ℹ️ All user data is ephemeral unless otherwise stated.
+                        With your permission, some user-generated content may be
+                        locally stored as cookies. Like the rest of the site,{" "}
                         <span className="italic">
                             everything here is a work in progress
                         </span>
