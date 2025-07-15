@@ -3,6 +3,8 @@ import Frame from "../../components/Frame";
 import { Link } from "react-router-dom";
 import vagueTime from "vague-time";
 import Checkbox from "../../components/Checkbox";
+import { v4 as uuidv4 } from "uuid";
+import { motion } from "framer-motion";
 
 function Widgets(props) {
     // Widgets are:
@@ -460,6 +462,22 @@ function Widgets(props) {
     }
 
     function createComponentsWidget() {
+        const [xPos, setXPos] = useState(0);
+        const [yPos, setYPos] = useState(0);
+        const [isHovering, setIsHovering] = useState(false);
+        const [isDragging, setIsDragging] = useState(false);
+        const [uuid, setUuid] = useState(uuidv4);
+
+        useEffect(() => {
+            function handleMouseMove(e) {
+                setXPos(e.clientX);
+                setYPos(e.clientY);
+            }
+            window.addEventListener("mousemove", handleMouseMove);
+            return () =>
+                window.removeEventListener("mousemove", handleMouseMove);
+        }, []);
+
         function roundButton() {
             return (
                 <Link
@@ -474,22 +492,62 @@ function Widgets(props) {
         }
 
         return (
-            <div className=" flex flex-col overflow-clip rounded-3xl bg-lighten-600 p-6 text-xl text-darken-800">
+            <motion.div
+                initial={{}}
+                animate={
+                    isDragging && {
+                        top: yPos,
+                        left: xPos,
+                    }
+                }
+                className={`absolute select-none overflow-clip rounded-3xl bg-lighten-600 text-xl text-darken-800 shadow-lg`}
+                onMouseUp={() => setIsDragging(false)}
+            >
+                <div
+                    id="drag-handle"
+                    className={
+                        (isHovering && "h-12 bg-darken-300") +
+                        "z-10 h-12 w-full rounded-lg shadow-xl"
+                    }
+                    onMouseEnter={() => setIsHovering(true)}
+                    onMouseLeave={() => {
+                        setIsHovering(false);
+                        // setIsDragging(false);
+                    }}
+                    onMouseDown={() => isHovering && setIsDragging(true)}
+                >
+                    <p>
+                        {xPos}, {yPos}
+                    </p>
+                </div>
                 <div
                     id="main-container"
                     className="flex h-full flex-col justify-center"
                 >
-                    <p>Hello!</p>
+                    <Checkbox
+                        className="font-lighten font-header text-darken-600"
+                        body="isDragging"
+                        checked={isDragging}
+                        onChange={(e) => setIsDragging(e.target.value)}
+                    />
+
+                    <Checkbox
+                        className="font-lighten font-header text-darken-600"
+                        body="isHovering "
+                        checked={isHovering}
+                        onChange={(e) => setIsHovering(e.target.value)}
+                    />
+
                     {roundButton()}
                 </div>
-            </div>
+            </motion.div>
         );
     }
 
     return (
         <>
             {/* Container */}
-            <div className="mx-auto my-4 flex max-w-[600px] flex-col justify-center gap-4 drop-shadow-lg max-sm:p-2">
+            <div className="relative mx-auto my-4 flex max-w-[600px] flex-col justify-center gap-4 drop-shadow-lg max-sm:p-2">
                 <div className="flex flex-col gap-2 rounded-2xl bg-lighten-800 p-4">
                     <h1 className="w-full text-left font-header text-3xl font-light text-darken-800">
                         Widgets
