@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import React, { useState, useContext, useEffect, useRef } from "react";
 import geekData from "./GeekData";
 import Checkbox from "../../components/Checkbox";
+import ContactForm from "../../components/ContactForm";
+import LunchForm from "./LunchForm";
 
 const RealmAppContext = React.createContext(null);
 
@@ -201,6 +203,11 @@ export default function Lunches(props) {
                         >
                             Autofill
                         </button>
+                        <LunchForm
+                            data={props.data}
+                            setData={props.setData}
+                            lunches={submission}
+                        />
                         <button
                             className="h-12 flex-1 rounded-full bg-darken-50 font-bold text-darken-700 shadow-lg transition-all hover:bg-darken-100"
                             onClick={handleSubmit}
