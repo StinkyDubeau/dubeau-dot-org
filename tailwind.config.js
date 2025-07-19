@@ -80,8 +80,9 @@ export default {
             },
         },
         fontFamily: {
-            regular: ["Roboto", "sans-serif"],
-            header: ["Roboto", "sans-serif"],
+            // Install fonts by adding to google fonts link in index.html
+            regular: ["Lexend", "sans-serif"],
+            header: ["Lexend", "sans-serif"],
             headerScript: ["Tenor Sans", "serif"],
             pixel: ["Silkscreen", "monospace"],
         },

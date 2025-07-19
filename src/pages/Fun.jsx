@@ -51,12 +51,13 @@ export default function Fun(props) {
                     layoutId="ChatGradientBackground"
                     className="w-full animate-gradient-x rounded-2xl bg-gradient-to-bl from-orange-700 via-pink-500 to-yellow-400 bg-blend-lighten"
                 >
-                    <div className="m-5 ">
+                    <div className="m-5 flex flex-col gap-4">
                         <motion.p className="text-left font-header text-5xl text-lighten-800">
-                            Peer-to-peer chatrooms
+                            Peer to peer chat
                         </motion.p>
-                        <motion.p className="text-left text-lg text-lighten-800">
-                            Serverless and ephemeral chat.
+                        <motion.p className="text-left font-header text-lg text-lighten-700">
+                            Serverless and ephemeral chat. I was going to make a
+                            pictochat clone, but I realized that's ABD.
                         </motion.p>
                     </div>
                     <motion.div
