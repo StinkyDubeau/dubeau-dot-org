@@ -8,4 +8,7 @@ const Data = {
     },
 };
 
+// Other page data props you can use:
+// noScroll
+
 export default Data;

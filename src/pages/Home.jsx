@@ -50,7 +50,7 @@ export default function Home(props) {
             {/* Accessibility settings */}
             <Link
                 to="/accessibility"
-                className="fixed bottom-1 right-1 m-2 flex justify-center gap-2 rounded-lg bg-lighten-900 p-2 shadow-lg"
+                className={`fixed bottom-1 right-1 m-2 flex justify-center gap-2 rounded-lg bg-lighten-900 p-2 shadow-lg transition-all ${props.data.experimental && "mb-6"}`}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
             >

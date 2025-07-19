@@ -13,12 +13,13 @@ export default function Trackers(props) {
 
     const [data, setData] = useState(props.data);
 
-    // Apply vignette frame property
-    // Ensure page never has navbar
+    // Apply page properties for <Frame />
     useEffect(() => {
         props.setData({
             ...props.data,
             vignette: true,
+            scrollToTop: true,
+            noScroll: false,
         });
     }, []);
 

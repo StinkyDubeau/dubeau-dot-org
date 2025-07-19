@@ -76,7 +76,7 @@ export default function Fun(props) {
                 </motion.div>
 
                 {/* GAME SERVERS */}
-                <div className="w-full animate-gradient-x rounded-2xl bg-gradient-to-br from-blue-400 via-cyan-400 to-orange-300">
+                <div className="w-full animate-gradient-x rounded-2xl bg-gradient-to-br from-blue-400 via-blue-300 to-cyan-300">
                     <div className="m-5 flex flex-col gap-4">
                         <p className="text-left font-header text-5xl text-darken-600">
                             Game servers

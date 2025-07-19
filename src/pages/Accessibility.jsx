@@ -9,13 +9,14 @@ import ContactForm from "../components/ContactForm";
 export default function Accessibility(props) {
     const [data, setData] = useState(props.data);
 
-    // Apply vignette frame property
-    // Ensure page never has navbar
+    // Apply page properties for <Frame />
     useEffect(() => {
         props.setData({
             ...props.data,
             vignette: true,
             noNavbar: false,
+            scrollToTop: true,
+            noScroll: false,
         });
     }, []);
 
