@@ -12,8 +12,8 @@ const Data = {
         },
         highContrast: {
             friendlyName: "High Contrast*",
-            description:
-                "Prioritize readability over colours and transparency.",
+                description:
+                    "Prioritize readability over colours and transparency.",
             enabled: false,
         },
     },

@@ -65,7 +65,7 @@ export default function Fun(props) {
                         className="m-5 flex animate-gradient-x flex-wrap justify-center gap-4 rounded-2xl p-4 sm:gap-8"
                     >
                         <Link
-                            className="flex min-w-24 flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
+                            className="flex min-w-24 cursor-default flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
                             to="/chat"
                         >
                             <p className="p-2 font-header font-medium text-darken-800">
@@ -175,7 +175,7 @@ export default function Fun(props) {
                         {props.data.experimental && (
                             <div className="flex gap-2 max-sm:flex-col">
                                 <Link
-                                    className="flex min-w-24 flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
+                                    className="flex min-w-24 cursor-default flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
                                     to="/fun/widgets"
                                 >
                                     <p className="p-2 font-header font-medium text-darken-800">
@@ -183,7 +183,7 @@ export default function Fun(props) {
                                     </p>
                                 </Link>
                                 <Link
-                                    className="flex min-w-24 flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
+                                    className="flex min-w-24 cursor-default flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
                                     to="/blog"
                                 >
                                     <p className="p-2 font-header font-medium text-darken-800">
@@ -191,7 +191,7 @@ export default function Fun(props) {
                                     </p>
                                 </Link>
                                 <Link
-                                    className="flex min-w-24 flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
+                                    className="flex min-w-24 cursor-default flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
                                     to="/fun/gallery"
                                 >
                                     <p className="p-2 font-header font-medium text-darken-800">
@@ -199,7 +199,7 @@ export default function Fun(props) {
                                     </p>
                                 </Link>
                                 <Link
-                                    className="flex min-w-24 flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
+                                    className="flex min-w-24 cursor-default flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
                                     to="/dayplanner"
                                 >
                                     <p className="p-2 font-header font-medium text-darken-800">
@@ -215,7 +215,7 @@ export default function Fun(props) {
                                     </p>
                                 </Link>
                                 <Link
-                                    className="flex min-w-24 flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
+                                    className="flex min-w-24 cursor-default flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
                                     to="/countries"
                                 >
                                     <p className="p-2 font-header font-medium text-darken-800">
@@ -227,7 +227,7 @@ export default function Fun(props) {
                         <Link
                             to="/trackers"
                             layoutId="Experimental"
-                            className="flex min-w-24 flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
+                            className="flex min-w-24 cursor-default flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
                             // onClick={() => {
                             //     props.setData({
                             //         ...props.data,
@@ -267,7 +267,7 @@ export default function Fun(props) {
                         {props.data.experimental ? (
                             <>
                                 <Link
-                                    className="flex min-w-24 flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
+                                    className="flex min-w-24 cursor-default flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
                                     to="/fun/gallery"
                                 >
                                     <p className="p-2 font-header font-medium text-darken-800">
@@ -275,7 +275,7 @@ export default function Fun(props) {
                                     </p>
                                 </Link>
                                 <Link
-                                    className="flex min-w-24 flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
+                                    className="flex min-w-24 cursor-default flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
                                     to="/dayplanner"
                                 >
                                     <p className="p-2 font-header font-medium text-darken-800">
@@ -283,7 +283,7 @@ export default function Fun(props) {
                                     </p>
                                 </Link>
                                 <Link
-                                    className="flex min-w-24 flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
+                                    className="flex min-w-24 cursor-default flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
                                     to="/fun/idle"
                                 >
                                     <p className="p-2 font-header font-medium text-darken-800">
