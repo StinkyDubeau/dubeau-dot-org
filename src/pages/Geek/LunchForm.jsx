@@ -4,7 +4,7 @@ import ReactLoading from "react-loading";
 export default function LunchForm(props) {
     const [from_name, setFrom_name] = useState("Agent Jake Toolkit (AJT)");
     const [subject, setSubject] = useState("Geek Squad Lunches for:");
-    const [lunches, setLunches] = useState();
+    const [lunches, setLunches] = useState(props.lunches);
     // const [username, setUsername] = useState();
     // const [email, setEmail] = useState();
     // const [body, setBody] = useState();
@@ -23,7 +23,7 @@ export default function LunchForm(props) {
                 accessToken: import.meta.env.VITE_EMAILJS_ACCESS_TOKEN,
                 template_params: {
                     subject: subject,
-                    lunches: lunches,
+                    lunches: JSON.stringify(lunches),
                     reply_to: "This is the reply=tp",
                 },
             }),

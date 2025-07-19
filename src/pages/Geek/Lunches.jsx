@@ -1,10 +1,9 @@
-import Frame from "../../components/Frame";
-import { Link } from "react-router-dom";
 import React, { useState, useContext, useEffect, useRef } from "react";
 import geekData from "./GeekData";
-import Checkbox from "../../components/Checkbox";
-import ContactForm from "../../components/ContactForm";
 import LunchForm from "./LunchForm";
+import { JSONTree } from "react-json-tree";
+import { AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 const RealmAppContext = React.createContext(null);
 
@@ -14,6 +13,29 @@ export default function Lunches(props) {
     const [agent, setAgent] = useState(null);
     const [username, setUsername] = useState(undefined);
     const [loggedIn, setLoggedIn] = useState(false);
+    const [showingPreview, setShowingPreview] = useState(false);
+    const [showingSubmission, setShowingSubmission] = useState(true);
+
+    const previewTheme = {
+        scheme: "monokai",
+        author: "wimer hazenberg (http://www.monokai.nl)",
+        base00: "#272822",
+        base01: "#383830",
+        base02: "#49483e",
+        base03: "#75715e",
+        base04: "#a59f85",
+        base05: "#f8f8f2",
+        base06: "#f5f4f1",
+        base07: "#f9f8f5",
+        base08: "#f92672",
+        base09: "#fd971f",
+        base0A: "#f4bf75",
+        base0B: "#a6e22e",
+        base0C: "#a1efe4",
+        base0D: "#66d9ef",
+        base0E: "#ae81ff",
+        base0F: "#cc6633",
+    };
 
     const [submission, setSubmission] = useState({
         date: new Date(),
@@ -132,9 +154,16 @@ export default function Lunches(props) {
         setLoggedIn(true);
     }
 
-    function handleSubmit() {
-        console.log("Handle submit");
-        console.log(submission);
+    function handleSubmissionButton() {
+        console.log("Set showingSubmission to ", !showingSubmission);
+        setShowingSubmission(true);
+        setShowingPreview(false);
+    }
+
+    function handlePreviewButton() {
+        console.log("Set showingPreview to ", !showingPreview);
+        setShowingPreview(true);
+        setShowingSubmission(false);
     }
 
     function createDayEntry(day, index) {
@@ -184,19 +213,68 @@ export default function Lunches(props) {
         );
     }
 
+    function createPreviewPage(submission) {
+        return (
+            <motion.div className="flex flex-col justify-center gap-2 p-1 text-left max-md:flex-col">
+                <p className="p-2 pl-2 text-left font-header text-xl font-bold text-darken-800">
+                    Preview Page
+                </p>
+                <div className="rounded-2xl bg-lighten-800 font-header">
+                    <JSONTree
+                        data={submission}
+                        className="bg-none text-left"
+                        theme={previewTheme}
+                        invertTheme={true}
+                    />
+                </div>
+            </motion.div>
+        );
+    }
+    setAgent;
+    function createSubmissionPage() {
+        return (
+            <motion.div className="flex flex-col justify-center gap-2 p-1 text-left max-md:flex-col">
+                <p className="p-2 pl-2 text-left font-header text-xl font-bold text-darken-800">
+                    Submission Page
+                </p>
+                <div className="rounded-2xl bg-lighten-900 p-2">
+                    {submission.days.map(createDayEntry)}
+                </div>
+            </motion.div>
+        );
+    }
+
     function createEntryPage() {
         return (
             <div>
                 {/* Gradient bg */}
-                <div className="m-5 flex animate-gradient-x flex-col justify-center gap-2 rounded-3xl bg-gradient-to-tl from-orange-600 via-orange-500 to-yellow-500 p-4 sm:gap-4">
+                <div className="flex animate-gradient-x flex-col justify-center gap-4 rounded-3xl bg-gradient-to-tl from-orange-600 via-orange-500 to-yellow-500 p-4 drop-shadow-xl">
                     <p className="text-3xl font-bold text-zinc-800">
                         {submission.date.toDateString()}
                     </p>
-
-                    <div className="flex flex-col gap-2 rounded-2xl bg-lighten-900 p-4 shadow-xl">
-                        {submission.days.map(createDayEntry)}
+                    <div className="z-10 -mb-2 flex gap-2 rounded-t-2xl bg-lighten-900 p-4 px-4">
+                        <button
+                            className={`${showingSubmission ? "underline shadow-none" : "bg-lighten-800 hover:bg-darken-100"} h-12 w-full flex-1 rounded-full border border-darken-50 font-header font-bold text-darken-700 shadow-lg transition-all `}
+                            onClick={handleSubmissionButton}
+                        >
+                            Submission Page
+                        </button>
+                        <button
+                            className={`${showingPreview ? "underline shadow-none" : "bg-lighten-800 hover:bg-darken-100"} h-12 w-full flex-1 rounded-full border border-darken-50 font-header font-bold text-darken-700 shadow-lg transition-all `}
+                            onClick={handlePreviewButton}
+                        >
+                            Preview Page
+                        </button>
                     </div>
-                    <div className="flex justify-stretch gap-2 rounded-2xl bg-lighten-900 p-4 shadow-xl">
+
+                    <div className="-mt-2 rounded-b-2xl bg-lighten-900 p-4 px-4">
+                        <AnimatePresence>
+                            {showingPreview
+                                ? createPreviewPage(submission)
+                                : createSubmissionPage(submission)}
+                        </AnimatePresence>
+                    </div>
+                    <div className="flex justify-stretch gap-2 rounded-2xl bg-lighten-900 p-4">
                         <button
                             onClick={autoFill}
                             className="h-12 flex-1 rounded-full bg-darken-50 font-bold text-darken-700 shadow-lg transition-all hover:bg-darken-100"
@@ -208,12 +286,6 @@ export default function Lunches(props) {
                             setData={props.setData}
                             lunches={submission}
                         />
-                        <button
-                            className="h-12 flex-1 rounded-full bg-darken-50 font-bold text-darken-700 shadow-lg transition-all hover:bg-darken-100"
-                            onClick={handleSubmit}
-                        >
-                            Submit
-                        </button>
                     </div>
                 </div>
             </div>
