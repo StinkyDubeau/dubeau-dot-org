@@ -1,7 +1,7 @@
 // Components
 import { Routes, Route } from "react-router-dom";
 import Frame from "./components/Frame";
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from "@vercel/analytics/react"
 
 // Functions
 import { useState, useEffect } from "react";
