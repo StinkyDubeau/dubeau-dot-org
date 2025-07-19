@@ -24,26 +24,26 @@ export default function Navbar(props) {
         >
             <Link
                 to="/contact"
-                className="m-2 rounded-2xl px-3 py-2 text-darken-800 underline transition-all hover:bg-lighten-900 hover:shadow-lg"
+                className="m-2  rounded-2xl px-3 py-2 font-header text-darken-800 transition-all hover:bg-lighten-900 hover:shadow-lg"
             >
                 Made by Jake 🇨🇦 2025
             </Link>
             <hr className=" border-darken-100" />
             <Link
                 to="/accessibility"
-                className="m-2 rounded-2xl px-3 py-2 text-darken-800 underline transition-all hover:bg-lighten-900 hover:shadow-lg"
+                className="m-2 rounded-2xl  px-3 py-2 font-header text-darken-800 transition-all hover:bg-lighten-900 hover:shadow-lg"
             >
                 Accessibility Settings
             </Link>
             <Link
                 to="/accessibility"
-                className="m-2 rounded-2xl px-3 py-2 text-darken-800 underline transition-all hover:bg-lighten-900 hover:shadow-lg"
+                className="m-2 rounded-2xl  px-3 py-2 font-header text-darken-800 transition-all hover:bg-lighten-900 hover:shadow-lg"
             >
                 Source Code
             </Link>
             <Link
                 to="/accessibility"
-                className="m-2 rounded-2xl px-3 py-2 text-darken-800 underline transition-all hover:bg-lighten-900 hover:shadow-lg"
+                className="m-2 rounded-2xl  px-3 py-2 font-header text-darken-800 transition-all hover:bg-lighten-900 hover:shadow-lg"
             >
                 Developer Login
             </Link>

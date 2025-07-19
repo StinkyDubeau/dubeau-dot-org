@@ -49,7 +49,7 @@ export default function Fun(props) {
                 {/* P2P CHAT */}
                 <motion.div
                     layoutId="ChatGradientBackground"
-                    className={`w-full animate-gradient-x rounded-2xl bg-gradient-to-bl from-yellow-500 via-orange-400 to-pink-400 bg-blend-lighten ${props.data.highContrast && "bg-darken-800"}`}
+                    className={`w-full animate-gradient-x rounded-2xl bg-gradient-to-bl from-yellow-600 via-orange-500 to-pink-500 bg-blend-lighten ${props.data.highContrast && "bg-darken-800"}`}
                 >
                     <div className="m-5 flex flex-col gap-4">
                         <motion.p className="text-left font-header text-5xl text-lighten-800">
@@ -152,7 +152,7 @@ export default function Fun(props) {
                 {/* HOBBY */}
                 <motion.div
                     layout
-                    className="w-full animate-gradient-x rounded-2xl bg-gradient-to-bl from-pink-700  via-purple-600 to-zinc-200 p-2"
+                    className="w-full animate-gradient-x rounded-2xl bg-gradient-to-bl from-pink-700  via-purple-600 to-blue-200 p-2"
                 >
                     <div className="m-5 flex flex-col gap-4">
                         <p className="text-left font-header text-5xl text-lighten-800">

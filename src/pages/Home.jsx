@@ -24,10 +24,10 @@ export default function Home(props) {
                 {/* Title */}
                 <Panel className="max-sm:w-full">
                     <div className="flex cursor-default flex-col justify-center py-8 sm:p-12">
-                        <h1 className="font-header text-5xl font-light tracking-tight text-darken-700 max-sm:text-5xl">
+                        <h1 className="font-header text-6xl font-medium tracking-tight text-darken-700 max-sm:text-5xl">
                             dubeau.org
                         </h1>
-                        <div className="flex justify-center gap-2 font-header tracking-wider text-darken-700">
+                        <div className="flex text-xl justify-center gap-2 font-header tracking-wider text-darken-700">
                             <p>jake's web </p>
                             <Link
                                 to="/fun"
