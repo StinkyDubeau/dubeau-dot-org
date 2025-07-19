@@ -81,6 +81,7 @@ function App() {
                 data={data}
                 setData={setData}
             >
+                <Analytics />
                 <AnimatePresence mode="wait">
                     <Routes>
                         <Route
