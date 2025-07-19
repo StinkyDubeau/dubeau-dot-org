@@ -27,9 +27,15 @@ export default function Home(props) {
                         <h1 className="font-header text-5xl font-light tracking-tight text-darken-700 max-sm:text-5xl">
                             dubeau.org
                         </h1>
-                        <p className="font-header tracking-wider text-darken-700">
-                            jake's web playground
-                        </p>
+                        <div className="flex justify-center gap-2 font-header tracking-wider text-darken-700">
+                            <p>jake's web </p>
+                            <Link
+                                to="/fun"
+                                className="cursor-default font-regular transition-all hover:rounded-full hover:bg-lighten-800 hover:p-1 hover:font-bold hover:shadow-md"
+                            >
+                                playground
+                            </Link>
+                        </div>
                     </div>
                 </Panel>
 

@@ -35,6 +35,18 @@ export default function Navbar(props) {
             >
                 Accessibility Settings
             </Link>
+            <Link
+                to="/accessibility"
+                className="m-2 rounded-2xl px-3 py-2 text-darken-800 underline transition-all hover:bg-lighten-900 hover:shadow-lg"
+            >
+                Source Code
+            </Link>
+            <Link
+                to="/accessibility"
+                className="m-2 rounded-2xl px-3 py-2 text-darken-800 underline transition-all hover:bg-lighten-900 hover:shadow-lg"
+            >
+                Developer Login
+            </Link>
         </div>
     );
 }
