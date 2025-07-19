@@ -20,11 +20,6 @@ export default function Accessibility(props) {
         });
     }, []);
 
-    data &&
-        Object.values(data).map((key, index) => {
-            console.log(key);
-        });
-
     function ReduceMotion() {
         return (
             <>
@@ -32,13 +27,20 @@ export default function Accessibility(props) {
                 <label className="flex items-center gap-2">
                     <input
                         type="checkbox"
-                        checked={props.data.accessibility.reduceMotion || false}
+                        checked={
+                            props.data.accessibility.reduceMotion.enabled ||
+                            false
+                        }
                         onChange={(e) => {
                             props.setData({
                                 ...props.data,
                                 accessibility: {
                                     ...props.data.accessibility,
-                                    reduceMotion: e.target.checked,
+                                    reduceMotion: {
+                                        ...props.data.accessibility
+                                            .reduceMotion,
+                                        enabled: e.target.checked,
+                                    },
                                 },
                             });
                         }}
@@ -51,6 +53,55 @@ export default function Accessibility(props) {
                 </p>
                 <hr />
             </>
+        );
+    }
+    function CreateAccessibilityCheckbox(setting) {
+        // Pass an accessibility option as seen in Data.jsx
+        // setting: {
+        //  enabled: true/false
+        // friendlyName: "Name of Setting"
+        // description: "Readable sentnece describing setting."
+        // }
+
+        var obj = props.data.accessibility[Object.values(setting)];
+
+        return (
+            props.data.accessibility && (
+                <div>
+                    {console.log(obj.friendlyName, obj.enabled, "!>?")}
+                    <label className="flex items-center gap-2">
+                        <input
+                            type="checkbox"
+                            checked={obj.enabled || false}
+                            onChange={(e) => {
+                                props.setData({
+                                    ...props.data,
+                                    accessibility: {
+                                        ...props.data.accessibility,
+                                        obj: {
+                                            ...obj,
+                                            enabled: e.target.checked,
+                                        },
+                                    },
+                                });
+                            }}
+                            className="h-5 w-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                        />
+                        {/* {props.data.accessibility[setting].friendlyName} */}
+                        {
+                            props.data.accessibility[Object.values(setting)]
+                                .friendlyName
+                        }
+                    </label>
+                    <p className="text-sm">
+                        {
+                            props.data.accessibility[Object.values(setting)]
+                                .description
+                        }
+                    </p>
+                    <hr />
+                </div>
+            )
         );
     }
 
@@ -89,7 +140,10 @@ export default function Accessibility(props) {
                 </h1>
                 {/* Accessibility Toggles */}
                 <div className="flex flex-col gap-2">
-                    <ReduceMotion />
+                    {/* <ReduceMotion /> */}
+                    {Object.keys(data.accessibility).map((setting) => (
+                        <CreateAccessibilityCheckbox setting={setting} />
+                    ))}
                     <DisableAll />
                     <p>
                         * These settings can also be controlled by your device

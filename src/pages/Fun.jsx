@@ -45,11 +45,11 @@ export default function Fun(props) {
             {/* The above things, done well, can be standardized for the entire site. Even sub-pages on links. */}
             {/* If Executed exceedingly well, this could even serve as a powerful UI foundation for the Idle game experiment at https://www.dubeau.org/idle */}
 
-            <div className="my-5 flex w-full flex-col justify-center gap-8 px-2">
+            <div className="my-5 flex w-full flex-col justify-center gap-8 px-2 sm:px-8">
                 {/* P2P CHAT */}
                 <motion.div
                     layoutId="ChatGradientBackground"
-                    className="w-full animate-gradient-x rounded-2xl bg-gradient-to-bl from-orange-700 via-pink-500 to-yellow-400 bg-blend-lighten"
+                    className={`w-full animate-gradient-x rounded-2xl bg-gradient-to-bl from-orange-400 via-pink-400 to-yellow-400 bg-blend-lighten ${props.data.highContrast && "bg-darken-800"}`}
                 >
                     <div className="m-5 flex flex-col gap-4">
                         <motion.p className="text-left font-header text-5xl text-lighten-800">
@@ -76,7 +76,7 @@ export default function Fun(props) {
                 </motion.div>
 
                 {/* GAME SERVERS */}
-                <div className="w-full animate-gradient-x rounded-2xl bg-gradient-to-br from-blue-400 via-blue-300 to-cyan-300">
+                <div className="w-full animate-gradient-x rounded-2xl bg-gradient-to-br from-blue-400 via-blue-300 to-cyan-400">
                     <div className="m-5 flex flex-col gap-4">
                         <p className="text-left font-header text-5xl text-darken-600">
                             Game servers

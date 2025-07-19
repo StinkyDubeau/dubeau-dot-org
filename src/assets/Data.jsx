@@ -4,11 +4,19 @@ const Data = {
     noNavbar: false,
     vignette: false,
     accessibility: {
-        reduceMotion: false,
+        reduceMotion: {
+            friendlyName: "Reduce Motion*",
+            description:
+                "Disables page transitions and many component animations.",
+            enabled: false,
+        },
+        highContrast: {
+            friendlyName: "High Contrast*",
+            description:
+                "Prioritize readability over colours and transparency.",
+            enabled: false,
+        },
     },
 };
-
-// Other page data props you can use:
-// noScroll
 
 export default Data;
