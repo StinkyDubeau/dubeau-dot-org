@@ -23,7 +23,9 @@ export default function LunchForm(props) {
                 accessToken: import.meta.env.VITE_EMAILJS_ACCESS_TOKEN,
                 template_params: {
                     subject: subject,
-                    lunches: JSON.stringify(lunches),
+                    from: lunches.name || "",
+                    email: lunches.ntlogin || "",
+                    body: JSON.stringify(lunches),
                     reply_to: "This is the reply=tp",
                 },
             }),
@@ -102,7 +104,7 @@ export default function LunchForm(props) {
     function createForm() {
         return (
             <button
-                className={`h-12 w-full rounded-2xl bg-lighten-900 font-header text-sm font-bold text-darken-700 shadow-lg transition-all hover:bg-darken-50 `}
+                className={`h-12 w-full rounded-2xl bg-orange-600 font-header text-sm font-bold text-lighten-900 shadow-lg transition-all hover:bg-orange-700`}
                 onClick={handleSubmit}
             >
                 Submit

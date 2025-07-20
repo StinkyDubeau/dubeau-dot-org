@@ -177,6 +177,7 @@ export default function Lunches(props) {
         const dayName = Object.keys(day).toString();
         const isToday = day === submission.days[new Date().getDay()];
         const submissionDay = submission.days[index][dayName];
+
         return (
             <div
                 key={`${index}${dayName}`}
@@ -215,6 +216,10 @@ export default function Lunches(props) {
                     className="flex-0 w-full rounded border-none bg-darken-50 text-darken-800 shadow-inner"
                     placeholder="Notes"
                     value={submissionDay.note}
+                    onChange={(e) => {
+                        console.log(e.target.value);
+                        setSubmission();
+                    }}
                 />
             </div>
         );
@@ -222,18 +227,17 @@ export default function Lunches(props) {
 
     function createPreviewPage(submission) {
         return (
-            <motion.div className="flex flex-col justify-center gap-2 p-1 text-left max-md:flex-col">
+            <motion.div className="flex flex-col justify-center gap-2 text-left max-md:flex-col">
                 <p className="p-2 text-left font-header text-xl font-bold text-darken-800">
                     Preview Page
                 </p>
-                <div className="rounded-2xl bg-lighten-800 font-header">
+                <div className="flex flex-col gap-2 rounded-2xl bg-lighten-900 p-2 shadow-lg">
                     <p className="pl-2 pt-2 font-header text-xs font-bold text-darken-500">
                         This is the data that will be sent when you click
-                        "submit"
+                        "submit".
                     </p>
                     <JSONTree
                         data={submission}
-                        className="bg-none text-left"
                         theme={previewTheme}
                         invertTheme={true}
                     />
@@ -244,11 +248,20 @@ export default function Lunches(props) {
     setAgent;
     function createSubmissionPage() {
         return (
-            <motion.div className="flex flex-col justify-center gap-2 p-1 text-left max-md:flex-col">
+            <motion.div
+                initial={{ height: 0 }}
+                animate={{ height: "auto" }}
+                className="flex flex-col justify-center gap-2 text-left max-md:flex-col"
+            >
                 <p className="p-2 pl-2 text-left font-header text-xl font-bold text-darken-800">
                     Submission Page
                 </p>
-                <div className="rounded-2xl bg-lighten-900 p-2">
+                <div className="flex flex-col gap-2 rounded-2xl bg-lighten-900 p-2 shadow-lg">
+                    <p className="py-2 pl-2 font-header text-xs font-bold text-darken-500">
+                        Enter the start and end time for your lunches on days
+                        you worked. Leave days-off blank, mention VAC or SCK
+                        days in notes.
+                    </p>
                     {submission.days.map(createDayEntry)}
                 </div>
             </motion.div>
@@ -259,11 +272,14 @@ export default function Lunches(props) {
         return (
             <div>
                 {/* Gradient bg */}
-                <div className="flex animate-gradient-x flex-col justify-center gap-4 rounded-3xl bg-gradient-to-tl from-orange-600 via-orange-500 to-yellow-500 p-4 drop-shadow-xl">
-                    <p className="text-3xl font-bold text-zinc-800">
+                <div className="m-4 flex animate-gradient-x flex-col justify-center gap-4 rounded-3xl bg-gradient-to-tl from-orange-600 via-orange-500 to-yellow-500 p-4 drop-shadow-xl md:m-auto md:w-3/4">
+                    <p className="text-3xl font-bold text-zinc-800 sm:ml-6 sm:text-left">
                         {submission.date.toDateString()}
                     </p>
-                    <div className="z-10 -mb-2 flex rounded-t-2xl bg-lighten-900">
+                    <div
+                        id="tabs"
+                        className="z-10 -mb-2 flex rounded-t-2xl bg-lighten-900"
+                    >
                         <button
                             className={`${showingSubmission ? "underline shadow-none" : "bg-lighten-800 hover:bg-darken-100"} h-12 w-full flex-1 rounded-tl-2xl border-b border-darken-50 font-header text-sm font-bold text-darken-700 shadow-lg transition-all `}
                             onClick={handleSubmissionButton}
@@ -278,19 +294,24 @@ export default function Lunches(props) {
                         </button>
                     </div>
 
-                    <div className="-mt-2 rounded-b-2xl bg-lighten-900 p-4 px-4">
-                        <AnimatePresence>
+                    <div
+                        id="form"
+                        className="-mt-2 overflow-clip rounded-b-2xl bg-lighten-900 p-4 px-4"
+                    >
+                        <AnimatePresence mode="wait">
                             {showingPreview
                                 ? createPreviewPage(submission)
                                 : createSubmissionPage(submission)}
                         </AnimatePresence>
-                        <div className="mt-4 flex justify-evenly gap-2">
+                        <div className="mt-2 flex justify-between gap-2 max-sm:flex-col  ">
+                            {/* Autofill button */}
                             <button
                                 onClick={autoFill}
-                                className={`h-12 w-full rounded-2xl bg-lighten-900 font-header text-sm font-bold text-darken-700 shadow-lg transition-all hover:bg-darken-50`}
+                                className={`h-12 w-full rounded-2xl bg-lighten-900 font-header text-sm text-darken-700 shadow-lg transition-all hover:bg-darken-50 `}
                             >
                                 Autofill
                             </button>
+                            {/* Submit button */}
                             <LunchForm
                                 data={props.data}
                                 setData={props.setData}
@@ -363,11 +384,11 @@ export default function Lunches(props) {
 
     function createNavigation() {
         return (
-            <div className="fixed left-0 top-0 z-50 max-h-16 w-screen min-w-36 bg-center">
+            <div className="fixed left-0 top-0 z-50 max-h-12 w-screen min-w-36 bg-center">
                 <div className="flex justify-around gap-2 bg-lighten-400 shadow-xl backdrop-blur-xl max-sm:rounded-b-xl sm:rounded-xl">
                     <div
                         id="logo"
-                        className="h-stretch flex flex-col justify-center"
+                        className="flex flex-col justify-center"
                     >
                         <img
                             className="max-h-8"
