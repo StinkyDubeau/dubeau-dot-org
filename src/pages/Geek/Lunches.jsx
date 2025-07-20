@@ -38,6 +38,8 @@ export default function Lunches(props) {
     };
 
     const [submission, setSubmission] = useState({
+        name: "",
+        ntlogin: "",
         date: new Date(),
         days: [
             { sunday: { in: "", out: "", note: "" } },
@@ -88,6 +90,11 @@ export default function Lunches(props) {
                     console.log("Got cookie!");
                     console.log(result);
                     setUsernameCookie(result);
+                    setSubmission({
+                        ...submission,
+                        ntlogin: result,
+                        name: agent.name,
+                    });
                     return result;
                 })
                 .catch((error) => {
