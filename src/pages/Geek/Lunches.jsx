@@ -223,10 +223,14 @@ export default function Lunches(props) {
     function createPreviewPage(submission) {
         return (
             <motion.div className="flex flex-col justify-center gap-2 p-1 text-left max-md:flex-col">
-                <p className="p-2 pl-2 text-left font-header text-xl font-bold text-darken-800">
+                <p className="p-2 text-left font-header text-xl font-bold text-darken-800">
                     Preview Page
                 </p>
                 <div className="rounded-2xl bg-lighten-800 font-header">
+                    <p className="pl-2 pt-2 font-header text-xs font-bold text-darken-500">
+                        This is the data that will be sent when you click
+                        "submit"
+                    </p>
                     <JSONTree
                         data={submission}
                         className="bg-none text-left"
@@ -259,18 +263,18 @@ export default function Lunches(props) {
                     <p className="text-3xl font-bold text-zinc-800">
                         {submission.date.toDateString()}
                     </p>
-                    <div className="z-10 -mb-2 flex gap-2 rounded-t-2xl bg-lighten-900 p-4 px-4">
+                    <div className="z-10 -mb-2 flex rounded-t-2xl bg-lighten-900">
                         <button
-                            className={`${showingSubmission ? "underline shadow-none" : "bg-lighten-800 hover:bg-darken-100"} h-12 w-full flex-1 rounded-full border border-darken-50 font-header font-bold text-darken-700 shadow-lg transition-all `}
+                            className={`${showingSubmission ? "underline shadow-none" : "bg-lighten-800 hover:bg-darken-100"} h-12 w-full flex-1 rounded-tl-2xl border-b border-darken-50 font-header text-sm font-bold text-darken-700 shadow-lg transition-all `}
                             onClick={handleSubmissionButton}
                         >
-                            Submission Page
+                            Submission
                         </button>
                         <button
-                            className={`${showingPreview ? "underline shadow-none" : "bg-lighten-800 hover:bg-darken-100"} h-12 w-full flex-1 rounded-full border border-darken-50 font-header font-bold text-darken-700 shadow-lg transition-all `}
+                            className={`${showingPreview ? "underline shadow-none" : "bg-lighten-800 hover:bg-darken-100"} h-12 w-full flex-1 rounded-tr-2xl border-b border-darken-50 font-header text-sm font-bold text-darken-700 shadow-lg transition-all `}
                             onClick={handlePreviewButton}
                         >
-                            Preview Page
+                            Preview
                         </button>
                     </div>
 
@@ -280,20 +284,23 @@ export default function Lunches(props) {
                                 ? createPreviewPage(submission)
                                 : createSubmissionPage(submission)}
                         </AnimatePresence>
+                        <div className="mt-4 flex justify-evenly gap-2">
+                            <button
+                                onClick={autoFill}
+                                className={`h-12 w-full rounded-2xl bg-lighten-900 font-header text-sm font-bold text-darken-700 shadow-lg transition-all hover:bg-darken-50`}
+                            >
+                                Autofill
+                            </button>
+                            <LunchForm
+                                data={props.data}
+                                setData={props.setData}
+                                lunches={submission}
+                            />
+                        </div>
                     </div>
-                    <div className="flex justify-stretch gap-2 rounded-2xl bg-lighten-900 p-4">
-                        <button
-                            onClick={autoFill}
-                            className="h-12 flex-1 rounded-full bg-darken-50 font-bold text-darken-700 shadow-lg transition-all hover:bg-darken-100"
-                        >
-                            Autofill
-                        </button>
-                        <LunchForm
-                            data={props.data}
-                            setData={props.setData}
-                            lunches={submission}
-                        />
-                    </div>
+                    {/* <div className="flex justify-stretch gap-2 rounded-2xl bg-lighten-900 p-4">
+
+                    </div> */}
                 </div>
             </div>
         );

@@ -101,19 +101,17 @@ export default function LunchForm(props) {
 
     function createForm() {
         return (
-            <div className="flex flex-col gap-2 ">
-                <button
-                    className="h-10 rounded-xl bg-darken-50 font-header font-bold text-darken-600 transition-all hover:rounded-lg hover:bg-darken-50"
-                    onClick={handleSubmit}
-                >
-                    Submit
-                </button>
-            </div>
+            <button
+                className={`h-12 w-full rounded-2xl bg-lighten-900 font-header text-sm font-bold text-darken-700 shadow-lg transition-all hover:bg-darken-50 `}
+                onClick={handleSubmit}
+            >
+                Submit
+            </button>
         );
     }
 
     return (
-        <div className="w-72 rounded-xl bg-lighten-500 p-4 shadow-xl">
+        <div className="w-full">
             {!submitted ? createForm() : createResult()}
         </div>
     );
