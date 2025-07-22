@@ -27,7 +27,7 @@ export default function Home(props) {
                         <h1 className="font-header text-6xl font-medium tracking-tight text-darken-700 max-sm:text-5xl">
                             dubeau.org
                         </h1>
-                        <div className="flex text-xl justify-center gap-2 font-header tracking-wider text-darken-700">
+                        <div className="flex justify-center gap-2 font-header text-xl tracking-wider text-darken-700">
                             <p>jake's web </p>
                             <Link
                                 to="/fun"
@@ -41,7 +41,7 @@ export default function Home(props) {
 
                 {/* Buttons */}
                 <div className="flex justify-center gap-2">
-                    <div className="min-h-20 rounded-full bg-lighten-600 px-3 py-1 shadow-xl transition-all hover:px-1">
+                    <div className="min-h-16 rounded-full bg-lighten-600 px-6 shadow-xl transition-all hover:px-1 hover:py-1">
                         <NavButtons isOnHome />
                     </div>
                 </div>
