@@ -100,7 +100,7 @@ export default function Fun(props) {
                                 subtitle="Modded Minecraft"
                                 img={ModdedBanner}
                                 to="/servers/modded"
-                                announcement="new modpack!"
+                                announcement=""
                                 alt="The icon for Modded Minecraft's Server page. The image features a gameplay screenshot of a small factory with lots of machinery and parts."
                             />
                             <ServerCard
