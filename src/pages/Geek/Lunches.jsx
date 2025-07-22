@@ -232,8 +232,8 @@ export default function Lunches(props) {
                     Preview Page
                 </p>
                 <div className="flex flex-col gap-2 rounded-2xl bg-lighten-900 p-2 shadow-lg">
-                    <p className="pl-2 pt-2 font-header text-xs font-bold text-darken-500">
-                        This is the data that will be sent when you click
+                    <p className="pl-1 pt-2 font-header text-xs font-bold text-darken-500">
+                        This is the raw data that will be sent when you click
                         "submit".
                     </p>
                     <JSONTree
@@ -249,15 +249,16 @@ export default function Lunches(props) {
     function createSubmissionPage() {
         return (
             <motion.div
-                initial={{ height: 0 }}
+                initial={{ height: 0, opacity: 1 }}
                 animate={{ height: "auto" }}
+                exit={{ x: -500, opacity: 0 }}
                 className="flex flex-col justify-center gap-2 text-left max-md:flex-col"
             >
                 <p className="p-2 pl-2 text-left font-header text-xl font-bold text-darken-800">
                     Submission Page
                 </p>
                 <div className="flex flex-col gap-2 rounded-2xl bg-lighten-900 p-2 shadow-lg">
-                    <p className="py-2 pl-2 font-header text-xs font-bold text-darken-500">
+                    <p className="py-2 pl-1 font-header text-xs font-bold text-darken-500">
                         Enter the start and end time for your lunches on days
                         you worked. Leave days-off blank, mention VAC or SCK
                         days in notes.
@@ -273,7 +274,7 @@ export default function Lunches(props) {
             <div>
                 {/* Gradient bg */}
                 <div className="m-4 flex animate-gradient-x flex-col justify-center gap-4 rounded-3xl bg-gradient-to-tl from-orange-600 via-orange-500 to-yellow-500 p-4 drop-shadow-xl md:m-auto md:w-3/4">
-                    <p className="text-3xl font-bold text-zinc-800 sm:ml-6 sm:text-left">
+                    <p className="font-header text-3xl font-bold text-zinc-800 sm:ml-6 sm:text-left">
                         {submission.date.toDateString()}
                     </p>
                     <div
