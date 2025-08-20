@@ -348,7 +348,7 @@ export default function fun(props) {
                         <div className="flex w-12 flex-1 justify-center text-center">
                             <Marquee
                                 speed={150}
-                                className="mt-6 w-full overflow-hidden"
+                                className="mt-6 w-full overflow-hidden scrollbar-default"
                             >
                                 {whitelist.map(createUser)}
                             </Marquee>
