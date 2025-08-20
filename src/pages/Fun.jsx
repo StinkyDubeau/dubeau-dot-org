@@ -56,8 +56,7 @@ export default function Fun(props) {
                             Peer to peer chat
                         </motion.p>
                         <motion.p className="text-left font-header text-lg text-lighten-700">
-                            Serverless and ephemeral chat. I was going to make a
-                            pictochat clone, but I realized that's ABD.
+                            Serverless, ephemeral chat.
                         </motion.p>
                     </div>
                     <motion.div
@@ -159,7 +158,7 @@ export default function Fun(props) {
                             Hobby
                         </p>
                         <p className="text-left font-header text-lg text-lighten-800">
-                            Jake's personal projects and tools.
+                            My personal projects and tools.
                         </p>
                     </div>
                     {/* Gradient bg */}
