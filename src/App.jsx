@@ -41,9 +41,7 @@ function App() {
 
     // Apply accessbility settings when they are changed
     useEffect(() => {
-        data.accessibility &&
-            (MotionGlobalConfig.skipAnimations =
-                data.accessibility.reduceMotion.enabled);
+        MotionGlobalConfig.skipAnimations = data.accessibility.reduceMotion;
     }, [data.accessibility]);
 
     useEffect(() => {
@@ -52,10 +50,7 @@ function App() {
             ...data,
             accessibility: {
                 ...data.accessibility,
-                reduceMotion: {
-                    ...data.accessibility.reduceMotion,
-                    enabled: prefersReducedMotion || false,
-                },
+                reduceMotion: prefersReducedMotion,
             },
         }));
 

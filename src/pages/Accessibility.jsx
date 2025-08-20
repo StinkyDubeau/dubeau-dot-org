@@ -9,16 +9,20 @@ import ContactForm from "../components/ContactForm";
 export default function Accessibility(props) {
     const [data, setData] = useState(props.data);
 
-    // Apply page properties for <Frame />
+    // Apply vignette frame property
+    // Ensure page never has navbar
     useEffect(() => {
         props.setData({
             ...props.data,
             vignette: true,
             noNavbar: false,
-            scrollToTop: true,
-            noScroll: false,
         });
     }, []);
+
+    data &&
+        Object.values(data).map((key, index) => {
+            console.log(key);
+        });
 
     function ReduceMotion() {
         return (
@@ -27,20 +31,13 @@ export default function Accessibility(props) {
                 <label className="flex items-center gap-2">
                     <input
                         type="checkbox"
-                        checked={
-                            props.data.accessibility.reduceMotion.enabled ||
-                            false
-                        }
+                        checked={props.data.accessibility.reduceMotion || false}
                         onChange={(e) => {
                             props.setData({
                                 ...props.data,
                                 accessibility: {
                                     ...props.data.accessibility,
-                                    reduceMotion: {
-                                        ...props.data.accessibility
-                                            .reduceMotion,
-                                        enabled: e.target.checked,
-                                    },
+                                    reduceMotion: e.target.checked,
                                 },
                             });
                         }}
@@ -53,55 +50,6 @@ export default function Accessibility(props) {
                 </p>
                 <hr />
             </>
-        );
-    }
-    function CreateAccessibilityCheckbox(setting) {
-        // Pass an accessibility option as seen in Data.jsx
-        // setting: {
-        //  enabled: true/false
-        // friendlyName: "Name of Setting"
-        // description: "Readable sentnece describing setting."
-        // }
-
-        var obj = props.data.accessibility[Object.values(setting)];
-
-        return (
-            props.data.accessibility && (
-                <div>
-                    {console.log(obj.friendlyName, obj.enabled, "!>?")}
-                    <label className="flex items-center gap-2">
-                        <input
-                            type="checkbox"
-                            checked={obj.enabled || false}
-                            onChange={(e) => {
-                                props.setData({
-                                    ...props.data,
-                                    accessibility: {
-                                        ...props.data.accessibility,
-                                        obj: {
-                                            ...obj,
-                                            enabled: e.target.checked,
-                                        },
-                                    },
-                                });
-                            }}
-                            className="h-5 w-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
-                        />
-                        {/* {props.data.accessibility[setting].friendlyName} */}
-                        {
-                            props.data.accessibility[Object.values(setting)]
-                                .friendlyName
-                        }
-                    </label>
-                    <p className="text-sm">
-                        {
-                            props.data.accessibility[Object.values(setting)]
-                                .description
-                        }
-                    </p>
-                    <hr />
-                </div>
-            )
         );
     }
 
@@ -140,15 +88,9 @@ export default function Accessibility(props) {
                 </h1>
                 {/* Accessibility Toggles */}
                 <div className="flex flex-col gap-2">
-                    {/* <ReduceMotion /> */}
-                    {Object.keys(data.accessibility).map((setting) => (
-                        <CreateAccessibilityCheckbox setting={setting} />
-                    ))}
+                    <ReduceMotion />
                     <DisableAll />
-                    <p>
-                        * These settings can also be controlled by your device
-                        preferences
-                    </p>
+                    <p>*Your device may be controlling this setting.</p>
                 </div>
             </div>
             <div className="mx-4 flex max-w-96 flex-col gap-2 rounded-2xl bg-lighten-900 p-4 text-left font-header text-darken-800">
@@ -165,15 +107,6 @@ export default function Accessibility(props) {
                     />
                 </div>
             </div>
-
-            <Link
-                to="/"
-                className="mx-4 flex max-w-96 flex-col gap-2 rounded-2xl bg-lighten-900 p-4 text-left font-header text-darken-800"
-            >
-                <h1 className="text-left text-3xl font-light underline">
-                    Back to home
-                </h1>
-            </Link>
         </div>
     );
 }
