@@ -90,10 +90,7 @@ export default function Accessibility(props) {
                 <div className="flex flex-col gap-2">
                     <ReduceMotion />
                     <DisableAll />
-                    <p>
-                        * These settings can also be controlled by your device
-                        preferences
-                    </p>
+                    <p>*Your device may be controlling this setting.</p>
                 </div>
             </div>
             <div className="mx-4 flex max-w-96 flex-col gap-2 rounded-2xl bg-lighten-900 p-4 text-left font-header text-darken-800">
@@ -110,15 +107,6 @@ export default function Accessibility(props) {
                     />
                 </div>
             </div>
-
-            <Link
-                to="/"
-                className="mx-4 flex max-w-96 flex-col gap-2 rounded-2xl bg-lighten-900 p-4 text-left font-header text-darken-800"
-            >
-                <h1 className="text-left text-3xl font-light underline">
-                    Back to home
-                </h1>
-            </Link>
         </div>
     );
 }

@@ -13,12 +13,13 @@ export default function Trackers(props) {
 
     const [data, setData] = useState(props.data);
 
-    // Apply vignette frame property
-    // Ensure page never has navbar
+    // Apply page properties for <Frame />
     useEffect(() => {
         props.setData({
             ...props.data,
             vignette: true,
+            scrollToTop: true,
+            noScroll: false,
         });
     }, []);
 
@@ -28,7 +29,7 @@ export default function Trackers(props) {
         });
 
     return (
-        <div className="flex h-screen w-full flex-col justify-center pb-32">
+        <div className="flex min-h-screen w-full flex-col justify-center pb-32">
             <motion.div
                 layout
                 className="m-4 flex max-w-96 flex-col gap-2 rounded-2xl bg-lighten-900 p-4 text-left font-header text-darken-800"

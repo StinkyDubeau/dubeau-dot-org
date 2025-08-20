@@ -12,7 +12,7 @@ export default function Navbar(props) {
                             initial={{ height: 0 }}
                             animate={{ height: "auto" }}
                             exit={{ height: 0 }}
-                            className="flex h-full w-full flex-col justify-center overflow-clip px-4"
+                            className="flex w-full flex-col justify-center overflow-clip"
                         >
                             <progress className="progress mx-auto w-full min-w-36 shadow-inner"></progress>
                             <p className="text-nowrap font-header text-darken-800">
@@ -28,7 +28,7 @@ export default function Navbar(props) {
     return (
         <motion.div
             initial={{ height: 0, padding: 0 }}
-            animate={{ height: "auto", padding: 2 }}
+            animate={{ height: 48, padding: 2 }}
             exit={{ height: 0, padding: 0 }}
             className="fixed z-40 mx-auto flex w-full flex-col justify-center overflow-clip bg-lighten-600 backdrop-blur-3xl"
         >

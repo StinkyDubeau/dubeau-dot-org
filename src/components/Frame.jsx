@@ -73,6 +73,7 @@ export default function Frame(props) {
             {/* Data Components */}
             {props.data && createDataDependants()}
             {!props.data.noScroll && <ScrollToTop />}
+            {props.data.scrollToTop && <ScrollToTop />}
 
             {/* Navbar */}
             <AnimatePresence mode="wait">

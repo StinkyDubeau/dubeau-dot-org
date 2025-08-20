@@ -5,7 +5,7 @@ import * as RealmWeb from "realm-web";
 
 const RealmAppContext = React.createContext(null);
 
-export default function Checlist(props) {
+export default function Checklist(props) {
     const uri = import.meta.env.VITE_CONNECTION_STRING;
 
     const stores = {

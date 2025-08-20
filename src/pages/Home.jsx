@@ -19,35 +19,38 @@ export default function Home(props) {
                 initial={{ x: -100 }}
                 animate={{ x: 0 }}
                 className="flex h-screen flex-col justify-center gap-4"
+                id="page-container"
             >
+                {/* Title */}
                 <Panel className="max-sm:w-full">
-                    <div className="flex flex-col justify-center py-8 sm:p-12">
-                        <h1 className="font-header text-5xl font-light tracking-tighter text-darken-700 max-sm:text-5xl">
+                    <div className="flex cursor-default flex-col justify-center py-8 sm:p-12">
+                        <h1 className="font-header text-6xl font-medium tracking-tight text-darken-700 max-sm:text-5xl">
                             dubeau.org
                         </h1>
-                        <p className="font-header text-darken-700">
-                            jake's web playground
-                        </p>
+                        <div className="flex justify-center gap-2 font-header text-xl tracking-wider text-darken-700">
+                            <p>jake's web </p>
+                            <Link
+                                to="/fun"
+                                className="cursor-default font-regular transition-all hover:rounded-full hover:bg-lighten-800 hover:p-1 hover:font-bold hover:shadow-md"
+                            >
+                                playground
+                            </Link>
+                        </div>
                     </div>
                 </Panel>
+
+                {/* Buttons */}
                 <div className="flex justify-center gap-2">
-                    <Panel className="">
-                        <div className="m-2 flex h-16 justify-center p-1">
-                            <Link
-                                className="m-1 rounded-full p-1 font-header text-2xl text-darken-700 transition-all hover:bg-lighten-900 hover:px-3 hover:shadow-lg"
-                                to="/chat"
-                            >
-                                <p className="mt-0.5 text-nowrap">p2p chat</p>
-                            </Link>
-                            <NavButtons noHome />
-                        </div>
-                    </Panel>
+                    <div className="min-h-16 rounded-full bg-lighten-600 sm:px-6 shadow-xl transition-all hover:px-1 hover:py-1">
+                        <NavButtons isOnHome />
+                    </div>
                 </div>
             </motion.div>
+
             {/* Accessibility settings */}
             <Link
                 to="/accessibility"
-                className="fixed bottom-1 right-1 m-2 flex justify-center gap-2 rounded-lg bg-lighten-900 p-2 shadow-lg"
+                className={`fixed bottom-1 right-1 m-2 flex justify-center gap-2 rounded-lg bg-lighten-900 p-2 shadow-lg transition-all ${props.data.experimental && "mb-6"}`}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
             >

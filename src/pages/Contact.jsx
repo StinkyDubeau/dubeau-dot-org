@@ -21,7 +21,7 @@ export default function (props) {
             layout
             className="w-svw max-w-screen-lg"
         >
-            <div className="my-5 flex w-full flex-col justify-center gap-8 px-2">
+            <div className="my-5 flex w-full flex-col justify-center gap-8 px-2 sm:px-8">
                 {/* JAKE SITE OWNER */}
                 <div className="flex animate-gradient-x justify-center rounded-2xl bg-gradient-to-tl from-pink-600 via-purple-500 to-blue-400 p-4 sm:gap-8">
                     <div className="flex flex-wrap justify-around gap-6 lg:gap-48">
@@ -30,7 +30,7 @@ export default function (props) {
                                 Jake
                             </p>
                             <p className="font-header text-lighten-800">
-                                site owner
+                                me (:
                             </p>
                         </div>
                         <div className="my-auto flex w-72 flex-wrap justify-center gap-4">
@@ -91,7 +91,7 @@ export default function (props) {
                                 Contact
                             </p>
                             <p className="font-header text-darken-700">
-                                or report moderation issues
+                                game server moderators
                             </p>
                         </div>
                         <ContactForm
@@ -105,11 +105,11 @@ export default function (props) {
                 <div className="flex flex-grow animate-gradient-x justify-center rounded-2xl bg-gradient-to-tl from-slate-500 via-zinc-500 to-gray-400 p-4 sm:gap-8">
                     <div className="flex flex-wrap justify-around gap-6 lg:gap-48">
                         <div className="flex w-72 flex-col">
-                            <p className="font-header text-5xl text-lighten-800">
-                                Join
+                            <p className="font-header text-5xl tracking-tight text-lighten-800 sm:text-nowrap sm:text-center">
+                                Discord Server
                             </p>
-                            <p className="font-header text-lighten-800">
-                                socials
+                            <p className="font-header text-lighten-800 sm:text-center">
+                                server events and whitelisting here
                             </p>
                         </div>
                         <div className="my-auto flex w-72 flex-wrap justify-center">

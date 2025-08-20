@@ -74,6 +74,69 @@ export default function Astros(props) {
         );
     }
 
+    function createOldAstroSightings(props) {
+        return (
+            <>
+                <div className="">
+                    <div className="my-4 flex flex-col justify-between gap-2">
+                        <p
+                            className="mb-3 font-header text-5xl text-darken-800 sm:text-left"
+                            onClick={() => {
+                                setDescription(null);
+                                setAstro(null);
+                            }}
+                        >
+                            Astros
+                        </p>
+                        {astro ? (
+                            <div className="z-10 flex gap-4 drop-shadow-xl">
+                                <button
+                                    className="my-1 rounded-xl bg-lighten-600 p-2 font-header text-2xl text-darken-800 transition-all hover:bg-red-500 hover:text-lighten-800"
+                                    onClick={() => {
+                                        setDescription(null);
+                                        setAstro(null);
+                                    }}
+                                >
+                                    Back to Gallery
+                                </button>
+                                <button
+                                    className="my-1 rounded-xl bg-lighten-600 p-2 font-header text-2xl text-darken-800 transition-all hover:bg-red-500 hover:text-lighten-800"
+                                    onClick={() => {
+                                        setDescription(null);
+                                        setAstro(
+                                            astros[
+                                                Math.floor(
+                                                    Math.random() *
+                                                        astros.length,
+                                                )
+                                            ],
+                                        );
+                                    }}
+                                >
+                                    Random
+                                </button>
+                            </div>
+                        ) : (
+                            <div className="flex flex-col gap-6">
+                                <p className="text-darken-800">
+                                    Loading sightings...
+                                </p>
+                                <span className="loading loading-spinner loading-lg mx-auto text-darken-800"></span>
+                            </div>
+                        )}
+                    </div>
+                    {astro ? (
+                        createModal(astro)
+                    ) : (
+                        <div className="flex flex-wrap justify-around gap-3">
+                            {astros.map(createCard)}
+                        </div>
+                    )}
+                </div>
+            </>
+        );
+    }
+
     // Discord scraper
     useEffect(() => {
         fetch(`${url}/astros`, {
@@ -109,59 +172,21 @@ export default function Astros(props) {
         }
     }, [astro]);
 
-    return (
-        <div className="">
-            <div className="my-4 flex flex-col justify-between gap-2">
-                <p
-                    className="mb-3 font-header text-5xl text-darken-800 sm:text-left"
-                    onClick={() => {
-                        setDescription(null);
-                        setAstro(null);
-                    }}
-                >
-                    Astros
-                </p>
-                {astro ? (
-                    <div className="z-10 flex gap-4 drop-shadow-xl">
-                        <button
-                            className="my-1 rounded-xl bg-lighten-600 p-2 font-header text-2xl text-darken-800 transition-all hover:bg-red-500 hover:text-lighten-800"
-                            onClick={() => {
-                                setDescription(null);
-                                setAstro(null);
-                            }}
-                        >
-                            Back to Gallery
-                        </button>
-                        <button
-                            className="my-1 rounded-xl bg-lighten-600 p-2 font-header text-2xl text-darken-800 transition-all hover:bg-red-500 hover:text-lighten-800"
-                            onClick={() => {
-                                setDescription(null);
-                                setAstro(
-                                    astros[
-                                        Math.floor(
-                                            Math.random() * astros.length,
-                                        )
-                                    ],
-                                );
-                            }}
-                        >
-                            Random
-                        </button>
-                    </div>
-                ) : (
-                    <div className="flex flex-col gap-6">
-                        <p className="text-darken-800">Loading sightings...</p>
-                        <span className="loading loading-spinner loading-lg mx-auto text-darken-800"></span>
-                    </div>
-                )}
-            </div>
-            {astro ? (
-                createModal(astro)
-            ) : (
-                <div className="flex flex-wrap justify-around gap-3">
-                    {astros.map(createCard)}
+    function createHeader(props) {
+        return (
+            <div className="flex w-full flex-col justify-center">
+                <h1 className="font-header text-3xl">Astro Sightings</h1>
+                <div className="flex w-full justify-stretch gap-4">
+                    <button className="font-header text-xl">Post</button>
+                    <button className="font-header text-xl">Explore</button>
                 </div>
-            )}
-        </div>
-    );
+            </div>
+        );
+    }
+
+    function createExplore(props) {
+        return <></>;
+    }
+
+    return <>{createHeader()}</>;
 }
