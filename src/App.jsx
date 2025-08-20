@@ -1,7 +1,9 @@
 // Components
 import { Routes, Route } from "react-router-dom";
 import Frame from "./components/Frame";
-
+// Vercel Components
+import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/react"
 // Functions
 import { useState, useEffect } from "react";
 import { MotionGlobalConfig, useReducedMotion } from "framer-motion";
@@ -80,6 +82,11 @@ function App() {
                 data={data}
                 setData={setData}
             >
+                {/* Vercel Integrations */}
+                <Analytics />
+                <SpeedInsights />
+                {/* End of Vercel Integrations */}
+
                 <AnimatePresence mode="wait">
                     <Routes>
                         <Route
