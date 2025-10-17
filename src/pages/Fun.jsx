@@ -164,7 +164,7 @@ export default function Fun(props) {
                     {/* Gradient bg */}
                     <div className="bg-lighten-80 m-5 flex flex-wrap justify-center gap-2 rounded-xl max-sm:flex-col">
                         <Link
-                            className="flex min-w-24 flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
+                            className="flex min-w-24 cursor-default flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
                             to="/fun/tabs"
                         >
                             <p className="p-2 font-header font-medium text-darken-800">
