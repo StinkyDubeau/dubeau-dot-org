@@ -25,7 +25,7 @@ export default function Frame(props) {
                         >
                             <div className="flex w-full justify-stretch gap-2">
                                 <button
-                                    className="flex-0 text-nowrap font-header text-white shadow transition-all hover:bg-red-600"
+                                    className="flex-0 underline font-light text-nowrap font-header text-white shadow transition-all hover:bg-red-600"
                                     onClick={() =>
                                         props.setData({
                                             ...props.data,

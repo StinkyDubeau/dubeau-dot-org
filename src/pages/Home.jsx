@@ -41,7 +41,7 @@ export default function Home(props) {
 
                 {/* Buttons */}
                 <div className="flex justify-center gap-2">
-                    <div className="min-h-16 rounded-full border-2 border-b-lighten-50 border-l-lighten-200 border-r-lighten-100 border-t-lighten-300 bg-gradient-to-br from-lighten-200 via-lighten-400 to-lighten-300 shadow-md transition-all hover:border-0 hover:bg-none hover:px-1 hover:py-1 hover:shadow-none sm:px-6">
+                    <div className="w-128 min-h-16 rounded-full border-2 border-b-lighten-50 border-l-lighten-200 border-r-lighten-100 border-t-lighten-300 bg-gradient-to-br from-lighten-300 via-lighten-500 to-lighten-400 px-6 shadow-md transition-all hover:px-0 max-sm:px-2">
                         <NavButtons isOnHome />
                     </div>
                 </div>

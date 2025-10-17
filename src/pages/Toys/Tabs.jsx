@@ -28,87 +28,31 @@ export default function (props) {
     function createFolder(folder, length) {
         const [collapsed, setCollapsed] = useState(true);
 
-        function createButton() {
-            return <div className={`transition-all`}></div>;
-        }
-
         return (
-            <div className="flex flex-col gap-4">
-                {!collapsed ? (
-                    folder.children && folder.children.map(createTab)
-                ) : (
-                    <div className="flex justify-between">
-                        {/* Title */}
-                        <button
-                            className="flex-1 text-left font-header text-xl text-darken-800 underline"
-                            onClick={() =>
-                                setCollapsed(collapsed ? false : true)
-                            }
-                        >
-                            <span className="font-light">
-                                {collapsed ? "Open" : "Close"}{" "}
-                            </span>
-                            {folder.title.toUpperCase()}
-                        </button>
-                        {/* Type */}
-                        <p className="text-nowrap text-end text-darken-300">
-                            {length} songs
-                        </p>
-                    </div>
-                )}
+            <div className={collapsed ? "flex" : "flex flex-col gap-4"}>
+                <button
+                    className="flex flex-1 justify-between text-left font-header text-xl text-darken-800"
+                    onClick={() => setCollapsed(collapsed ? false : true)}
+                >
+                    <p className="underline">
+                        <span className="font-light">
+                            {collapsed ? "Open" : "Close"}{" "}
+                        </span>
+                        {folder.title.toUpperCase()}
+                    </p>
+                    <p className="text-nowrap text-left text-darken-300">
+                        {length} songs
+                    </p>
+                </button>
+                {/* Type */}
 
-                {/* Open/close button */}
+                <div className="flex flex-col gap-4">
+                    {!collapsed &&
+                        folder.children &&
+                        folder.children.map(createTab)}
+                </div>
             </div>
         );
-    }
-
-    function createTab(tab, index) {
-        var friendlyTitle = tab.title;
-        var friendlyArtist = "Unknown artist";
-        var friendlyType = "OTHER";
-        const regex = /^(.*?)\s+(CHORDS?|TAB)\s+.*?by\s+([^@]+)/i;
-        const match = friendlyTitle.match(regex);
-
-        if (match) {
-            // console.log("Match " + typeof match[1].trim() + " " + match[2].trim());
-
-            friendlyTitle = match[1].trim();
-            friendlyType = match[2].trim();
-            friendlyArtist = match[3].trim();
-        } else {
-            console.log("Failed to parse information from entry");
-        }
-
-        if (hideChords && tab.friendlyType == "CHORDS") {
-            return;
-        } else if (hideTabs && tab.friendlyType == "TAB") {
-            return;
-        } else {
-            return (
-                <div key={tab.guid}>
-                    <Link
-                        to={tab.uri}
-                        className="flex flex-col"
-                    >
-                        <div className="flex justify-between">
-                            <p className="text-left font-header text-xl text-darken-800">
-                                {friendlyTitle}
-                            </p>
-                            <p className="text-end text-darken-300">
-                                {friendlyType}
-                            </p>
-                        </div>
-                        <p className="text-left font-header text-xl text-darken-800">
-                            by{" "}
-                            <span className="font-light">{friendlyArtist}</span>
-                        </p>
-                        <p className="text-left font-header text-xs text-darken-600">
-                            {tab.uri}
-                        </p>
-                    </Link>
-                </div>
-            );
-        }
     }
 
     function createTab(tab, index) {
@@ -198,7 +142,7 @@ export default function (props) {
         <>
             <div
                 id="container"
-                className="mx-2 my-4 flex w-svw max-w-screen-lg flex-col gap-4"
+                className="mx-2 my-4 flex w-svw max-w-screen-lg flex-col gap-4 px-4"
             >
                 <p className="text-left font-header text-3xl text-darken-800">
                     Guitar Tabs
