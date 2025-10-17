@@ -198,15 +198,14 @@ export default function (props) {
         <>
             <div
                 id="container"
-                className="mx-2 my-4 flex flex-col gap-4"
+                className="mx-2 my-4 flex w-svw max-w-screen-lg flex-col gap-4"
             >
                 <p className="text-left font-header text-3xl text-darken-800">
                     Guitar Tabs
                 </p>
                 <p className="text-left font-header text-darken-600">
                     This is my collection of tabs dating back to about 2016. I
-                    used to have a (very full) bookmarks folder -- now I have
-                    this.
+                    used to have a very full bookmarks folder. Now I have this.
                 </p>
                 {props.data.experimental && createSortControls()}
                 {Bookmarks ? (
