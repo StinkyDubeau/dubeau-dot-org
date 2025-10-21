@@ -9,6 +9,7 @@ import FactorioBanner from "../assets/factorio-banner.webp";
 import KspBanner from "../assets/ksp-banner.webp";
 import BeamBanner from "../assets/beam-banner.webp";
 import { useEffect } from "react";
+import { Helmet } from "react-helmet";
 
 export default function Fun(props) {
     // Ensure page always has navbar
