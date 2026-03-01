@@ -16,8 +16,8 @@ export default function fun(props) {
         return (
             <div className="flex scale-100 flex-col gap-2 text-darken-10 transition-all hover:text-darken-800">
                 <img
-                    className="m-auto aspect-auto max-h-48 w-min drop-shadow"
-                    src={`https://crafatar.com/renders/body/${user.uuid}`}
+                    className="m-auto aspect-auto max-h-48 w-12 drop-shadow"
+                    src={`https://identicraft.js.org/bust/${user.uuid}`}
                 />
                 <p className="font-header text-lg font-light text-darken-800">
                     {user.name}
@@ -81,7 +81,7 @@ export default function fun(props) {
                 />
             </motion.div>
 
-            <div className="flex flex-col gap-2 rounded-3xl bg-lighten-800 p-4">
+            {/* <div className="flex flex-col gap-2 rounded-3xl bg-lighten-800 p-4">
                 <p className="text-left font-header text-2xl text-darken-800">
                     ℹ️ World Reset Update
                 </p>
@@ -94,11 +94,11 @@ export default function fun(props) {
                     world that has been created today. MCMMO stats have been
                     preserved, but everything else has been freshly reset.
                 </Markdown>
-            </div>
-
+            </div> */}
+{/* 
             <p className="text-left font-header text-5xl text-darken-700 max-md:text-center">
                 How to play
-            </p>
+            </p> */}
 
             <div className="flex flex-col gap-4 rounded-3xl bg-lighten-800 p-4">
                 <p className="text-left font-header text-3xl text-darken-800">
@@ -143,7 +143,7 @@ export default function fun(props) {
                 </div>
 
                 <p className="text-left font-header text-xl text-darken-800">
-                    1. Download and launch Minecraft Java Edition version 1.21.5
+                    1. Download and launch Minecraft Java Edition
                 </p>
                 <p className="text-left font-header text-xl text-darken-800">
                     2. Connect to{" "}
@@ -235,7 +235,7 @@ export default function fun(props) {
                         className=" scale-100 transition-all hover:scale-110"
                         to="https://files.multimc.org/downloads/mmc-develop-win32.zip"
                     >
-                        dubeau.org MultiMC Instance Fall 2024
+                        dubeau.org MultiMC Instance
                     </Link>
                 </div>
                 <p className="text-left font-header text-xl text-darken-800">
@@ -306,8 +306,9 @@ export default function fun(props) {
                     <p className="text-left font-header text-xl text-darken-800">
                         Spawn Generation{" "}
                         <span className="rounded-lg bg-blue-600 p-1 font-header font-light text-blue-600 text-lighten-800 shadow">
-                            Vanilla 1.21.5
-                        </span>
+                            Tectonic 1.21.11
+                        </span>{" "}
+                        for a 4k block diameter around 0,0.
                     </p>
                 </div>
 
@@ -376,7 +377,7 @@ export default function fun(props) {
                     <div className="flex w-12 flex-1 justify-center text-center">
                         <Marquee
                             speed="50"
-                            className="mt-6 w-full overflow-clip"
+                            className="mt-6 overflow-clip"
                         >
                             {whitelist.map(createUser)}
                         </Marquee>
@@ -384,7 +385,7 @@ export default function fun(props) {
                 </div>
             </div>
             <p className="mb-6 text-xl font-light text-darken-700 max-md:text-center">
-                Last updated April 13th, 2025
+                Last updated Mar 1, 2026
             </p>
         </motion.div>
     );
