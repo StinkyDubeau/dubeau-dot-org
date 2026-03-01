@@ -135,7 +135,7 @@ export default function Login(props) {
 
                     <Link
                         to="/fun"
-                        className="p-2 underline"
+                        className="p-2 text-darken-700 underline"
                     >
                         more experiments
                     </Link>

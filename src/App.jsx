@@ -2,11 +2,12 @@
 import { Routes, Route } from "react-router-dom";
 import Frame from "./components/Frame";
 // Vercel Components
-import { Analytics } from "@vercel/analytics/react"
-import { SpeedInsights } from "@vercel/speed-insights/react"
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 // Functions
 import { useState, useEffect } from "react";
 import { MotionGlobalConfig, useReducedMotion } from "framer-motion";
+import { Helmet } from "react-helmet";
 
 // Pages
 import Home from "./pages/Home";
@@ -82,11 +83,23 @@ function App() {
                 data={data}
                 setData={setData}
             >
-                {/* Vercel Integrations */}
+                {/* [][][][][] Vercel Jail [][][][][] */}
                 <Analytics />
                 <SpeedInsights />
-                {/* End of Vercel Integrations */}
+                {/* [][][][][] End of Vercel Jail [][][][][] */}
 
+                <Helmet>
+                    {/* This is the default site title when a younger component doesn't also have a <Helmet> */}
+                    <meta charSet="utf-8" />
+                    <title>
+                        {data &&
+                            `dubeau(${data.experimental ? "experimental" : "dot"})org`}
+                    </title>
+                    <link
+                        rel="dubeau.org"
+                        href="http://dubeau.org/"
+                    />
+                </Helmet>
                 <AnimatePresence mode="wait">
                     <Routes>
                         <Route
