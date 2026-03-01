@@ -22,7 +22,7 @@ export default function fun(props) {
             <div className="flex h-full scale-100 flex-col gap-2 text-darken-10 transition-all hover:text-darken-800">
                 <img
                     className="m-auto aspect-auto max-h-48 w-min drop-shadow"
-                    src={`https://crafatar.com/renders/body/${user.uuid}`}
+                    src={`https://identicraft.js.org/bust/${user.uuid}`}
                 />
                 <p className="font-header text-lg font-light text-darken-800">
                     {user.name}

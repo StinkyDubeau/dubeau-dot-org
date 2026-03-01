@@ -81,6 +81,19 @@ export default function fun(props) {
                 />
             </motion.div>
 
+            <div className="flex w-full flex-col gap-2 rounded-3xl bg-lighten-800 p-4">
+                <p className="text-left font-header text-2xl text-darken-800">
+                    📋 Whitelisted Server
+                </p>
+                <p className="text-left font-header text-xl text-darken-800">
+                    This server is only open to registered users. Message an{" "}
+                    <span className="rounded-lg bg-darken-50 p-1 font-header font-light text-darken-900 shadow">
+                        admin
+                    </span>{" "}
+                    on discord if you have not been whitelisted.
+                </p>
+            </div>
+
             {/* <div className="flex flex-col gap-2 rounded-3xl bg-lighten-800 p-4">
                 <p className="text-left font-header text-2xl text-darken-800">
                     ℹ️ World Reset Update
@@ -95,37 +108,32 @@ export default function fun(props) {
                     preserved, but everything else has been freshly reset.
                 </Markdown>
             </div> */}
-{/* 
+            {/* 
             <p className="text-left font-header text-5xl text-darken-700 max-md:text-center">
                 How to play
             </p> */}
 
             <div className="flex flex-col gap-4 rounded-3xl bg-lighten-800 p-4">
                 <p className="text-left font-header text-3xl text-darken-800">
-                    Join with a vanilla client
+                    Join on Java Edition
                 </p>
                 <div
                     id="pros cons"
                     className="flex flex-wrap justify-center gap-2"
                 >
-                    <div className="flex-grow rounded-full bg-green-600 px-3 py-1">
+                    <div className="flex-grow rounded-full bg-blue-600 px-3 py-1">
                         <p className="font-header font-light text-lighten-800">
-                            Easy to set up
+                            Windows
                         </p>
                     </div>
-                    <div className="flex-grow rounded-full bg-green-600 px-3 py-1">
+                    <div className="flex-grow rounded-full bg-blue-600 px-3 py-1">
                         <p className="font-header font-light text-lighten-800">
-                            Works on most PCs
+                            MacOS
                         </p>
                     </div>
-                    <div className="flex-grow rounded-full bg-red-500 px-3 py-1">
+                    <div className="flex-grow rounded-full bg-blue-600 px-3 py-1">
                         <p className="font-header font-light text-lighten-800">
-                            Missing social features
-                        </p>
-                    </div>
-                    <div className="flex-grow rounded-full bg-red-500 px-3 py-1">
-                        <p className="font-header font-light text-lighten-800">
-                            Worse graphics
+                            Linux
                         </p>
                     </div>
                 </div>
@@ -147,7 +155,7 @@ export default function fun(props) {
                 </p>
                 <p className="text-left font-header text-xl text-darken-800">
                     2. Connect to{" "}
-                    <span className="font-light text-red-500">
+                    <span className="font-light text-blue-600">
                         mc.dubeau.org
                     </span>
                 </p>
@@ -158,37 +166,39 @@ export default function fun(props) {
                 </p>
             </div>
 
-            <div className="flex flex-col gap-4 rounded-3xl bg-lighten-800 p-4">
+            <div className="flex flex-col gap-8 rounded-3xl bg-lighten-800 p-4">
                 <p className="text-left font-header text-3xl text-darken-800">
-                    Join with a modded client
+                    Join on Bedrock Edition
                 </p>
+
                 <div
                     id="pros cons"
                     className="flex flex-wrap justify-center gap-2"
                 >
-                    <div className="flex-grow rounded-full bg-green-600 px-3 py-1">
+                    <div className="flex-grow rounded-full bg-blue-600 px-3 py-1">
                         <p className="font-header font-light text-lighten-800">
-                            Infinite render distance
+                            iOS
                         </p>
                     </div>
-                    <div className="flex-grow rounded-full bg-green-600 px-3 py-1">
+                    <div className="flex-grow rounded-full bg-blue-600 px-3 py-1">
                         <p className="font-header font-light text-lighten-800">
-                            Built-in shaders
+                            Android
                         </p>
                     </div>
-                    <div className="flex-grow rounded-full bg-red-500 px-3 py-1">
+                    <div className="flex-grow rounded-full bg-blue-600 px-3 py-1">
                         <p className="font-header font-light text-lighten-800">
-                            Higher system requirements
+                            Switch
                         </p>
                     </div>
-                    <div className="flex-grow rounded-full bg-red-500 px-3 py-1">
+                    <div className="flex-grow rounded-full bg-blue-600 px-3 py-1">
                         <p className="font-header font-light text-lighten-800">
-                            Harder to set up
+                            Xbox
                         </p>
                     </div>
                 </div>
+
                 <p className="text-left font-header text-xl text-darken-800">
-                    0. Connect with us on discord for support and whitelisting
+                    0. Connect with us on discord to be whitelisted
                 </p>
                 <div className="justify-left flex gap-4 font-header text-darken-800 underline">
                     <Link
@@ -198,70 +208,32 @@ export default function fun(props) {
                         Join the discord server
                     </Link>
                 </div>
+
                 <p className="text-left font-header text-xl text-darken-800">
-                    1. Download the MultiMC launcher for your system:
-                </p>
-                <div className="justify-left flex gap-4 font-header text-darken-800 underline">
-                    <Link
-                        className=" scale-100 transition-all hover:scale-110"
-                        to="https://files.multimc.org/downloads/mmc-develop-win32.zip"
-                    >
-                        Windows
-                    </Link>
-                    <Link
-                        className=" scale-100 transition-all hover:scale-110"
-                        to="https://files.multimc.org/downloads/multimc_1.6-1.deb"
-                    >
-                        Debian/Ubuntu
-                    </Link>
-                    <Link
-                        className=" scale-100 transition-all hover:scale-110"
-                        to="https://github.com/MultiMC/multimc-pkgbuild"
-                    >
-                        Arch
-                    </Link>
-                    <Link
-                        className=" scale-100 transition-all hover:scale-110"
-                        to="https://files.multimc.org/downloads/mmc-develop-osx64.tar.gz"
-                    >
-                        MacOS
-                    </Link>
-                </div>
-                <p className="text-left font-header text-xl text-darken-800">
-                    2. Download our official MultiMC instance
-                </p>
-                <div className="justify-left flex gap-4 font-header text-darken-800 underline">
-                    <Link
-                        className=" scale-100 transition-all hover:scale-110"
-                        to="https://files.multimc.org/downloads/mmc-develop-win32.zip"
-                    >
-                        dubeau.org MultiMC Instance
-                    </Link>
-                </div>
-                <p className="text-left font-header text-xl text-darken-800">
-                    3. Connect your Microsoft account by clicking "Manage
-                    Accounts" in the top-right corner of MultiMC
+                    1. Download Minecraft from the app store
                 </p>
                 <p className="text-left font-header text-xl text-darken-800">
-                    4. Click "Add instance", and then import the ZIP folder you
-                    downloaded in step 2
+                    2. Sign in with a Microsoft account. Account age must be 18yrs or older to join.
                 </p>
                 <p className="text-left font-header text-xl text-darken-800">
-                    5. Launch the new instance and connect to{" "}
-                    <span className="font-light text-red-500">
-                        mc.dubeau.org
+                    3. Choose Play > Servers > and tap{" "}
+                    <span className="rounded-lg bg-darken-50 p-1 font-header font-light text-darken-900 shadow">
+                        +Add server
                     </span>
                 </p>
                 <p className="text-left font-header text-xl text-darken-800">
-                    6. <span className="font-light">(Optional)</span> For the
-                    best experience, temporarily set your render distance to 32
-                    chunks, and do some exploring. All terrain that you generate
-                    will stay within your render distance even if you set your
-                    render distance to something low.{" "}
-                    <span className="font-light">(16 chunks recommended.)</span>
+                    4. Enter the server address{" "}
+                    <span className="font-light text-blue-600">
+                        mc.dubeau.org
+                    </span>{" "}
+                    and optionally type a Server name. Press{" "}
+                    <span className="rounded-lg bg-darken-50 p-1 font-header font-light text-darken-900 shadow">
+                        Add and play
+                    </span>
                 </p>
+
                 <p className="text-left font-header text-xl text-darken-800">
-                    7. Have fun and be cool! Follow posted signs for general
+                    5. Have fun and be cool! Follow posted signs for general
                     rules
                 </p>
             </div>
@@ -286,7 +258,7 @@ export default function fun(props) {
                     <p className="text-left font-header text-xl text-darken-800">
                         World Seed{" "}
                         <span className="rounded-lg bg-blue-600 p-1 font-header font-light text-blue-600 text-lighten-800 shadow">
-                            -3185478975619901032
+                            -890605254126312509
                         </span>
                     </p>
                 </div>
