@@ -11,7 +11,7 @@ export default function Home(props) {
     // Vignette prop adds a large dark shadow to page.
     useEffect(() => {
         props.data &&
-            props.setData({ ...props.data, vignette: true, noNavbar: true });
+            props.setData({ ...props.data, vignette: false, noNavbar: true });
     }, []);
 
     return (
@@ -27,9 +27,9 @@ export default function Home(props) {
                 <Panel className="overflow-clip rounded-3xl bg-lighten-200 max-sm:w-full">
                     <div className="flex cursor-default flex-col justify-center">
                         <div className="flex">
-                            <h1 className="flex-0 bg-gradient h-auto w-auto bg-gradient-to-bl from-yellow-600 via-orange-500 to-pink-500 font-header text-4xl font-extrabold tracking-tighter text-darken-300 bg-blend-lighten [writing-mode:vertical-rl] max-sm:text-5xl">
+                            <p className="flex-0 text-shadow-lg/30 bg-gradient h-auto w-auto animate-gradient-xy bg-gradient-to-bl from-yellow-600 via-orange-500 to-pink-500 font-header text-4xl font-extrabold tracking-tighter text-darken-300 text-fuchsia-100 bg-blend-lighten drop-shadow-2xl [writing-mode:vertical-rl] max-sm:text-5xl">
                                 dubeau.org
-                            </h1>
+                            </p>
                             <div className="flex h-max flex-1 flex-col justify-center gap-2 px-2 font-header text-2xl tracking-wider text-darken-700">
                                 <p className="flex-0">jake's web sandbox</p>
                                 <NavButtons isOnHome />

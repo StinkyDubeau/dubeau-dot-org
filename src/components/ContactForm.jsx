@@ -146,7 +146,7 @@ export default function ContactForm(props) {
                 </label>
 
                 <textarea
-                    className="rounded-xl border-none bg-darken-50  p-2 text-darken-800"
+                    className="p-2 text-darken-800 bg-transparent shadow-inner rounded-xl border-none bg-darken-50"
                     placeholder="Body"
                     value={body}
                     onChange={(e) => {

@@ -17,7 +17,7 @@ export default function Fun(props) {
         props.setData({
             ...props.data,
             noNavbar: false,
-            vignette: false,
+            vignette: true,
         });
     }, []);
 
@@ -28,7 +28,7 @@ export default function Fun(props) {
             exit={{ opacity: 0.6, x: -50 }}
             layout
             classname=""
-                            id="page-container"
+            id="page-container"
         >
             {/* 
             Social
@@ -76,8 +76,7 @@ export default function Fun(props) {
                     </motion.div>
                 </motion.div>
 
-                {/* MINECRAFT SERVERS */}
-                <div className="w-full animate-gradient-x rounded-2xl bg-gradient-to-br from-green-400 via-green-600 to-cyan-800">
+                {/* <div className="w-full animate-gradient-x rounded-2xl bg-gradient-to-br from-green-400 via-green-600 to-cyan-800">
                     <div className="m-5 flex flex-col gap-4">
                         <p className="text-left font-header text-5xl text-darken-600">
                             Minecraft servers
@@ -93,7 +92,6 @@ export default function Fun(props) {
                             to request access.
                         </p>
                     </div>
-                    {/* Gradient bg */}
                     <div className="my-5 flex flex-wrap justify-evenly gap-4 rounded-2xl px-6 py-4 sm:gap-8">
                         <AnimatePresence>
                             <ServerCard
@@ -148,7 +146,7 @@ export default function Fun(props) {
                             )}
                         </AnimatePresence>
                     </div>
-                </div>
+                </div> */}
 
                 {/* GAME SERVERS */}
                 <div className="w-full animate-gradient-x rounded-2xl bg-gradient-to-br from-blue-400 via-blue-300 to-cyan-400">

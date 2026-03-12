@@ -31,13 +31,13 @@ export default function ServerCard(props) {
                 {/* Container */}
                 <div className="z-25 m-2 flex h-48 flex-col justify-center gap-2 rounded-lg drop-shadow">
                     {/* Spacer */}
-                    <p className="z-10 mt-4 font-header text-3xl text-white drop-shadow">
+                    <p className="z-10 mt-4 font-header text-3xl text-darken-800 drop-shadow">
                         {props.title}
                     </p>
-                    <p className="z-10 font-header font-semibold text-white drop-shadow">
+                    <p className="z-10 font-header font-semibold text-darken-800 drop-shadow">
                         {props.subtitle}
                     </p>
-                    <p className="animate-pulse font-header text-white hover:animate-none">
+                    <p className="animate-pulse font-header text-darken-800 hover:animate-none">
                         {props.announcement && props.announcement}
                     </p>
                 </div>

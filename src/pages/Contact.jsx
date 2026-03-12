@@ -9,7 +9,7 @@ export default function (props) {
         props.setData({
             ...props.data,
             noNavbar: false,
-            vignette: false,
+            vignette: true,
         });
     }, []);
 
@@ -84,7 +84,7 @@ export default function (props) {
                 </div>
 
                 {/* CONTACT OR REPORT MODERATION ISSUES */}
-                <div className="flex flex-grow animate-gradient-x justify-center rounded-2xl bg-gradient-to-tr from-red-300 via-yellow-200 to-purple-200 p-4 sm:gap-8">
+                <div className="flex flex-grow animate-gradient-x justify-center rounded-2xl bg-gradient-to-tr from-red-500 via-yellow-600 to-purple-900 p-4 sm:gap-8">
                     <div className="flex flex-wrap justify-around gap-6 lg:gap-48">
                         <div className="flex w-72 flex-col">
                             <p className="font-header text-5xl text-darken-800">
