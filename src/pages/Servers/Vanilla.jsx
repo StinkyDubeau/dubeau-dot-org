@@ -175,22 +175,22 @@ export default function fun(props) {
                     id="pros cons"
                     className="flex flex-wrap justify-center gap-2"
                 >
-                    <div className="flex-grow rounded-full bg-blue-600 px-3 py-1">
+                    <div className="flex-grow rounded-full bg-green-500 px-3 py-1">
                         <p className="font-header font-light text-lighten-800">
                             iOS
                         </p>
                     </div>
-                    <div className="flex-grow rounded-full bg-blue-600 px-3 py-1">
+                    <div className="flex-grow rounded-full bg-green-500 px-3 py-1">
                         <p className="font-header font-light text-lighten-800">
                             Android
                         </p>
                     </div>
-                    <div className="flex-grow rounded-full bg-blue-600 px-3 py-1">
+                    <div className="flex-grow rounded-full bg-yellow-600 px-3 py-1">
                         <p className="font-header font-light text-lighten-800">
                             Switch
                         </p>
                     </div>
-                    <div className="flex-grow rounded-full bg-blue-600 px-3 py-1">
+                    <div className="flex-grow rounded-full bg-yellow-600 px-3 py-1">
                         <p className="font-header font-light text-lighten-800">
                             Xbox
                         </p>

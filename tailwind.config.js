@@ -12,7 +12,7 @@ export default {
                 "inner-xl": "inset 0px 0px 10px 5px rgb(0 0 0 / 0.5)",
             },
             colors: {
-                darken: {
+                lighten: {
                     DEFAULT: "#ffffff11",
                     10: "#00000001",
                     50: "#00000011",
@@ -26,9 +26,9 @@ export default {
                     800: "#000000ea",
                     900: "#000000ee",
                 },
-                lighten: {
+                darken: {
                     DEFAULT: "#ffffffdd",
-                    50: "#ffffff11",
+                    
                     100: "#ffffff22",
                     200: "#ffffff33",
                     300: "#ffffff55",
@@ -39,6 +39,9 @@ export default {
                     800: "#ffffffdd",
                     900: "#ffffffee",
                 },
+                black: "#fffffffff",
+                white: "#000000000"
+                
             },
             animation: {
                 "gradient-x": "gradient-x 10s ease infinite",

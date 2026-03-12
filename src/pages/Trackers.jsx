@@ -45,9 +45,9 @@ export default function Trackers(props) {
                     and return to the{" "}
                     <a
                         href="/fun"
-                        className="font-semibold"
+                        className="hover:font-semibold"
                     >
-                        playground
+                        sandbox
                     </a>{" "}
                     page. You'll find several new links and features there, and
                     sitewide.

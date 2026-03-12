@@ -25,7 +25,7 @@ export default function Frame(props) {
                         >
                             <div className="flex w-full justify-stretch gap-2">
                                 <button
-                                    className="flex-0 underline font-light text-nowrap font-header text-white shadow transition-all hover:bg-red-600"
+                                    className="flex-0 text-nowrap font-header font-light text-white underline shadow transition-all hover:bg-red-600"
                                     onClick={() =>
                                         props.setData({
                                             ...props.data,
@@ -69,7 +69,7 @@ export default function Frame(props) {
     }
 
     return (
-        <div className="bg-darken-900">
+        <div className="bg-lighten-900">
             {/* Data Components */}
             {props.data && createDataDependants()}
             {!props.data.noScroll && <ScrollToTop />}
@@ -82,7 +82,7 @@ export default function Frame(props) {
 
             {/* Content */}
             <div
-                className={`min-w-screen -z-50 h-max min-h-screen ${props.data.vignette === true ? "bg-darken shadow-inner-4xl" : "bg-lighten"}`}
+                className={`min-w-screen -z-50 flex h-max min-h-screen flex-col justify-center ${props.data.vignette === true ? "bg-lighten shadow-inner-4xl" : "bg-darken"}`}
             >
                 <div className={`m-auto ${!props.data.noNavbar && "pt-16"} `}>
                     <div className="mx-auto max-w-screen-xl justify-center xs:flex">

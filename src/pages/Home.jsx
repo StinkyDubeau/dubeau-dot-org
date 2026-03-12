@@ -7,44 +7,36 @@ import { motion } from "framer-motion";
 import { useEffect } from "react";
 
 export default function Home(props) {
+    // props.setData is inherited from parent object.
+    // Vignette prop adds a large dark shadow to page.
     useEffect(() => {
         props.data &&
-            props.setData({ ...props.data, vignette: false, noNavbar: true });
+            props.setData({ ...props.data, vignette: true, noNavbar: true });
     }, []);
 
     return (
         <>
             <motion.div
                 layout
-                initial={{ x: -100 }}
+                initial={{ x: 0 }}
                 animate={{ x: 0 }}
-                className="flex h-screen flex-col justify-center gap-4"
+                className="flex flex-col justify-center gap-4"
                 id="page-container"
             >
                 {/* Title */}
-                <Panel className="max-sm:w-full">
-                    <div className="flex cursor-default flex-col justify-center py-8 sm:p-12">
-                        <h1 className="font-header text-6xl font-medium tracking-tight text-darken-700 max-sm:text-5xl">
-                            dubeau.org
-                        </h1>
-                        <div className="flex justify-center gap-2 font-header text-xl tracking-wider text-darken-700">
-                            <p>jake's web </p>
-                            <Link
-                                to="/fun"
-                                className="cursor-default font-regular transition-all hover:rounded-full hover:bg-lighten-800 hover:p-1 hover:font-bold hover:shadow-md"
-                            >
-                                playground
-                            </Link>
+                <Panel className="overflow-clip rounded-3xl bg-lighten-200 max-sm:w-full">
+                    <div className="flex cursor-default flex-col justify-center">
+                        <div className="flex">
+                            <h1 className="flex-0 bg-gradient h-auto w-auto bg-gradient-to-bl from-yellow-600 via-orange-500 to-pink-500 font-header text-4xl font-extrabold tracking-tighter text-darken-300 bg-blend-lighten [writing-mode:vertical-rl] max-sm:text-5xl">
+                                dubeau.org
+                            </h1>
+                            <div className="flex h-max flex-1 flex-col justify-center gap-2 px-2 font-header text-2xl tracking-wider text-darken-700">
+                                <p className="flex-0">jake's web sandbox</p>
+                                <NavButtons isOnHome />
+                            </div>
                         </div>
                     </div>
                 </Panel>
-
-                {/* Buttons */}
-                <div className="flex justify-center gap-2">
-                    <div className="w-128 min-h-16 rounded-full border-2 border-b-lighten-50 border-l-lighten-200 border-r-lighten-100 border-t-lighten-300 bg-gradient-to-br from-lighten-300 via-lighten-500 to-lighten-400 px-6 shadow-md transition-all hover:px-0 max-sm:px-2">
-                        <NavButtons isOnHome />
-                    </div>
-                </div>
             </motion.div>
 
             {/* Accessibility settings */}
