@@ -5,6 +5,7 @@
     "singleQuote": false,
     "jsxSingleQuote": false,
     "printWidth": 80,
-    "plugins": [""],
-    "singleAttributePerLine": true
+    "plugins": ["prettier-plugin-tailwindcss"],
+    "singleAttributePerLine": true,
+    "tailwindStylesheet": "./index.css"
 }
