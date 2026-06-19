@@ -65,7 +65,7 @@ export default function fun(props) {
                                     viewBox="0 0 16 16"
                                 >
                                     <path
-                                        fill-rule="evenodd"
+                                        fillRule="evenodd"
                                         d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z"
                                     />
                                 </svg>
@@ -166,7 +166,7 @@ export default function fun(props) {
                 </p>
             </div>
 
-            <div className="flex flex-col gap-8 rounded-3xl bg-lighten-800 p-4">
+            <div className="lit-panel flex flex-col gap-8 rounded-3xl p-4">
                 <p className="text-left font-header text-3xl text-darken-800">
                     Join on Bedrock Edition
                 </p>
@@ -239,7 +239,7 @@ export default function fun(props) {
                 </p>
             </div>
 
-            <div className="flex flex-col gap-2 rounded-3xl bg-lighten-800 p-4">
+            <div className="lit-panel flex flex-col gap-2 rounded-3xl p-4">
                 <p className="text-left font-header text-3xl text-darken-800">
                     Extra information
                 </p>

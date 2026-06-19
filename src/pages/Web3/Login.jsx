@@ -156,9 +156,7 @@ export default function Login(props) {
                 onClick={() => joinRoom(roomID)}
                 className="lit-control flex aspect-square h-16 cursor-default flex-col justify-center rounded-xl p-2 shadow-md backdrop-blur-md"
             >
-                <p className="font-header text-3xl text-lighten-700">
-                    {roomID}
-                </p>
+                <p className="font-header text-3xl text-current">{roomID}</p>
             </button>
         );
     }

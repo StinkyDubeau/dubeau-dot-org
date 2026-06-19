@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import NavButtons from "./NavButtons";
+import GyroBevel from "./GyroBevel";
 import { AnimatePresence, motion } from "framer-motion";
 
 export default function Navbar(props) {
@@ -31,18 +32,13 @@ export default function Navbar(props) {
     }
 
     return (
-        <motion.div
-            initial={{ height: 0, padding: 0 }}
-            animate={{ height: "auto", padding: 6 }}
-            exit={{ height: 0, padding: 0 }}
-            className="fixed left-0 right-0 top-2 z-40 mx-auto flex w-full flex-col justify-center overflow-visible"
-        >
-            <div className="mx-auto w-full max-w-xl px-2 py-1.5">
-                <div className="gyro-bevel min-h-16 w-[calc(100vw-1rem)] max-w-xl rounded-full px-4 py-1 shadow-md sm:px-6">
+        <div className="fixed left-0 right-0 top-2 z-40 mx-auto flex w-full flex-col justify-center overflow-visible">
+            <div className="mx-auto w-full max-w-xl py-1.5">
+                <GyroBevel>
                     <NavButtons />
-                </div>
+                </GyroBevel>
             </div>
             {props.data && createDataDependants()}
-        </motion.div>
+        </div>
     );
 }

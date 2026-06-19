@@ -35,7 +35,7 @@ export default function fun(props) {
                     />
                 </div>
 
-                <div className="flex flex-col gap-2 rounded-3xl bg-lighten-800 p-4">
+                <div className="lit-panel flex flex-col gap-2 rounded-3xl p-4">
                     <p className="text-left font-header text-3xl text-darken-800">
                         Join with steam
                     </p>
@@ -57,7 +57,7 @@ export default function fun(props) {
                     </div>
                 </div>
 
-                <div className="flex flex-col gap-2 rounded-3xl bg-lighten-800 p-4">
+                <div className="lit-panel flex flex-col gap-2 rounded-3xl p-4">
                     <p className="text-left font-header text-3xl text-darken-800">
                         Join with server IP
                     </p>

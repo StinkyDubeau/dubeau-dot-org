@@ -2,9 +2,11 @@
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Panel(props) {
+    const baseClassName =
+        "lit-panel w-full rounded-3xl p-2 shadow-lg backdrop-blur-3xl";
     const className = props.className
-        ? props.className
-        : "lit-panel w-full rounded-3xl bg-lighten-600 p-2 shadow-lg backdrop-blur-3xl";
+        ? `${baseClassName} ${props.className}`
+        : baseClassName;
 
     return (
         <AnimatePresence>
