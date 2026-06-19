@@ -104,7 +104,7 @@ export default function ContactForm(props) {
     function createForm() {
         return (
             <div className="flex flex-col gap-2 ">
-                <label className="lit-input flex items-center gap-2 rounded-xl p-2 shadow-inner">
+                <label className="lit-input flex min-w-0 items-center gap-2 rounded-xl p-2 shadow-inner">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 16 16"
@@ -115,7 +115,7 @@ export default function ContactForm(props) {
                     </svg>
                     <input
                         type=""
-                        className="border-none bg-transparent text-darken-800"
+                        className="min-w-0 flex-1 border-none bg-transparent text-darken-800"
                         placeholder="Name"
                         value={username}
                         onChange={(e) => {
@@ -124,7 +124,7 @@ export default function ContactForm(props) {
                     />
                 </label>
 
-                <label className="lit-input flex items-center gap-2 rounded-xl p-2 shadow-inner">
+                <label className="lit-input flex min-w-0 items-center gap-2 rounded-xl p-2 shadow-inner">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 16 16"
@@ -136,7 +136,7 @@ export default function ContactForm(props) {
                     </svg>
                     <input
                         type=""
-                        className="flex-1 grow border-none bg-transparent text-darken-800"
+                        className="min-w-0 flex-1 grow border-none bg-transparent text-darken-800"
                         placeholder="Email"
                         value={email}
                         onChange={(e) => {
@@ -165,7 +165,7 @@ export default function ContactForm(props) {
     }
 
     return (
-        <div className="lit-panel w-72 rounded-2xl p-4 shadow-xl">
+        <div className="lit-panel w-full max-w-72 rounded-2xl p-4 shadow-xl">
             {!submitted ? createForm() : createResult()}
         </div>
     );

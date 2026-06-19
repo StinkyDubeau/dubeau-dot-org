@@ -3,9 +3,11 @@ import { useCallback, useEffect, useRef, useState } from "react";
 const MAX_TILT = 35;
 const STORAGE_KEY = "dubeau-motion-lighting";
 const THEME_STORAGE_KEY = "dubeau-color-mode";
-const SPRING_STIFFNESS = 0.038;
-const SPRING_DAMPING = 0.82;
-const NOISE_SCALE = 0.028;
+const SPRING_STIFFNESS = 0.16;
+const SPRING_DAMPING = 0.62;
+const NOISE_SCALE = 0.006;
+const LIGHT_POSITION_RANGE = 46;
+const PANEL_LIGHT_POSITION_RANGE = 40;
 
 function clamp(value, min, max) {
     return Math.min(Math.max(value, min), max);
@@ -72,19 +74,25 @@ export default function MotionLighting({
 
         root.style.setProperty("--light-x", lightX.toFixed(3));
         root.style.setProperty("--light-y", lightY.toFixed(3));
-        root.style.setProperty("--light-offset-x", `${lightX * 7}px`);
-        root.style.setProperty("--light-offset-y", `${lightY * 7}px`);
-        root.style.setProperty("--shadow-offset-x", `${lightX * -9}px`);
-        root.style.setProperty("--shadow-offset-y", `${lightY * -9}px`);
-        root.style.setProperty("--light-position-x", `${50 + lightX * 48}%`);
-        root.style.setProperty("--light-position-y", `${50 + lightY * 48}%`);
+        root.style.setProperty("--light-offset-x", `${lightX * 3}px`);
+        root.style.setProperty("--light-offset-y", `${lightY * 3}px`);
+        root.style.setProperty("--shadow-offset-x", `${lightX * -4}px`);
+        root.style.setProperty("--shadow-offset-y", `${lightY * -4}px`);
+        root.style.setProperty(
+            "--light-position-x",
+            `${50 + lightX * LIGHT_POSITION_RANGE}%`,
+        );
+        root.style.setProperty(
+            "--light-position-y",
+            `${50 + lightY * LIGHT_POSITION_RANGE}%`,
+        );
         root.style.setProperty(
             "--panel-light-position-x",
-            `${50 - lightX * 48}%`,
+            `${50 - lightX * PANEL_LIGHT_POSITION_RANGE}%`,
         );
         root.style.setProperty(
             "--panel-light-position-y",
-            `${50 - lightY * 48}%`,
+            `${50 - lightY * PANEL_LIGHT_POSITION_RANGE}%`,
         );
         root.style.setProperty(
             "--light-angle",
@@ -95,11 +103,10 @@ export default function MotionLighting({
     const setLightDirection = useCallback((x, y) => {
         const normalizedX = clamp(x / MAX_TILT, -1, 1);
         const normalizedY = clamp(y / MAX_TILT, -1, 1);
-        const length = Math.max(Math.hypot(normalizedX, normalizedY), 1);
 
         targetRef.current = {
-            x: normalizedX / length,
-            y: normalizedY / length,
+            x: normalizedX,
+            y: normalizedY,
         };
     }, []);
 

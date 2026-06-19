@@ -72,6 +72,10 @@ body[data-color-mode="light"] {
     width: min(32rem, calc(100vw - 1rem));
 }
 
+.overflow-wrap-anywhere {
+    overflow-wrap: anywhere;
+}
+
 .site-surface {
     background: radial-gradient(
             circle at var(--panel-light-position-x)
@@ -431,6 +435,21 @@ select {
     border-color: rgb(255 255 255 / 0.08) !important;
     background-color: rgb(3 5 9 / 0.74) !important;
     color: rgb(255 255 255 / 0.9) !important;
+}
+
+.lit-input {
+    background-color: rgb(16 20 29 / 0.58) !important;
+}
+
+.lit-input :where(input, textarea, select) {
+    border-color: transparent !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    color: inherit !important;
+}
+
+[data-color-mode="light"] .lit-input {
+    background-color: rgb(255 252 246 / 0.76) !important;
 }
 
 ::placeholder {

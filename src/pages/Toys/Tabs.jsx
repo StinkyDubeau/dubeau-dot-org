@@ -75,7 +75,7 @@ export default function (props) {
 
         return (
             <Panel
-                className="overflow-hidden rounded-2xl bg-lighten-800 p-4 shadow-xl"
+                className="min-w-0 overflow-hidden rounded-2xl bg-lighten-800 p-3 shadow-xl xs:p-4"
                 key={bookmark.guid}
             >
                 {/* Create a folder if there are children under this component. Otherwise create the tab. */}
@@ -95,18 +95,22 @@ export default function (props) {
         const [collapsed, setCollapsed] = useState(true);
 
         return (
-            <div className={collapsed ? "flex" : "flex flex-col gap-4"}>
+            <div
+                className={
+                    collapsed ? "min-w-0" : "flex min-w-0 flex-col gap-4"
+                }
+            >
                 <button
-                    className="flex flex-1 justify-between text-left font-header text-xl text-darken-800"
+                    className="flex w-full min-w-0 flex-col gap-1 text-left font-header text-lg text-darken-800 xs:flex-row xs:justify-between xs:text-xl"
                     onClick={() => setCollapsed(collapsed ? false : true)}
                 >
-                    <p className="underline">
+                    <p className="overflow-wrap-anywhere min-w-0 underline">
                         <span className="font-light">
                             {collapsed ? "Open" : "Close"}{" "}
                         </span>
                         {folder.title.toUpperCase()}
                     </p>
-                    <p className="text-nowrap text-left text-darken-300">
+                    <p className="shrink-0 text-left text-sm text-darken-300 xs:text-base">
                         {visibleChildren.length} songs
                     </p>
                 </button>
@@ -126,20 +130,20 @@ export default function (props) {
             <div key={tab.guid}>
                 <Link
                     to={tab.uri}
-                    className="flex flex-col"
+                    className="flex min-w-0 flex-col"
                 >
-                    <div className="flex justify-between">
-                        <p className="text-left font-header text-xl text-darken-800">
+                    <div className="flex min-w-0 flex-col gap-1 xs:flex-row xs:justify-between">
+                        <p className="overflow-wrap-anywhere min-w-0 text-left font-header text-lg text-darken-800 xs:text-xl">
                             {friendlyTitle}
                         </p>
-                        <p className="text-end text-darken-300">
+                        <p className="shrink-0 text-left text-sm text-darken-300 xs:text-end xs:text-base">
                             {friendlyType}
                         </p>
                     </div>
-                    <p className="text-left font-header text-xl text-darken-800">
+                    <p className="overflow-wrap-anywhere min-w-0 text-left font-header text-lg text-darken-800 xs:text-xl">
                         by <span className="font-light">{friendlyArtist}</span>
                     </p>
-                    <p className="text-left font-header text-xs text-darken-600 max-xs:hidden">
+                    <p className="overflow-wrap-anywhere min-w-0 text-left font-header text-xs text-darken-600">
                         {tab.uri}
                     </p>
                 </Link>
@@ -150,7 +154,7 @@ export default function (props) {
     function createTabResult(tab) {
         return (
             <Panel
-                className="overflow-hidden rounded-2xl bg-lighten-800 p-4 shadow-xl"
+                className="min-w-0 overflow-hidden rounded-2xl bg-lighten-800 p-3 shadow-xl xs:p-4"
                 key={tab.guid}
             >
                 {createTab(tab)}
@@ -169,7 +173,7 @@ export default function (props) {
                     value={searchQuery}
                     onChange={(event) => setSearchQuery(event.target.value)}
                     placeholder="Search title, artist, type, or URL"
-                    className="lit-input w-full rounded-xl px-3 py-2 font-header"
+                    className="lit-input w-full min-w-0 rounded-xl px-3 py-2 font-header text-sm xs:text-base"
                 />
                 <div className="flex flex-wrap gap-2">
                     <button
@@ -177,7 +181,7 @@ export default function (props) {
                             setHideChords(false);
                             setHideTabs(false);
                         }}
-                        className="lit-control rounded-xl px-3 py-2 text-darken-800"
+                        className="lit-control min-w-0 flex-1 rounded-xl px-3 py-2 text-darken-800 xs:flex-none"
                     >
                         Show all
                     </button>
@@ -186,7 +190,7 @@ export default function (props) {
                             setHideChords(false);
                             setHideTabs(true);
                         }}
-                        className="lit-control rounded-xl px-3 py-2 text-darken-800"
+                        className="lit-control min-w-0 flex-1 rounded-xl px-3 py-2 text-darken-800 xs:flex-none"
                     >
                         Chords only
                     </button>
@@ -195,7 +199,7 @@ export default function (props) {
                             setHideChords(true);
                             setHideTabs(false);
                         }}
-                        className="lit-control rounded-xl px-3 py-2 text-darken-800"
+                        className="lit-control min-w-0 flex-1 rounded-xl px-3 py-2 text-darken-800 xs:flex-none"
                     >
                         Tabs only
                     </button>
@@ -224,12 +228,12 @@ export default function (props) {
         <>
             <div
                 id="container"
-                className="mx-2 my-4 flex w-svw max-w-screen-lg flex-col gap-4 xs:px-4"
+                className="mx-auto my-4 flex w-full max-w-screen-lg flex-col gap-4 px-3 xs:px-4"
             >
-                <p className="font-header text-3xl text-darken-800 sm:text-left">
+                <p className="overflow-wrap-anywhere min-w-0 font-header text-3xl text-darken-800 sm:text-left">
                     Guitar Tabs
                 </p>
-                <p className="font-header text-darken-600 sm:text-left">
+                <p className="overflow-wrap-anywhere min-w-0 font-header text-darken-600 sm:text-left">
                     This is my collection of tabs dating back to about 2016. I
                     used to have a very full bookmarks folder. Now I have this.
                 </p>
