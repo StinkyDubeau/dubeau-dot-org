@@ -33,11 +33,17 @@ export default function Navbar(props) {
     return (
         <motion.div
             initial={{ height: 0, padding: 0 }}
-            animate={{ height: "auto", padding: 2 }}
+            animate={{ height: "auto", padding: 6 }}
             exit={{ height: 0, padding: 0 }}
-            className="lit-navbar fixed z-40 mx-auto flex w-full flex-col justify-center overflow-clip backdrop-blur-3xl"
+            className="fixed left-0 right-0 top-2 z-40 mx-auto flex w-full flex-col justify-center overflow-visible"
         >
-            <NavButtons />
+            <div className="mx-auto w-full max-w-xl px-2 py-1.5">
+                <div className="gyro-bevel min-h-16 rounded-full p-0.5 shadow-md">
+                    <div className="gyro-bevel-surface h-full rounded-full px-2 sm:px-6">
+                        <NavButtons />
+                    </div>
+                </div>
+            </div>
             {props.data && createDataDependants()}
         </motion.div>
     );

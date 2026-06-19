@@ -1,7 +1,7 @@
 const Data = {
     Count: 1,
     "dubeau.org": new Date().getFullYear(),
-    colorMode: "dark",
+    colorMode: "light",
     noNavbar: false,
     vignette: false,
     accessibility: {

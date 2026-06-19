@@ -52,7 +52,7 @@ function saveTheme(theme) {
 }
 
 export default function MotionLighting({
-    colorMode = "dark",
+    colorMode = "light",
     reduceMotion = false,
 }) {
     const frameRef = useRef(null);
