@@ -102,15 +102,24 @@ function App() {
         }));
 
         // ` key | Toggle experimental features
-        const handleKeyPress = (data) => {
-            if (data.key === "`") {
+        // ~ key | Toggle light/dark mode
+        const handleKeyPress = (event) => {
+            if (event.key === "~" || (event.key === "`" && event.shiftKey)) {
+                setData((data) => ({
+                    ...data,
+                    colorMode: data.colorMode === "dark" ? "light" : "dark",
+                }));
+
+                return;
+            }
+
+            if (event.key === "`") {
                 setData((data) => ({
                     ...data,
                     experimental: !data.experimental,
                 }));
 
                 console.log("Toggled experimental features");
-                console.log(data.experimental);
             }
         };
 

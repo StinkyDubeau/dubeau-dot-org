@@ -240,7 +240,7 @@ body[data-color-mode="dark"] {
             transparent 64%
         ),
         linear-gradient(
-            var(--light-angle),
+            var(--section-angle, var(--light-angle)),
             var(--section-a, rgb(255 255 255 / 0.92)),
             var(--section-b, rgb(255 255 255 / 0.96)) 56%,
             var(--section-c, rgb(255 255 255 / 0.98))
@@ -249,34 +249,39 @@ body[data-color-mode="dark"] {
 }
 
 .lit-section-warm {
-    --section-glow: rgb(255 255 255 / 0.18);
-    --section-a: rgb(255 156 108 / 0.98);
-    --section-b: rgb(241 136 139 / 0.98);
-    --section-c: rgb(232 125 156 / 0.98);
+    --section-angle: 225deg;
+    --section-glow: rgb(255 255 255 / 0.035);
+    --section-a: rgb(234 88 12);
+    --section-b: rgb(249 115 22);
+    --section-c: rgb(236 72 153);
 }
 
 .lit-section-blue {
-    --section-glow: rgb(255 255 255 / 0.2);
-    --section-a: rgb(178 213 250 / 0.98);
-    --section-b: rgb(156 196 238 / 0.98);
-    --section-c: rgb(145 187 230 / 0.98);
+    --section-angle: 135deg;
+    --section-glow: rgb(255 255 255 / 0.035);
+    --section-a: rgb(96 165 250);
+    --section-b: rgb(147 197 253);
+    --section-c: rgb(34 211 238);
 }
 
 .lit-section-violet {
-    --section-glow: rgb(255 255 255 / 0.18);
-    --section-a: rgb(210 170 250 / 0.98);
-    --section-b: rgb(190 155 235 / 0.98);
-    --section-c: rgb(229 145 208 / 0.98);
+    --section-angle: 225deg;
+    --section-glow: rgb(255 255 255 / 0.035);
+    --section-a: rgb(190 24 93);
+    --section-b: rgb(147 51 234);
+    --section-c: rgb(191 219 254);
 }
 
 .lit-section-gold {
-    --section-glow: rgb(255 255 255 / 0.18);
-    --section-a: rgb(255 214 116 / 0.98);
-    --section-b: rgb(248 189 95 / 0.98);
-    --section-c: rgb(240 164 91 / 0.98);
+    --section-angle: 315deg;
+    --section-glow: rgb(255 255 255 / 0.035);
+    --section-a: rgb(251 191 36);
+    --section-b: rgb(250 204 21);
+    --section-c: rgb(251 146 60);
 }
 
 [data-color-mode="dark"] .lit-section-warm {
+    --section-angle: var(--light-angle);
     --section-glow: rgb(255 158 90 / 0.075);
     --section-a: rgb(70 30 26 / 0.92);
     --section-b: rgb(38 20 30 / 0.96);
@@ -284,6 +289,7 @@ body[data-color-mode="dark"] {
 }
 
 [data-color-mode="dark"] .lit-section-blue {
+    --section-angle: var(--light-angle);
     --section-glow: rgb(94 180 255 / 0.075);
     --section-a: rgb(22 48 70 / 0.92);
     --section-b: rgb(15 31 47 / 0.96);
@@ -291,6 +297,7 @@ body[data-color-mode="dark"] {
 }
 
 [data-color-mode="dark"] .lit-section-violet {
+    --section-angle: var(--light-angle);
     --section-glow: rgb(197 126 255 / 0.075);
     --section-a: rgb(52 29 71 / 0.92);
     --section-b: rgb(28 22 52 / 0.96);
@@ -298,6 +305,7 @@ body[data-color-mode="dark"] {
 }
 
 [data-color-mode="dark"] .lit-section-gold {
+    --section-angle: var(--light-angle);
     --section-glow: rgb(255 205 88 / 0.065);
     --section-a: rgb(65 48 20 / 0.92);
     --section-b: rgb(37 29 18 / 0.96);
@@ -316,7 +324,11 @@ body[data-color-mode="dark"] {
 
 .lit-card,
 .lit-control {
-    background: rgb(255 255 255 / 0.66);
+    border-color: rgb(0 0 0 / 0.04);
+    background: rgb(255 255 255 / 0.78);
+    box-shadow:
+        0 4px 6px -1px rgb(0 0 0 / 0.1),
+        0 2px 4px -2px rgb(0 0 0 / 0.1);
 }
 
 [data-color-mode="dark"] :where(.lit-card, .lit-control) {
@@ -344,9 +356,12 @@ body[data-color-mode="dark"] {
 
 .lit-card:hover,
 .lit-control:hover {
-    border-color: rgb(0 0 0 / 0.12);
-    background: rgb(255 255 255 / 0.8);
-    transform: translateY(-2px);
+    border-color: rgb(0 0 0 / 0.06);
+    background: rgb(255 255 255 / 0.9);
+    box-shadow:
+        0 10px 15px -3px rgb(0 0 0 / 0.1),
+        0 4px 6px -4px rgb(0 0 0 / 0.1);
+    transform: scale(1.03);
 }
 
 [data-color-mode="dark"] .lit-card:hover,
@@ -413,6 +428,14 @@ body[data-color-mode="dark"] {
 .lit-media-card-content {
     position: relative;
     z-index: 1;
+}
+
+[data-color-mode="light"] .lit-media-card img {
+    filter: brightness(1) !important;
+}
+
+[data-color-mode="light"] .lit-media-card::after {
+    background: linear-gradient(to top, rgb(0 0 0 / 0.24), transparent 68%);
 }
 
 .server-hero {
@@ -653,33 +676,6 @@ body[data-color-mode="dark"]::before {
         var(--shadow-offset-x) var(--shadow-offset-y) 18px rgb(0 0 0 / 0.58);
 }
 
-.gyro-bevel-surface {
-    background: transparent;
-    box-shadow: none;
-    transition:
-        padding 300ms ease,
-        transform 180ms ease;
-}
-
-[data-color-mode="dark"] .gyro-bevel-surface {
-    background: radial-gradient(
-            circle at var(--light-position-x) var(--light-position-y),
-            rgb(177 204 255 / 0.08),
-            transparent 32%
-        ),
-        linear-gradient(
-            135deg,
-            rgb(255 255 255 / 0.1),
-            rgb(255 255 255 / 0.045),
-            rgb(255 255 255 / 0.075)
-        );
-    box-shadow:
-        inset var(--light-offset-x) var(--light-offset-y) 5px
-            rgb(255 255 255 / 0.18),
-        inset var(--shadow-offset-x) var(--shadow-offset-y) 6px
-            rgb(0 0 0 / 0.38);
-}
-
 .motion-prompt {
     position: fixed;
     z-index: 70;
@@ -766,8 +762,7 @@ body[data-color-mode="dark"]::before {
 
 @media (prefers-reduced-motion: reduce) {
     body::before,
-    .gyro-bevel,
-    .gyro-bevel-surface {
+    .gyro-bevel {
         transition: none;
     }
 }

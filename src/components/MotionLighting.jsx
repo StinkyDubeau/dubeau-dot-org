@@ -8,6 +8,7 @@ const SPRING_DAMPING = 0.62;
 const NOISE_SCALE = 0.006;
 const LIGHT_POSITION_RANGE = 46;
 const PANEL_LIGHT_POSITION_RANGE = 40;
+const POINTER_GAIN = 2;
 
 function clamp(value, min, max) {
     return Math.min(Math.max(value, min), max);
@@ -200,8 +201,14 @@ export default function MotionLighting({
         const handlePointerMove = ({ clientX, clientY }) => {
             if (orientationActiveRef.current && motionEnabled) return;
 
-            const x = ((clientX / window.innerWidth) * 2 - 1) * MAX_TILT;
-            const y = ((clientY / window.innerHeight) * 2 - 1) * MAX_TILT;
+            const x =
+                (((clientX / window.innerWidth) * 2 - 1) * POINTER_GAIN +
+                    (POINTER_GAIN - 1)) *
+                MAX_TILT;
+            const y =
+                (((clientY / window.innerHeight) * 2 - 1) * POINTER_GAIN +
+                    (POINTER_GAIN - 1)) *
+                MAX_TILT;
             setLightDirection(x, y);
         };
 

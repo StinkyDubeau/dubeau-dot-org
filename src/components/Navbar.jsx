@@ -38,10 +38,8 @@ export default function Navbar(props) {
             className="fixed left-0 right-0 top-2 z-40 mx-auto flex w-full flex-col justify-center overflow-visible"
         >
             <div className="mx-auto w-full max-w-xl px-2 py-1.5">
-                <div className="gyro-bevel min-h-16 rounded-full p-0.5 shadow-md">
-                    <div className="gyro-bevel-surface h-full rounded-full px-2 sm:px-6">
-                        <NavButtons />
-                    </div>
+                <div className="gyro-bevel min-h-16 w-[calc(100vw-1rem)] max-w-xl rounded-full px-4 py-1 shadow-md sm:px-6">
+                    <NavButtons />
                 </div>
             </div>
             {props.data && createDataDependants()}
