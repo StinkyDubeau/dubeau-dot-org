@@ -47,6 +47,19 @@ export default function (props) {
             .some((value) => value.toLowerCase().includes(query));
     }
 
+    function getAllTabs() {
+        return Bookmarks.children.flatMap((bookmark) =>
+            bookmark.children ? bookmark.children : [bookmark],
+        );
+    }
+
+    function filtersAreActive() {
+        return (
+            props.data.experimental &&
+            (hideChords || hideTabs || searchQuery.trim().length > 0)
+        );
+    }
+
     function createBookmark(bookmark, index) {
         const visibleChildren = bookmark.children
             ? bookmark.children.filter(shouldShowTab)
@@ -134,6 +147,17 @@ export default function (props) {
         );
     }
 
+    function createTabResult(tab) {
+        return (
+            <Panel
+                className="overflow-hidden rounded-2xl bg-lighten-800 p-4 shadow-xl"
+                key={tab.guid}
+            >
+                {createTab(tab)}
+            </Panel>
+        );
+    }
+
     function createSortControls() {
         return (
             <Panel className="text-left xs:p-4">
@@ -180,6 +204,22 @@ export default function (props) {
         );
     }
 
+    function createFilteredTabs() {
+        const visibleTabs = getAllTabs().filter(shouldShowTab);
+
+        if (visibleTabs.length === 0) {
+            return (
+                <Panel className="rounded-2xl p-4 text-left">
+                    <p className="font-header text-xl text-darken-800">
+                        No matching tabs.
+                    </p>
+                </Panel>
+            );
+        }
+
+        return visibleTabs.map(createTabResult);
+    }
+
     return (
         <>
             <div
@@ -194,7 +234,9 @@ export default function (props) {
                     used to have a very full bookmarks folder. Now I have this.
                 </p>
                 {props.data.experimental && createSortControls()}
-                {Bookmarks ? (
+                {Bookmarks && filtersAreActive() ? (
+                    createFilteredTabs()
+                ) : Bookmarks ? (
                     Bookmarks.children.map(createBookmark)
                 ) : (
                     <p className="italic text-darken-600">
