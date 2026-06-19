@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import NavButtons from "./NavButtons";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -14,8 +15,11 @@ export default function Navbar(props) {
                             exit={{ height: 0 }}
                             className="flex w-full flex-col justify-center overflow-clip"
                         >
-                            <progress className="progress mx-auto mt-2 w-full min-w-36 fill-darken-900 bg-transparent transition-all"></progress>
-                            <div id="progress" className="min-w-36 w-full h-12 bg-black animate-bounce"></div>
+                            <progress className="progress mx-auto mt-2 w-full min-w-36 bg-transparent fill-darken-900 transition-all"></progress>
+                            <div
+                                id="progress"
+                                className="h-12 w-full min-w-36 animate-bounce bg-black"
+                            ></div>
                             <p className="text-nowrap font-header text-darken-800">
                                 {props.data.loading.text}
                             </p>
@@ -31,7 +35,7 @@ export default function Navbar(props) {
             initial={{ height: 0, padding: 0 }}
             animate={{ height: "auto", padding: 2 }}
             exit={{ height: 0, padding: 0 }}
-            className="fixed z-40 mx-auto flex w-full flex-col justify-center overflow-clip bg-lighten-600 backdrop-blur-3xl"
+            className="lit-navbar fixed z-40 mx-auto flex w-full flex-col justify-center overflow-clip backdrop-blur-3xl"
         >
             <NavButtons />
             {props.data && createDataDependants()}

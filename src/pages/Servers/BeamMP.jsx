@@ -9,7 +9,7 @@ import Markdown from "react-markdown";
 export default function fun(props) {
     function createUser(user) {
         return (
-            <div className="scale-100 text-darken-10 transition-all hover:scale-110 hover:text-darken-800">
+            <div className="text-darken-10 scale-100 transition-all hover:scale-110 hover:text-darken-800">
                 <p className="font-header text-lg text-darken-800">
                     {user.name}
                 </p>
@@ -23,7 +23,7 @@ export default function fun(props) {
             layoutId={PackImg}
             className="m-2 flex flex-col justify-center gap-6 overflow-hidden max-sm:mt-12 sm:p-4"
         >
-            <div className="flex justify-between gap-12 overflow-clip align-middle max-sm:relative max-sm:h-72 max-sm:flex-col sm:h-72">
+            <div className="server-hero flex justify-between gap-12 overflow-clip align-middle max-sm:relative max-sm:h-72 max-sm:flex-col sm:h-72">
                 <div className="flex-0  z-10 flex max-w-full justify-center max-sm:h-full">
                     <div className="my-auto flex h-fit flex-col justify-center gap-12 align-middle">
                         <div className="flex flex-col gap-2">

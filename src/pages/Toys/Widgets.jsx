@@ -84,7 +84,7 @@ function Widgets(props) {
         }
 
         return (
-            <div className=" flex flex-col gap-2 rounded-3xl bg-green-300 p-6 text-xl text-green-900">
+            <div className=" lit-section lit-section-blue flex flex-col gap-2 rounded-3xl p-6 text-xl text-darken-800 shadow-xl">
                 <h1 className="font-headerScript text-5xl text-green-800">
                     Voltage
                 </h1>
@@ -403,7 +403,7 @@ function Widgets(props) {
         const [count, setCount] = useState(0);
 
         return (
-            <div className=" flex flex-col overflow-clip rounded-3xl bg-pink-600 p-6 text-xl text-lighten-800">
+            <div className=" lit-section lit-section-violet flex flex-col overflow-clip rounded-3xl p-6 text-xl text-darken-800 shadow-xl">
                 <div
                     id="main-container"
                     className="flex h-full flex-col justify-center"
@@ -498,7 +498,7 @@ function Widgets(props) {
                             left: xPos,
                         }
                     }
-                    className={`fixed select-none overflow-clip rounded-3xl bg-lighten-600 text-xl text-darken-800 shadow-lg`}
+                    className={`lit-panel fixed select-none overflow-clip rounded-3xl text-xl text-darken-800 shadow-lg`}
                     onMouseUp={() => setIsDragging(false)}
                 >
                     <div

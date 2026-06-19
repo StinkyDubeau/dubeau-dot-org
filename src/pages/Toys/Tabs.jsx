@@ -10,22 +10,75 @@ import { useState } from "react";
 export default function (props) {
     const [hideTabs, setHideTabs] = useState(false);
     const [hideChords, setHideChords] = useState(false);
+    const [searchQuery, setSearchQuery] = useState("");
+
+    function getTabInfo(tab) {
+        let friendlyTitle = tab.title;
+        let friendlyArtist = "Unknown artist";
+        let friendlyType = "TABS";
+        const regex = /^(.*?)\s+(CHORDS?|TAB)\s+.*?by\s+([^@]+)/i;
+        const match = friendlyTitle.match(regex);
+
+        if (match) {
+            friendlyTitle = match[1].trim();
+            friendlyType = match[2].trim();
+            friendlyArtist = match[3].trim();
+        }
+
+        return {
+            friendlyArtist,
+            friendlyTitle,
+            friendlyType,
+        };
+    }
+
+    function shouldShowTab(tab) {
+        const { friendlyArtist, friendlyTitle, friendlyType } = getTabInfo(tab);
+        const query = searchQuery.trim().toLowerCase();
+        const isChord = friendlyType.toLowerCase().includes("chord");
+        const isTab = friendlyType.toLowerCase().includes("tab");
+
+        if (hideChords && isChord) return false;
+        if (hideTabs && isTab) return false;
+        if (!query) return true;
+
+        return [friendlyTitle, friendlyArtist, friendlyType, tab.uri]
+            .filter(Boolean)
+            .some((value) => value.toLowerCase().includes(query));
+    }
 
     function createBookmark(bookmark, index) {
+        const visibleChildren = bookmark.children
+            ? bookmark.children.filter(shouldShowTab)
+            : [];
+
+        if (bookmark.children && visibleChildren.length === 0) {
+            return null;
+        }
+
+        if (!bookmark.children && !shouldShowTab(bookmark)) {
+            return null;
+        }
+
         return (
             <Panel
                 className="overflow-hidden rounded-2xl bg-lighten-800 p-4 shadow-xl"
                 key={bookmark.guid}
             >
                 {/* Create a folder if there are children under this component. Otherwise create the tab. */}
-                {bookmark.children
-                    ? createFolder(bookmark, bookmark.children.length)
-                    : createTab(bookmark)}
+                {bookmark.children ? (
+                    <Folder
+                        folder={bookmark}
+                        visibleChildren={visibleChildren}
+                    />
+                ) : (
+                    createTab(bookmark)
+                )}
             </Panel>
         );
     }
 
-    function createFolder(folder, length) {
+    function Folder({ folder, visibleChildren }) {
         const [collapsed, setCollapsed] = useState(true);
 
         return (
@@ -41,36 +94,20 @@ export default function (props) {
                         {folder.title.toUpperCase()}
                     </p>
                     <p className="text-nowrap text-left text-darken-300">
-                        {length} songs
+                        {visibleChildren.length} songs
                     </p>
                 </button>
                 {/* Type */}
 
                 <div className="flex flex-col gap-4">
-                    {!collapsed &&
-                        folder.children &&
-                        folder.children.map(createTab)}
+                    {!collapsed && visibleChildren.map(createTab)}
                 </div>
             </div>
         );
     }
 
     function createTab(tab, index) {
-        var friendlyTitle = tab.title;
-        var friendlyArtist = "Unknown artist";
-        var friendlyType = "TABS";
-        const regex = /^(.*?)\s+(CHORDS?|TAB)\s+.*?by\s+([^@]+)/i;
-        const match = friendlyTitle.match(regex);
-
-        if (match) {
-            // console.log("Match " + typeof match[1].trim() + " " + match[2].trim());
-
-            friendlyTitle = match[1].trim();
-            friendlyType = match[2].trim();
-            friendlyArtist = match[3].trim();
-        } else {
-            console.log("Failed to parse information from entry");
-        }
+        const { friendlyArtist, friendlyTitle, friendlyType } = getTabInfo(tab);
 
         return (
             <div key={tab.guid}>
@@ -99,15 +136,24 @@ export default function (props) {
 
     function createSortControls() {
         return (
-            <Panel className="bg-red-500 text-left text-white xs:p-4">
-                <p className="font-pixel">- Experimental features -</p>
+            <Panel className="text-left xs:p-4">
+                <p className="font-pixel text-darken-600">
+                    Experimental filters
+                </p>
+                <input
+                    type="search"
+                    value={searchQuery}
+                    onChange={(event) => setSearchQuery(event.target.value)}
+                    placeholder="Search title, artist, type, or URL"
+                    className="lit-input w-full rounded-xl px-3 py-2 font-header"
+                />
                 <div className="flex flex-wrap gap-2">
                     <button
                         onClick={() => {
                             setHideChords(false);
                             setHideTabs(false);
                         }}
-                        className="underline"
+                        className="lit-control rounded-xl px-3 py-2 text-darken-800"
                     >
                         Show all
                     </button>
@@ -116,7 +162,7 @@ export default function (props) {
                             setHideChords(false);
                             setHideTabs(true);
                         }}
-                        className="underline"
+                        className="lit-control rounded-xl px-3 py-2 text-darken-800"
                     >
                         Chords only
                     </button>
@@ -125,14 +171,10 @@ export default function (props) {
                             setHideChords(true);
                             setHideTabs(false);
                         }}
-                        className="underline"
+                        className="lit-control rounded-xl px-3 py-2 text-darken-800"
                     >
                         Tabs only
                     </button>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                    <p>hideChords: {hideChords.toString()}</p>
-                    <p>hideTabs: {hideTabs.toString()}</p>
                 </div>
             </Panel>
         );

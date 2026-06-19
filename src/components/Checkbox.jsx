@@ -3,7 +3,7 @@ export default function Checkbox(props) {
         <div>
             <label className={`${props.className} flex gap-2`}>
                 <input
-                    className="rounded bg-lighten-900 my-auto"
+                    className="my-auto rounded bg-lighten-900"
                     type="checkbox"
                     name="myCheckbox"
                     defaultChecked={props.checked}

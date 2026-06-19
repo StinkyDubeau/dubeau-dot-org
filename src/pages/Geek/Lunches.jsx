@@ -273,7 +273,7 @@ export default function Lunches(props) {
         return (
             <div>
                 {/* Gradient bg */}
-                <div className="m-4 flex animate-gradient-x flex-col justify-center gap-4 rounded-3xl bg-gradient-to-tl from-orange-600 via-orange-500 to-yellow-500 p-4 drop-shadow-xl md:m-auto md:w-3/4">
+                <div className="lit-section lit-section-warm m-4 flex flex-col justify-center gap-4 rounded-3xl p-4 shadow-xl md:m-auto md:w-3/4">
                     <p className="font-header text-3xl font-bold text-zinc-800 sm:ml-6 sm:text-left">
                         {submission.date.toDateString()}
                     </p>
@@ -331,14 +331,14 @@ export default function Lunches(props) {
     function createLoginPage() {
         return (
             <div>
-                <div className="m-5 flex animate-gradient-x justify-center rounded-3xl bg-gradient-to-tl from-orange-600 via-orange-500 to-yellow-500 p-4 sm:gap-8">
+                <div className="lit-section lit-section-warm m-5 flex justify-center rounded-3xl p-4 shadow-xl sm:gap-8">
                     <form
                         onSubmit={(e) => {
                             e.preventDefault();
                             updateUsername(username);
                         }}
                     >
-                        <div className="mx-auto flex w-72 flex-col gap-2 rounded-2xl bg-lighten-800 p-4 shadow-xl">
+                        <div className="lit-panel mx-auto flex w-72 flex-col gap-2 rounded-2xl p-4 shadow-xl">
                             <input
                                 className="h-12 rounded-full bg-darken-50 p-2 text-darken-800 shadow-inner"
                                 value={username}
@@ -357,8 +357,8 @@ export default function Lunches(props) {
                         </p>
                     </form>
                 </div>
-                <div className="m-5 flex animate-gradient-x justify-center rounded-3xl bg-gradient-to-tl from-orange-600 via-orange-500 to-yellow-500 p-4 sm:gap-8">
-                    <div className="mx-auto flex w-72 flex-col gap-2 rounded-2xl bg-lighten-800 p-4 shadow-xl">
+                <div className="lit-section lit-section-warm m-5 flex justify-center rounded-3xl p-4 shadow-xl sm:gap-8">
+                    <div className="lit-panel mx-auto flex w-72 flex-col gap-2 rounded-2xl p-4 shadow-xl">
                         <button
                             className="h-12 rounded-full bg-darken-50 font-bold text-darken-700 transition-all hover:bg-darken-100"
                             type="submit"
@@ -376,7 +376,7 @@ export default function Lunches(props) {
             <button
                 onClick={logOut}
                 // Hide button if there's no username
-                className="text-nowrap rounded-2xl bg-lighten-900 p-4 font-bold text-darken-700 shadow-xl transition-all hover:scale-105"
+                className="lit-control text-nowrap rounded-2xl p-4 font-bold text-darken-700 shadow-xl"
             >
                 Log out
             </button>

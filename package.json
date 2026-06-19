@@ -8,6 +8,7 @@
         "host": "vite --host",
         "build": "vite build",
         "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+        "phone:preview": "node scripts/phone-preview.mjs",
         "preview": "vite preview"
     },
     "dependencies": {
@@ -21,6 +22,7 @@
         "framer-motion": "^11.11.17",
         "luxon": "^3.6.1",
         "pg": "^8.13.3",
+        "qrcode": "^1.5.4",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "react-fast-marquee": "^1.6.5",

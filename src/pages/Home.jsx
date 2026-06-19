@@ -1,6 +1,7 @@
 import Frame from "../components/Frame";
 import Panel from "../components/Panel";
 import NavButtons from "../components/NavButtons";
+import GyroBevel from "../components/GyroBevel";
 import { Link } from "react-router-dom";
 
 import { motion } from "framer-motion";
@@ -41,16 +42,16 @@ export default function Home(props) {
 
                 {/* Buttons */}
                 <div className="flex justify-center gap-2">
-                    <div className="w-128 min-h-16 rounded-full border-2 border-b-lighten-50 border-l-lighten-200 border-r-lighten-100 border-t-lighten-300 bg-gradient-to-br from-lighten-300 via-lighten-500 to-lighten-400 px-6 shadow-md transition-all hover:px-0 max-sm:px-2">
+                    <GyroBevel>
                         <NavButtons isOnHome />
-                    </div>
+                    </GyroBevel>
                 </div>
             </motion.div>
 
             {/* Accessibility settings */}
             <Link
                 to="/accessibility"
-                className={`fixed bottom-1 right-1 m-2 flex justify-center gap-2 rounded-lg bg-lighten-900 p-2 shadow-lg transition-all ${props.data.experimental && "mb-6"}`}
+                className={`lit-control fixed bottom-1 right-1 m-2 flex max-w-[calc(100vw-1rem)] justify-center gap-2 rounded-xl p-2 shadow-lg ${props.data.experimental && "mb-6"}`}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
             >
@@ -65,7 +66,9 @@ export default function Home(props) {
                     <path d="M8 4.143A1.071 1.071 0 1 0 8 2a1.071 1.071 0 0 0 0 2.143m-4.668 1.47 3.24.316v2.5l-.323 4.585A.383.383 0 0 0 7 13.14l.826-4.017c.045-.18.301-.18.346 0L9 13.139a.383.383 0 0 0 .752-.125L9.43 8.43v-2.5l3.239-.316a.38.38 0 0 0-.047-.756H3.379a.38.38 0 0 0-.047.756Z" />
                     <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0M1 8a7 7 0 1 1 14 0A7 7 0 0 1 1 8" />
                 </svg>
-                <p className="m-auto text-darken-800">Accessibility Settings</p>
+                <p className="m-auto text-darken-800 max-sm:hidden">
+                    Accessibility Settings
+                </p>
             </Link>
         </>
     );

@@ -12,7 +12,7 @@ export default function Astros(props) {
         // Reset the description so the AI will generate a new one.
 
         return (
-            <div className="z-20 flex max-h-[720px] gap-4 overflow-hidden rounded-xl bg-lighten-800 p-4 shadow-lg transition-all">
+            <div className="lit-panel z-20 flex max-h-[720px] gap-4 overflow-hidden rounded-2xl p-4 shadow-lg">
                 <div className="min-w-[50%]">
                     <img
                         src={astro.image}
@@ -54,7 +54,7 @@ export default function Astros(props) {
                     console.log(astros[index]);
                     setAstro(astros[index]);
                 }}
-                className="w-36 overflow-clip rounded-lg bg-lighten-800 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
+                className="lit-media-card w-36 overflow-clip rounded-xl shadow-lg"
             >
                 <img
                     src={astro.image}
@@ -91,7 +91,7 @@ export default function Astros(props) {
                         {astro ? (
                             <div className="z-10 flex gap-4 drop-shadow-xl">
                                 <button
-                                    className="my-1 rounded-xl bg-lighten-600 p-2 font-header text-2xl text-darken-800 transition-all hover:bg-red-500 hover:text-lighten-800"
+                                    className="lit-control my-1 rounded-xl p-2 font-header text-2xl text-darken-800"
                                     onClick={() => {
                                         setDescription(null);
                                         setAstro(null);
@@ -100,7 +100,7 @@ export default function Astros(props) {
                                     Back to Gallery
                                 </button>
                                 <button
-                                    className="my-1 rounded-xl bg-lighten-600 p-2 font-header text-2xl text-darken-800 transition-all hover:bg-red-500 hover:text-lighten-800"
+                                    className="lit-control my-1 rounded-xl p-2 font-header text-2xl text-darken-800"
                                     onClick={() => {
                                         setDescription(null);
                                         setAstro(

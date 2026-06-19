@@ -74,7 +74,7 @@ export default function ContactForm(props) {
                         {errorMsg.message}
                     </p>
                     <button
-                        className="h-10 rounded-lg bg-darken-100 shadow transition-all hover:rounded-lg hover:bg-darken-50"
+                        className="lit-control h-10 rounded-lg shadow"
                         onClick={() => {
                             setSubmitted(false);
                             setErrorMsg(null);
@@ -104,7 +104,7 @@ export default function ContactForm(props) {
     function createForm() {
         return (
             <div className="flex flex-col gap-2 ">
-                <label className="flex items-center gap-2 rounded-xl bg-darken-50 p-2 shadow-inner">
+                <label className="lit-input flex items-center gap-2 rounded-xl p-2 shadow-inner">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 16 16"
@@ -124,7 +124,7 @@ export default function ContactForm(props) {
                     />
                 </label>
 
-                <label className="flex items-center gap-2 rounded-xl bg-darken-50 p-2 shadow-inner">
+                <label className="lit-input flex items-center gap-2 rounded-xl p-2 shadow-inner">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 16 16"
@@ -146,7 +146,7 @@ export default function ContactForm(props) {
                 </label>
 
                 <textarea
-                    className="rounded-xl border-none bg-darken-50  p-2 text-darken-800"
+                    className="lit-input rounded-xl border-none p-2"
                     placeholder="Body"
                     value={body}
                     onChange={(e) => {
@@ -155,7 +155,7 @@ export default function ContactForm(props) {
                 ></textarea>
 
                 <button
-                    className="h-10 rounded-xl bg-darken-50 font-header font-bold text-darken-600 transition-all hover:rounded-lg hover:bg-darken-50"
+                    className="lit-control h-10 rounded-xl font-header font-bold text-darken-700"
                     onClick={handleSubmit}
                 >
                     Submit
@@ -165,7 +165,7 @@ export default function ContactForm(props) {
     }
 
     return (
-        <div className="w-72 rounded-xl bg-lighten-500 p-4 shadow-xl">
+        <div className="lit-panel w-72 rounded-2xl p-4 shadow-xl">
             {!submitted ? createForm() : createResult()}
         </div>
     );

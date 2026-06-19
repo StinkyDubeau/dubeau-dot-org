@@ -19,7 +19,7 @@ export default function fun(props) {
 
     function createUser(user) {
         return (
-            <div className="flex h-full scale-100 flex-col gap-2 text-darken-10 transition-all hover:text-darken-800">
+            <div className="text-darken-10 flex h-full scale-100 flex-col gap-2 transition-all hover:text-darken-800">
                 <img
                     className="m-auto aspect-auto max-h-48 w-min drop-shadow"
                     src={`https://identicraft.js.org/bust/${user.uuid}`}
@@ -39,7 +39,7 @@ export default function fun(props) {
             layoutId={PackImg}
             className="m-2 flex flex-col justify-center gap-6 overflow-hidden max-sm:mt-12 sm:p-4"
         >
-            <div className="flex justify-between gap-12 overflow-clip align-middle max-sm:relative max-sm:h-72 max-sm:flex-col sm:h-72">
+            <div className="server-hero flex justify-between gap-12 overflow-clip align-middle max-sm:relative max-sm:h-72 max-sm:flex-col sm:h-72">
                 <div className="flex-0  z-10 flex max-w-full justify-center max-sm:h-full">
                     <div className="my-auto flex h-fit flex-col justify-center gap-12 align-middle">
                         <div className="flex flex-col gap-2">
@@ -57,7 +57,7 @@ export default function fun(props) {
                             >
                                 <p>
                                     Join at{" "}
-                                    <span className="rounded-xl bg-lighten-800 p-2 text-darken-800">
+                                    <span className="lit-control rounded-xl p-2 text-darken-800">
                                         {addr}
                                     </span>
                                 </p>
@@ -87,7 +87,7 @@ export default function fun(props) {
 
             <div className="flex w-full flex-grow flex-wrap justify-between gap-6">
                 {/* Whitelist warning */}
-                <div className="flex w-full flex-col gap-2 rounded-3xl bg-lighten-800 p-4">
+                <div className="lit-panel flex w-full flex-col gap-2 rounded-3xl p-4">
                     <p className="text-left font-header text-2xl text-darken-800">
                         📋 Whitelisted Server
                     </p>
@@ -101,7 +101,7 @@ export default function fun(props) {
                 </div>
 
                 {/* Updates */}
-                <div className="flex w-full flex-col gap-2 rounded-3xl bg-lighten-800 p-4">
+                <div className="lit-panel flex w-full flex-col gap-2 rounded-3xl p-4">
                     <p className="text-left font-header text-2xl text-darken-800">
                         ℹ️ Update v0.3
                     </p>

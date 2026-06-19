@@ -1,5 +1,6 @@
+/* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 export default function ServerCard(props) {
     const scrollToTop = () => {
@@ -16,7 +17,7 @@ export default function ServerCard(props) {
             layoutId={props.img}
             whileHover={{ scale: 1.05 }}
             onClick={scrollToTop}
-            className={`${props.className} card h-52 cursor-default overflow-hidden rounded-2xl bg-black shadow-lg max-md:w-full md:w-44`}
+            className={`${props.className || ""} lit-media-card group card h-52 cursor-default overflow-hidden rounded-2xl bg-black shadow-lg max-md:w-full md:w-44`}
         >
             <Link
                 to={props.to}
@@ -24,12 +25,12 @@ export default function ServerCard(props) {
             >
                 <motion.img
                     id={props.img}
-                    className="absolute h-full w-full object-cover shadow-xl brightness-90"
+                    className="absolute h-full w-full object-cover brightness-75 transition-all duration-500 group-hover:brightness-90"
                     src={props.img}
                     alt={props.alt}
                 />
                 {/* Container */}
-                <div className="z-25 m-2 flex h-48 flex-col justify-center gap-2 rounded-lg drop-shadow">
+                <div className="lit-media-card-content z-25 m-2 flex h-48 flex-col justify-center gap-2 rounded-lg drop-shadow">
                     {/* Spacer */}
                     <p className="z-10 mt-4 font-header text-3xl text-white drop-shadow">
                         {props.title}
@@ -45,3 +46,4 @@ export default function ServerCard(props) {
         </motion.div>
     );
 }
+/* eslint-disable react/prop-types */

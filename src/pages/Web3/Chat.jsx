@@ -147,7 +147,7 @@ export default function Chat(props) {
         <div className="pt absolute inset-0 left-0 top-0 h-dvh w-dvw p-2">
             <div className="h-full w-full">
                 <div className="flex h-full flex-col justify-between gap-2">
-                    <div className="flex-0 h-12 overflow-auto rounded-3xl bg-lighten-800 sm:hidden">
+                    <div className="lit-panel flex-0 h-12 overflow-auto rounded-3xl sm:hidden">
                         {/* USERS */}
                         <UsersList
                             myUser={myUser}
@@ -159,10 +159,10 @@ export default function Chat(props) {
                         {/* MESSAGES */}
                         <div className="flex w-full gap-2 overflow-auto">
                             <div className="flex flex-col gap-2">
-                                <div className="flex-shrink overflow-auto rounded-3xl bg-lighten-800 p-2 max-sm:hidden">
+                                <div className="lit-panel flex-shrink overflow-auto rounded-3xl p-2 max-sm:hidden">
                                     <NavButtons />
                                 </div>
-                                <div className="flex-grow overflow-auto rounded-3xl bg-lighten-800 p-2 max-sm:hidden">
+                                <div className="lit-panel flex-grow overflow-auto rounded-3xl p-2 max-sm:hidden">
                                     <UsersList
                                         myUser={myUser}
                                         users={users}
@@ -170,12 +170,12 @@ export default function Chat(props) {
                                     />
                                 </div>
                             </div>
-                            <div className="flex-1 overflow-scroll rounded-3xl bg-lighten-800 p-2 scrollbar-hide max-xs:-ml-2">
+                            <div className="lit-panel flex-1 overflow-scroll rounded-3xl p-2 scrollbar-hide max-xs:-ml-2">
                                 <MessageFeed messages={messages} />
                             </div>
                         </div>
                     </div>
-                    <div className="flex-0 bg-lighten-800 p-2 max-sm:-m-2 sm:rounded-3xl">
+                    <div className="lit-panel flex-0 p-2 max-sm:-m-2 sm:rounded-3xl">
                         {/* INPUT FIELD */}
                         <MessageEntry
                             // Is there some structuring magic I can do to make this less awful?

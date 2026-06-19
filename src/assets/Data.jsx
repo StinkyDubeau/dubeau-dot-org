@@ -1,6 +1,7 @@
 const Data = {
     Count: 1,
     "dubeau.org": new Date().getFullYear(),
+    colorMode: "dark",
     noNavbar: false,
     vignette: false,
     accessibility: {
@@ -12,8 +13,8 @@ const Data = {
         },
         highContrast: {
             friendlyName: "High Contrast*",
-                description:
-                    "Prioritize readability over colours and transparency.",
+            description:
+                "Prioritize readability over colours and transparency.",
             enabled: false,
         },
     },

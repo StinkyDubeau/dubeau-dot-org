@@ -23,7 +23,7 @@ export default function (props) {
         >
             <div className="my-5 flex w-full flex-col justify-center gap-8 px-2 sm:px-8">
                 {/* JAKE SITE OWNER */}
-                <div className="flex animate-gradient-x justify-center rounded-2xl bg-gradient-to-tl from-pink-600 via-purple-500 to-blue-400 p-4 sm:gap-8">
+                <div className="lit-section lit-section-violet flex justify-center rounded-3xl p-4 shadow-xl sm:gap-8">
                     <div className="flex flex-wrap justify-around gap-6 lg:gap-48">
                         <div className="flex w-72 flex-col">
                             <p className="font-header text-5xl text-lighten-800">
@@ -36,7 +36,7 @@ export default function (props) {
                         <div className="my-auto flex w-72 flex-wrap justify-center gap-4">
                             {/* EMAIL */}
                             <Link
-                                className="rounded-xl border border-x-darken-50 border-b-darken-100 border-t-lighten-100 bg-lighten-100 p-2 shadow-md transition-all hover:scale-105 hover:shadow-lg"
+                                className="lit-control rounded-xl p-2 shadow-md"
                                 to="mailto:dubeaujake@gmail.com"
                             >
                                 <svg
@@ -51,7 +51,7 @@ export default function (props) {
                             </Link>
                             {/* GITHUB */}
                             <Link
-                                className="rounded-xl border border-x-darken-50 border-b-darken-100 border-t-lighten-100 bg-lighten-100 p-2 shadow-md transition-all hover:scale-105 hover:shadow-lg"
+                                className="lit-control rounded-xl p-2 shadow-md"
                                 to="https://github.com/StinkyDubeau/"
                             >
                                 <svg
@@ -66,7 +66,7 @@ export default function (props) {
                             </Link>
                             {/* LINKEDIN */}
                             <Link
-                                className="rounded-xl border border-x-darken-50 border-b-darken-100 border-t-lighten-100 bg-lighten-100 p-2 shadow-md transition-all hover:scale-105 hover:shadow-lg"
+                                className="lit-control rounded-xl p-2 shadow-md"
                                 to="https://www.linkedin.com/in/dubeau-jake"
                             >
                                 <svg
@@ -84,7 +84,7 @@ export default function (props) {
                 </div>
 
                 {/* CONTACT OR REPORT MODERATION ISSUES */}
-                <div className="flex flex-grow animate-gradient-x justify-center rounded-2xl bg-gradient-to-tr from-red-300 via-yellow-200 to-purple-200 p-4 sm:gap-8">
+                <div className="lit-section lit-section-warm flex flex-grow justify-center rounded-3xl p-4 shadow-xl sm:gap-8">
                     <div className="flex flex-wrap justify-around gap-6 lg:gap-48">
                         <div className="flex w-72 flex-col">
                             <p className="font-header text-5xl text-darken-800">
@@ -102,7 +102,7 @@ export default function (props) {
                 </div>
 
                 {/* JOIN SOCIALS */}
-                <div className="flex flex-grow animate-gradient-x justify-center rounded-2xl bg-gradient-to-tl from-slate-500 via-zinc-500 to-gray-400 p-4 sm:gap-8">
+                <div className="lit-section lit-section-blue flex flex-grow justify-center rounded-3xl p-4 shadow-xl sm:gap-8">
                     <div className="flex flex-wrap justify-around gap-6 lg:gap-48">
                         <div className="flex w-72 flex-col">
                             <p className="font-header text-5xl tracking-tight text-lighten-800 sm:text-nowrap sm:text-center">
@@ -114,7 +114,7 @@ export default function (props) {
                         </div>
                         <div className="my-auto flex w-72 flex-wrap justify-center">
                             <Link
-                                className="rounded-xl border border-x-darken-50 border-b-darken-100 border-t-lighten-100 bg-lighten-100 p-2 shadow-md transition-all hover:scale-105 hover:shadow-lg"
+                                className="lit-control rounded-xl p-2 shadow-md"
                                 to="https://discord.gg/53XsWtGFvB"
                             >
                                 <svg

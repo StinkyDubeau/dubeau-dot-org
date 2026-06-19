@@ -1,6 +1,7 @@
 // Components
 import { Routes, Route } from "react-router-dom";
 import Frame from "./components/Frame";
+import MotionLighting from "./components/MotionLighting";
 // Vercel Components
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
@@ -38,19 +39,62 @@ import Dayplanner from "./pages/Toys/Dayplanner/Main";
 import Idle from "./pages/Toys/Idle/Main";
 import { AnimatePresence } from "framer-motion";
 
+function shouldEnableVercelTelemetry() {
+    if (typeof window === "undefined") {
+        return false;
+    }
+
+    const { hostname } = window.location;
+
+    if (
+        hostname === "localhost" ||
+        hostname === "127.0.0.1" ||
+        hostname === "[::1]" ||
+        hostname.endsWith(".loca.lt")
+    ) {
+        return false;
+    }
+
+    return !/^(10\.|192\.168\.|172\.(1[6-9]|2\d|3[0-1])\.)/.test(hostname);
+}
+
+function getReduceMotionEnabled(accessibility) {
+    const reduceMotion = accessibility?.reduceMotion;
+
+    if (typeof reduceMotion === "boolean") {
+        return reduceMotion;
+    }
+
+    return Boolean(reduceMotion?.enabled);
+}
+
+function getSavedColorMode() {
+    try {
+        return window.localStorage.getItem("dubeau-color-mode");
+    } catch {
+        return null;
+    }
+}
+
 function App() {
     const [data, setData] = useState(Data);
     const prefersReducedMotion = useReducedMotion();
+    const showVercelTelemetry = shouldEnableVercelTelemetry();
 
     // Apply accessbility settings when they are changed
     useEffect(() => {
-        MotionGlobalConfig.skipAnimations = data.accessibility.reduceMotion;
+        MotionGlobalConfig.skipAnimations = getReduceMotionEnabled(
+            data.accessibility,
+        );
     }, [data.accessibility]);
 
     useEffect(() => {
+        const savedColorMode = getSavedColorMode();
+
         // Apply accessbility settings inherited from browser
         setData((data) => ({
             ...data,
+            colorMode: savedColorMode || data.colorMode,
             accessibility: {
                 ...data.accessibility,
                 reduceMotion: prefersReducedMotion,
@@ -79,14 +123,20 @@ function App() {
 
     return (
         <>
+            <MotionLighting
+                reduceMotion={getReduceMotionEnabled(data.accessibility)}
+                colorMode={data.colorMode}
+            />
             <Frame
                 data={data}
                 setData={setData}
             >
-                {/* [][][][][] Vercel Jail [][][][][] */}
-                <Analytics />
-                <SpeedInsights />
-                {/* [][][][][] End of Vercel Jail [][][][][] */}
+                {showVercelTelemetry ? (
+                    <>
+                        <Analytics />
+                        <SpeedInsights />
+                    </>
+                ) : null}
 
                 <Helmet>
                     {/* This is the default site title when a younger component doesn't also have a <Helmet> */}

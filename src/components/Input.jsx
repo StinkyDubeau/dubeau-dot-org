@@ -5,8 +5,14 @@ export default function InfoButton(props) {
 
     function createDropdown() {
         return (
-            <div tabindex="0" className="rounded-lg bg-lighten-800 shadow">
-                <div tabindex="0" className="card-body">
+            <div
+                tabindex="0"
+                className="rounded-lg bg-lighten-800 shadow"
+            >
+                <div
+                    tabindex="0"
+                    className="card-body"
+                >
                     <p>{props.text}</p>
                 </div>
             </div>
