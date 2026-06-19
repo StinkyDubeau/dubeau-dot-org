@@ -18,7 +18,7 @@ export default function MessageEntry(props) {
                     }}
                 >
                     <input
-                        className="h-full w-12 rounded-full bg-darken-50 p-2 text-center text-[5pt] text-darken-800 shadow-inner transition-all focus:w-36 focus:text-base"
+                        className="lit-input h-full w-12 rounded-full p-2 text-center text-[5pt] shadow-inner transition-all focus:w-36 focus:text-base"
                         value={myUser.nick}
                         placeholder="Nickname"
                         onChange={(e) =>
@@ -39,13 +39,13 @@ export default function MessageEntry(props) {
             >
                 <div className="flex gap-2">
                     <input
-                        className="w-full rounded-full bg-darken-50 p-2 text-darken-800 shadow-inner"
+                        className="lit-input w-full rounded-full p-2 shadow-inner"
                         value={myMessage}
                         placeholder="Message"
                         onChange={(e) => setMyMessage(e.target.value)}
                     />
                     <button
-                        className="w-24 rounded-full bg-darken-50 text-darken-800 transition-all hover:bg-darken-100 max-sm:hidden"
+                        className="lit-control w-24 rounded-full text-darken-800 max-sm:hidden"
                         type="submit"
                     >
                         Send

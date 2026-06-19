@@ -1,4 +1,6 @@
+/* eslint-disable react/prop-types */
 import NavButtons from "./NavButtons";
+import GyroBevel from "./GyroBevel";
 import { AnimatePresence, motion } from "framer-motion";
 
 export default function Navbar(props) {
@@ -14,8 +16,11 @@ export default function Navbar(props) {
                             exit={{ height: 0 }}
                             className="flex w-full flex-col justify-center overflow-clip"
                         >
-                            <progress className="progress mx-auto mt-2 w-full min-w-36 fill-darken-900 bg-transparent transition-all"></progress>
-                            <div id="progress" className="min-w-36 w-full h-12 bg-black animate-bounce"></div>
+                            <progress className="progress mx-auto mt-2 w-full min-w-36 bg-transparent fill-darken-900 transition-all"></progress>
+                            <div
+                                id="progress"
+                                className="h-12 w-full min-w-36 animate-bounce bg-black"
+                            ></div>
                             <p className="text-nowrap font-header text-darken-800">
                                 {props.data.loading.text}
                             </p>
@@ -27,14 +32,13 @@ export default function Navbar(props) {
     }
 
     return (
-        <motion.div
-            initial={{ height: 0, padding: 0 }}
-            animate={{ height: "auto", padding: 2 }}
-            exit={{ height: 0, padding: 0 }}
-            className="fixed z-40 mx-auto flex w-full flex-col justify-center overflow-clip bg-lighten-600 backdrop-blur-3xl"
-        >
-            <NavButtons />
+        <div className="fixed left-0 right-0 top-2 z-40 mx-auto flex w-full flex-col justify-center overflow-visible">
+            <div className="mx-auto w-full max-w-xl py-1.5">
+                <GyroBevel>
+                    <NavButtons />
+                </GyroBevel>
+            </div>
             {props.data && createDataDependants()}
-        </motion.div>
+        </div>
     );
 }

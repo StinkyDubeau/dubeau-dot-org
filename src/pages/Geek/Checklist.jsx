@@ -189,7 +189,7 @@ export default function Checklist(props) {
         return (
             <div>
                 {/* Gradient bg */}
-                <div className="m-5 flex animate-gradient-x justify-center rounded-3xl bg-gradient-to-tl from-orange-600 via-orange-500 to-yellow-500 p-4 sm:gap-8">
+                <div className="lit-section lit-section-warm m-5 flex justify-center rounded-3xl p-4 shadow-xl sm:gap-8">
                     <div className="flex flex-wrap justify-around gap-2 lg:gap-48">
                         <div className="flex w-72 flex-col gap-4">
                             <p className="text-5xl font-bold text-zinc-800">
@@ -213,7 +213,7 @@ export default function Checklist(props) {
                                 {questions.map(createQuestion)}
                             </div>
 
-                            <button className="w-72 rounded-2xl bg-lighten-900 p-4 font-bold text-darken-700 shadow-xl transition-all hover:scale-105">
+                            <button className="lit-control w-72 rounded-2xl p-4 font-bold text-darken-700 shadow-xl">
                                 Submit
                             </button>
                         </div>
@@ -226,14 +226,14 @@ export default function Checklist(props) {
     function createLogin() {
         return (
             <div>
-                <div className="m-5 flex animate-gradient-x justify-center rounded-3xl bg-gradient-to-tl from-orange-600 via-orange-500 to-yellow-500 p-4 sm:gap-8">
+                <div className="lit-section lit-section-warm m-5 flex justify-center rounded-3xl p-4 shadow-xl sm:gap-8">
                     <form
                         onSubmit={(e) => {
                             e.preventDefault();
                             updateUsername(username);
                         }}
                     >
-                        <div className="mx-auto flex w-72 flex-col gap-2 rounded-2xl bg-lighten-800 p-4 shadow-xl">
+                        <div className="lit-panel mx-auto flex w-72 flex-col gap-2 rounded-2xl p-4 shadow-xl">
                             <input
                                 className="h-12 rounded-full bg-darken-50 p-2 text-darken-800 shadow-inner"
                                 value={username}
@@ -254,8 +254,8 @@ export default function Checklist(props) {
                         </p>
                     </form>
                 </div>
-                <div className="m-5 flex animate-gradient-x justify-center rounded-3xl bg-gradient-to-tl from-orange-600 via-orange-500 to-yellow-500 p-4 sm:gap-8">
-                    <div className="mx-auto flex w-72 flex-col gap-2 rounded-2xl bg-lighten-800 p-4 shadow-xl">
+                <div className="lit-section lit-section-warm m-5 flex justify-center rounded-3xl p-4 shadow-xl sm:gap-8">
+                    <div className="lit-panel mx-auto flex w-72 flex-col gap-2 rounded-2xl p-4 shadow-xl">
                         <button
                             className="h-12 rounded-full bg-darken-50 font-bold text-darken-700 transition-all hover:bg-darken-100"
                             type="submit"

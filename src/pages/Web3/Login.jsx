@@ -40,7 +40,7 @@ export default function Login(props) {
                     {/* Choose room */}
                     <motion.div
                         layoutId="ChatGradientBackground"
-                        className="m-auto mt-3 flex w-full animate-gradient-y flex-col justify-center gap-2 rounded-3xl bg-gradient-to-bl from-orange-700 via-pink-500 to-yellow-400 p-5 transition-colors max-sm:max-w-xs"
+                        className="lit-section lit-section-warm m-auto mt-3 flex w-full flex-col justify-center gap-3 rounded-3xl p-5 shadow-xl max-sm:max-w-xs"
                     >
                         <p className="m-auto font-header text-5xl font-extralight text-lighten-900">
                             p2p chat
@@ -57,25 +57,25 @@ export default function Login(props) {
                     </motion.div>
                     <div className="-mt-6 flex w-full flex-wrap gap-2 transition-all">
                         {/* Set nickname */}
-                        <div className="m-auto flex max-w-sm gap-2 rounded-3xl bg-lighten-800 p-2">
+                        <div className="lit-card m-auto flex max-w-sm gap-2 rounded-3xl p-2">
                             <Avatar nick={nick} />
                             <input
-                                className="w-full rounded-full bg-darken-50 p-2 pl-3 text-darken-800 shadow-inner"
+                                className="lit-input w-full rounded-full p-2 pl-3 shadow-inner"
                                 placeholder="Nickname (optional)"
                                 onChange={(e) => setNick(e.target.value)}
                             />
                         </div>
                         {/* Create custom room */}
-                        <div className="max-w- m-auto flex flex-col gap-2 rounded-3xl bg-lighten-800 p-2">
+                        <div className="lit-card m-auto flex flex-col gap-2 rounded-3xl p-2">
                             <div className="flex gap-2 ">
                                 <input
-                                    className="w-full rounded-full bg-darken-50 p-2 pl-3 text-darken-800 shadow-inner"
+                                    className="lit-input w-full rounded-full p-2 pl-3 shadow-inner"
                                     placeholder="Custom room name"
                                     onChange={(e) => setRoomID(e.target.value)}
                                 />
                                 <button
                                     onClick={() => roomID && joinRoom(roomID)}
-                                    className="h-10 w-12 rounded-full bg-darken-50 font-header text-darken-600 transition-all hover:bg-darken-100"
+                                    className="lit-control h-10 w-12 rounded-full font-header text-darken-700"
                                 >
                                     Go
                                 </button>
@@ -85,7 +85,7 @@ export default function Login(props) {
                     {/* FAKE MESSAGE */}
                     <div
                         key={message.from.id}
-                        className="justify-left flex-0 flex justify-between gap-2 overflow-y-auto overflow-x-scroll rounded-3xl bg-darken-50 px-4 py-2 opacity-0 transition-all ease-out scrollbar-hide sm:opacity-100"
+                        className="lit-card justify-left flex-0 flex justify-between gap-2 overflow-y-auto overflow-x-scroll rounded-3xl px-4 py-2 opacity-0 scrollbar-hide sm:opacity-100"
                     >
                         {message.from.nick && (
                             <div className="flex max-h-8">
@@ -154,11 +154,9 @@ export default function Login(props) {
         return (
             <button
                 onClick={() => joinRoom(roomID)}
-                className="flex aspect-square h-16 cursor-default flex-col justify-center rounded-xl border border-x-darken-50 border-b-darken-100 border-t-lighten-100 bg-darken-200 p-2 shadow-md backdrop-blur-md transition-all hover:scale-105 hover:shadow-lg"
+                className="lit-control flex aspect-square h-16 cursor-default flex-col justify-center rounded-xl p-2 shadow-md backdrop-blur-md"
             >
-                <p className="font-header text-3xl text-lighten-700">
-                    {roomID}
-                </p>
+                <p className="font-header text-3xl text-current">{roomID}</p>
             </button>
         );
     }

@@ -14,7 +14,7 @@ export default function fun(props) {
 
     function createUser(user) {
         return (
-            <div className="flex scale-100 flex-col gap-2 text-darken-10 transition-all hover:text-darken-800">
+            <div className="text-darken-10 flex scale-100 flex-col gap-2 transition-all hover:text-darken-800">
                 <img
                     className="m-auto aspect-auto max-h-48 w-12 drop-shadow"
                     src={`https://identicraft.js.org/bust/${user.uuid}`}
@@ -32,8 +32,8 @@ export default function fun(props) {
             layoutId={PackImg}
             className="m-2 flex flex-col justify-center gap-6 overflow-hidden rounded-3xl max-sm:mt-12 sm:p-4"
         >
-            <motion.div className="flex justify-between gap-12 overflow-clip align-middle max-sm:relative max-sm:h-72 max-sm:flex-col sm:h-72">
-                <div className="flex-0  z-10 flex max-w-full justify-center max-sm:h-full">
+            <motion.div className="server-hero server-hero-bleed flex justify-between gap-12 overflow-clip align-middle max-sm:relative max-sm:h-72 max-sm:flex-col sm:h-72">
+                <div className="flex-0 z-10 flex max-w-full justify-center max-sm:h-full sm:px-8">
                     <div className="my-auto flex h-fit flex-col justify-center gap-12 align-middle">
                         <div className="flex flex-col gap-2">
                             <p className="text-left font-header text-5xl text-darken-700 max-md:text-center max-sm:text-lighten-800">
@@ -52,7 +52,7 @@ export default function fun(props) {
                             >
                                 <p>
                                     Join at{" "}
-                                    <span className="rounded-xl bg-lighten-800 p-2 text-darken-800">
+                                    <span className="lit-control rounded-xl p-2 text-darken-800">
                                         {addr}
                                     </span>
                                 </p>
@@ -65,7 +65,7 @@ export default function fun(props) {
                                     viewBox="0 0 16 16"
                                 >
                                     <path
-                                        fill-rule="evenodd"
+                                        fillRule="evenodd"
                                         d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z"
                                     />
                                 </svg>
@@ -75,13 +75,13 @@ export default function fun(props) {
                 </div>
                 <motion.img
                     id="vanilla"
-                    className="top-0 z-0 flex-1 rounded-3xl object-cover max-sm:absolute max-sm:h-full max-sm:brightness-75 sm:w-96"
+                    className="top-0 z-0 flex-1 rounded-3xl object-cover max-sm:absolute max-sm:h-full max-sm:brightness-75 sm:absolute sm:inset-0 sm:h-full sm:w-full sm:brightness-50"
                     src={PackImg}
                     alt="The image features a screenshot of a Minecraft town at nighttime."
                 />
             </motion.div>
 
-            <div className="flex w-full flex-col gap-2 rounded-3xl bg-lighten-800 p-4">
+            <div className="lit-panel flex w-full flex-col gap-2 rounded-3xl p-4">
                 <p className="text-left font-header text-2xl text-darken-800">
                     📋 Whitelisted Server
                 </p>
@@ -113,7 +113,7 @@ export default function fun(props) {
                 How to play
             </p> */}
 
-            <div className="flex flex-col gap-4 rounded-3xl bg-lighten-800 p-4">
+            <div className="lit-panel flex flex-col gap-4 rounded-3xl p-4">
                 <p className="text-left font-header text-3xl text-darken-800">
                     Join on Java Edition
                 </p>
@@ -166,7 +166,7 @@ export default function fun(props) {
                 </p>
             </div>
 
-            <div className="flex flex-col gap-8 rounded-3xl bg-lighten-800 p-4">
+            <div className="lit-panel flex flex-col gap-8 rounded-3xl p-4">
                 <p className="text-left font-header text-3xl text-darken-800">
                     Join on Bedrock Edition
                 </p>
@@ -213,10 +213,11 @@ export default function fun(props) {
                     1. Download Minecraft from the app store
                 </p>
                 <p className="text-left font-header text-xl text-darken-800">
-                    2. Sign in with a Microsoft account. Account age must be 18yrs or older to join.
+                    2. Sign in with a Microsoft account. Account age must be
+                    18yrs or older to join.
                 </p>
                 <p className="text-left font-header text-xl text-darken-800">
-                    3. Choose Play > Servers > and tap{" "}
+                    3. Choose Play &gt; Servers &gt; and tap{" "}
                     <span className="rounded-lg bg-darken-50 p-1 font-header font-light text-darken-900 shadow">
                         +Add server
                     </span>
@@ -238,7 +239,7 @@ export default function fun(props) {
                 </p>
             </div>
 
-            <div className="flex flex-col gap-2 rounded-3xl bg-lighten-800 p-4">
+            <div className="lit-panel flex flex-col gap-2 rounded-3xl p-4">
                 <p className="text-left font-header text-3xl text-darken-800">
                     Extra information
                 </p>

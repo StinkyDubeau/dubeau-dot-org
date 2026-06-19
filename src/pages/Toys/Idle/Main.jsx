@@ -58,7 +58,7 @@ function Main(props) {
         }
 
         return (
-            <div className="m-2 flex flex-wrap gap-2 rounded-xl bg-lighten-800 p-2 text-darken-800">
+            <div className="lit-panel m-2 flex flex-wrap gap-2 rounded-xl p-2 text-darken-800">
                 <AnimatePresence mode="wait">
                     {tiles[0] &&
                         tiles.map((tile, index) => (
@@ -83,7 +83,7 @@ function Main(props) {
                     // animate={{ opacity: 1, y: 0 }}
                     // exit={{ opacity: 0, y: 10 }}
                     // layoutId={tile.uuid}
-                    className="m-1 w-full rounded-xl bg-lighten-800 shadow transition-all hover:scale-105 hover:shadow-lg"
+                    className="lit-control m-1 w-full rounded-xl shadow"
                     onClick={() =>
                         // Remove this tile from the list if clicked
                         setTileset(tileset.filter((t) => t !== tile))
@@ -95,7 +95,7 @@ function Main(props) {
             );
         }
         return (
-            <motion.div className="m-2 rounded-xl bg-lighten-800 p-2 text-darken-800">
+            <motion.div className="lit-panel m-2 rounded-xl p-2 text-darken-800">
                 <button
                     onClick={() => setMinimized(!minimized)}
                     className="h-full w-full text-left text-3xl"
@@ -132,7 +132,7 @@ function Main(props) {
         const [power, setPower] = useState(0);
 
         return (
-            <div className="m-2 rounded-xl bg-lighten-800 p-2 text-darken-800">
+            <div className="lit-panel m-2 rounded-xl p-2 text-darken-800">
                 <p className="h-full w-full text-left text-3xl">
                     Tileset Summary
                 </p>
@@ -156,25 +156,25 @@ function Main(props) {
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         placeholder="Tile name"
-                        className="w-full rounded-xl border-none bg-lighten-800 shadow-inner-xl shadow-darken-50"
+                        className="lit-input w-full rounded-xl border-none shadow-inner-xl"
                     />
                     <input
                         value={power}
                         type="number"
                         onChange={(e) => setPower(parseFloat(e.target.value))}
                         placeholder="Tile power (Can be negative)"
-                        className="w-full rounded-xl border-none bg-lighten-800 shadow-inner-xl shadow-darken-50"
+                        className="lit-input w-full rounded-xl border-none shadow-inner-xl"
                     />
                 </div>
                 <div className="flex flex-wrap gap-2">
                     <button
-                        className="w-full rounded-xl bg-lighten-800 p-2 shadow transition-all hover:scale-105 hover:shadow-lg"
+                        className="lit-control w-full rounded-xl p-2 shadow"
                         onClick={() => createDefinedTile(name, power)}
                     >
                         Make this tile
                     </button>
                     <button
-                        className="w-full rounded-xl bg-lighten-800 p-2 shadow transition-all hover:scale-105 hover:shadow-lg"
+                        className="lit-control w-full rounded-xl p-2 shadow"
                         onClick={() => createRandomTile()}
                     >
                         Make a random tile
@@ -200,7 +200,7 @@ function Main(props) {
         }
 
         return (
-            <div className="m-2 rounded-xl bg-lighten-800 p-2 text-darken-800">
+            <div className="lit-panel m-2 rounded-xl p-2 text-darken-800">
                 <p className="h-full w-full text-left text-3xl">Tile Shop</p>
                 <div className="flex flex-col gap-2">
                     {tiles[0] ? (

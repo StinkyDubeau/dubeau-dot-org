@@ -3,7 +3,13 @@ import Button from "../Components/Button";
 import Slider from "../Components/Slider";
 import ManualDynamo from "../Components/ManualDynamo";
 
-export default function Ver1UI({ capacity, setCapacity, load, setLoad, maximumCapacity }) {
+export default function Ver1UI({
+    capacity,
+    setCapacity,
+    load,
+    setLoad,
+    maximumCapacity,
+}) {
     return (
         <motion.div
             layoutId="modal"

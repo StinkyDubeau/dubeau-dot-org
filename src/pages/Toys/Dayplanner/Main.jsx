@@ -130,24 +130,24 @@ function Dayplanner(props) {
         const [uuid, setUuid] = useState(uuidv4());
 
         return (
-            <div className="flex gap-2 rounded border-none bg-lighten-800 p-2 shadow max-sm:flex-col">
+            <div className="lit-panel flex gap-2 rounded-xl p-2 shadow max-sm:flex-col">
                 {/* NAME */}
                 <input
                     type="text"
                     placeholder="Name"
-                    className="rounded border-none bg-darken-50 p-1 shadow-inner"
+                    className="lit-input rounded p-1 shadow-inner"
                     onChange={(e) => setName(e.target.value)}
                 />
                 {/* DESCRIPTION */}
                 <input
                     type="text"
                     placeholder="Description"
-                    className="rounded border-none bg-darken-50 p-1 shadow-inner"
+                    className="lit-input rounded p-1 shadow-inner"
                     onChange={(e) => setDescription(e.target.value)}
                 />
                 {/* DURATION */}
                 <select
-                    className="min-w-36 rounded border-none bg-lighten-600 p-1 shadow"
+                    className="lit-control min-w-36 rounded p-1 shadow"
                     onChange={(e) => setDuration(parseInt(e.target.value))}
                 >
                     <option value={15}>15 minutes</option>
@@ -160,7 +160,7 @@ function Dayplanner(props) {
                 </select>
                 {/* COLOUR */}
                 <select
-                    className="min-w-24 rounded border-none bg-lighten-600 p-1 shadow"
+                    className="lit-control min-w-24 rounded p-1 shadow"
                     onChange={(e) => setColour(e.target.value)}
                 >
                     <option value="bg-yellow-400">Yellow</option>
@@ -170,7 +170,7 @@ function Dayplanner(props) {
                     <option value="bg-purple-500">Purple</option>
                 </select>
                 <button
-                    className="rounded bg-lighten-600 p-1 shadow"
+                    className="lit-control rounded p-1 shadow"
                     onClick={() => {
                         // Add task to dailyTasks
                         setDailyTasks([
@@ -217,7 +217,7 @@ function Dayplanner(props) {
             <motion.div
                 initial={{ y: -10, opacity: 0.85 }}
                 animate={{ y: 0, opacity: 1 }}
-                className={`${colour} flex gap-6 rounded p-2 shadow`}
+                className={`${colour} lit-card flex gap-6 rounded-xl p-2 shadow`}
             >
                 <div className="flex flex-col gap-2 text-darken-600">
                     <p className="text-xl">#{index + 1}</p>

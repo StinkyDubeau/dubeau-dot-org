@@ -1,37 +1,42 @@
-import Button from "./Button";
 import { Link } from "react-router-dom";
 
 export default function NavButtons({ isOnHome, children }) {
+    const linkClass = `lit-nav-link flex h-full min-w-0 flex-1 cursor-default flex-col items-center justify-center rounded-full px-1.5 text-center font-header text-darken-700 sm:min-h-14 sm:px-3 sm:text-2xl ${
+        isOnHome
+            ? "min-h-14 text-lg xs:text-xl sm:text-2xl"
+            : "min-h-14 text-base xs:text-lg sm:text-2xl"
+    }`;
+
     return (
-        <div className="mx-auto flex h-full gap-3">
+        <nav className="mx-auto flex h-full w-full max-w-xl gap-1 sm:gap-2">
             {isOnHome ? (
                 <Link
-                    className="m-auto flex h-full w-full cursor-default flex-col justify-center rounded-full font-header text-2xl text-darken-700 transition-all hover:bg-lighten-900 hover:px-3 hover:shadow-lg"
+                    className={linkClass}
                     to="/chat"
                 >
                     <p className="text-nowrap">p2p chat</p>
                 </Link>
             ) : (
                 <Link
-                    className="m-auto flex h-full w-full cursor-default flex-col justify-center rounded-full font-header text-2xl text-darken-700 transition-all hover:bg-lighten-900 hover:px-3 hover:shadow-lg"
+                    className={linkClass}
                     to="/"
                 >
                     <p className="">home</p>
                 </Link>
             )}
             <Link
-                className="m-auto flex h-full w-full cursor-default flex-col justify-center rounded-full font-header text-2xl text-darken-700 transition-all hover:bg-lighten-900 hover:px-3 hover:shadow-lg"
+                className={linkClass}
                 to="/fun"
             >
                 <p className="">playground</p>
             </Link>
             <Link
-                className="m-auto flex h-full w-full cursor-default flex-col justify-center rounded-full font-header text-2xl text-darken-700 transition-all hover:bg-lighten-900 hover:px-3 hover:shadow-lg"
+                className={linkClass}
                 to="/contact"
             >
                 <p className="">contact</p>
             </Link>
             {children}
-        </div>
+        </nav>
     );
 }

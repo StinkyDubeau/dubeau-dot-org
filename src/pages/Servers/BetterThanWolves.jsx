@@ -16,7 +16,7 @@ export default function fun(props) {
             layoutId={PackImg}
             className="m-2 flex flex-col justify-center gap-6 overflow-hidden max-sm:mt-12 sm:p-4"
         >
-            <div className="flex justify-between gap-12 overflow-clip align-middle max-sm:relative max-sm:h-72 max-sm:flex-col sm:h-72">
+            <div className="server-hero flex justify-between gap-12 overflow-clip align-middle max-sm:relative max-sm:h-72 max-sm:flex-col sm:h-72">
                 <div className="flex-0  z-10 flex max-w-full justify-center max-sm:h-full">
                     <div className="my-auto flex h-fit flex-col justify-center gap-12 align-middle">
                         <div className="flex flex-col gap-2">
@@ -34,7 +34,7 @@ export default function fun(props) {
                             >
                                 <p>
                                     Join at{" "}
-                                    <span className="rounded-xl bg-lighten-800 p-2 text-darken-800">
+                                    <span className="lit-control rounded-xl p-2 text-darken-800">
                                         {addr}
                                     </span>
                                 </p>
@@ -47,7 +47,7 @@ export default function fun(props) {
                                     viewBox="0 0 16 16"
                                 >
                                     <path
-                                        fill-rule="evenodd"
+                                        fillRule="evenodd"
                                         d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z"
                                     />
                                 </svg>
@@ -66,7 +66,7 @@ export default function fun(props) {
                 <div className="flex flex-grow justify-between gap-6 max-sm:flex-wrap">
                     {/* Warnings */}
 
-                    <div className="flex flex-col gap-4 rounded-3xl bg-lighten-800 p-4">
+                    <div className="lit-panel flex flex-col gap-4 rounded-3xl p-4">
                         {/* Public server warning */}
                         <div
                             id="container"
@@ -76,8 +76,8 @@ export default function fun(props) {
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="48"
                                 height="48"
-                                fill="text-darken-700"
-                                className="bi bi-exclamation-diamond h-full w-1/4 max-w-12"
+                                fill="currentColor"
+                                className="bi bi-exclamation-diamond h-full w-1/4 max-w-12 text-darken-700"
                                 viewBox="0 0 16 16"
                             >
                                 <path d="M6.95.435c.58-.58 1.52-.58 2.1 0l6.515 6.516c.58.58.58 1.519 0 2.098L9.05 15.565c-.58.58-1.519.58-2.098 0L.435 9.05a1.48 1.48 0 0 1 0-2.098zm1.4.7a.495.495 0 0 0-.7 0L1.134 7.65a.495.495 0 0 0 0 .7l6.516 6.516a.495.495 0 0 0 .7 0l6.516-6.516a.495.495 0 0 0 0-.7L8.35 1.134z" />
@@ -90,7 +90,7 @@ export default function fun(props) {
                             </p>
                         </div>
                     </div>
-                    <div className="flex flex-col gap-4 rounded-3xl bg-lighten-800 p-4">
+                    <div className="lit-panel flex flex-col gap-4 rounded-3xl p-4">
                         {/* Hardcore warning */}
                         <div
                             id="container"
@@ -100,8 +100,8 @@ export default function fun(props) {
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="48"
                                 height="48"
-                                fill="text-darken-700"
-                                className="bi bi-exclamation-diamond h-full w-1/4 max-w-12"
+                                fill="currentColor"
+                                className="bi bi-exclamation-diamond h-full w-1/4 max-w-12 text-darken-700"
                                 viewBox="0 0 16 16"
                             >
                                 <path d="M6.95.435c.58-.58 1.52-.58 2.1 0l6.515 6.516c.58.58.58 1.519 0 2.098L9.05 15.565c-.58.58-1.519.58-2.098 0L.435 9.05a1.48 1.48 0 0 1 0-2.098zm1.4.7a.495.495 0 0 0-.7 0L1.134 7.65a.495.495 0 0 0 0 .7l6.516 6.516a.495.495 0 0 0 .7 0l6.516-6.516a.495.495 0 0 0 0-.7L8.35 1.134z" />
@@ -122,7 +122,7 @@ export default function fun(props) {
                     </div>
                 </div>
 
-                <div className="flex flex-col gap-4 rounded-3xl bg-lighten-800 p-4 text-darken-800">
+                <div className="lit-panel flex flex-col gap-4 rounded-3xl p-4 text-darken-800">
                     <p className="text-left font-header text-3xl">
                         Join with MultiMC
                     </p>
