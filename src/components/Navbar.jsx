@@ -12,11 +12,10 @@ export default function Navbar(props) {
                             initial={{ height: 0 }}
                             animate={{ height: "auto" }}
                             exit={{ height: 0 }}
-                            className="flex w-full flex-col justify-center overflow-clip"
+                            className="flex w-full flex-col justify-center overflow-clip px-2"
                         >
                             <progress className="progress mx-auto mt-2 w-full min-w-36 fill-darken-900 bg-transparent transition-all"></progress>
-                            <div id="progress" className="min-w-36 w-full h-12 bg-black animate-bounce"></div>
-                            <p className="text-nowrap font-header text-darken-800">
+                            <p className="text-nowrap py-1 font-header text-sm text-darken-800">
                                 {props.data.loading.text}
                             </p>
                         </motion.div>
@@ -31,7 +30,7 @@ export default function Navbar(props) {
             initial={{ height: 0, padding: 0 }}
             animate={{ height: "auto", padding: 2 }}
             exit={{ height: 0, padding: 0 }}
-            className="fixed z-40 mx-auto flex w-full flex-col justify-center overflow-clip bg-lighten-600 backdrop-blur-3xl"
+            className="fixed inset-x-0 bottom-0 z-40 mx-auto flex w-full flex-col justify-center overflow-clip bg-transparent px-3 pb-[calc(env(safe-area-inset-bottom)+0.75rem)] md:bottom-auto md:top-0 md:bg-lighten-700 md:px-4 md:pb-2 md:pt-2 md:backdrop-blur-3xl"
         >
             <NavButtons />
             {props.data && createDataDependants()}

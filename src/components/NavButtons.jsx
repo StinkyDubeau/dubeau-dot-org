@@ -1,37 +1,38 @@
-import Button from "./Button";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
-export default function NavButtons({ isOnHome, children }) {
+export default function NavButtons({ children }) {
+    const location = useLocation();
+    const navItems = [
+        { to: "/", label: "home" },
+        { to: "/fun", label: "playground" },
+        { to: "/contact", label: "contact" },
+    ];
+
+    const isActive = (to) =>
+        to === "/"
+            ? location.pathname === "/"
+            : location.pathname.startsWith(to);
+
     return (
-        <div className="mx-auto flex h-full gap-3">
-            {isOnHome ? (
+        <nav
+            aria-label="Primary"
+            className="mx-auto grid w-full max-w-xl grid-cols-3 gap-1 rounded-[1.75rem] bg-lighten-800 p-1 shadow-lg shadow-darken-100 backdrop-blur-3xl md:flex md:max-w-none md:justify-center md:gap-2 md:bg-transparent md:p-0 md:shadow-none"
+        >
+            {navItems.map((item) => (
                 <Link
-                    className="m-auto flex h-full w-full cursor-default flex-col justify-center rounded-full font-header text-2xl text-darken-700 transition-all hover:bg-lighten-900 hover:px-3 hover:shadow-lg"
-                    to="/chat"
+                    key={item.to}
+                    to={item.to}
+                    aria-current={isActive(item.to) ? "page" : undefined}
+                    className={`flex min-h-14 cursor-default items-center justify-center rounded-[1.35rem] px-2 py-2 font-header text-sm font-semibold tracking-normal transition-all md:min-h-12 md:min-w-32 md:px-4 md:text-lg ${
+                        isActive(item.to)
+                            ? "bg-darken-800 text-lighten-900 shadow-md"
+                            : "text-darken-700 hover:bg-lighten-900 hover:shadow"
+                    }`}
                 >
-                    <p className="text-nowrap">p2p chat</p>
+                    <span className="leading-none">{item.label}</span>
                 </Link>
-            ) : (
-                <Link
-                    className="m-auto flex h-full w-full cursor-default flex-col justify-center rounded-full font-header text-2xl text-darken-700 transition-all hover:bg-lighten-900 hover:px-3 hover:shadow-lg"
-                    to="/"
-                >
-                    <p className="">home</p>
-                </Link>
-            )}
-            <Link
-                className="m-auto flex h-full w-full cursor-default flex-col justify-center rounded-full font-header text-2xl text-darken-700 transition-all hover:bg-lighten-900 hover:px-3 hover:shadow-lg"
-                to="/fun"
-            >
-                <p className="">playground</p>
-            </Link>
-            <Link
-                className="m-auto flex h-full w-full cursor-default flex-col justify-center rounded-full font-header text-2xl text-darken-700 transition-all hover:bg-lighten-900 hover:px-3 hover:shadow-lg"
-                to="/contact"
-            >
-                <p className="">contact</p>
-            </Link>
+            ))}
             {children}
-        </div>
+        </nav>
     );
 }

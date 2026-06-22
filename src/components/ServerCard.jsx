@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 export default function ServerCard(props) {
     const scrollToTop = () => {
@@ -16,11 +16,11 @@ export default function ServerCard(props) {
             layoutId={props.img}
             whileHover={{ scale: 1.05 }}
             onClick={scrollToTop}
-            className={`${props.className} card h-52 cursor-default overflow-hidden rounded-2xl bg-black shadow-lg max-md:w-full md:w-44`}
+            className={`${props.className} card h-56 cursor-default overflow-hidden rounded-2xl bg-black shadow-lg transition active:scale-[0.98] md:h-52 md:w-full`}
         >
             <Link
                 to={props.to}
-                className="cursor-default"
+                className="block h-full cursor-default"
             >
                 <motion.img
                     id={props.img}
@@ -29,15 +29,15 @@ export default function ServerCard(props) {
                     alt={props.alt}
                 />
                 {/* Container */}
-                <div className="z-25 m-2 flex h-48 flex-col justify-center gap-2 rounded-lg drop-shadow">
+                <div className="z-25 relative flex h-full flex-col justify-end gap-2 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-4 drop-shadow">
                     {/* Spacer */}
-                    <p className="z-10 mt-4 font-header text-3xl text-white drop-shadow">
+                    <p className="z-10 text-left font-header text-3xl font-semibold leading-none text-white drop-shadow">
                         {props.title}
                     </p>
-                    <p className="z-10 font-header font-semibold text-white drop-shadow">
+                    <p className="z-10 text-left font-header font-semibold text-white drop-shadow">
                         {props.subtitle}
                     </p>
-                    <p className="animate-pulse font-header text-white hover:animate-none">
+                    <p className="text-left font-header text-white">
                         {props.announcement && props.announcement}
                     </p>
                 </div>

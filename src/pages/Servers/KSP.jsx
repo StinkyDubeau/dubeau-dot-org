@@ -1,87 +1,43 @@
-import Panel from "../../components/Panel";
-import Frame from "../../components/Frame";
-import Button from "../../components/Button";
+import ServerPage from "./ServerPage";
 import PackImg from "../../assets/ksp-banner.webp";
-import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
-import Marquee from "react-fast-marquee";
 
-export default function fun(props) {
+export default function KSP(props) {
     return (
-        <motion.div
-            layoutScroll
-            layoutId={PackImg}
-        >
-            <div className="w-xl flex flex-col justify-center gap-6">
-                <div className="mt-5 flex justify-between gap-12 overflow-clip rounded-3xl align-middle max-sm:flex-col">
-                    <div className="flex-0 flex max-w-full justify-center ">
-                        <div className="flex flex-col justify-center gap-12 align-middle">
-                            <div className="flex flex-col gap-2">
-                                <p className="text-left font-header text-5xl text-darken-800 max-md:text-center">
-                                    Kerbal Space Program
-                                </p>
-
-                                <p className="text-left text-xl font-light text-darken-800 max-md:text-center">
-                                    A public Dark Mulitplayer server for Kerbal
-                                    Space program.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <img
-                        className="max-w-96 flex-1 rounded-3xl object-cover max-sm:max-w-full"
-                        src={PackImg}
-                        alt="The icon for Kerbal Space Program's Server page. The image features a rocketship flying near Mars."
-                    />
-                </div>
-
-                <div className="flex flex-col gap-2 rounded-3xl bg-lighten-800 p-4">
-                    <p className="text-left font-header text-3xl text-darken-800">
-                        Join with steam
-                    </p>
-                    <p className="text-left font-header font-light text-darken-800">
-                        This section of the site is under construction. Join the
-                        discord to learn how to join this server.
-                    </p>
-
-                    <p className="text-left font-header text-xl text-darken-800">
-                        0. Connect with us on discord to be whitelisted
-                    </p>
-                    <div className="flex justify-center gap-4 font-header text-darken-800 underline">
-                        <Link
-                            className=" scale-100 transition-all hover:scale-110"
-                            to="/contact"
-                        >
-                            Join the discord server
-                        </Link>
-                    </div>
-                </div>
-
-                <div className="flex flex-col gap-2 rounded-3xl bg-lighten-800 p-4">
-                    <p className="text-left font-header text-3xl text-darken-800">
-                        Join with server IP
-                    </p>
-                    <p className="text-left font-header font-light text-darken-800">
-                        This section of the site is under construction. Join the
-                        discord to learn how to join this server.
-                    </p>
-
-                    <p className="text-left font-header text-xl text-darken-800">
-                        0. Connect with us on discord to be whitelisted
-                    </p>
-                    <div className="flex justify-center gap-4 font-header text-darken-800 underline">
-                        <Link
-                            className=" scale-100 transition-all hover:scale-110"
-                            to="/contact"
-                        >
-                            Join the discord server
-                        </Link>
-                    </div>
-                </div>
-            </div>
-            <p className="mt-6 font-header text-darken-800">
-                Last updated September 5th, 2024
-            </p>
-        </motion.div>
+        <ServerPage
+            {...props}
+            title="Kerbal Space Program"
+            subtitle="A Dark Multiplayer server for shared missions."
+            image={PackImg}
+            imageAlt="A rocket ship flying near Mars."
+            tags={["KSP", "Dark Multiplayer", "Invite-only"]}
+            notices={[
+                {
+                    title: "Setup in progress",
+                    body: (
+                        <p>
+                            The public instructions are still being assembled.
+                            Discord has the current connection details.
+                        </p>
+                    ),
+                },
+            ]}
+            sections={[
+                {
+                    title: "Join with Steam",
+                    children: (
+                        <ol className="list-decimal space-y-3 pl-5">
+                            <li>Join Discord to request access.</li>
+                            <li>Install Kerbal Space Program and the current mod list.</li>
+                            <li>
+                                Connect through Dark Multiplayer using the
+                                server details posted in Discord.
+                            </li>
+                        </ol>
+                    ),
+                    actions: [{ label: "Join Discord", to: "/contact" }],
+                },
+            ]}
+            updated="September 5, 2024"
+        />
     );
 }
