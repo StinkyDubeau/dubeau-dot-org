@@ -223,15 +223,15 @@ export default function ServerPage({
                     alt={imageAlt}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/45 to-black/10" />
-                <div className="relative z-10 flex min-h-[68dvh] flex-col justify-end gap-5 p-5 text-lighten-900 md:min-h-[28rem] md:p-8">
+                <div className="relative z-10 flex min-h-[68dvh] flex-col justify-end gap-5 p-5 text-darken-900 md:min-h-[28rem] md:p-8">
                     <div>
-                        <p className="font-header text-sm font-semibold uppercase tracking-normal text-lighten-700">
+                        <p className="font-header text-sm font-semibold uppercase tracking-normal text-darken-700">
                             dubeau.org servers
                         </p>
                         <h1 className="mt-2 max-w-3xl font-header text-5xl font-semibold leading-none sm:text-6xl">
                             {title}
                         </h1>
-                        <p className="server-copy mt-3 font-header text-lg leading-relaxed text-lighten-800 sm:max-w-2xl sm:text-2xl">
+                        <p className="server-copy mt-3 font-header text-lg leading-relaxed text-darken-800 sm:max-w-2xl sm:text-2xl">
                             {subtitle}
                         </p>
                     </div>

@@ -2,8 +2,9 @@ import { Link, useLocation } from "react-router-dom";
 
 export default function NavButtons({ children }) {
     const location = useLocation();
+    const isHome = location.pathname === "/";
     const navItems = [
-        { to: "/", label: "home" },
+        isHome ? { to: "/chat", label: "p2p chat" } : { to: "/", label: "home" },
         { to: "/fun", label: "playground" },
         { to: "/contact", label: "contact" },
     ];
@@ -16,7 +17,7 @@ export default function NavButtons({ children }) {
     return (
         <nav
             aria-label="Primary"
-            className="mx-auto grid w-full max-w-xl grid-cols-3 gap-1 rounded-[1.75rem] bg-lighten-800 p-1 shadow-lg shadow-darken-100 backdrop-blur-3xl md:flex md:max-w-none md:justify-center md:gap-2 md:bg-transparent md:p-0 md:shadow-none"
+            className="mx-auto grid w-[calc(100vw-1.5rem)] max-w-[23rem] grid-cols-3 gap-1 rounded-[1.75rem] bg-lighten-800 p-1 shadow-lg shadow-darken-100 backdrop-blur-3xl sm:max-w-xl md:flex md:w-full md:max-w-none md:justify-center md:gap-2 md:bg-transparent md:p-0 md:shadow-none"
         >
             {navItems.map((item) => (
                 <Link

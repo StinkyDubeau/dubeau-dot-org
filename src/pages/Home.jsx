@@ -1,6 +1,3 @@
-import Frame from "../components/Frame";
-import Panel from "../components/Panel";
-import NavButtons from "../components/NavButtons";
 import { Link } from "react-router-dom";
 
 import { motion } from "framer-motion";
@@ -9,7 +6,7 @@ import { useEffect } from "react";
 export default function Home(props) {
     useEffect(() => {
         props.data &&
-            props.setData({ ...props.data, vignette: false, noNavbar: true });
+            props.setData({ ...props.data, vignette: false, noNavbar: false });
     }, []);
 
     return (
@@ -32,28 +29,13 @@ export default function Home(props) {
                             </p>
                         </div>
                     </div>
-                    <div className="flex justify-center gap-2">
-                        <Panel className="">
-                            <div className="m-2 flex h-16 justify-center p-1">
-                                <Link
-                                    className="m-1 rounded-xl p-1 font-header text-2xl text-darken-700 transition-all hover:rounded-3xl hover:bg-darken-50 hover:px-3 hover:shadow"
-                                    to="/chat"
-                                >
-                                    <p className="mt-0.5 text-nowrap">
-                                        p2p chat
-                                    </p>
-                                </Link>
-                                <NavButtons noHome />
-                            </div>
-                        </Panel>
-                    </div>
                 </div>
             </motion.div>
 
             {/* Accessibility settings */}
             <Link
                 to="/accessibility"
-                className={`fixed bottom-1 right-1 m-2 flex justify-center gap-2 rounded-lg bg-lighten-900 p-2 shadow-lg transition-all ${props.data.experimental && "mb-6"}`}
+                className={`fixed bottom-24 right-1 z-50 m-2 flex justify-center gap-2 rounded-lg bg-lighten-900 p-2 shadow-lg transition-all md:bottom-1 ${props.data.experimental && "mb-6"}`}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
             >

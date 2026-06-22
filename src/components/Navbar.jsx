@@ -27,10 +27,7 @@ export default function Navbar(props) {
 
     return (
         <motion.div
-            initial={{ height: 0, padding: 0 }}
-            animate={{ height: "auto", padding: 2 }}
-            exit={{ height: 0, padding: 0 }}
-            className="fixed inset-x-0 bottom-0 z-40 mx-auto flex w-full flex-col justify-center overflow-clip bg-transparent px-3 pb-[calc(env(safe-area-inset-bottom)+0.75rem)] md:bottom-auto md:top-0 md:bg-lighten-700 md:px-4 md:pb-2 md:pt-2 md:backdrop-blur-3xl"
+            className="fixed inset-x-0 bottom-0 z-40 mx-auto box-border flex w-dvw max-w-full flex-col justify-center overflow-visible bg-transparent px-3 pb-[calc(env(safe-area-inset-bottom)+0.75rem)] md:bottom-auto md:top-0 md:bg-lighten-700 md:px-4 md:pb-2 md:pt-2 md:backdrop-blur-3xl"
         >
             <NavButtons />
             {props.data && createDataDependants()}
