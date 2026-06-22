@@ -1,30 +1,38 @@
-import Button from "./Button";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
-export default function NavButtons(props) {
+export default function NavButtons({ children }) {
+    const location = useLocation();
+    const navItems = [
+        { to: "/", label: "home" },
+        { to: "/fun", label: "playground" },
+        { to: "/contact", label: "contact" },
+    ];
+
+    const isActive = (to) =>
+        to === "/"
+            ? location.pathname === "/"
+            : location.pathname.startsWith(to);
+
     return (
-        <div className="mx-auto flex">
-            {!props.noHome && (
+        <nav
+            aria-label="Primary"
+            className="mx-auto grid w-full max-w-xl grid-cols-3 gap-1 rounded-[1.75rem] bg-lighten-800 p-1 shadow-lg shadow-darken-100 backdrop-blur-3xl md:flex md:max-w-none md:justify-center md:gap-2 md:bg-transparent md:p-0 md:shadow-none"
+        >
+            {navItems.map((item) => (
                 <Link
-                    className="flex-0 m-1 rounded-xl p-1 font-header text-2xl text-darken-700 transition-all hover:flex-1 hover:rounded-3xl hover:bg-darken-50 hover:px-3 hover:shadow"
-                    to="/"
+                    key={item.to}
+                    to={item.to}
+                    aria-current={isActive(item.to) ? "page" : undefined}
+                    className={`flex min-h-14 cursor-default items-center justify-center rounded-[1.35rem] px-2 py-2 font-header text-sm font-semibold tracking-normal transition-all md:min-h-12 md:min-w-32 md:px-4 md:text-lg ${
+                        isActive(item.to)
+                            ? "bg-darken-800 text-lighten-900 shadow-md"
+                            : "text-darken-700 hover:bg-lighten-900 hover:shadow"
+                    }`}
                 >
-                    <p className="mt-0.5">home</p>
+                    <span className="leading-none">{item.label}</span>
                 </Link>
-            )}
-            <Link
-                className="m-1 rounded-xl p-1 font-header text-2xl text-darken-700 transition-all hover:rounded-3xl hover:bg-darken-50 hover:px-3 hover:shadow"
-                to="/fun"
-            >
-                <p className="mt-0.5">playground</p>
-            </Link>
-            <Link
-                className="flex-0 m-1 rounded-xl p-1 font-header text-2xl text-darken-700 transition-all hover:flex-1 hover:rounded-3xl hover:bg-darken-50 hover:px-3 hover:shadow"
-                to="/contact"
-            >
-                <p className="mt-0.5">contact</p>
-            </Link>
-            {props.children}
-        </div>
+            ))}
+            {children}
+        </nav>
     );
 }

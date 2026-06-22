@@ -18,6 +18,8 @@ export default function Home(props) {
                 layout
                 initial={{ x: -100 }}
                 animate={{ x: 0 }}
+                className="flex h-screen flex-col justify-center gap-4"
+                id="page-container"
             >
                 <div className="flex h-screen flex-col justify-center gap-4">
                     <div className="max-sm:w-full">
@@ -47,10 +49,11 @@ export default function Home(props) {
                     </div>
                 </div>
             </motion.div>
+
             {/* Accessibility settings */}
             <Link
                 to="/accessibility"
-                className="fixed bottom-1 right-1 m-2 flex justify-center gap-2 rounded-lg bg-lighten-900 p-2 shadow-lg"
+                className={`fixed bottom-1 right-1 m-2 flex justify-center gap-2 rounded-lg bg-lighten-900 p-2 shadow-lg transition-all ${props.data.experimental && "mb-6"}`}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
             >

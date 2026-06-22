@@ -1,7 +1,9 @@
-import Frame from "../../components/Frame";
-import { Link } from "react-router-dom";
 import React, { useState, useContext, useEffect, useRef } from "react";
 import geekData from "./GeekData";
+import LunchForm from "./LunchForm";
+import { JSONTree } from "react-json-tree";
+import { AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 const RealmAppContext = React.createContext(null);
 
@@ -11,10 +13,33 @@ export default function Lunches(props) {
     const [agent, setAgent] = useState(null);
     const [username, setUsername] = useState(undefined);
     const [loggedIn, setLoggedIn] = useState(false);
-    const data = geekData();
-    console.log(data);
+    const [showingPreview, setShowingPreview] = useState(false);
+    const [showingSubmission, setShowingSubmission] = useState(true);
+
+    const previewTheme = {
+        scheme: "monokai",
+        author: "wimer hazenberg (http://www.monokai.nl)",
+        base00: "#272822",
+        base01: "#383830",
+        base02: "#49483e",
+        base03: "#75715e",
+        base04: "#a59f85",
+        base05: "#f8f8f2",
+        base06: "#f5f4f1",
+        base07: "#f9f8f5",
+        base08: "#f92672",
+        base09: "#fd971f",
+        base0A: "#f4bf75",
+        base0B: "#a6e22e",
+        base0C: "#a1efe4",
+        base0D: "#66d9ef",
+        base0E: "#ae81ff",
+        base0F: "#cc6633",
+    };
 
     const [submission, setSubmission] = useState({
+        name: "",
+        ntlogin: "",
         date: new Date(),
         days: [
             { sunday: { in: "", out: "", note: "" } },
@@ -26,6 +51,18 @@ export default function Lunches(props) {
             { saturday: { in: "", out: "", note: "" } },
         ],
     });
+    const data = geekData();
+    console.log(data);
+
+    // Apply vignette frame property
+    // Ensure page never has navbar
+    useEffect(() => {
+        props.setData({
+            ...props.data,
+            noNavbar: true,
+            vignette: true,
+        });
+    }, []);
 
     async function autoFill() {
         data.forEach((store) => {
@@ -53,6 +90,11 @@ export default function Lunches(props) {
                     console.log("Got cookie!");
                     console.log(result);
                     setUsernameCookie(result);
+                    setSubmission({
+                        ...submission,
+                        ntlogin: result,
+                        name: agent.name,
+                    });
                     return result;
                 })
                 .catch((error) => {
@@ -119,58 +161,111 @@ export default function Lunches(props) {
         setLoggedIn(true);
     }
 
+    function handleSubmissionButton() {
+        console.log("Set showingSubmission to ", !showingSubmission);
+        setShowingSubmission(true);
+        setShowingPreview(false);
+    }
+
+    function handlePreviewButton() {
+        console.log("Set showingPreview to ", !showingPreview);
+        setShowingPreview(true);
+        setShowingSubmission(false);
+    }
+
     function createDayEntry(day, index) {
         const dayName = Object.keys(day).toString();
         const isToday = day === submission.days[new Date().getDay()];
         const submissionDay = submission.days[index][dayName];
+
         return (
             <div
-                className="flex gap-2"
                 key={`${index}${dayName}`}
+                className="flex justify-center gap-2 p-1 max-md:flex-col"
             >
-                {isToday && (
-                    <p className="my-auto font-header text-xl">{">"}</p>
-                )}
-                <div
-                    className={`flex h-20 flex-col justify-center gap-2 rounded-lg p-2 ${isToday && "bg-darken-50 shadow"}`}
-                >
-                    <div className="flex w-full gap-2">
-                        <p className="flex-0 w-full text-left text-darken-800">
-                            {dayName}
-                        </p>
-                        <input
-                            className="w-full rounded text-darken-800"
-                            placeholder="Notes"
-                            value={submissionDay.note}
-                        />
-                    </div>
-                    <div className="flex gap-2">
-                        {/* Punch out */}
-                        <p className="my-auto text-xs text-darken-800">out</p>
-                        <input
-                            className="w-full flex-1 rounded bg-lighten-800"
-                            onChange={(e) => {
-                                console.log(e.target.value);
-                            }}
-                            // type="time"
-                            value={submissionDay.out}
-                        />{" "}
-                        {/* Punch in */}
-                        <p className="my-auto text-xs text-darken-800">in</p>
-                        <input
-                            className="w-full min-w-24 flex-1 rounded bg-lighten-800"
-                            onChange={(e) => {
-                                console.log(typeof e.target.value);
-                            }}
-                            // type="time"
-                            value={submissionDay.in}
-                        />
-                    </div>
+                {/* DayName */}
+                <p className="flex-0 w-full text-left font-bold text-darken-800">
+                    {dayName}{" "}
+                    <span className="font-normal">{isToday && "(today)"}</span>
+                </p>
+                {/* Punches */}
+                <div className="flex gap-2">
+                    {/* Punch out */}
+                    <p className="my-auto text-xs text-darken-800">out</p>
+                    <input
+                        className="w-full min-w-24 flex-1 rounded border-none bg-darken-50 shadow-inner"
+                        onChange={(e) => {
+                            console.log(e.target.value);
+                        }}
+                        // type="time"
+                        value={submissionDay.out}
+                    />
+                    {/* Punch in */}
+                    <p className="my-auto text-xs text-darken-800">in</p>
+                    <input
+                        className="w-full min-w-24 flex-1 rounded border-none bg-darken-50 shadow-inner"
+                        onChange={(e) => {
+                            console.log(e.target.value);
+                        }}
+                        // type="time"
+                        value={submissionDay.in}
+                    />
                 </div>
-                {isToday && (
-                    <p className="my-auto font-header text-xl">{"<"}</p>
-                )}
+                {/* Notes */}
+                <input
+                    className="flex-0 w-full rounded border-none bg-darken-50 text-darken-800 shadow-inner"
+                    placeholder="Notes"
+                    value={submissionDay.note}
+                    onChange={(e) => {
+                        console.log(e.target.value);
+                        setSubmission();
+                    }}
+                />
             </div>
+        );
+    }
+
+    function createPreviewPage(submission) {
+        return (
+            <motion.div className="flex flex-col justify-center gap-2 text-left max-md:flex-col">
+                <p className="p-2 text-left font-header text-xl font-bold text-darken-800">
+                    Preview Page
+                </p>
+                <div className="flex flex-col gap-2 rounded-2xl bg-lighten-900 p-2 shadow-lg">
+                    <p className="pl-1 pt-2 font-header text-xs font-bold text-darken-500">
+                        This is the raw data that will be sent when you click
+                        "submit".
+                    </p>
+                    <JSONTree
+                        data={submission}
+                        theme={previewTheme}
+                        invertTheme={true}
+                    />
+                </div>
+            </motion.div>
+        );
+    }
+    setAgent;
+    function createSubmissionPage() {
+        return (
+            <motion.div
+                initial={{ height: 0, opacity: 1 }}
+                animate={{ height: "auto" }}
+                exit={{ x: -500, opacity: 0 }}
+                className="flex flex-col justify-center gap-2 text-left max-md:flex-col"
+            >
+                <p className="p-2 pl-2 text-left font-header text-xl font-bold text-darken-800">
+                    Submission Page
+                </p>
+                <div className="flex flex-col gap-2 rounded-2xl bg-lighten-900 p-2 shadow-lg">
+                    <p className="py-2 pl-1 font-header text-xs font-bold text-darken-500">
+                        Enter the start and end time for your lunches on days
+                        you worked. Leave days-off blank, mention VAC or SCK
+                        days in notes.
+                    </p>
+                    {submission.days.map(createDayEntry)}
+                </div>
+            </motion.div>
         );
     }
 
@@ -178,41 +273,59 @@ export default function Lunches(props) {
         return (
             <div>
                 {/* Gradient bg */}
-                <div className="m-5 flex animate-gradient-x justify-center rounded-3xl bg-gradient-to-tl from-orange-600 via-orange-500 to-yellow-500 p-4 sm:gap-8">
-                    <div className="flex flex-wrap justify-around gap-2 lg:gap-48">
-                        <div className="flex flex-col gap-4">
-                            <p className="text-3xl font-bold text-zinc-800">
-                                {submission.date.toDateString()}
-                            </p>
+                <div className="m-4 flex animate-gradient-x flex-col justify-center gap-4 rounded-3xl bg-gradient-to-tl from-orange-600 via-orange-500 to-yellow-500 p-4 drop-shadow-xl md:m-auto md:w-3/4">
+                    <p className="font-header text-3xl font-bold text-zinc-800 sm:ml-6 sm:text-left">
+                        {submission.date.toDateString()}
+                    </p>
+                    <div
+                        id="tabs"
+                        className="z-10 -mb-2 flex rounded-t-2xl bg-lighten-900"
+                    >
+                        <button
+                            className={`${showingSubmission ? "underline shadow-none" : "bg-lighten-800 hover:bg-darken-100"} h-12 w-full flex-1 rounded-tl-2xl border-b border-darken-50 font-header text-sm font-bold text-darken-700 shadow-lg transition-all `}
+                            onClick={handleSubmissionButton}
+                        >
+                            Submission
+                        </button>
+                        <button
+                            className={`${showingPreview ? "underline shadow-none" : "bg-lighten-800 hover:bg-darken-100"} h-12 w-full flex-1 rounded-tr-2xl border-b border-darken-50 font-header text-sm font-bold text-darken-700 shadow-lg transition-all `}
+                            onClick={handlePreviewButton}
+                        >
+                            Preview
+                        </button>
+                    </div>
+
+                    <div
+                        id="form"
+                        className="-mt-2 overflow-clip rounded-b-2xl bg-lighten-900 p-4 px-4"
+                    >
+                        <AnimatePresence mode="wait">
+                            {showingPreview
+                                ? createPreviewPage(submission)
+                                : createSubmissionPage(submission)}
+                        </AnimatePresence>
+                        <div className="mt-2 flex justify-between gap-2 max-sm:flex-col  ">
+                            {/* Autofill button */}
                             <button
                                 onClick={autoFill}
-                                className="w-72 rounded-2xl bg-lighten-900 p-4 font-bold text-darken-700 shadow-xl transition-all hover:scale-105"
+                                className={`h-12 w-full rounded-2xl bg-lighten-900 font-header text-sm text-darken-700 shadow-lg transition-all hover:bg-darken-50 `}
                             >
-                                {">"}Autofill
+                                Autofill
                             </button>
-                        </div>
-
-                        <div className="flex flex-col gap-2">
-                            <div className="w-72 rounded-2xl bg-lighten-900 p-4 shadow-xl">
-                                {submission.days.map(createDayEntry)}
-                            </div>
-
-                            <button
-                                className="w-72 rounded-2xl bg-lighten-900 p-4 font-bold text-darken-700 shadow-xl transition-all hover:scale-105"
-                                onClick={handleSubmit}
-                            >
-                                Submit
-                            </button>
+                            {/* Submit button */}
+                            <LunchForm
+                                data={props.data}
+                                setData={props.setData}
+                                lunches={submission}
+                            />
                         </div>
                     </div>
+                    {/* <div className="flex justify-stretch gap-2 rounded-2xl bg-lighten-900 p-4">
+
+                    </div> */}
                 </div>
             </div>
         );
-    }
-
-    function handleSubmit() {
-        console.log("Handle submit");
-        console.log(submission);
     }
 
     function createLoginPage() {
@@ -240,9 +353,7 @@ export default function Lunches(props) {
                             </button>
                         </div>
                         <p className="m-2 w-72 font-bold text-darken-600">
-                            Your account will stay logged in for 60 days. Click
-                            on your <span className="underline">username</span>{" "}
-                            to log out.
+                            Your account will stay logged in for up to 60 days.
                         </p>
                     </form>
                 </div>
@@ -260,24 +371,41 @@ export default function Lunches(props) {
         );
     }
 
-    function createLoginButton() {
+    function createLogoutButton() {
         return (
             <button
                 onClick={logOut}
                 // Hide button if there's no username
-                className={`h-full p-2 ${!username && "hidden"}`}
+                className="text-nowrap rounded-2xl bg-lighten-900 p-4 font-bold text-darken-700 shadow-xl transition-all hover:scale-105"
             >
-                {username && username.toString()}
+                Log out
             </button>
         );
     }
 
     function createNavigation() {
         return (
-            <div className="fixed bottom-0 left-0 z-50 h-16 w-screen min-w-36 bg-center sm:left-1.5 sm:top-1 sm:w-auto">
-                <div className="bg-lighten-400 backdrop-blur-xl max-sm:rounded-t-xl sm:rounded-xl">
-                    {createLoginButton()}
-                    {agent && <p className="text-darken-800">{agent.name}</p>}
+            <div className="fixed left-0 top-0 z-50 max-h-12 w-screen min-w-36 bg-center">
+                <div className="flex justify-around gap-2 bg-lighten-400 shadow-xl backdrop-blur-xl max-sm:rounded-b-xl sm:rounded-xl">
+                    <div
+                        id="logo"
+                        className="flex flex-col justify-center"
+                    >
+                        <img
+                            className="max-h-8"
+                            src="https://merchandising-assets.bestbuy.ca/bltc8653f66842bff7f/bltc645e37ea0b1a348/6183051594e50d5a63800f45/gs-logo.png"
+                            alt="Geek Squad Logo"
+                        />
+                    </div>
+                    <div
+                        id="header"
+                        className="m-5"
+                    >
+                        <p className="text-3xl font-bold text-darken-800 sm:text-left">
+                            Lunch Edit for {agent ? agent.name : username}
+                        </p>
+                    </div>
+                    {createLogoutButton()}
                 </div>
             </div>
         );
@@ -285,19 +413,7 @@ export default function Lunches(props) {
 
     return (
         <>
-            <div className="min-h-[150vh] w-screen">
-                {/* Logo */}
-                <div className="flex h-16 justify-center sm:h-32">
-                    <img
-                        src="https://merchandising-assets.bestbuy.ca/bltc8653f66842bff7f/bltc645e37ea0b1a348/6183051594e50d5a63800f45/gs-logo.png"
-                        alt="Geek Squad Logo"
-                    />
-                </div>
-                <div className="m-5">
-                    <p className="text-3xl font-bold text-lighten-800 sm:text-left">
-                        Lunch Edit
-                    </p>
-                </div>
+            <div className="mt-24 min-h-screen w-screen">
                 {loggedIn ? createEntryPage() : createLoginPage()}
             </div>
             {loggedIn && createNavigation()}

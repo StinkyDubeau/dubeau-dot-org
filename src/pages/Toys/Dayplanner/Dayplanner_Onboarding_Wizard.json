@@ -1,0 +1,20 @@
+{
+    "DayDuration": {
+        "UserPrompt": "How much time do you have to fill?",
+        "UserInstructions": "Answer in minutes.",
+        "UserResponse": null
+    },
+    "DayUtilization": {
+        "UserPrompt": "How hard do you want to work? Enter a percentage.",
+        "UserResponse": null
+    },
+    "Tasks": {
+        "UserPrompt": "Ok. How many things do you want to do?",
+        "UserInstructions": "Choose the things you think you can do:",
+        "UserOptions": {
+            "Cat Litter": {
+                "duration": 5
+            }
+        }
+    }
+}

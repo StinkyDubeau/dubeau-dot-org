@@ -1,8 +1,8 @@
 import { useEffect, useState, memo } from "react";
-import Frame from "../../components/Frame";
 import { Link } from "react-router-dom";
 import vagueTime from "vague-time";
 import Checkbox from "../../components/Checkbox";
+import { motion } from "framer-motion";
 
 function Widgets(props) {
     // Widgets are:
@@ -459,8 +459,92 @@ function Widgets(props) {
         );
     }
 
+    function createComponentsWidget() {
+        const [xPos, setXPos] = useState(0);
+        const [yPos, setYPos] = useState(0);
+        const [isHovering, setIsHovering] = useState(false);
+        const [isDragging, setIsDragging] = useState(false);
+
+        useEffect(() => {
+            function handleMouseMove(e) {
+                setXPos(e.clientX);
+                setYPos(e.clientY);
+            }
+            window.addEventListener("mousemove", handleMouseMove);
+            return () =>
+                window.removeEventListener("mousemove", handleMouseMove);
+        }, []);
+
+        function roundButton() {
+            return (
+                <Link
+                    to="/fun/chat"
+                    className="m-auto flex flex-col justify-center rounded-full bg-lighten-600 shadow"
+                >
+                    <p className="m-1 rounded-full px-12 py-2 text-darken-900 transition-all hover:mx-8 hover:bg-lighten-900 hover:px-2 hover:text-darken-800 hover:shadow-sm">
+                        Button
+                    </p>
+                </Link>
+            );
+        }
+
+        return (
+            <div className="fixed h-screen w-screen bg-blue-400">
+                <motion.div
+                    initial={{}}
+                    animate={
+                        isDragging && {
+                            top: yPos,
+                            left: xPos,
+                        }
+                    }
+                    className={`fixed select-none overflow-clip rounded-3xl bg-lighten-600 text-xl text-darken-800 shadow-lg`}
+                    onMouseUp={() => setIsDragging(false)}
+                >
+                    <div
+                        id="drag-handle"
+                        className={
+                            (isHovering && "h-12 bg-darken-300") +
+                            "z-10 h-12 w-full rounded-lg shadow-xl"
+                        }
+                        onMouseEnter={() => setIsHovering(true)}
+                        onMouseLeave={() => {
+                            setIsHovering(false);
+                            setIsDragging(false);
+                        }}
+                        onMouseDown={() => isHovering && setIsDragging(true)}
+                    >
+                        <p>
+                            {xPos}, {yPos}
+                        </p>
+                    </div>
+                    <div
+                        id="main-container"
+                        className="flex h-full flex-col justify-center"
+                    >
+                        <Checkbox
+                            className="font-lighten font-header text-darken-600"
+                            body="isDragging"
+                            checked={isDragging}
+                            onChange={(e) => setIsDragging(e.target.value)}
+                        />
+
+                        <Checkbox
+                            className="font-lighten font-header text-darken-600"
+                            body="isHovering "
+                            checked={isHovering}
+                            onChange={(e) => setIsHovering(e.target.value)}
+                        />
+
+                        {roundButton()}
+                    </div>
+                </motion.div>
+            </div>
+        );
+    }
+
     return (
-        <>
+        <div>
             {/* Container */}
             <div className="mx-auto my-4 flex max-w-[600px] flex-col justify-center gap-4 drop-shadow-lg max-sm:p-2">
                 <div className="flex flex-col gap-2 rounded-2xl bg-lighten-800 p-4">
@@ -468,13 +552,9 @@ function Widgets(props) {
                         Widgets
                     </h1>
                     <p className="text-justify font-header text-darken-600">
-                        ℹ️ These "widgets" demonstrate the 2024 Trifecta
-                        standard. Some widgets will be games, some will foster
-                        peer-to-peer experiences, and some will feature
-                        peripheral support. All user data is ephemeral unless
-                        otherwise stated. However, with your permission, some
-                        widget content may be stored as cookies. Like the rest
-                        of the site,{" "}
+                        ℹ️ All user data is ephemeral unless otherwise stated.
+                        With your permission, some user-generated content may be
+                        locally stored as cookies. Like the rest of the site,{" "}
                         <span className="italic">
                             everything here is a work in progress
                         </span>
@@ -495,13 +575,15 @@ function Widgets(props) {
                 </div>
                 {/* Voltage Widget */}
                 {/* {createVoltageWidget()} */}
+                {/* Components Widget */}
+                {createComponentsWidget()}
                 {/* Cookie Widget */}
                 {createCookieWidget()}
                 {/* Counter Widget */}
                 {createCounterWidget()}
             </div>
-        </>
+        </div>
     );
 }
 
-export default memo(Widgets);
+export default Widgets;

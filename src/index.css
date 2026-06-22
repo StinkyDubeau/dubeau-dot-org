@@ -2,6 +2,59 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+    background: #101418;
+    color: #101418;
+    -webkit-text-size-adjust: 100%;
+}
+
 body {
+    min-height: 100%;
+    margin: 0;
     text-align: center;
+    overscroll-behavior-y: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+#root {
+    min-height: 100dvh;
+}
+
+.server-page-shell {
+    width: calc(100% - 1.5rem);
+}
+
+.server-page-shell > * {
+    width: 100%;
+    max-width: calc(100vw - 1.5rem);
+}
+
+.server-copy {
+    max-width: calc(100vw - 4rem);
+    overflow-wrap: anywhere;
+}
+
+@media (min-width: 640px) {
+    .server-page-shell {
+        width: 100%;
+    }
+
+    .server-page-shell > * {
+        max-width: 100%;
+    }
+
+    .server-copy {
+        max-width: none;
+    }
 }

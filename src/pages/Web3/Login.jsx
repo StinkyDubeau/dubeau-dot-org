@@ -34,20 +34,20 @@ export default function Login(props) {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="flex h-dvh flex-col justify-center gap-8"
+                className="flex min-h-dvh flex-col justify-center gap-8"
             >
                 <div className="mb-12 flex max-w-screen-sm flex-col justify-center gap-8 max-xs:pt-[50%]">
                     {/* Choose room */}
                     <motion.div
-                        layoutId="ChatLoginPanel"
+                        layoutId="ChatGradientBackground"
                         className="m-auto mt-3 flex w-full animate-gradient-y flex-col justify-center gap-2 rounded-3xl bg-gradient-to-bl from-orange-700 via-pink-500 to-yellow-400 p-5 transition-colors max-sm:max-w-xs"
                     >
-                        <motion.p className="m-auto font-header text-5xl font-extralight text-lighten-900">
+                        <p className="m-auto font-header text-5xl font-extralight text-lighten-900">
                             p2p chat
-                        </motion.p>
-                        <motion.p className="font-header text-xl font-medium text-lighten-700">
+                        </p>
+                        <p className="font-header text-xl font-medium text-lighten-700">
                             Choose a room
-                        </motion.p>
+                        </p>
                         <motion.div className="flex justify-center gap-2">
                             {createRoomButton("A")}
                             {createRoomButton("B")}
@@ -122,11 +122,11 @@ export default function Login(props) {
                         <span className="text-red-500">
                             completely ephemeral
                         </span>
-                        . Your messages are sent peer-to-peer using a bittorrent
-                        WebRTC protocol, which you can learn more about{" "}
+                        . Your messages are sent peer-to-peer using a protocol
+                        which you can learn more about{" "}
                         <a
                             className="font-semibold underline"
-                            href="https://oxism.com/trystero/"
+                            href="https://github.com/dmotz/trystero"
                         >
                             here
                         </a>
@@ -135,7 +135,7 @@ export default function Login(props) {
 
                     <Link
                         to="/fun"
-                        className="p-2 underline"
+                        className="p-2 text-darken-700 underline"
                     >
                         more experiments
                     </Link>
@@ -154,7 +154,7 @@ export default function Login(props) {
         return (
             <button
                 onClick={() => joinRoom(roomID)}
-                className="flex aspect-square h-16 flex-col justify-center rounded-xl border border-x-darken-50 border-b-darken-100 border-t-lighten-100 bg-darken-200 p-2 shadow-md backdrop-blur-md transition-all hover:scale-105 hover:shadow-lg"
+                className="flex aspect-square h-16 cursor-default flex-col justify-center rounded-xl border border-x-darken-50 border-b-darken-100 border-t-lighten-100 bg-darken-200 p-2 shadow-md backdrop-blur-md transition-all hover:scale-105 hover:shadow-lg"
             >
                 <p className="font-header text-3xl text-lighten-700">
                     {roomID}
