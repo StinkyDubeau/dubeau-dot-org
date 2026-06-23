@@ -1,0 +1,137 @@
+{
+    "ok": true,
+    "source": "cache",
+    "fetchedAt": "2026-06-22T00:00:00.000Z",
+    "generatedAt": "2026-06-22T00:00:00.000Z",
+    "stale": true,
+    "setupRequired": true,
+    "diagnostics": {
+        "message": "Static sample cache. Use the hidden admin tools with Discord env vars to test live #astrosightings data."
+    },
+    "items": [
+        {
+            "id": "cache-astro-001",
+            "channelId": "112233445566778899",
+            "guildId": "998877665544332211",
+            "jumpUrl": null,
+            "createdAt": "2026-06-21T03:42:00.000Z",
+            "editedAt": null,
+            "author": {
+                "id": "100000000000000001",
+                "name": "StinkyDubeau",
+                "displayName": "Jake",
+                "avatarUrl": null,
+                "isBot": false
+            },
+            "content": "Clouds finally cleared for the crescent moon and Venus.",
+            "attachments": [
+                {
+                    "id": "cache-a1",
+                    "url": "https://images.unsplash.com/photo-1532767153582-b1a0e5145009?auto=format&fit=crop&w=1200&q=80",
+                    "proxyUrl": null,
+                    "filename": "moon-venus.jpg",
+                    "contentType": "image/jpeg",
+                    "width": 1200,
+                    "height": 900,
+                    "size": 382000,
+                    "kind": "image"
+                }
+            ],
+            "embeds": [],
+            "reactions": [{ "emoji": "moon", "count": 7 }],
+            "media": [
+                {
+                    "source": "attachment",
+                    "kind": "image",
+                    "url": "https://images.unsplash.com/photo-1532767153582-b1a0e5145009?auto=format&fit=crop&w=1200&q=80",
+                    "previewUrl": "https://images.unsplash.com/photo-1532767153582-b1a0e5145009?auto=format&fit=crop&w=1200&q=80",
+                    "alt": "moon-venus.jpg",
+                    "width": 1200,
+                    "height": 900
+                }
+            ]
+        },
+        {
+            "id": "cache-astro-002",
+            "channelId": "112233445566778899",
+            "guildId": "998877665544332211",
+            "jumpUrl": null,
+            "createdAt": "2026-06-18T05:19:00.000Z",
+            "editedAt": null,
+            "author": {
+                "id": "100000000000000002",
+                "name": "cheekysaucy",
+                "displayName": "cheekysaucy",
+                "avatarUrl": null,
+                "isBot": false
+            },
+            "content": "Saturn was low but sharp through binoculars. Phone camera did not love it, but the view was worth posting.",
+            "attachments": [
+                {
+                    "id": "cache-a2",
+                    "url": "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=1200&q=80",
+                    "proxyUrl": null,
+                    "filename": "saturn-sky.jpg",
+                    "contentType": "image/jpeg",
+                    "width": 1200,
+                    "height": 800,
+                    "size": 410000,
+                    "kind": "image"
+                },
+                {
+                    "id": "cache-a3",
+                    "url": "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=1200&q=80",
+                    "proxyUrl": null,
+                    "filename": "yard-scope.jpg",
+                    "contentType": "image/jpeg",
+                    "width": 1200,
+                    "height": 800,
+                    "size": 420000,
+                    "kind": "image"
+                }
+            ],
+            "embeds": [],
+            "reactions": [{ "emoji": "saturn", "count": 4 }],
+            "media": [
+                {
+                    "source": "attachment",
+                    "kind": "image",
+                    "url": "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=1200&q=80",
+                    "previewUrl": "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=1200&q=80",
+                    "alt": "saturn-sky.jpg",
+                    "width": 1200,
+                    "height": 800
+                },
+                {
+                    "source": "attachment",
+                    "kind": "image",
+                    "url": "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=1200&q=80",
+                    "previewUrl": "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=1200&q=80",
+                    "alt": "yard-scope.jpg",
+                    "width": 1200,
+                    "height": 800
+                }
+            ]
+        },
+        {
+            "id": "cache-astro-003",
+            "channelId": "112233445566778899",
+            "guildId": "998877665544332211",
+            "jumpUrl": null,
+            "createdAt": "2026-06-12T02:05:00.000Z",
+            "editedAt": null,
+            "author": {
+                "id": "100000000000000003",
+                "name": "Prezedent07",
+                "displayName": "Prezedent07",
+                "avatarUrl": null,
+                "isBot": false
+            },
+            "content": "No photo this time. Just a bright meteor heading east while walking back from the store.",
+            "attachments": [],
+            "embeds": [],
+            "reactions": [{ "emoji": "sparkles", "count": 3 }],
+            "media": []
+        }
+    ]
+}
