@@ -50,7 +50,7 @@ export default function Fun(props) {
                 {/* P2P CHAT */}
                 <motion.div
                     layoutId="ChatGradientBackground"
-                    className={`w-full animate-gradient-x rounded-2xl bg-gradient-to-bl from-yellow-600 via-orange-500 to-pink-500 bg-blend-lighten ${props.data.highContrast && "bg-darken-800"}`}
+                    className={`lit-section lit-section-warm w-full rounded-3xl p-1 shadow-xl ${props.data.highContrast && "bg-darken-800"}`}
                 >
                     <div className="m-5 flex flex-col gap-4">
                         <motion.p className="text-left font-header text-5xl text-lighten-800">
@@ -65,7 +65,7 @@ export default function Fun(props) {
                         className="m-5 flex animate-gradient-x flex-wrap justify-center gap-4 rounded-2xl p-4 sm:gap-8"
                     >
                         <Link
-                            className="flex min-w-24 cursor-default flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
+                            className="lit-control flex min-w-24 cursor-default flex-col justify-center rounded-2xl px-2 py-1 shadow-lg"
                             to="/chat"
                         >
                             <p className="p-2 font-header font-medium text-darken-800">
@@ -76,7 +76,7 @@ export default function Fun(props) {
                 </motion.div>
 
                 {/* GAME SERVERS */}
-                <div className="w-full animate-gradient-x rounded-2xl bg-gradient-to-br from-blue-400 via-blue-300 to-cyan-400">
+                <div className="lit-section lit-section-blue w-full rounded-3xl p-1 shadow-xl">
                     <div className="m-5 flex flex-col gap-4">
                         <p className="text-left font-header text-5xl text-darken-600">
                             Game servers
@@ -152,7 +152,7 @@ export default function Fun(props) {
                 {/* HOBBY */}
                 <motion.div
                     layout
-                    className="w-full animate-gradient-x rounded-2xl bg-gradient-to-bl from-pink-700  via-purple-600 to-blue-200 p-2"
+                    className="lit-section lit-section-violet w-full rounded-3xl p-2 shadow-xl"
                 >
                     <div className="m-5 flex flex-col gap-4">
                         <p className="text-left font-header text-5xl text-lighten-800">
@@ -165,7 +165,7 @@ export default function Fun(props) {
                     {/* Gradient bg */}
                     <div className="bg-lighten-80 m-5 flex flex-wrap justify-center gap-2 rounded-xl max-sm:flex-col">
                         <Link
-                            className="flex min-w-24 cursor-default flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
+                            className="lit-control flex min-w-24 cursor-default flex-col justify-center rounded-2xl px-2 py-1 shadow-lg"
                             to="/fun/tabs"
                         >
                             <p className="p-2 font-header font-medium text-darken-800">
@@ -175,7 +175,7 @@ export default function Fun(props) {
                         {props.data.experimental && (
                             <div className="flex gap-2 max-sm:flex-col">
                                 <Link
-                                    className="flex min-w-24 cursor-default flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
+                                    className="lit-control flex min-w-24 cursor-default flex-col justify-center rounded-2xl px-2 py-1 shadow-lg"
                                     to="/fun/widgets"
                                 >
                                     <p className="p-2 font-header font-medium text-darken-800">
@@ -183,7 +183,7 @@ export default function Fun(props) {
                                     </p>
                                 </Link>
                                 <Link
-                                    className="flex min-w-24 cursor-default flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
+                                    className="lit-control flex min-w-24 cursor-default flex-col justify-center rounded-2xl px-2 py-1 shadow-lg"
                                     to="/blog"
                                 >
                                     <p className="p-2 font-header font-medium text-darken-800">
@@ -191,7 +191,7 @@ export default function Fun(props) {
                                     </p>
                                 </Link>
                                 <Link
-                                    className="flex min-w-24 cursor-default flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
+                                    className="lit-control flex min-w-24 cursor-default flex-col justify-center rounded-2xl px-2 py-1 shadow-lg"
                                     to="/fun/gallery"
                                 >
                                     <p className="p-2 font-header font-medium text-darken-800">
@@ -199,7 +199,7 @@ export default function Fun(props) {
                                     </p>
                                 </Link>
                                 <Link
-                                    className="flex min-w-24 cursor-default flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
+                                    className="lit-control flex min-w-24 cursor-default flex-col justify-center rounded-2xl px-2 py-1 shadow-lg"
                                     to="/dayplanner"
                                 >
                                     <p className="p-2 font-header font-medium text-darken-800">
@@ -207,7 +207,7 @@ export default function Fun(props) {
                                     </p>
                                 </Link>
                                 <Link
-                                    className="flex min-w-24 flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
+                                    className="lit-control flex min-w-24 flex-col justify-center rounded-2xl px-2 py-1 shadow-lg"
                                     to="/idle"
                                 >
                                     <p className="p-2 font-header font-medium text-darken-800">
@@ -215,7 +215,7 @@ export default function Fun(props) {
                                     </p>
                                 </Link>
                                 <Link
-                                    className="flex min-w-24 cursor-default flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
+                                    className="lit-control flex min-w-24 cursor-default flex-col justify-center rounded-2xl px-2 py-1 shadow-lg"
                                     to="/countries"
                                 >
                                     <p className="p-2 font-header font-medium text-darken-800">
@@ -227,7 +227,7 @@ export default function Fun(props) {
                         <Link
                             to="/trackers"
                             layoutId="Experimental"
-                            className="flex min-w-24 cursor-default flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
+                            className="lit-control flex min-w-24 cursor-default flex-col justify-center rounded-2xl px-2 py-1 shadow-lg"
                             // onClick={() => {
                             //     props.setData({
                             //         ...props.data,
@@ -245,57 +245,26 @@ export default function Fun(props) {
                 {/* ASTRO SIGHTINGS */}
                 <motion.div
                     layout
-                    className="w-full animate-gradient-x rounded-2xl bg-gradient-to-tl from-amber-400 via-yellow-400 to-orange-400"
+                    className="lit-section lit-section-gold w-full rounded-3xl p-1 shadow-xl"
                 >
                     <div className="m-5 flex flex-col gap-4">
                         <p className="text-left font-header text-5xl text-darken-600">
                             Astro sightings
                         </p>
                         <p className="text-left font-header text-lg text-darken-600">
-                            To publish a sighting, join the{" "}
-                            <Link
-                                to="/contact"
-                                className="underline underline-offset-1"
-                            >
-                                discord
-                            </Link>
-                            .
+                            Astro sightings now lives on its own site.
                         </p>
                     </div>
                     {/* Gradient bg */}
                     <div className="m-5 flex flex-wrap justify-center gap-4 rounded-2xl p-4 sm:gap-8">
-                        {props.data.experimental ? (
-                            <>
-                                <Link
-                                    className="flex min-w-24 cursor-default flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
-                                    to="/fun/gallery"
-                                >
-                                    <p className="p-2 font-header font-medium text-darken-800">
-                                        🖼️ Astro Gallery
-                                    </p>
-                                </Link>
-                                <Link
-                                    className="flex min-w-24 cursor-default flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
-                                    to="/dayplanner"
-                                >
-                                    <p className="p-2 font-header font-medium text-darken-800">
-                                        Astro of the day
-                                    </p>
-                                </Link>
-                                <Link
-                                    className="flex min-w-24 cursor-default flex-col justify-center rounded-2xl  bg-lighten-700 shadow-lg transition-all hover:scale-105 hover:shadow-xl"
-                                    to="/fun/idle"
-                                >
-                                    <p className="p-2 font-header font-medium text-darken-800">
-                                        Submit a sighting
-                                    </p>
-                                </Link>
-                            </>
-                        ) : (
-                            <p className="text-left font-header text-3xl text-darken-300">
-                                Coming soon, submit photos today.
+                        <a
+                            className="lit-control flex min-w-24 cursor-default flex-col justify-center rounded-2xl px-3 py-2 shadow-lg"
+                            href="https://astro.sightings.today"
+                        >
+                            <p className="font-header font-medium text-darken-800">
+                                🖼️ Open Astro sightings
                             </p>
-                        )}
+                        </a>
                     </div>
                 </motion.div>
             </div>

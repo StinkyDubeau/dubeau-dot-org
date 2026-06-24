@@ -1,7 +1,5 @@
-import Frame from "../components/Frame";
 import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
-import Panel from "../components/Panel";
+import { useParams } from "react-router-dom";
 
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -23,16 +21,11 @@ export default function Trackers(props) {
         });
     }, []);
 
-    data &&
-        Object.values(data).map((key, index) => {
-            console.log(key);
-        });
-
     return (
         <div className="flex min-h-screen w-full flex-col justify-center pb-32">
             <motion.div
                 layout
-                className="m-4 flex max-w-96 flex-col gap-2 rounded-2xl bg-lighten-900 p-4 text-left font-header text-darken-800"
+                className="lit-panel m-4 flex max-w-96 flex-col gap-2 rounded-2xl p-4 text-left font-header text-darken-800"
             >
                 <h1 className="text-center text-3xl font-light">
                     ⚙️ Experiments
@@ -55,7 +48,7 @@ export default function Trackers(props) {
 
                 <div className="flex gap-2 text-darken-800">
                     <button
-                        className="w-full rounded-xl bg-lighten-800 p-2 text-darken-800 shadow-md transition-all hover:scale-105 hover:bg-lighten-900 hover:shadow-lg"
+                        className="lit-control w-full rounded-xl p-2 text-darken-800 shadow-md"
                         onClick={() => {
                             setData({ ...data, Count: data.Count + 1 });
                         }}
@@ -63,7 +56,7 @@ export default function Trackers(props) {
                         Add to page data
                     </button>
                     <button
-                        className="w-full rounded-xl bg-lighten-800 p-2 text-darken-800 shadow-md transition-all hover:scale-105 hover:bg-lighten-900 hover:shadow-lg"
+                        className="lit-control w-full rounded-xl p-2 text-darken-800 shadow-md"
                         onClick={() => {
                             props.setData({
                                 ...props.data,
@@ -76,7 +69,7 @@ export default function Trackers(props) {
                 </div>
                 <div className="flex justify-center gap-2 text-darken-800">
                     <button
-                        className="w-full rounded-xl  bg-lighten-800 p-2 text-darken-800 shadow-md transition-all hover:scale-105 hover:bg-lighten-900 hover:shadow-lg"
+                        className="lit-control w-full rounded-xl p-2 text-darken-800 shadow-md"
                         onClick={() => {
                             props.setData({
                                 ...props.data,
@@ -87,7 +80,7 @@ export default function Trackers(props) {
                         Start loading
                     </button>
                     <button
-                        className="w-full rounded-xl  bg-lighten-800 p-2 text-darken-800 shadow-md transition-all hover:scale-105 hover:bg-lighten-900 hover:shadow-lg"
+                        className="lit-control w-full rounded-xl p-2 text-darken-800 shadow-md"
                         onClick={() => {
                             props.setData({
                                 ...props.data,
@@ -177,6 +170,7 @@ export default function Trackers(props) {
                     </ul>
                 </div>
             </motion.div>
+
         </div>
     );
 }

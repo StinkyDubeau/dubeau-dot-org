@@ -16,7 +16,6 @@ import Fun from "./pages/Fun";
 import Contact from "./pages/Contact";
 import Geek from "./pages/Geek/Lunches";
 import Chat from "./pages/Web3/Login";
-import Astros from "./pages/Astros";
 import Trackers from "./pages/Trackers";
 import Accessibility from "./pages/Accessibility";
 import Widgets from "./pages/Toys/Widgets";
@@ -160,15 +159,6 @@ function App() {
                             path="/trackers"
                             element={
                                 <Trackers
-                                    data={data}
-                                    setData={setData}
-                                />
-                            }
-                        />
-                        <Route
-                            path="/astros"
-                            element={
-                                <Astros
                                     data={data}
                                     setData={setData}
                                 />
